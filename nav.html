@@ -8,73 +8,85 @@
     <script src="https://kit.fontawesome.com/d9b9bbc6a7.js" crossorigin="anonymous"></script>
     <style>
       nav {
+        position:relative;
         text-align: center;
         text-decoration: none;
         justify-content: center;
-        display: inline-block;
+        list-style: none;
       }
 
-      nav ul div.A {
-        display: inline-block;
-        font-size: 20px;
+      nav ul div.A{
         list-style: none;
-        margin-right: 30px;
-      }
-      nav ul div.B {
-        display: inline-block;
-        font-size: 14px;
-        list-style: none;
-        margin-left : 1000px;
       }
 
-      header div {
-          margin-left:700px;
-          border:2px solid black;
-          white-space: nowrap;
-          width:300px;
-          padding:5px;
-          top:8%;
+      nav ul div.B{
+        list-style: none;
+      }
+
+      div.h {
+        position: relative;
+        
+      }
+
+      header div input.text{
+          margin-left: 650px;
+          margin-top:30px;
+          border:3px solid black;
+          outline:none;
+          font-size:16px;
+          padding:9px;
+          width:400px;
+      }
+
+      header h1 {
+          margin-left:500px;
           position: absolute;
+          font-size:35px;
           
       }
-      header div input.text{
-          border-radius: 3px;
-          border:none;
-          outline:none;
-      }
 
-      header h1,h3 {
-          margin-left:500px;
-          top:5%;
-          position: absolute;
-      }
-
-      header h3 {
-          margin:auto;
-      }
-
-      header div i#icon{
+    
+      header h2 i#icon{
           cursor: pointer;
           position:absolute;
+          left:1040px;
+          top:60px
+          
       }
 
+      header h2 i#user{
+          cursor: pointer;
+          position: absolute;
+        right:600px;
+        top:65px;
+          
+      }
+
+      header h2 i#cart{
+          cursor: pointer;
+          position: absolute;
+        right:550px;
+        top:65px;
+          
+      }
     </style>
   </head>
   <body>
+    <div class="h">
     <header>
       <br><h1>Malang</h1>
       <div>
       <input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text">
-      <i class="fas fa-search" id="icon"></i>
-      </div>
-      <h3>마이페이지</h3>
-      <h3>장바구니</h3>
+      <h2><i class="fas fa-search" id="icon"></i>
+      <i class="fas fa-user" id="user"></i>
+      <i class="fas fa-shopping-cart" id="cart"></i></h2>
+    </div>
     </header>
+  </div>
 
     <nav>
       <ul>
         <div class="A">
-            <fieldset>
           <li>일러스트</li>
             <li>수공예</li>
             <li>수제간식</li>
@@ -82,7 +94,6 @@
             <li>실시간 후기</li>
             <li>이용안내</li>
         </fieldset>
-          </p>
         </div>
 
         <div class="B">
