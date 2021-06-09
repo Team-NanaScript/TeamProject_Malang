@@ -18,11 +18,10 @@
       }
 
       body{
-        padding-top:5px;
         position: relative;
       }
 
-     div {
+     div.adiv {
         font-family: "Noto Sans KR", sans-serif;
         text-decoration: none;
         list-style: none;
@@ -36,7 +35,13 @@
         padding:25px;
       }
 
-      div nav{
+      div.bdiv{
+        display:flex;
+        background-color: rgba(226, 226, 226, 0.993);
+        justify-content: center;
+      }
+
+      div.adiv nav{
         display:flex;
         margin-top: -15px;
       }
@@ -45,10 +50,12 @@
         position: relative;
         display:flex;
         left:-78px;
+        width:100%;
+        padding:1px;
       }
 
       nav.a ul li{
-        margin-left: 57px;
+        margin-left: 100px;
         list-style: none;
         justify-content: center;
         font-size: 18px;
@@ -56,18 +63,20 @@
 
       nav.a:hover{
         cursor: pointer;
+        
       }
 
       nav.b ul{
-        position: relative;
         display:flex;
-        justify-content: center;
+        width:100%;
+        padding:3px;
+        margin-left:730px;
       }
       nav.b li{       
         list-style: none;
-        font-size: 14px;
-        margin:10px;
-        margin-top:5px;
+        font-size: 13px;
+        margin-left:15px;
+              
       }
       nav.b:hover {
         cursor: pointer;
@@ -94,9 +103,17 @@
         margin-top: 3px;
       }
 
+      header h2{
+        display:flex;
+        left:800px;
+      }
+
       header h2#logo {
         font-size: 40px;
-        margin-left: -870px;
+        width:auto;
+        padding:auto;
+        
+        
       }
 
       header i {
@@ -107,21 +124,28 @@
       }
 
       header i#icon {
-        margin-right: -200px;
-        margin-top: 14px;
+     
       }
       header i#user {
-        margin-right: -700px;
-        margin-top: 7px;
+      
       }
       header i#cart {
-        margin-right: -800px;
-        margin-top: 7px;
+        
       }
       
     </style>
   </head>
   <body>
+    <div class="bdiv">
+    <nav class="b">
+      <ul>
+         <li>로그인</li>
+         <li>회원가입</li>
+         <li>고객센터</li>
+       </ul>
+       </nav>
+      </div>
+
     <header>
       <h2 id="logo">MALANG</h2>
       <input
@@ -134,7 +158,7 @@
       <i class="fas fa-shopping-cart" id="cart"></i>
     </header>
     
-    <div>
+    <div class="adiv">
     <nav class="a">
       <ul>
         
@@ -145,16 +169,22 @@
           <li>실시간 후기</li>
           <li>이용안내</li>
         </ul>
-        </nav> 
-
-     <nav class="b">
-       <ul>
-          <li>로그인</li>
-          <li>회원가입</li>
-          <li>고객센터</li>
-        </ul>
         </nav>
       </div>
-
+      
   </body>
+  <script>
+const doc = document;
+
+doc.querySelector("body").addEventListener("click",(e)=>{
+  let id = e.target.id;
+  let cName = e.target.className;
+
+  
+  }
+  
+
+});
+
+  </script>
 </html>

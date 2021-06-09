@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/d9b9bbc6a7.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body{
+        position: relative;
+      }
+
+     div.adiv {
+        font-family: "Noto Sans KR", sans-serif;
+        text-decoration: none;
+        list-style: none;
+        height: 28px;
+        width:100%; 
+        display: flex;
+        position:relative;
+        justify-content: center;
+        align-content: center;
+        border:1px solid rgba(94, 94, 94, 0.349);
+        padding:25px;
+      }
+
+      div.bdiv{
+        display:flex;
+        background-color: rgba(226, 226, 226, 0.993);
+        justify-content: center;
+      }
+
+      div.adiv nav{
+        display:flex;
+        margin-top: -15px;
+      }
+      
+      nav:hover {
+        cursor: pointer;
+      }
+      
+      nav.a ul{
+        position: relative;
+        display:flex;
+        left:-78px;
+        width:100%;
+        padding:1px;
+      }
+
+      nav.a ul a{
+        margin-left: 100px;
+        list-style: none;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      nav.b ul{
+        display:flex;
+        width:100%;
+        padding:3px;
+        margin-left:730px;
+      }
+      nav.b ul a{       
+        list-style: none;
+        font-size: 13px;
+        margin-left:15px;
+              
+      }
+    
+
+      header {
+        font-family: "Noto Sans KR", sans-serif;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 70%;
+        margin: 40px auto;
+      }
+
+      form#text input {
+        border: 3px solid black;
+        outline: none;
+        font-size: 16px;
+        padding: 14px;
+      }
+
+      form#text input.text{
+        position: absolute;
+        width: 470px;
+        margin-left: -335px;
+        margin-top: 3px;
+      }
+
+      header a#logo {
+        font-size: 40px;
+        margin-left: -870px;
+        position: relative;
+      }
+
+      header i, header a, header form {
+        cursor: pointer;
+        font-size: 30px;
+        display: inline-block;
+        position: absolute;
+      }
+
+      a{
+        text-decoration: none;
+        color:black;
+      }
+
+      header form button i#icon{
+        right:-120px;
+        margin-top: -20px;
+      }
+      header a i#user {
+        right: -410px;
+        margin-top: 15px;
+      }
+      header a i#cart {
+        right: -460px;
+        margin-top: 15px;
+      }
+
+      .fix {
+        
+        position: fixed;
+        width: auto;
+        animation: down 0.5s ease;
+        position: fixed;
+        top: 0;
+        /* width: 100% */
+        left: 950px;
+        right: 0;
+        background-color: white;
+        
+      }
+
+      .fix button{
+        left: 900px;;
+      }
+
+      @keyframes down {
+        0% {
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="bdiv">
+    <nav class="b">
+      <ul>
+        <a href="http://naver.com">로그인</a>
+        <a href="http://naver.com">회원가입</a>
+        <a href="http://naver.com">고객센터</a>
+       </ul>
+       </nav>
+      </div>
+
+    <header>
+      <a id="logo" href="http://daum.net">MALANG</a>
+      <form id="text">
+      <input
+        type="text"
+        placeholder="찾고싶은 상품을 검색하세요"
+        class="text"
+      />
+      <button type="submit"><i class="fas fa-search" id="icon" type="submit"></i></button>
+    </form>
+      <a href="http://naver.com"><i class="fas fa-user" id="user"></i></a>
+      <a href="http://naver.com"><i class="fas fa-shopping-cart" id="cart"></i></a>
+      
+      
+    </header>
+    
+    <div class="adiv">
+    <nav class="a">
+      <ul>
+        
+        <a href="http://naver.com">일러스트</a>
+        <a href="http://google.com">수공예</a>
+        <a href="http://naver.com">수제간식</a>
+        <a href="http://naver.com">반려동물용품</a>
+        <a href="http://naver.com">실시간 후기</a>
+        <a href="http://naver.com">이용안내</a>
+        
+        
+        </ul>
+        </nav>
+      </div>
+      
+      
+
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+     <h2>ㅎㅇㅎㅇ</h2>
+
+
+  </body>
+  <script>
+    const doc = document;
+
+    const header = doc.querySelector("header");
+      const n1height = header.clientHeight;
+
+      doc.addEventListener("scroll", onScroll, {passive:true});
+
+function onScroll(){
+      const scrollposition = pageYOffset;
+      const nav = doc.querySelector("#text");
+
+      if(n1height <= scrollposition){
+        nav.classList.add("fix");
+        doc.getElementById("text").style.display = "block";
+      } else {
+        nav.classList.remove("fix");
+      }
+
+    }
+  
+    let keyword = doc.querySelector(".text");
+      
+    doc.addEventListener("submit", (e)=>{
+      doc.location.href="https://search.naver.com/search.naver?query=" + keyword.value;
+        e.preventDefault();
+
+    })
+  
+  </script>
+</html>
