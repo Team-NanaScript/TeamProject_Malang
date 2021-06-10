@@ -1,0 +1,42 @@
+@charset "UTF-8";
+nav.b ul {
+  display: flex;
+  width: 100%;
+  padding: 3px;
+  margin-left: 50px;
+  opacity: 0.8;
+}
+nav.b ul a {
+  list-style: none;
+  font-size: 13px;
+  margin-left: 12px;
+}
+
+form#hid {
+  display: none;
+  background-color: rgba(235, 164, 123, 0.993);
+  width: 100%;
+}
+
+form#hid input {
+  display: flex;
+  border: 3px solid rgba(235, 164, 123, 0.993);
+  width: 30%;
+  padding: 20px;
+  margin-left: 600px;
+  font-size: 16px;
+  outline: none;
+}
+form#hid button {
+  display: flex;
+  position: absolute;
+  border: none;
+  right: 680px;
+  top: 5px;
+  font-size: 50px;
+  background-color: rgba(235, 164, 123, 0.993);
+  color: white;
+}
+form#hid button:hover {
+  cursor: pointer;
+}
