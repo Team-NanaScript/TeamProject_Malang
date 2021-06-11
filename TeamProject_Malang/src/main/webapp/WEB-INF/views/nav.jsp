@@ -10,12 +10,20 @@
 <script src="https://kit.fontawesome.com/d9b9bbc6a7.js"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-11" />
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-11" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-11-001" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-11-002" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
 	;
+
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 * {
 	box-sizing: border-box;
@@ -56,7 +64,7 @@ nav:hover {
 </head>
 <body>
 	<header>
-		<a id="logo" href="http://daum.net">MALANG</a>
+		<a id="logo" href="${rootPath}">MALANG</a>
 		<form id="text">
 			<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text" />
 			<button type="submit">
@@ -75,13 +83,12 @@ nav:hover {
 				<a href="http://naver.com">수제간식</a>
 				<a href="http://naver.com">반려동물용품</a>
 				<a href="http://naver.com">실시간 후기</a>
-				<a href="http://naver.com">이용안내</a>
 			</ul>
 		</nav>
 
 		<nav class="b">
 			<ul>
-				<a href="http://naver.com">로그인</a>
+				<a href="${rootPath}/login">로그인</a>
 				<a href="http://naver.com">회원가입</a>
 				<a href="http://naver.com">고객센터</a>
 			</ul>
