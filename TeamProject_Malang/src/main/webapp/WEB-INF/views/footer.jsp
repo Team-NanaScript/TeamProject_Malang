@@ -38,12 +38,17 @@ nav.ft ul a {
 }
 
 nav.ft ul a:nth-of-type(1){
+	border-left : 1px solid rgba(0,0,0,0.3);
 	border-right: 1px solid rgba(0,0,0,0.3);
 }
 nav.ft ul a:nth-of-type(2){
 	border-right: 1px solid rgba(0,0,0,0.3);
 }
 nav.ft ul a:nth-of-type(3){
+	border-right: 1px solid rgba(0,0,0,0.3);
+}
+
+nav.ft ul a:nth-of-type(4){
 	border-right: 1px solid rgba(0,0,0,0.3);
 }
 

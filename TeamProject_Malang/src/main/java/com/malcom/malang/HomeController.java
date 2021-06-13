@@ -28,4 +28,17 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/center", method = RequestMethod.GET)
+	public String center() {
+		
+		return "service";
+	}
+	
+	@RequestMapping(value = "/advice", method = RequestMethod.GET)
+	public String advice() {
+		
+		return "advice";
+	}
+	
+	
 }

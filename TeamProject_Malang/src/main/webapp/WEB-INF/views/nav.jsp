@@ -89,8 +89,8 @@ nav:hover {
 		<nav class="b">
 			<ul>
 				<a href="${rootPath}/login">로그인</a>
-				<a href="http://naver.com">회원가입</a>
-				<a href="http://naver.com">고객센터</a>
+				<a href="${rootPath}/join">회원가입</a>
+				<a href="${rootPath}/center">고객센터</a>
 			</ul>
 		</nav>
 	</div>
