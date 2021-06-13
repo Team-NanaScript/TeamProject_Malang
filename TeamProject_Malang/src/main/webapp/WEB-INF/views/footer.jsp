@@ -10,61 +10,47 @@
 <style>
 nav.ft ul {
 	position: relative;
-	display: flex;
-	left: -140px;
-	width: 100%;
-	padding: 1px;
+    margin-top: -15px;
 }
 
 div.ft_nav {
 	font-family: "Noto Sans KR", sans-serif;
 	text-decoration: none;
 	list-style: none;
-	height: 0px;
 	width: 100%;
-	display: flex;
 	position: relative;
-	justify-content: center;
 	border: 1px solid rgba(94, 94, 94, 0.349);
 	border-top:2px solid rgba(94, 94, 94, 0.6);
-	padding: 25px;
+	padding: 15px;
 }
 
 
 div.ft_nav nav {
-	display:flex;
-	margin-top: -15px;
+    white-space: nowrap;
+    padding-top: 15px;
+    text-align: center
 }
 
 nav.ft ul a {
 	list-style: none;
-	justify-content: center;
 	font-size: 18px;
+	padding: 0 20px;
 }
 
 nav.ft ul a:nth-of-type(1){
-	border:1px solid rgba(0,0,0,0.3);
-	border-left:none;
-	border-top:none;
-	border-bottom:none;
+	border-right: 1px solid rgba(0,0,0,0.3);
 }
 nav.ft ul a:nth-of-type(2){
-	border:1px solid rgba(0,0,0,0.3);
-	border-right:none;
-	border-top:none;
-	border-bottom:none;
+	border-right: 1px solid rgba(0,0,0,0.3);
 }
 nav.ft ul a:nth-of-type(3){
-	border:1px solid rgba(0,0,0,0.3);
-	border-right:none;
-	border-top:none;
-	border-bottom:none;
+	border-right: 1px solid rgba(0,0,0,0.3);
 }
-nav.ft ul a:nth-of-type(4){
-	border:1px solid rgba(0,0,0,0.3);
-	border-right:none;
-	border-top:none;
-	border-bottom:none;
+
+.ft_div p{
+	text-align: center;	
+	background-color:gray;
+	color:white;
 }
 
 
@@ -80,6 +66,9 @@ nav.ft ul a:nth-of-type(4){
 				<a href="http://naver.com">광고 문의</a>
 			</ul>
 		</nav>
+	</div>
+	<div class="ft_div">
+			<p>Copyright &copy Malang Comp. 2021 All Rights Reserved.
 	</div>
 </body>
 </html>

@@ -3,22 +3,18 @@
 
 div.adiv {
 	font-family: "Noto Sans KR", sans-serif;
-	text-decoration: none;
-	list-style: none;
-	height: 0px;
-	width: 100%;
-	display: flex;
-	position: relative;
-	justify-content: center;
-	border: 1px solid rgba(94, 94, 94, 0.349);
-	border-bottom:2px solid rgba(94, 94, 94, 0.6);
-	padding: 25px;
+    text-decoration: none;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(94, 94, 94, 0.349);
+    border-bottom: 2px solid rgba(94, 94, 94, 0.6);
+    padding: 10px;
+    white-space: nowrap;
 	
 }
 
-div.adiv nav {
-	margin-top: -15px;
-}
 
 header {
 	font-family: "Noto Sans KR", sans-serif;

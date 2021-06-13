@@ -10,8 +10,8 @@
 <script src="https://kit.fontawesome.com/d9b9bbc6a7.js"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-11-001" />
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-11-002" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-13-004" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-13-003" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -44,7 +44,6 @@ nav:hover {
 	width: auto;
 	animation: down 0.3s ease;
 	top: 0;
-	/* width: 100% */
 	left: 0;
 	right: 0;
 	background-color: white;
@@ -60,6 +59,7 @@ nav:hover {
           transform: translateY(0);
         }
       }
+      
 </style>
 </head>
 <body>
@@ -95,12 +95,18 @@ nav:hover {
 		</nav>
 	</div>
 
+
+	
+<div id="hid_nav">
+	<a id="logo" href="${rootPath}">MALANG</a>
 	<form id="hid">
-		<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid" />
+		<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
 		<button type="submit">
 			<i class="fas fa-search" id="icon" type="submit"></i>
 		</button>
 	</form>
+</div>
+
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-11"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-13-004"></script>
 </html>

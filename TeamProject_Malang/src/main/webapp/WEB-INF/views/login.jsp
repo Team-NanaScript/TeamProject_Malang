@@ -13,10 +13,12 @@
 	;
 
 @font-face {
-    font-family: 'TmoneyRoundWindRegular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'TmoneyRoundWindRegular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
@@ -27,15 +29,22 @@
 	margin: 0;
 }
 
+div.login{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 70%;
+    margin: 40px auto;
+}
+
 a#logo {
 	cursor: pointer;
-	text-decoration: none;
-	font-family: 'TmoneyRoundWindRegular';
-	text-align: center;
-	color: rgba(235, 164, 123, 0.993);
-	font-size: 40px;
-	margin-left: 335px;
-	position: relative;
+    text-decoration: none;
+    font-family: 'TmoneyRoundWindRegular';
+    color: rgba(235, 164, 123, 0.993);
+    font-size: 40px;
+    margin-top: 45px;
+    margin-left: -490px;
 }
 
 div.logo {
@@ -47,15 +56,15 @@ div.logo {
 
 div.main {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 500px;
-	padding: 7%;
-	margin: -385px 0 0 -335px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-top: 2px solid rgba(0, 0, 0, 0.7);
-	display: flex;
-	justify-content: center;
+    top: 100px;
+    left: 50%;
+    width: 500px;
+    padding: 15%;
+    margin: 0 -335px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 2px solid rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
 }
 
 div.input button {
@@ -109,24 +118,26 @@ input#check {
 div.input label {
 	font-size: 13px;
 }
+
+
 </style>
 </head>
 <body>
-	<div class="logo">
-		<a href="${rootPath}" id=logo>MALANG</a>
-	</div>
-	<div class="main">
-		<form method="post">
-			<div class="input">
-				<input placeholder="말랑 아이디 입력" id="user"> <input
-					type="password" placeholder="비밀번호 입력" id="pw"> <label><input
-					id="check" type="checkbox" name="값의 이름" value="전달값">아이디 저장</label>
-				<div class="btn_input">
-					<button id="login">로그인</button>
-					<button id="join">회원가입</button>
+	<div class="login">
+			<a href="${rootPath}" id=logo>MALANG</a>
+		<div class="main">
+			<form method="post">
+				<div class="input">
+					<input placeholder="말랑 아이디 입력" id="user"> <input
+						type="password" placeholder="비밀번호 입력" id="pw"> <label><input
+						id="check" type="checkbox" name="값의 이름" value="전달값">아이디 저장</label>
+					<div class="btn_input">
+						<button id="login">로그인</button>
+						<button id="join">회원가입</button>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
