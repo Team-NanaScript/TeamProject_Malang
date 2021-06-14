@@ -109,9 +109,10 @@ a#s_text{
     color:rgba(235, 164, 123, 0.993);
 }
 
+
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/nav.jsp"%>
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="s_container">
 	<a id="s_text">공지사항</a>
 
@@ -141,6 +142,6 @@ a#s_text{
 		<a>1</a>
 		</div>
 </div>	
-	<%@ include file="/WEB-INF/views/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>

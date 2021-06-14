@@ -14,7 +14,7 @@ public class testController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list() {
-		return "include/list";
+		return "include/home_list";
 	}
 	
 	@RequestMapping(value = "/cate1", method = RequestMethod.GET)
