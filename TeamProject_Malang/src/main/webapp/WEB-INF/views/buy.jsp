@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/buy.css?ver=2021-06-14-001" />
     <style>
    		div.review_img1 {
-	        background-image: url("${rootPath}/static/images/ex2.png");
+	        background-image: url("${rootPath}/static/images/ex1.png");
      	 }
     </style>
     <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>
@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <%@ include file="/WEB-INF/views/nav.jsp" %>
+    <%@ include file="/WEB-INF/views/include/nav.jsp" %>
     <div class="container">
      
       <article id="discription" class="discription">
@@ -140,6 +140,6 @@
       </article>
     </div>
   </div>
-  <%@ include file="/WEB-INF/views/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   </body>
 </html>

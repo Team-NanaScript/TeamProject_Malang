@@ -39,6 +39,12 @@ public class HomeController {
 		
 		return "advice";
 	}
+
+	@RequestMapping(value="/join", method=RequestMethod.GET)
+	public String join() {
+		
+		return "join";
+	}
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String info() {
@@ -48,7 +54,5 @@ public class HomeController {
 	@RequestMapping(value = "/buy", method = RequestMethod.GET)
 	public String buy() {
 		return "buy";
-	}
-	
-	
+	}	
 }
