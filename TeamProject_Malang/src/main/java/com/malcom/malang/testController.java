@@ -11,4 +11,9 @@ public class testController {
 	public String banner() {
 		return "include/banner";
 	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list() {
+		return "include/list";
+	}
 }
