@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/buy.css?ver=2021-06-14-001" />
     <style>
    		div.review_img1 {
-	        background-image: url("${rootPath}/static/images/ex2.png");
+	        background-image: url("${rootPath}/static/images/ex1.png");
      	 }
     </style>
     <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>

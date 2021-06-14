@@ -31,5 +31,18 @@ doc.querySelector("header").addEventListener("submit", (e) => {
       "https://search.naver.com/search.naver?query=" + hKeyword.value;
     e.preventDefault();
   });
+  
+  doc.querySelector("header").addEventListener("click", (ev) => {
+  
+  	let idName = ev.target.id;
+  	
+  	if(idName === "user"){
+  		alert("ㅎㅇㅎㅇ");	
+  	} else if(idName === "cart"){
+		alert("ㅂㅇㅂㅇ");  	
+  	}
+  	
+});
+  
 
 
