@@ -6,39 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>말랑말랑해요</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/nav.jsp" %>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
-<h1>테스트용</h1>
+<%@ include file="/WEB-INF/views/include/banner.jsp" %>
 <%@ include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>
