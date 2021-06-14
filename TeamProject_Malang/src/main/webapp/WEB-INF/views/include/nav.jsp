@@ -71,8 +71,8 @@ nav:hover {
 				<i class="fas fa-search" id="icon" type="submit"></i>
 			</button>
 		</form>
-		<a href="http://naver.com"><i class="fas fa-user" id="user"></i></a> <a
-			href="http://naver.com"><i class="fas fa-shopping-cart"
+		<a><i class="fas fa-user" id="user"></i></a> <a
+			><i class="fas fa-shopping-cart"
 			id="cart"></i></a>
 	</header>
 	<div class="adiv">
@@ -108,5 +108,5 @@ nav:hover {
 </div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-13-004"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-14-008"></script>
 </html>

@@ -47,6 +47,9 @@ nav.ft ul a:nth-of-type(2){
 nav.ft ul a:nth-of-type(3){
 	border-right: 1px solid rgba(0,0,0,0.3);
 }
+nav.ft ul a:nth-of-type(4){
+	border-right: 1px solid rgba(0,0,0,0.3);
+}
 
 
 .ft_div p{
@@ -65,6 +68,7 @@ nav.ft ul a:nth-of-type(3){
 				<a href="${rootPath}/center">공지사항</a>
 				<a href="${rootPath}/advice">1:1 문의</a>
 				<a href="http://naver.com">광고 문의</a>
+				<a href="http://naver.com">입점 문의</a>
 			</ul>
 		</nav>
 	</div>
