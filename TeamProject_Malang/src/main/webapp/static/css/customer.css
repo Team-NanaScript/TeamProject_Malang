@@ -1,14 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<style>
+@charset "UTF-8";
+
 div.sNav, div.sTable {
 	display: flex;
 	position: relative;
@@ -24,22 +15,8 @@ div.sNav {
 	border: 1px solid gray;
 }
 
-nav.sNav {
-	
-}
-
-.sNav ul {
-	list-style: none;
-	text-decoration: none;
-	display: flex;
-}
-
-.sNav li {
-	
-}
-
 table.sTable {
-	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-top: 1px solid rgba(0, 0, 0, 0.6);
     width: 1000px;
     margin: 10px auto;
     padding: 5px;
@@ -84,11 +61,24 @@ thead#top {
     cursor:pointer;
 }
 
-.s_container{
+.s_content{
 	border:1px solid rgba(0, 0, 0, 0.2);
 	width: 1200px;
     padding: 10px;
     margin:5px auto;
+}
+
+thead td:nth-of-type(1), tbody td:nth-of-type(1){
+	width: 100px;
+}
+
+tbody td:nth-of-type(2){
+	text-align: left;
+	font-weight: bold;
+}
+
+thead td:nth-of-type(3), tbody td:nth-of-type(3){
+	width: 100px;
 }
 
 #content td:nth-of-type(1), #content td:nth-of-type(3){
@@ -103,45 +93,7 @@ thead#top {
 a#s_text{
 	margin-left: 85px;
     padding: 5px;
-    border-bottom: 3px solid rgba(235, 164, 123, 0.7);
+    border-bottom: 2px solid rgba(235, 164, 123, 0.7);
     font-size: 28px;
-    font-weight: bold;
     color:rgba(235, 164, 123, 0.993);
 }
-
-
-</style>
-<body>
-	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-<div class="s_container">
-	<a id="s_text">공지사항</a>
-
-	<div class="sTable">
-
-		<table class="sTable">
-		<thead id="top">
-		<tr>
-			<td>번호</td>
-			<td>제목</td>
-			<td>날짜</td>
-		</tr>
-		</thead>
-		
-		<tbody id="content">
-		<tr>			
-			<td>1</td>
-			<td>안녕하세요</td>
-			<td>2021-06-13</td>
-		</tr>
-		</tbody>
-		</table>
-		
-	</div>
-	
-	<div class="num">
-		<a>1</a>
-		</div>
-</div>	
-	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-</body>
-</html>

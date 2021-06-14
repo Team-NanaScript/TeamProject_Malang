@@ -28,10 +28,10 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/center", method = RequestMethod.GET)
-	public String center() {
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public String notice() {
 		
-		return "service";
+		return "notice";
 	}
 	
 	@RequestMapping(value = "/advice", method = RequestMethod.GET)
