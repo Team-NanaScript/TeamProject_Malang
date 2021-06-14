@@ -40,10 +40,21 @@ public class HomeController {
 		return "advice";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join() {
 		
 		return "join";
+=======
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String info() {
+		return "info";
+	}
+	
+	@RequestMapping(value = "/buy", method = RequestMethod.GET)
+	public String buy() {
+		return "buy";
+>>>>>>> 0c33a82718aa7c252cf5a40028416852ae255b72
 	}
 	
 	
