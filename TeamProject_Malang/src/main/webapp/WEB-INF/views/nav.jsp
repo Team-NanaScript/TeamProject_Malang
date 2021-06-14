@@ -10,12 +10,20 @@
 <script src="https://kit.fontawesome.com/d9b9bbc6a7.js"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-11" />
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-11" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-13-004" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-13-003" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
 	;
+
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 * {
 	box-sizing: border-box;
@@ -36,7 +44,6 @@ nav:hover {
 	width: auto;
 	animation: down 0.3s ease;
 	top: 0;
-	/* width: 100% */
 	left: 0;
 	right: 0;
 	background-color: white;
@@ -52,11 +59,12 @@ nav:hover {
           transform: translateY(0);
         }
       }
+      
 </style>
 </head>
 <body>
 	<header>
-		<a id="logo" href="http://daum.net">MALANG</a>
+		<a id="logo" href="${rootPath}">MALANG</a>
 		<form id="text">
 			<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text" />
 			<button type="submit">
@@ -75,25 +83,30 @@ nav:hover {
 				<a href="http://naver.com">수제간식</a>
 				<a href="http://naver.com">반려동물용품</a>
 				<a href="http://naver.com">실시간 후기</a>
-				<a href="http://naver.com">이용안내</a>
 			</ul>
 		</nav>
 
 		<nav class="b">
 			<ul>
-				<a href="http://naver.com">로그인</a>
-				<a href="http://naver.com">회원가입</a>
-				<a href="http://naver.com">고객센터</a>
+				<a href="${rootPath}/login">로그인</a>
+				<a href="${rootPath}/join">회원가입</a>
+				<a href="${rootPath}/center">고객센터</a>
 			</ul>
 		</nav>
 	</div>
 
+
+	
+<div id="hid_nav">
+	<a id="logo" href="${rootPath}">MALANG</a>
 	<form id="hid">
-		<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid" />
+		<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
 		<button type="submit">
 			<i class="fas fa-search" id="icon" type="submit"></i>
 		</button>
 	</form>
+</div>
+
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-11"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-13-004"></script>
 </html>
