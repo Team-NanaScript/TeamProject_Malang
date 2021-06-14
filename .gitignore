@@ -1,6 +1,7 @@
 #Spring project
-pom.properties
 Servers*/
+pom.properties
+pom.properties*
 
 # Logs
 logs

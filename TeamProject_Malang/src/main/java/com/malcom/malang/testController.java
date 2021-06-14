@@ -16,4 +16,9 @@ public class testController {
 	public String list() {
 		return "include/list";
 	}
+	
+	@RequestMapping(value = "/cate1", method = RequestMethod.GET)
+	public String illust() {
+		return "cate";
+	}
 }

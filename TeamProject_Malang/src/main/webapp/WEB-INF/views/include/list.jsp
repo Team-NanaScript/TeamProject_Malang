@@ -8,7 +8,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/home_banner.css?ver=2021-06-11" />
+	href="${rootPath}/static/css/list.css?ver=2021-06-14" />
+	<style>
+	section.item_wrap .item_list .item:nth-child(1) .item_img {
+        background: url("${rootPath}/static/images/slide_img1.png") no-repeat;
+        background-size: 100%;
+      }
+      section.item_wrap .item_list .item:nth-child(2) .item_img {
+        background: url("${rootPath}/static/images/slide_img2.png") no-repeat;
+        background-size: 110%;
+      }
+      section.item_wrap .item_list .item:nth-child(3) .item_img {
+        background: url("${rootPath}/static/images/slide_img4.png") no-repeat;
+        background-size: 125%;
+      }
+      section.item_wrap .item_list .item:nth-child(4) .item_img {
+        background: url("${rootPath}/static/images/slide_img5.png") no-repeat;
+        background-size: 100%;
+      }</style>
 </head>
 <body>
 <div class="today"><h4>오늘의 말랑</h4></div>
