@@ -14,3 +14,45 @@
     font-style: normal;
 }
 
+@font-face {
+  font-family: "nanum_b";
+  src: url(../font/NanumSquareB.ttf);
+}
+
+@font-face {
+  font-family: "nanum_r";
+  src: url(../font/NanumSquareR.ttf);
+}
+
+@font-face {
+  font-family: "noto_r";
+  src: url(../font/NotoSansKR-Regular.otf);
+}
+
+@font-face {
+  font-family: "noto_l";
+  src: url(../font/NotoSansKR-Light.otf);
+}
+
+h1 {
+  font-family: "nanum_b";
+}
+h2,
+h3 {
+  font-family: "nanum_r";
+}
+
+div,
+li {
+  font-family: "noto_r";
+}
+
+nav.product_nav {
+  font-family: "nanum_r";
+}
+
+p {
+  font-family: "noto_l";
+}
+
+

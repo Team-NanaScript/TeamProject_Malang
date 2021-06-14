@@ -40,5 +40,15 @@ public class HomeController {
 		return "advice";
 	}
 	
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String info() {
+		return "info";
+	}
+	
+	@RequestMapping(value = "/buy", method = RequestMethod.GET)
+	public String buy() {
+		return "buy";
+	}
+	
 	
 }
