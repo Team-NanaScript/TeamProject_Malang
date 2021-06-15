@@ -9,8 +9,8 @@
 <title>말랑말랑해요</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/nav.jsp" %>
+<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 <%@ include file="/WEB-INF/views/include/banner.jsp" %>
-<%@ include file="/WEB-INF/views/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
