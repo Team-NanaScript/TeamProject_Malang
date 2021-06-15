@@ -26,7 +26,7 @@
   </head>
 
   <body>
-  <%@ include file="/WEB-INF/views/nav.jsp" %>
+  <%@ include file="/WEB-INF/views/include/nav.jsp" %>
     <div id="container" class="container">
       <div class="inner_top">
         <section id="img_section" class="img_section">
@@ -266,7 +266,7 @@
         </articlev>
       </article>
     </div>
-    <%@ include file="/WEB-INF/views/footer.jsp" %>
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   </body>
 
 </html>
