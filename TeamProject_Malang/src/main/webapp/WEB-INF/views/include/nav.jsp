@@ -59,10 +59,10 @@ nav:hover {
           transform: translateY(0);
         }
       }
-      
 </style>
 </head>
 <body>
+	<div class="h_container">
 	<header>
 		<a id="logo" href="${rootPath}">MALANG</a>
 		<form id="text">
@@ -105,6 +105,7 @@ nav:hover {
 			<i class="fas fa-search" id="icon" type="submit"></i>
 		</button>
 	</form>
+</div>
 </div>
 
 </body>
