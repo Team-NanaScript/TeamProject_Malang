@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <%@ include file="/WEB-INF/views/nav.jsp" %>
+    <%@ include file="/WEB-INF/views/include/nav.jsp" %>
     <div class="container">
      
       <article id="discription" class="discription">
@@ -140,6 +140,6 @@
       </article>
     </div>
   </div>
-  <%@ include file="/WEB-INF/views/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   </body>
 </html>
