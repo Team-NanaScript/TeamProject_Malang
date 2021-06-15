@@ -28,16 +28,22 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/center", method = RequestMethod.GET)
-	public String center() {
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public String notice() {
 		
-		return "service";
+		return "notice";
 	}
 	
 	@RequestMapping(value = "/advice", method = RequestMethod.GET)
 	public String advice() {
 		
 		return "advice";
+	}
+
+	@RequestMapping(value="/join", method=RequestMethod.GET)
+	public String join() {
+		
+		return "join";
 	}
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
@@ -48,7 +54,5 @@ public class HomeController {
 	@RequestMapping(value = "/buy", method = RequestMethod.GET)
 	public String buy() {
 		return "buy";
-	}
-	
-	
+	}	
 }
