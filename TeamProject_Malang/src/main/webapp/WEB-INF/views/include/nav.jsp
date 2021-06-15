@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-06-16-001" />
+	href="${rootPath}/static/css/header.css?ver=2021-06-16-003" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -38,7 +38,7 @@ body {
 	position: relative;
 }
 
-nav:hover {
+i{
 	cursor: pointer;
 }
 
@@ -82,21 +82,21 @@ nav:hover {
 			</div>
 		</header>
 		<div class="adiv">
-			<nav class="a">
+			<nav id="one">
 				<ul>
-					<a class="cate1">일러스트</a>
-					<a class="handi">수공예</a>
-					<a class="handf">수제간식</a>
-					<a class="animal">반려동물용품</a>
-					<a class="review">실시간 후기</a>
+					<li class="cate1">일러스트</li>
+					<li class="handi">수공예</li>
+					<li class="handf">수제간식</li>
+					<li class="animal">반려동물용품</li>
+					<li class="review">실시간 후기</li>
 				</ul>
 			</nav>
 
-			<nav class="b">
+			<nav id="two">
 				<ul>
-					<a class="login">로그인</a>
-					<a class="join">회원가입</a>
-					<a class="notice">고객센터</a>
+					<li class="login">로그인</li>
+					<li class="join">회원가입</li>
+					<li class="notice">고객센터</li>
 				</ul>
 			</nav>
 		</div>
@@ -108,12 +108,12 @@ nav:hover {
 			<form id="hid">
 				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
 				<button type="submit">
-					<i class="fas fa-search" id="icon" type="submit"></i>
+					<i class="fas fa-search" id="icon"></i>
 				</button>
 			</form>
 		</div>
 	</div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-16-001"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-16-004"></script>
 </html>

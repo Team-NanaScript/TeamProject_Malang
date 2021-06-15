@@ -34,7 +34,7 @@ doc.querySelector("header").addEventListener("submit", (e) => {
   
   function className(ev){
     let cName = ev.target.className;
-        if(cName == "" || cName === "" || cName == null){
+        if(cName == "" || cName === "" || cName == null ){
           return false;
         } else {
           location.href = "/malang/" + cName;
@@ -50,7 +50,9 @@ doc.querySelector("header").addEventListener("submit", (e) => {
         }  
   }
   doc.querySelector("div.icon").addEventListener("click", idName);
-  doc.querySelector("div.adiv").addEventListener("click", className);
+  doc.querySelector("div.adiv nav#one").addEventListener("click", className);
+  doc.querySelector("div.adiv nav#two").addEventListener("click", className);
+
 
   
 
