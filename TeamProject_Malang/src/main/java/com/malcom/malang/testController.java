@@ -18,7 +18,12 @@ public class testController {
 	}
 	
 	@RequestMapping(value = "/cate1", method = RequestMethod.GET)
-	public String illust() {
+	public String category() {
 		return "cate";
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search() {
+		return "search";
 	}
 }
