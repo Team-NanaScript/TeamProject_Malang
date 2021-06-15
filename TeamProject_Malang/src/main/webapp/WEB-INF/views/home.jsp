@@ -6,11 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>말랑말랑해요</title>
+<title>말랑</title>
+<style>
+	body{
+		display:flex;
+		flex-direction: column;
+		width:100%;
+		height:100vh;
+	}
+	
+	section{
+		flex:auto;
+	}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp" %>
+<section>
 <%@ include file="/WEB-INF/views/include/banner.jsp" %>
+</section>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

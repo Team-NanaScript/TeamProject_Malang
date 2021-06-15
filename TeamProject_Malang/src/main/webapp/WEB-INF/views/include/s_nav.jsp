@@ -15,8 +15,7 @@ div.s_nav {
 	padding: 5px;
 	position: relative;
 	top: 11px;
-	top: 11px;
-	left: 355px;
+	left: -45px;
 }
 
 div.s_nav ul {
@@ -38,9 +37,6 @@ div.s_nav ul li:hover {
 	transition: 0.3s ease;
 }
 
-div.s_nav ul li:nth-of-type(3) {
-	
-}
 
 .on {
 	background-color: rgba(235, 164, 123, 0.993);
