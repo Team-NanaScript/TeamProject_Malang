@@ -6,33 +6,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
-<link rel="stylesheet" href="${rootPath}/static/css/list.css?ver=2021-06-14-2000" />
+<title>검색결과</title>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/category.css?ver=2021-06-15" />
+<link rel="stylesheet"
+	href="${rootPath}/static/css/list.css?ver=2021-06-14-2000" />
 <style>
 section.item_wrap .item_list .item:nth-child(1) .item_img {
 	background: url('${rootPath}/static/images/ex2.png') no-repeat;
 	background-size: 100%;
 }
 
-section.item_wrap .item_list .item:nth-child(2) .item_img {
-	background: url('${rootPath}/static/images/slide_img1.png') no-repeat;
-	background-size: 100%;
+section.item_wrap .item_list .item:nth-child(2) {
+	opacity:0;
 }
 
-section.item_wrap .item_list .item:nth-child(3) .item_img {
-	background: url('${rootPath}/static/images/slide_img4.png') no-repeat;
-	background-size: 125%;
+section.item_wrap .item_list .item:nth-child(3) {
+	opacity:0;
 }
 
-section.item_wrap .item_list .item:nth-child(4) .item_img {
-	background: url('${rootPath}/static/images/slide_img5.png') no-repeat;
-	background-size: 100%;
+section.item_wrap .item_list .item:nth-child(4) {
+	opacity:0;
 }
 </style>
 </head>
 <body>
-	<!-- item_wrap -->
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+	<div class="search_header">
+		<div class="header_wrap">
+			<h3>"와플"</h3>
+			<p>에 대한 검색결과</p>
+		</div>
+	</div>
 	<section class="item_wrap">
 		<!-- item_list1 -->
 		<article class="item_list">
@@ -73,7 +80,7 @@ section.item_wrap .item_list .item:nth-child(4) .item_img {
 				</div>
 			</div>
 		</article>
-		<!-- item_list1 -->
 	</section>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>

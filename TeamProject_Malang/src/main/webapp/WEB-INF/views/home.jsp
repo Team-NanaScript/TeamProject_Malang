@@ -7,10 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>말랑말랑해요</title>
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp" %>
 <%@ include file="/WEB-INF/views/include/banner.jsp" %>
+<%@ include file="/WEB-INF/views/include/home_list.jsp" %>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

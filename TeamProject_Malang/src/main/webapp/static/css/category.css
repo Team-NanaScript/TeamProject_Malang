@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+div.cate_header {
+	height: 144px;
+	background-color: #9e6e4e;
+}
+
+div.cate_header .cate_name {
+	color: white;
+	font-size: 30px;
+	width: 1056px;
+	margin: 0 auto;
+	padding-left: 10px;
+	line-height: 6rem;
+	background-color: #9e6e4e;
+}
+
+/* search */
+div.search_header {
+	height: 90px;
+}
+
+div.search_header .header_wrap {
+	width: 1056px;
+	margin: 0 auto;
+	line-height: 5rem;
+	border-bottom: 1px solid gray;
+	display: flex;
+}
+
+div.search_header .header_wrap h3 {
+	font-size:23px;
+}
+
+div.search_header .header_wrap p {
+	margin-left:5px;	
+}
+
+nav#cate_nav {
+	display: flex;
+	width: 1056px;
+	margin: 0 auto;
+	align-items: flex-end;
+}
+
+nav#cate_nav ul {
+	display: flex;
+	align-items: flex-end;
+}
+
+nav#cate_nav li {
+	background-color: #DEBA9B;
+	font-size: 15px;
+	width: 140px;
+	height: 48px;
+	line-height: 48px;
+	margin-left: 5px;
+	text-align: center;
+	cursor: pointer;
+	list-style: none;
+}
+
+nav#cate_nav li:nth-of-type(1) {
+	margin-left: 10px;
+	background-color: white;
+}
