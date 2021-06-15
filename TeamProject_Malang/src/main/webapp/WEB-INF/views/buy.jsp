@@ -18,8 +18,6 @@
      	 }
     </style>
     <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>
-    
-
   </head>
 
   <body>

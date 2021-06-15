@@ -61,4 +61,9 @@ public class HomeController {
 		
 		return "write";
 	}
+	
+	@RequestMapping(value = "/review", method = RequestMethod.GET)
+	public String review() {
+		return "review";
+	}
 }
