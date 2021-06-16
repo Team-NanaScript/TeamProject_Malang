@@ -65,7 +65,7 @@ nav.ft ul a:nth-of-type(4){
 	<div class="ft_nav">
 		<nav class="ft">
 			<ul>
-				<a href="${rootPath}/center">공지사항</a>
+				<a href="${rootPath}/notice">공지사항</a>
 				<a href="${rootPath}/advice">1:1 문의</a>
 				<a href="http://naver.com">광고 문의</a>
 				<a href="http://naver.com">입점 문의</a>

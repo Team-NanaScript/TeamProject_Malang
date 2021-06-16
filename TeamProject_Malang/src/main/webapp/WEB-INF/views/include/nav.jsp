@@ -10,20 +10,23 @@
 <script src="https://kit.fontawesome.com/d9b9bbc6a7.js"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-13-004" />
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-14-004" />
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/header.css?ver=2021-06-16-003" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
 	;
 
 @font-face {
-    font-family: 'TmoneyRoundWindRegular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'TmoneyRoundWindRegular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
-
 
 * {
 	box-sizing: border-box;
@@ -35,7 +38,7 @@ body {
 	position: relative;
 }
 
-nav:hover {
+i{
 	cursor: pointer;
 }
 
@@ -50,63 +53,67 @@ nav:hover {
 }
 
 @keyframes down {
-        0% {
-          -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-        }
-        100% {
-          -webkit-transform: translateY(0);
-          transform: translateY(0);
-        }
-      }
-      
+	0%{
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	
+	100%{
+	-webkit-transform: translateY(0%);
+	transform: translateY(0%);
+	}
+}
+
 </style>
 </head>
 <body>
-	<header>
-		<a id="logo" href="${rootPath}">MALANG</a>
-		<form id="text">
-			<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text" />
-			<button type="submit">
-				<i class="fas fa-search" id="icon" type="submit"></i>
-			</button>
-		</form>
-		<a><i class="fas fa-user" id="user"></i></a> <a
-			><i class="fas fa-shopping-cart"
-			id="cart"></i></a>
-	</header>
-	<div class="adiv">
-		<nav class="a">
-			<ul>
-				<a href="http://naver.com">일러스트</a>
-				<a href="http://google.com">수공예</a>
-				<a href="http://naver.com">수제간식</a>
-				<a href="http://naver.com">반려동물용품</a>
-				<a href="http://naver.com">실시간 후기</a>
-			</ul>
-		</nav>
+	<div class="h_container">
+		<header>
+			<a id="logo" href="${rootPath}">MALANG</a>
+			<form id="text">
+				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text" />
+				<button type="submit">
+					<i class="fas fa-search" id="icon" type="submit"></i>
+				</button>
+			</form>
+			<div class="icon">
+			<a><i class="fas fa-user" id="user"></i></a> 
+			<a><i class="fas fa-shopping-cart" id="cart"></i></a>
+			</div>
+		</header>
+		<div class="adiv">
+			<nav id="one">
+				<ul>
+					<li class="cate1">일러스트</li>
+					<li class="handi">수공예</li>
+					<li class="handf">수제간식</li>
+					<li class="animal">반려동물용품</li>
+					<li class="review">실시간 후기</li>
+				</ul>
+			</nav>
 
-		<nav class="b">
-			<ul>
-				<a href="${rootPath}/login">로그인</a>
-				<a href="${rootPath}/join">회원가입</a>
-				<a href="${rootPath}/notice">고객센터</a>
-			</ul>
-		</nav>
+			<nav id="two">
+				<ul>
+					<li class="login">로그인</li>
+					<li class="join">회원가입</li>
+					<li class="notice">고객센터</li>
+				</ul>
+			</nav>
+		</div>
+
+
+
+		<div id="hid_nav">
+			<a id="logo" href="${rootPath}">MALANG</a>
+			<form id="hid">
+				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
+				<button type="submit">
+					<i class="fas fa-search" id="icon"></i>
+				</button>
+			</form>
+		</div>
 	</div>
 
-
-	
-<div id="hid_nav">
-	<a id="logo" href="${rootPath}">MALANG</a>
-	<form id="hid">
-		<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
-		<button type="submit">
-			<i class="fas fa-search" id="icon" type="submit"></i>
-		</button>
-	</form>
-</div>
-
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-15-009"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-16-004"></script>
 </html>

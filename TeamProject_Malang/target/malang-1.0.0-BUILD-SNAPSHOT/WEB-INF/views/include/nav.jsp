@@ -11,7 +11,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/hid_nav.css?ver=2021-06-13-004" />
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-13-003" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/header.css?ver=2021-06-14-004" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -59,10 +59,10 @@ nav:hover {
           transform: translateY(0);
         }
       }
-      
 </style>
 </head>
 <body>
+	<div class="h_container">
 	<header>
 		<a id="logo" href="${rootPath}">MALANG</a>
 		<form id="text">
@@ -90,7 +90,7 @@ nav:hover {
 			<ul>
 				<a href="${rootPath}/login">로그인</a>
 				<a href="${rootPath}/join">회원가입</a>
-				<a href="${rootPath}/center">고객센터</a>
+				<a href="${rootPath}/notice">고객센터</a>
 			</ul>
 		</nav>
 	</div>
@@ -106,7 +106,8 @@ nav:hover {
 		</button>
 	</form>
 </div>
+</div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-14-008"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-06-15-009"></script>
 </html>

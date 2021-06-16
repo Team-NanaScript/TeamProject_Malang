@@ -37,9 +37,9 @@ doc.querySelector("header").addEventListener("submit", (e) => {
   	let idName = ev.target.id;
   	
   	if(idName === "user"){
-  		alert("ㅎㅇㅎㅇ");	
+  		alert("준비중입니다!!");	
   	} else if(idName === "cart"){
-		alert("ㅂㅇㅂㅇ");  	
+		alert("준비중입니다!!");  	
   	}
   	
 });

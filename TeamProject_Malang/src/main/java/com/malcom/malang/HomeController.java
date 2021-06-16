@@ -55,4 +55,15 @@ public class HomeController {
 	public String buy() {
 		return "buy";
 	}	
+	
+	@RequestMapping(value="write", method=RequestMethod.GET)
+	public String write() {
+		
+		return "write";
+	}
+	
+	@RequestMapping(value = "/review", method = RequestMethod.GET)
+	public String review() {
+		return "review";
+	}
 }

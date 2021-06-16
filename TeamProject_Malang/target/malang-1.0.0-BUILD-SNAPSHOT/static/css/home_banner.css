@@ -41,7 +41,7 @@
 }
 
 .section .slidelist>li>a img {
-	margin-left: 150px;
+	margin-left: 100px;
 	/* width:100%; */
 	height: 50vh;
 }
@@ -139,16 +139,6 @@
 /* 좌,우 슬라이드 버튼 */
 .slide-control>div {
 	display: none;
-}
-
-.section .left {
-	left: 30px;
-	background: url('${rootPath}/static/icons/track.png') center center/100% no-repeat;
-}
-
-.section .right {
-	right: 30px;
-	background: url('${rootPath}/static/icons/track.png') center center/100% no-repeat;
 }
 
 .section input[id="slide01"]:checked ~ .slidewrap .slide-control>div:nth-child(1)

@@ -35,6 +35,7 @@ nav.ft ul a {
 	list-style: none;
 	font-size: 18px;
 	padding: 0 20px;
+	cursor: pointer;
 }
 
 nav.ft ul a:nth-of-type(1){
