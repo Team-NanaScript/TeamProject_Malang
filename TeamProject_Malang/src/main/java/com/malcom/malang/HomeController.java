@@ -51,9 +51,9 @@ public class HomeController {
 		return "info";
 	}
 	
-	@RequestMapping(value = "/buy", method = RequestMethod.GET)
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String buy() {
-		return "buy";
+		return "cart";
 	}	
 	
 	@RequestMapping(value="write", method=RequestMethod.GET)
@@ -65,5 +65,10 @@ public class HomeController {
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
 	public String review() {
 		return "review";
+	}
+	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String mypage() {
+		return "mypage";
 	}
 }
