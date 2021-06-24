@@ -1,4 +1,4 @@
-package com.malcom.malang;
+package com.malcom.malang.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +19,11 @@ public class testController {
 	
 	@RequestMapping(value = "/cate1", method = RequestMethod.GET)
 	public String category() {
-		return "cate";
+		return "item/cate";
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search() {
-		return "search";
+		return "item/search";
 	}
 }
