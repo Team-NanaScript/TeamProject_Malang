@@ -1,13 +1,5 @@
-<<<<<<< HEAD:TeamProject_Malang/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-Manifest-Version: 1.0
-Built-By: soyeonnoh
-Build-Jdk: 15.0.2
-Created-By: Maven Integration for Eclipse
-
-=======
 Manifest-Version: 1.0
 Built-By: 403
 Build-Jdk: 15.0.2
 Created-By: Maven Integration for Eclipse
 
->>>>>>> 2903d866ee6e354547b1a55606eadd69c407fa24:TeamProject_Malang/src/main/webapp/META-INF/MANIFEST.MF
