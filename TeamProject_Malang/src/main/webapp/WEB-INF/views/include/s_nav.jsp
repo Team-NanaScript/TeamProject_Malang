@@ -35,6 +35,7 @@ div.s_nav ul li:hover {
 	color: white;
 	font-weight: bold;
 	transition: 0.3s ease;
+	cursor: pointer;
 }
 
 

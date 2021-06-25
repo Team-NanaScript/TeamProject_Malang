@@ -42,6 +42,7 @@
     </style>
   </head>
   <body>
+  <%@ include file="/WEB-INF/views/include/nav.jsp"%>
     <header>
       <h2>실시간 후기</h2>
     </header>
@@ -233,5 +234,6 @@
         </article>
       </section>
     </div>
+    <%@ include file="/WEB-INF/views/include/footer.jsp"%>
   </body>
 </html>

@@ -13,7 +13,6 @@
 <%@ include file="/WEB-INF/views/include/nav.jsp" %>
 <%@ include file="/WEB-INF/views/include/banner.jsp" %>
 <%@ include file="/WEB-INF/views/include/home_list.jsp" %>
->>>>>>> d76a29018a76a920ae0087cc3c9b4c8703a50b38
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

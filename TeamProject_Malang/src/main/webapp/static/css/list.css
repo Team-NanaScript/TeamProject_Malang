@@ -9,7 +9,7 @@
 div.today {
 	width: 1056px;
 	margin: 5px auto;
-	padding-top:5px;
+	padding-top:12px;
 	border-bottom: 1px solid gray;
 }
 
@@ -35,7 +35,7 @@ section.item_wrap .item_list .item {
 	width: 250px;
 	height: 335px;
 	margin: 8px 7px;
-	border: 1px solid #707070;
+	border: 1px solid rgba(170, 170, 170, 0.377);
 	border-radius: 5px;
 }
 
