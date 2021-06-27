@@ -11,7 +11,7 @@
     <title>Review</title>
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/info.css?ver=2021-06-14-001" />
-    <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/view.css?ver=2021-06-14-001" />
+    <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/view.css?ver=2021-06-14-004" />
     <style>
 		div.review-img {
 	        width: 240px;
@@ -43,7 +43,7 @@
   </head>
   <body>
   <%@ include file="/WEB-INF/views/include/nav.jsp"%>
-    <header>
+    <header class="review">
       <h2>실시간 후기</h2>
     </header>
     <div id="container" class="container">
