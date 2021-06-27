@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-
+/* 
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-      }
+      } */
 
       div.container {
         /* background-color: #AAA; */
@@ -13,19 +13,20 @@
         margin: 0 auto;
       }
 
-      ul {
+      ul.review {
         list-style: none;
       }
 
-      header {
+      header.review {
         width: 100%;
         height: 144px;
         background-color: rgba(179, 66, 85, 0.863);
+        margin: 0 auto; /* 네비랑 겹치기때문에 넣음 */
 
         
       }
 
-      header h2 {
+      header.review h2 {
         width: 1056px;
         color: white;
         font-size: 30px;
