@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.MemberDao">
+
+<insert id="insert" parameterType="MemberVO">
+
+INSERT INTO tbl_member(mb_id,mb_pw,mb_name,mb_tel)
+VALUES(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_tel})
+
+</insert>
+
+<update id="update" parameterType="MemberVO">
+
+UPDATE tbl_member(mb_id, mb_role, mb_pw, mb_addr, mb_tel) SET
+mb_role = #{mb_role}
+mb_pw = #{mb_pw}
+mb_addr = #{mb_addr}
+mb_tel = #{mb_tel}
+WHERE mb_id = #{mb_id}
+
+</update>
+
+<delete id="delete">
+
+DELETE FROM tbl_member
+WHERE mb_id = #{mb_id}
+
+</delete>
+
+</mapper>
