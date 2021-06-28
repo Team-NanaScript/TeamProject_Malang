@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp" %>
-<%@ include file="/WEB-INF/views/include/banner.jsp" %>
+<%@ include file="/WEB-INF/views/include/banner_renew.jsp" %>
 <%@ include file="/WEB-INF/views/include/home_list.jsp" %>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
