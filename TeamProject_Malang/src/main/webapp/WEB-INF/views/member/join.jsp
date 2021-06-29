@@ -70,18 +70,18 @@ div.input ul {
 				<div class="input">
 					<ul>
 						<li>이름</li> 
-						<li><input placeholder="이름을 입력하세요" id="name"></li>
+						<li><input placeholder="이름을 입력하세요" id="name" name="mb_name"></li>
 					</ul>
 					
 					<ul>
 					<li id="input">아이디(ID)</li> 
-					<li><input placeholder="아이디를 입력하세요" id="user"></li>
+					<li><input placeholder="아이디를 입력하세요" id="user" name="mb_id"></li>
 					</ul>
 					<a>- 영문,숫자 2자리이상 입력해주세요</a>
 					
 					<ul>
 					<li id="input">비밀번호</li> 
-					<li><input type="password"  placeholder="비밀번호 입력" id="pw"></li>
+					<li><input type="password"  placeholder="비밀번호 입력" id="pw" name="mb_pw"></li>
 					</ul>
 					<a>- 영문,숫자,특수문자를 혼합하여 6~12자리로 입력해주세요</a>
 					
