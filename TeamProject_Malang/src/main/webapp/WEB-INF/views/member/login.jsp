@@ -62,7 +62,7 @@ div.input a{
 						<label id="searchId">아이디/비밀번호 찾기</label>
 					<div class="btn_input">
 						<button id="login" type="button">로그인</button>
-						<button id="join">회원가입</button>
+						<button id="join" type="button">회원가입</button>
 					</div>
 				</div>
 			</form>
