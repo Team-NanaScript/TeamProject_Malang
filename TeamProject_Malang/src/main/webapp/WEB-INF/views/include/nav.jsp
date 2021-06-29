@@ -93,11 +93,20 @@ i{
 			</nav>
 
 			<nav id="two">
+				<c:if test="${empty MEMBER}">
 				<ul>
 					<li class="login">로그인</li>
 					<li class="join">회원가입</li>
 					<li class="notice">고객센터</li>
 				</ul>
+				</c:if>
+				<c:if test="${not empty MEMBER}">
+				<ul>
+					<li>${MEMBER.mb_id}님 반갑습니다</li>
+					<li class="logout">로그아웃</li>
+					<li class="notice">고객센터</li>
+				</ul>
+				</c:if>
 			</nav>
 		</div>
 

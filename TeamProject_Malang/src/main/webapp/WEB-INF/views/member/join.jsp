@@ -21,7 +21,7 @@ div.join {
     justify-content: center;
 }
 
-input#user, input#pw, input#name {
+div.input input{
 	width: 200px;
 	padding: 6%;
 	margin: 2px;
@@ -58,7 +58,9 @@ div.input ul {
 	margin-top: 8px;
 }
 
-
+li#name, li#user, li#pw, li#tel, li#check {
+	text-decoration: underline;
+}
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/login.css?ver=2021-06-14-001">
 </head>
@@ -66,42 +68,100 @@ div.input ul {
 	<div class="login">
 			<a href="${rootPath}" id=logo>MALANG</a>
 		<div class="join">
-			<form method="post">
+			<form method="post" id="join">
 				<div class="input">
 					<ul>
-						<li>이름</li> 
-						<li><input placeholder="이름을 입력하세요" id="name" name="mb_name"></li>
+						<li id="name">이름</li> 
+						<li><input placeholder="이름을 입력하세요" id="name" name="mb_name" maxlength="10"></li>
 					</ul>
 					
 					<ul>
-					<li id="input">아이디(ID)</li> 
-					<li><input placeholder="아이디를 입력하세요" id="user" name="mb_id"></li>
+					<li id="user">아이디(ID)</li> 
+					<li><input placeholder="아이디를 입력하세요" id="user" name="mb_id" maxlength="12"></li>
 					</ul>
 					<a>- 영문,숫자 2자리이상 입력해주세요</a>
 					
 					<ul>
-					<li id="input">비밀번호</li> 
-					<li><input type="password"  placeholder="비밀번호 입력" id="pw" name="mb_pw"></li>
+					<li id="pw">비밀번호</li> 
+					<li><input type="password"  placeholder="비밀번호 입력" id="pw" name="mb_pw" maxlength="12"></li>
 					</ul>
 					<a>- 영문,숫자,특수문자를 혼합하여 6~12자리로 입력해주세요</a>
 					
 					
 					<ul>
-					<li id="input">비밀번호 확인</li> 
-					<li><input type="password"  placeholder="비밀번호 확인" id="pw"></li>
+					<li id="pw">비밀번호 확인</li> 
+					<li><input type="password"  placeholder="비밀번호 확인" id="check" maxlength="12"></li>
 					</ul>
 					<a>- 비밀번호를 한번 더 입력해주세요</a>
 					
 					
+					<ul>
+						<li id="tel">전화번호</li> 
+						<li><input placeholder="이름을 입력하세요" id="tel" name="mb_tel"></li>
+					</ul>
+					
+					<ul>
+						<li id="addr">주소</li> 
+						<li><input placeholder="이름을 입력하세요" id="addr" name="mb_addr"></li>
+					</ul>
+					
+					<ul>
+						<li id="email">이메일</li> 
+						<li><input placeholder="이름을 입력하세요" id="email" name="mb_email" maxlength="20"></li>
+					</ul>
 					
 				</div>
 				
 				<div class="btn_input">
-						<button id="join">회원가입</button>
+						<button id="join" type="button">회원가입</button>
 				</div>
 				
 			</form>
 		</div>
 	</div>
 </body>
+<script>
+const doc = document
+
+doc.querySelector("button#join").addEventListener("click", ()=>{
+	
+	let id = doc.querySelector("input#user");
+	let pw = doc.querySelector("input#pw");
+	let check = doc.querySelector("input#check");	
+	let name = doc.querySelector("input#name");
+	let tel = doc.querySelector("input#tel");
+	let addr = doc.querySelector("input#addr");
+	let email = doc.querySelector("input#email");
+	
+	if(check.value != pw.value){	
+		alert("비밀번호가 다릅니다")
+		return false;
+	}
+	if(id.value === ""){
+		alert("ID를 입력하세요!!")
+		
+		id.focus();
+		return false;
+	}if(pw.value === ""){
+		alert("비밀번호를 입력하세요!!")
+		
+		pw.focus();
+		return false;
+	}if(name.value === ""){
+		alert("이름을 입력하세요!!")
+		
+		name.focus();
+		return false;
+	}
+	if(tel.value === ""){
+		alert("전화번호를 입력하세요!!")
+		
+		tel.focus();
+		return false;
+	}
+	
+	
+	doc.querySelector("form#join").submit();
+});
+</script>
 </html>

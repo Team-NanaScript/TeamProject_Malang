@@ -23,10 +23,20 @@ public class MemberServiceImplV1 implements MemberService{
 	}
 
 	@Override
-	public MemberVO findById(String PK) {
+	public MemberVO findById(String mb_id, String mb_pw) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		MemberVO mVO = mDao.findById(mb_id, mb_pw);
+		
+		if(mVO == null) {
+			
+			return null;
+		} 
+		
+		return mVO;
 	}
+
+
 
 	@Override
 	public Integer insert(MemberVO vo) {
@@ -49,6 +59,11 @@ public class MemberServiceImplV1 implements MemberService{
 		return null;
 	}
 
+
+
+
+	
+	
 	
 
 	

@@ -43,25 +43,55 @@ label#searchId{
 	    cursor:pointer;
 }
 
+div.input a{
+	color:red;
+}
+
 </style>
 </head>
 <body>
 	<div class="login">
 		<a href="${rootPath}" id=logo>MALANG</a>
 		<div class="main">
-			<form method="post">
+			<form method="post" id="login">
 				<div class="input">
-					<input placeholder="말랑 아이디 입력" id="user"> <input
-						type="password" placeholder="비밀번호 입력" id="pw"> <label><input
-						id="check" type="checkbox" name="값의 이름" value="전달값">아이디 저장</label>
+					<a>${MSG}</a>
+					<input placeholder="말랑 아이디 입력" id="user" name="mb_id" maxlength="12"> 
+					<input type="password" placeholder="비밀번호 입력" id="pw" name="mb_pw" maxlength="12"> <label>
+					<input id="check" type="checkbox" name="값의 이름" value="전달값">아이디 저장</label>
 						<label id="searchId">아이디/비밀번호 찾기</label>
 					<div class="btn_input">
-						<button id="login">로그인</button>
-						<button id="join" type="button">회원가입</button>
+						<button id="login" type="button">로그인</button>
+						<button id="join">회원가입</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </body>
+
+<script>
+document.querySelector("button#login").addEventListener("click", (e)=>{
+	
+	let inputID = document.querySelector("input#user");
+	let inputPW = document.querySelector("input#pw");
+	
+	if(inputID.value === "" || inputID.value == null){
+			
+		alert("ID를 입력하세요 !!")
+		inputID.focus();
+		
+		return false;
+	}
+	if(inputPW.value === "" || inputPW.value == null){
+		
+		alert("비밀번호를 입력하세요 !!")
+		inputPW.focus();
+		
+		return false;
+	}
+
+	document.querySelector("form#login").submit();
+})
+</script>
 </html>
