@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const IMAGE_COUNT = images.length;
         const IMAGE_WIDTH = 1056;
         let position = 0;
-        let tmp = 0;
 
+		let on = 0;
+		let off = 0;
         const prev = () => {
           if (position <= IMAGE_WIDTH * ((IMAGE_COUNT - 1) * -1)) {
             position = IMAGE_WIDTH;
@@ -15,16 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
           position += IMAGE_WIDTH * -1;
           
           if (position < 0) {
-            tmp = -position / 1056;
-            text[tmp - 1].style.transition = "0.3s";
-            text[tmp - 1].style.opacity = 0;
+            on = -position / 1056;
+            off = on - 1;
           } else if (position == 0) {
-            text[IMAGE_COUNT - 1].style.transition = "0.3s";
-            text[IMAGE_COUNT - 1].style.opacity = 0;
-            tmp = 0;
+            off = IMAGE_COUNT - 1;
+            on = 0
           }
-
-          text[tmp].style.opacity = 1;
+          
+          text[off].style.transition = "0.3s";
+          text[off].style.opacity = 0;
+          text[on].style.transition = "1s";
+          text[on].style.opacity = 1;
 
           image.style.transform = `translateX(${position}px)`;
         };
@@ -37,21 +39,24 @@ document.addEventListener("DOMContentLoaded", () => {
           position += IMAGE_WIDTH;
 
           if (-position == IMAGE_WIDTH * (IMAGE_COUNT - 1)) {
-            text[0].style.transition = "0.3s";
-            tmp = IMAGE_COUNT - 1;
-            text[0].style.opacity = 0;
+            on = IMAGE_COUNT - 1;
+            off = 0;
           } else {
-            tmp = -position / 1056;
-            text[tmp + 1].style.transition = "0.3s";
-            text[tmp + 1].style.opacity = 0;
+          	on = -position / 1056;
+            off = on + 1;
           }
-
-          text[tmp].style.opacity = 1;
+          
+          text[off].style.transition = "0.3s";
+		  text[off].style.opacity = 0;
+		  text[on].style.transition = "1s";
+          text[on].style.opacity = 1;
+          
           image.style.transform = `translateX(${position}px)`;
         };
 
         document.querySelector("article.nav").addEventListener("click", (e) => {
           let text = e.target.innerHTML;
+          
           if (text === "<" || text === "&lt;") {
             next();
           } else if (text === ">" || text === "&gt;") {
