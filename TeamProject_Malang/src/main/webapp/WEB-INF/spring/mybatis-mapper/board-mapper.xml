@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.BoardDao">
+
+<select id="findById" resultType="BoardVO">
+SELECT * FROM tbl_board
+WHERE bd_seq = #{bd_seq}
+
+</select>
+
+<select id="select" resultType="BoardVO">
+SELECT * FROM tbl_board
+
+</select>
+
+<insert id="insert" parameterType="BoardVO">
+
+INSERT INTO tbl_board(bd_title,bd_content,bd_author,bd_date)
+VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date})
+
+</insert>
+
+<update id="update" parameterType="BoardVO">
+
+UPDATE tbl_board(bd_id, bd_role, bd_pw, bd_addr, bd_tel) SET
+bd_role = #{bd_role}
+bd_pw = #{bd_pw}
+bd_addr = #{bd_addr}
+bd_tel = #{bd_tel}
+WHERE bd_id = #{bd_id}
+
+</update>
+
+<delete id="delete">
+
+DELETE FROM tbl_board
+WHERE bd_id = #{bd_id}
+
+</delete>
+
+</mapper>

@@ -12,8 +12,8 @@ WHERE mb_id = #{mb_id} AND mb_pw = #{mb_pw}
 
 <insert id="insert" parameterType="MemberVO">
 
-INSERT INTO tbl_member(mb_id,mb_pw,mb_name,mb_tel)
-VALUES(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_tel})
+INSERT INTO tbl_member(mb_id,mb_pw,mb_name,mb_tel,mb_nickname)
+VALUES(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_tel}, #{mb_nickname})
 
 </insert>
 

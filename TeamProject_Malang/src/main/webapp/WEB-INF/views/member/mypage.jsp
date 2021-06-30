@@ -161,6 +161,13 @@ div.input ul li img{
 					
 					<ul>
 					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
+						<li>닉네임</li>
+							<li class="nickname">없음</li>
+						<li class="nickname">${MEMBER.mb_nickname}</li>
+					</ul>
+					
+					<ul>
+					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>전화번호</li>
 						<li class="tel">${MEMBER.mb_tel}</li>
 					</ul>
