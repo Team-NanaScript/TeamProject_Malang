@@ -91,7 +91,7 @@ div.my_info {
 }
 
 /* input#user, input#pw, input#name { */
-.id, .name, .addr {
+.id, .name, .addr, .tel {
 	display: inline-block;
 	width: 200px;
 	padding: 6%;
@@ -150,19 +150,28 @@ div.input ul li img{
 					<ul>
 						<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>아이디(ID)</li>
-						<li class="id">manduukim</li>
+						<li class="id">${MEMBER.mb_id}</li>
 					</ul>
 
 					<ul>
 					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>이름</li>
-						<li class="name">김만두</li>
+						<li class="name">${MEMBER.mb_name}</li>
+					</ul>
+					
+					<ul>
+					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
+						<li>전화번호</li>
+						<li class="tel">${MEMBER.mb_tel}</li>
 					</ul>
 					
 					<ul>
 					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>주소</li>
-						<li class="addr">광주 북구</li>
+						<c:if test="${empty MEMBER.mb_addr}">
+							<li class="tel">없음</li>
+						</c:if>
+						<li class="addr">${MEMBER.mb_addr}</li>
 					</ul>
 
 				</div>

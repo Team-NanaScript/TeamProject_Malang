@@ -64,6 +64,10 @@ i{
 	}
 }
 
+li a {
+	font-weight: bold;
+}
+
 </style>
 </head>
 <body>
@@ -102,7 +106,7 @@ i{
 				</c:if>
 				<c:if test="${not empty MEMBER}">
 				<ul>
-					<li>${MEMBER.mb_id}님 반갑습니다</li>
+					<li><a>${MEMBER.mb_id}</a></li>
 					<li class="logout">로그아웃</li>
 					<li class="notice">고객센터</li>
 				</ul>
