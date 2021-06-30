@@ -5,14 +5,12 @@ CREATE TABLE tbl_item (
 	it_code		CHAR(8)		PRIMARY KEY,
 	it_seid		VARCHAR(20)	NOT NULL,
 	it_ctcode	CHAR(4)		NOT NULL,
-	it_opcode	CHAR(4)		NOT NULL,
-    it_pocode	CHAR(4)		NOT NULL,
 	it_title	VARCHAR(125) NOT NULL,
 	it_price	INT	NULL 	NOT NULL,
-	it_fee		INT			default 0,
+	it_shippingfee		INT			default 0,
 	it_content	VARCHAR(2000),
 	it_refund	VARCHAR(200),
-	it_ship		VARCHAR(200) default 0,
+	it_shipping		VARCHAR(200) default 0,
 	it_poto		VARCHAR(100)
 );
 
