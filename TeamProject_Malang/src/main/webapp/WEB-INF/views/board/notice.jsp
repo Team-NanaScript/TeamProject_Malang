@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			alert("준비중입니다 !!!");
 			location.replace="${rootPath}"
 		} else if(iName === "s_write"){
-			location.href="${rootPath}/write";
+			location.href="${rootPath}/notice/write";
 		}
 	});
 	
@@ -38,24 +38,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					<thead id="top">
 						<tr>
 							<td>번호</td>
+							<td>작성자</td>
 							<td>제목</td>
 							<td>등록일</td>
 						</tr>
 					</thead>
 
 					<tbody id="content">
-
+					<c:forEach items="${BD}" var="BD">
 						<tr>
-							<td>2</td>
-							<td>[21/06~21/07] 말랑 오픈기념 이벤트</td>
-							<td>2021-06-13</td>
+							<td>${BD.bd_seq}</td>
+							<td>${BD.bd_author}</td>
+							<td>${BD.bd_title}</td>
+							<td>${BD.bd_date}</td>
 						</tr>
-
-						<tr>
-							<td>1</td>
-							<td>[공지] 안녕하세요 말랑입니다</td>
-							<td>2021-06-13</td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 
@@ -65,7 +62,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 				<form method="post">
 					<input type="text">
 					<button id="s_sch" type="submit">검색</button>
-					<a id="s_write">글쓰기</a>
+					<c:if test="${MEMBER.mb_role == 2}"><a id="s_write">글쓰기</a></c:if>
 				</form>
 			</div>
 

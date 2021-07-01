@@ -106,7 +106,7 @@ li a {
 				</c:if>
 				<c:if test="${not empty MEMBER}">
 				<ul>
-					<li><a>${MEMBER.mb_id}</a></li>
+					<li><a>${MEMBER.mb_nickname}</a>님</li>
 					<li class="logout">로그아웃</li>
 					<li class="notice">고객센터</li>
 				</ul>

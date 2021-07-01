@@ -22,7 +22,7 @@ div.join {
 
 div.input input {
 	width: 200px;
-	padding: 6%;
+	padding: 4%;
 	margin: 2px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	outline: none;
@@ -55,7 +55,7 @@ div.input ul {
 	margin-top: 8px;
 }
 
-li#name, li#user, li#pw, li#tel, li#check {
+li#name, li#user, li#pw, li#tel, li#check, li#nickname {
 	text-decoration: underline;
 }
 </style>
@@ -72,6 +72,12 @@ li#name, li#user, li#pw, li#tel, li#check {
 						<li id="name">이름</li>
 						<li><input placeholder="이름을 입력하세요" id="name" name="mb_name"
 							maxlength="10"></li>
+					</ul>
+					
+					<ul>
+						<li id="nickname">닉네임</li>
+						<li><input placeholder="닉네임을 입력하세요" id="nickname" name="mb_nickname"
+							maxlength="15"></li>
 					</ul>
 
 					<ul>
@@ -99,17 +105,17 @@ li#name, li#user, li#pw, li#tel, li#check {
 
 					<ul>
 						<li id="tel">전화번호</li>
-						<li><input placeholder="이름을 입력하세요" id="tel" name="mb_tel" type="number" maxlength="12"></li>
+						<li><input placeholder="010-0000-0000" id="tel" name="mb_tel" type="text" maxlength="13"></li>
 					</ul>
 
 					<ul>
 						<li id="addr">주소</li>
-						<li><input placeholder="이름을 입력하세요" id="addr" name="mb_addr"></li>
+						<li><input placeholder="예)광주광역시 북구 북문대로 ..." id="addr" name="mb_addr"></li>
 					</ul>
 
 					<ul>
 						<li id="email">이메일</li>
-						<li><input placeholder="이름을 입력하세요" id="email" name="mb_email"
+						<li><input placeholder="email@email.com" id="email" name="mb_email"
 							maxlength="20"></li>
 					</ul>
 
@@ -135,13 +141,17 @@ doc.querySelector("button#join").addEventListener("click", ()=>{
 	let tel = doc.querySelector("input#tel");
 	let addr = doc.querySelector("input#addr");
 	let email = doc.querySelector("input#email");
+	let nickname = doc.querySelector("input#nickname");
 	
 	
 	if(id.value === ""){
 		alert("ID를 입력하세요!!")
-		
 		id.focus();
 		return false;	
+	}if(nickname.value === ""){
+		alert("닉네임을 입력하세요!!")
+		nickname.focus();
+		return false;
 	}if(id.value.length < 2){
 		alert("ID는 2글자 이상 입력하세요!!")
 		id.focus();

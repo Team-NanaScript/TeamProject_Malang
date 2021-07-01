@@ -21,6 +21,7 @@ public class MemberVO {
 	private String mb_anum; //VARCHAR(20),
 	private String mb_addr ;//VARCHAR(200),
 	private String mb_email ;//VARCHAR(50),
+	private String mb_nickname;
 	private int mb_role ;//INT default 0
 	
 }
