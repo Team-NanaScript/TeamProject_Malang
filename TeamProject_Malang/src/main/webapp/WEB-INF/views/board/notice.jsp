@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/customer.css?ver=2021-06-15-003">
+	href="${rootPath}/static/css/customer.css?ver=2021-07-01-001">
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<div class="s_container">
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					<thead id="top">
 						<tr>
 							<td>번호</td>
-							<td>작성자</td>
 							<td>제목</td>
+							<td>작성자</td>
 							<td>등록일</td>
 						</tr>
 					</thead>
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 					<c:forEach items="${BD}" var="BD">
 						<tr>
 							<td>${BD.bd_seq}</td>
-							<td>${BD.bd_author}</td>
 							<td>${BD.bd_title}</td>
+							<td>${BD.bd_author}</td>
 							<td>${BD.bd_date}</td>
 						</tr>
 					</c:forEach>

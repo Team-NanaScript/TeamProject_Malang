@@ -12,6 +12,7 @@ WHERE bd_seq = #{bd_seq}
 
 <select id="select" resultType="BoardVO">
 SELECT * FROM tbl_board
+ORDER BY bd_seq DESC
 
 </select>
 
