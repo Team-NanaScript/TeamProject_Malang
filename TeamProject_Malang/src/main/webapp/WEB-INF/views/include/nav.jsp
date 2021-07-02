@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-06-16-003" />
+	href="${rootPath}/static/css/header.css?ver=2021-07-02-001" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -32,6 +32,10 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+input, button{
+	outline:none;
 }
 
 body {

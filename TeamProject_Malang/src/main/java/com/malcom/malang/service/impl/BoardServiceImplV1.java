@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.malcom.malang.config.DateConfig;
 import com.malcom.malang.dao.BoardDao;
 import com.malcom.malang.model.BoardVO;
 import com.malcom.malang.service.BoardService;
@@ -36,14 +37,34 @@ public class BoardServiceImplV1 implements BoardService{
 
 	@Override
 	public Integer update(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		String sDate = DateConfig.sDate("yyyy-MM-dd");
+		vo.setBd_date(sDate);
+		
+		Integer result = bDao.update(vo);
+	
+		
+		return result;
 	}
 
 	@Override
-	public Integer delete(String PK) {
+	public Integer delete(String bd_seq) {
+		
+		Long seq = Long.valueOf(bd_seq);
+		Integer result = bDao.delete(seq);
+		
+		return result;
+	}
+
+	@Override
+	public BoardVO findById(String bd_seq) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		Long seq = Long.valueOf(bd_seq);
+		BoardVO vo = bDao.findBySeq(seq);
+		
+		return vo;
 	}
 
 	

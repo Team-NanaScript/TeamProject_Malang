@@ -8,6 +8,7 @@ public interface GenericService<VO, PK> {
 	public Integer insert(VO vo);
 	public Integer update(VO vo);
 	public Integer delete(String PK);
+	public VO findById(String PK);
 	
 	
 }
