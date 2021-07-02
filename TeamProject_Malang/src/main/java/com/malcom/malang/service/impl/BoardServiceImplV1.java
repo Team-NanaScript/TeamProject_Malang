@@ -49,20 +49,18 @@ public class BoardServiceImplV1 implements BoardService{
 	}
 
 	@Override
-	public Integer delete(String bd_seq) {
+	public Integer delete(Long bd_seq) {
 		
-		Long seq = Long.valueOf(bd_seq);
-		Integer result = bDao.delete(seq);
+		Integer result = bDao.delete(null);
 		
 		return result;
 	}
 
 	@Override
-	public BoardVO findById(String bd_seq) {
+	public BoardVO findById(Long bd_seq) {
 		// TODO Auto-generated method stub
 		
-		Long seq = Long.valueOf(bd_seq);
-		BoardVO vo = bDao.findBySeq(seq);
+		BoardVO vo = bDao.findBySeq(bd_seq);
 		
 		return vo;
 	}

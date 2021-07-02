@@ -62,11 +62,9 @@ public class CommentServiceImplV1 implements CommentService{
 	}
 
 	@Override
-	public List<CommentVO> findByList(String bd_seq) {
+	public List<CommentVO> findByList(Long bd_seq) {
 		
-		
-		Long cm_bdseq = Long.valueOf(bd_seq);
-		List<CommentVO> cList = cDao.findByList(cm_bdseq);
+		List<CommentVO> cList = cDao.findByList(bd_seq);
 		
 		return cList;
 	}

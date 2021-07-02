@@ -6,6 +6,6 @@ import com.malcom.malang.model.CommentVO;
 
 public interface CommentService extends GenericService<CommentVO, String>{
 
-	public List<CommentVO> findByList(String bd_Seq);
+	public List<CommentVO> findByList(Long bd_Seq);
 
 }

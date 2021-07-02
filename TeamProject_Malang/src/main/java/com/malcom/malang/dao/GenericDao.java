@@ -8,7 +8,7 @@ public interface GenericDao<VO, PK> {
 	public VO findById(PK pk);
 	public Integer insert(VO vo);
 	public Integer update(VO vo);
-	public Integer delete(Long PK);
+	public Integer delete(PK pk);
 	
 	
 }
