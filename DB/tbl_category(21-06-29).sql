@@ -1,10 +1,10 @@
 -- 테이블 작성. 외래키설정 완료. insert 완료.
 use db_malang;
 
-CREATE TABLE tbl_category (
-	ct_code	CHAR(4)	PRIMARY KEY,
-	ct_main	VARCHAR(30)	NOT NULL,
-	ct_sub	VARCHAR(30)
+CREATE TABLE `tbl_category` (
+	`ct_code`	CHAR(4)	NOT NULL,
+	`ct_main`	VARCHAR(30)	NULL,
+	`ct_sub`	VARCHAR(30)	NULL
 );
 
 SELECT * FROM tbl_category;
