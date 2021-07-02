@@ -2,14 +2,14 @@
 use db_malang;
 
 CREATE TABLE `tbl_option` (
-	`op_code`	BIGINT	NOT NULL PRIMARY KEY,
+	`op_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`op_itcode`	BIGINT	NOT NULL,
 	`op_name`	VARCHAR(30)	NOT NULL,
 	`op_content`	VARCHAR(50)	NOT NULL
 );
 
 CREATE TABLE `tbl_select_option` (
-	`so_code`	BIGINT	NOT NULL PRIMARY KEY,
+	`so_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`so_itcode`	BIGINT	NOT NULL,
 	`so_name`	VARCHAR(30)	NOT NULL,
 	`so_content`	VARCHAR(50)	NOT NULL
