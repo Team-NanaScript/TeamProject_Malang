@@ -2,12 +2,14 @@
 use db_malang;
 
 CREATE TABLE `tbl_category` (
-	`ct_code`	CHAR(4)	NOT NULL,
-	`ct_main`	VARCHAR(30)	NULL,
-	`ct_sub`	VARCHAR(30)	NULL
+	`ct_code`	CHAR(4)	NOT NULL PRIMARY KEY,
+	`ct_main`	VARCHAR(30)	NOT NULL,
+	`ct_sub`	VARCHAR(30)	NOT NULL
 );
 
 SELECT * FROM tbl_category;
+DESC tbl_category;
+
 DROP TABLE tbl_category;
 
 insert into tbl_category(ct_code, ct_main, ct_sub)
