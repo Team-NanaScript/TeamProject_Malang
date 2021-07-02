@@ -59,6 +59,11 @@ nav.ft ul a:nth-of-type(4){
 	color:white;
 }
 
+nav.ft a{
+	color:rgba(0,0,0,0.6);
+	text-decoration: none;
+}
+
 
 </style>
 </head>

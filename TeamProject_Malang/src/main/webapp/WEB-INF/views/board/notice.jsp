@@ -29,51 +29,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<div class="s_container">
 		<%@ include file="/WEB-INF/views/include/s_nav.jsp"%>
-		<div class="s_content">
-			<a id="s_text">공지사항</a>
-
-			<div class="sTable">
-
-				<table class="sTable">
-					<thead id="top">
-						<tr>
-							<td>번호</td>
-							<td>제목</td>
-							<td>작성자</td>
-							<td>등록일</td>
-						</tr>
-					</thead>
-
-					<tbody id="content">
-					<c:forEach items="${BD}" var="BD">
-						<tr>
-							<td>${BD.bd_seq}</td>
-							<td>${BD.bd_title}</td>
-							<td>${BD.bd_author}</td>
-							<td>${BD.bd_date}</td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-
-			</div>
-
-			<div class="s_search">
-				<form method="post">
-					<input type="text">
-					<button id="s_sch" type="submit">검색</button>
-					<c:if test="${MEMBER.mb_role == 2}"><a id="s_write">글쓰기</a></c:if>
-				</form>
-			</div>
-
-			<div class="num">
-				<a>1</a>
-			</div>
-
-
-
-		</div>
+		<%@ include file="/WEB-INF/views/board/notice_content.jsp"%>
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+document.querySelector("table tbody#content").addEventListener("click", (e)=>{
+	
+	let seq = e.target.closest("TD#seq").dataset.seq
+	
+	location.href = "${rootPath}/notice/view?bd_seq=" + seq;
+	
+});
+</script>
 </html>

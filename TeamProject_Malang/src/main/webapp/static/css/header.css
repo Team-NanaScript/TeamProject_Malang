@@ -56,7 +56,7 @@ header i, header a, header form {
 	position: absolute;
 }
 
-a {
+header a {
 	text-decoration: none;
 	color: black;
 }
