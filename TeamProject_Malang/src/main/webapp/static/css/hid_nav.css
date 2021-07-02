@@ -20,6 +20,7 @@ div#hid_nav {
 	justify-content: center;
 	white-space: nowrap;
 	align-items: center;
+	z-index:100;
 }
 
 #hid_nav a {

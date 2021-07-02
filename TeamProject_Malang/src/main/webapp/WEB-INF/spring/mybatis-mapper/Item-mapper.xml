@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.ItemDao">
+
+<select id="select" resultType="ItemVO">
+	SELECT * FROM tbl_item
+</select>
+
+<select id="findById" resultType="ItemVO">
+	
+</select>
+
+<insert id="insert" parameterType="ItemVO">
+
+</insert>
+
+<update id="update" parameterType="ItemVO">
+
+</update>
+
+<delete id="delete">
+
+</delete>
+
+</mapper>

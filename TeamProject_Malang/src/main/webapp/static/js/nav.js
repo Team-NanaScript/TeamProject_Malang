@@ -31,5 +31,35 @@ doc.querySelector("header").addEventListener("submit", (e) => {
       "https://search.naver.com/search.naver?query=" + hKeyword.value;
     e.preventDefault();
   });
+  
+  function className(ev){
+    let cName = ev.target.className;
+        if(cName == "" || cName === "" || cName == null ){
+          return false;
+        } else {
+          location.href = "/malang/" + cName;
+        }  
+  }
+
+  function idName(ev){
+    let iName = ev.target.id;
+        if(iName == "" || iName === "" || iName == null){
+          return false;
+        } else {
+          location.href = "/malang/" + iName;
+        }  
+  }
+  doc.querySelector("div.icon").addEventListener("click", idName);
+  doc.querySelector("div.adiv nav#one").addEventListener("click", className);
+  doc.querySelector("div.adiv nav#two").addEventListener("click", className);
+
+
+  
+
+
+  	
+
+
+  
 
 
