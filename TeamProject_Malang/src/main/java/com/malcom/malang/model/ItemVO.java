@@ -12,14 +12,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemVO {
-	// 임시 VO
-	private String it_code;
-	private String it_decode;
-	private String it_seid;
-	private String it_ctcode;
-	private String it_title;
-	private String it_price;
-	private String it_shippingfee;
-	private String it_content;
-	private String it_poto;
+	private String it_code;//			CHAR(8)		PRIMARY KEY,
+	private Long it_decode;//			BIGINT		NOT NULL,
+	private String it_seid;//			VARCHAR(20)	NOT NULL,
+	private String it_ctcode;//			CHAR(4)		NOT NULL,
+	private String it_title;//			VARCHAR(125)	NOT NULL,
+	private int it_price;//			INT	NOT NULL,
+	private int it_shippingfee;//	INT	NOT NULL	DEFAULT 0,
+	private String it_content;//		VARCHAR(2000)	NOT NULL,
+	private String it_poto;//			VARCHAR(100)
 }

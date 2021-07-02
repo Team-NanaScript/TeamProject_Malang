@@ -26,4 +26,9 @@ public class testController {
 	public String search() {
 		return "item/search";
 	}
+	
+	@RequestMapping(value = "/today", method = RequestMethod.GET)
+	public String today() {
+		return "item/";
+	}
 }
