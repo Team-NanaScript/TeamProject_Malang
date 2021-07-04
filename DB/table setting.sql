@@ -1,4 +1,4 @@
-﻿CREATE TABLE `tbl_item` (
+CREATE TABLE `tbl_item` (
 	`it_code`	CHAR(8)	NOT NULL PRIMARY KEY,
 	`it_decode`	BIGINT	NOT NULL,
 	`it_seid`	VARCHAR(20)	NOT NULL,
@@ -7,7 +7,7 @@
 	`it_price`	INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
 	`it_content`	VARCHAR(2000)	NOT NULL,
-	`it_poto`	VARCHAR(100)	NULL
+	`it_poto`	VARCHAR(100)
 );
 
 CREATE TABLE `tbl_option` (
@@ -34,14 +34,14 @@ CREATE TABLE `tbl_category` (
 CREATE TABLE `tbl_member` (
 	`mb_id`	VARCHAR(20)	NOT NULL PRIMARY KEY,
 	`mb_pw`	VARCHAR(16)	NOT NULL,
-	`mb_name`	VARCHAR(10)	NULL,
-	`mb_anum`	VARCHAR(20)	NULL,
+	`mb_name`	VARCHAR(10),
+	`mb_anum`	VARCHAR(20),
 	`mb_role`	INT DEFAULT 0	NOT NULL,
 	`mb_tel`	VARCHAR(20)	NOT NULL,
-	`mb_birth`	CHAR(8)	NULL,
-	`mb_email`	VARCHAR(50)	NULL,
-	`mb_addr`	VARCHAR(200)	NULL,
-	`mb_nickname`	VARCHAR(15)	NULL
+	`mb_birth`	CHAR(8),
+	`mb_email`	VARCHAR(50),
+	`mb_addr`	VARCHAR(200),
+	`mb_nickname`	VARCHAR(15)
 );
 
 CREATE TABLE `tbl_qna` (
@@ -50,38 +50,38 @@ CREATE TABLE `tbl_qna` (
 	`q_itcode`	CHAR(8)	NOT NULL,
 	`q_title`	VARCHAR(100)	NOT NULL,
 	`q_content`	VARCHAR(2000)	NOT NULL,
-	`q_date`	VARCHAR(30)	NULL
+	`q_date`	VARCHAR(30)
 );
 
 CREATE TABLE `tbl_review` (
 	`r_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`r_writer`	BIGINT	NOT NULL,
 	`r_itcode`	CHAR(8)	NOT NULL,
-	`r_content`	VARCHAR(2000)	NULL,
-	`r_date`	VARCHAR(30)	NULL,
-	`r_score`	INT	NULL
+	`r_content`	VARCHAR(2000),
+	`r_date`	VARCHAR(30),
+	`r_score`	INT
 );
 
 CREATE TABLE `tbl_description` (
 	`de_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`de_shippingfee`	VARCHAR(300)	NULL,
-	`de_shipping`	VARCHAR(300)	NULL,
-	`de_ refund`	VARCHAR(300)	NULL
+	`de_shippingfee`	VARCHAR(300),
+	`de_shipping`	VARCHAR(300),
+	`de_refund`	VARCHAR(300)
 );
 
 CREATE TABLE `tbl_board` (
 	`bd_seq`	BIGINT	NOT NULL PRIMARY KEY,
 	`bd_author`	BIGINT	NOT NULL,
-	`bd_title`	VARCHAR(125)	NULL,
-	`bd_content`	VARCHAR(2000)	NULL,
-	`bd_date`	VARCHAR(30)	NULL
+	`bd_title`	VARCHAR(125),
+	`bd_content`	VARCHAR(2000),
+	`bd_date`	VARCHAR(30)
 );
 
 CREATE TABLE `tbl_comment` (
 	`cm_seq`	BIGINT	NOT NULL PRIMARY KEY,
 	`cm_bdseq`	BIGINT	NOT NULL,
 	`cm_mbid`	BIGINT	NOT NULL,
-	`cm_content`	VARCHAR(500)	NULL
+	`cm_content`	VARCHAR(500)
 );
 
 
