@@ -4,4 +4,6 @@ import com.malcom.malang.model.BoardVO;
 
 public interface BoardDao extends GenericDao<BoardVO, String>{
 
+	public BoardVO findBySeq(Long seq);
+	
 }

@@ -39,7 +39,7 @@ public class MemberController {
 	public String login(String mb_id, String mb_pw, HttpSession httpSession, Model model) {
 		
 		log.debug(mb_id, mb_pw);
-		MemberVO mVO = mService.findById(mb_id, mb_pw);
+		MemberVO mVO = mService.findByUser(mb_id, mb_pw);
 		if(mVO == null) {
 			
 			model.addAttribute("MSG","아이디/비밀번호를 확인해주세요");

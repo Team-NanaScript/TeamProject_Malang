@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.CommentDao">
+
+<select id="findBySeq" resultType="CommentVO">
+SELECT * FROM tbl_comment
+WHERE cm_seq = #{cm_seq}
+
+</select>
+
+<select id="select" resultType="CommentVO">
+SELECT * FROM tbl_comment
+ORDER BY cm_seq DESC
+
+</select>
+
+<select id="findByList" resultType="CommentVO">
+SELECT * FROM tbl_comment
+WHERE cm_bdseq = #{cm_bdseq}
+
+</select>
+
+<insert id="insert" parameterType="CommentVO">
+
+INSERT INTO tbl_comment(cm_mbid,cm_content,cm_date,cm_bdseq,cm_mbnick)
+VALUES(#{cm_mbid}, #{cm_content}, #{cm_date}, #{cm_bdseq}, #{cm_mbnick})
+
+</insert>
+
+<update id="update" parameterType="CommentVO">
+
+UPDATE tbl_comment(cm_mbid, cm_content, cm_date) SET
+cm_mbid = #{cm_mbid}
+cm_content = #{cm_content}
+cm_date = #{cm_date}
+WHERE cm_seq = #{cm_seq}
+
+</update>
+
+<delete id="delete">
+
+DELETE FROM tbl_comment
+WHERE cm_seq = #{cm_seq}
+
+</delete>
+
+</mapper>

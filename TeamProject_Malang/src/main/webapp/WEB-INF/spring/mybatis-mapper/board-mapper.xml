@@ -4,15 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.malcom.malang.dao.BoardDao">
 
-<select id="findById" resultType="BoardVO">
+<select id="findBySeq" resultType="BoardVO">
 SELECT * FROM tbl_board
 WHERE bd_seq = #{bd_seq}
 
 </select>
 
 <select id="select" resultType="BoardVO">
-SELECT * FROM tbl_board
-ORDER BY bd_seq DESC
+select bd_seq, bd_title, bd_content, bd_author, bd_date,
+(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
+from tbl_board
+order by bd_seq desc
 
 </select>
 
@@ -25,19 +27,19 @@ VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date})
 
 <update id="update" parameterType="BoardVO">
 
-UPDATE tbl_board(bd_id, bd_role, bd_pw, bd_addr, bd_tel) SET
-bd_role = #{bd_role}
-bd_pw = #{bd_pw}
-bd_addr = #{bd_addr}
-bd_tel = #{bd_tel}
-WHERE bd_id = #{bd_id}
+UPDATE tbl_board(bd_title, bd_content, bd_author, bd_date) SET
+bd_title = #{bd_title}
+bd_content = #{bd_content}
+bd_author = #{bd_author}
+bd_date = #{bd_date}
+WHERE bd_seq = #{bd_seq}
 
 </update>
 
 <delete id="delete">
 
 DELETE FROM tbl_board
-WHERE bd_id = #{bd_id}
+WHERE bd_seq = #{bd_seq}
 
 </delete>
 

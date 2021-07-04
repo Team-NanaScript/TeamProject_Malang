@@ -37,9 +37,9 @@ section.item_wrap .item_list .item:nth-child(4) .item_img {
 		<!-- item_list1 -->
 		<article class="item_list">
 			<div class="item">
-				<div class="item_img"></div>
+				<img class="item_img" src="${rootPath}${ITEM.it_image}">
 				<div class="item_info">
-					<p class="header">맴맴 작가</p>
+					<p class="header">${ITEM.it_}</p>
 					<div class="content">
 						<h3>🥐🍩와플 속에 쏙! 귀여운 일러스트🥐🍩</h3>
 					</div>
