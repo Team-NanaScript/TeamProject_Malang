@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.ReviewDao">
+
+<select id="select" resultType="ReviewVO">
+	SELECT * FROM tbl_review
+</select>
+
+<select id="selectByWriter" resultType="ReviewVO">
+	SELECT * FROM tbl_review
+	WHERE q_writer = #{q_writer}; 
+</select>
+
+<select id="findById" resultType="ReviewVO">
+	SELECT * FROM tbl_review
+	WHERE r_code = #{r_code}
+</select>
+
+<insert id="insert" parameterType="ReviewVO">
+	INSERT INTO tbl_review(r_code, r_writer, r_itcode, r_content, r_date, r_score)
+	VALUES(#{r_code}, #{r_writer}, #{r_itcode}, #{r_content}, #{r_date}, #{r_score})
+</insert>
+
+<update id="update" parameterType="ReviewVO">
+	UPDATE tbl_review(r_code, r_writer, r_itcode, r_content, r_date, r_score)
+	SET 
+	r_code = #{r_code}
+	r_writer = #{r_writer}
+	r_itcode = #{r_itcode}
+	r_content = #{r_content}
+	r_date = #{r_date}
+	r_score = #{r_score}
+	WHERE r_code = #{r_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_review
+	WHERE r_code = #{r_code}
+</delete>
+
+</mapper>
