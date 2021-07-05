@@ -8,13 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
-<link rel="stylesheet" href="${rootPath}/static/css/list.css?ver=2021-06-14-2000" />
-<style>
-section.item_wrap .item_list .item .item_img {
-	background: no-repeat;
-	background-size: 100%;
-}
-</style>
+<link rel="stylesheet" href="${rootPath}/static/css/list.css?ver=2021-07-05-0002" />
 </head>
 <body>
 	<!-- item_wrap -->
