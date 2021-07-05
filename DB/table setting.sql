@@ -46,7 +46,7 @@ CREATE TABLE `tbl_member` (
 
 CREATE TABLE `tbl_qna` (
 	`q_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`q_writer`	BIGINT	NOT NULL,
+	`q_writer`	VARCHAR(20)	NOT NULL,
 	`q_itcode`	CHAR(8)	NOT NULL,
 	`q_title`	VARCHAR(100)	NOT NULL,
 	`q_content`	VARCHAR(2000)	NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `tbl_qna` (
 
 CREATE TABLE `tbl_review` (
 	`r_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`r_writer`	BIGINT	NOT NULL,
+	`r_writer`	VARCHAR(20)	NOT NULL,
 	`r_itcode`	CHAR(8)	NOT NULL,
 	`r_content`	VARCHAR(2000),
 	`r_date`	VARCHAR(30),
@@ -85,76 +85,78 @@ CREATE TABLE `tbl_comment` (
 );
 
 
--- 안됨
 ALTER TABLE `tbl_item` 
-ADD CONSTRAINT `fk_description` 
+ADD CONSTRAINT `fk_description_TO_item` 
 FOREIGN KEY (`it_decode`)
 REFERENCES `tbl_description` (`de_code`);
 
 ALTER TABLE `tbl_item` 
-ADD CONSTRAINT `fk_member` 
+ADD CONSTRAINT `fk_member_TO_item` 
 FOREIGN KEY (`it_seid`)
 REFERENCES `tbl_member` (`mb_id`);
 
 ALTER TABLE `tbl_item` 
-ADD CONSTRAINT `fk_category` 
+ADD CONSTRAINT `fk_category_TO_item` 
 FOREIGN KEY (`it_ctcode`)
 REFERENCES `tbl_category` (`ct_code`);
 
--- 안됨
 ALTER TABLE `tbl_option` 
-ADD CONSTRAINT `fk_item` 
+ADD CONSTRAINT `fk_item_TO_option`
 FOREIGN KEY (`op_itcode`)
 REFERENCES `tbl_item` (`it_code`)
 ON DELETE CASCADE;
 
--- 안됨
 ALTER TABLE `tbl_select_option` 
-ADD CONSTRAINT `fk_item` 
+ADD CONSTRAINT `fk_item_TO_select_option`
 FOREIGN KEY (`so_itcode`)
 REFERENCES `tbl_item` (`it_code`)
 ON DELETE CASCADE;
 
--- 안됨
 ALTER TABLE `tbl_qna` 
-ADD CONSTRAINT `fk_member`
+ADD CONSTRAINT `fk_member_TO_qna`
 FOREIGN KEY (`q_writer`)
 REFERENCES `tbl_member` (`mb_id`)
 ON DELETE CASCADE;
 
 ALTER TABLE `tbl_qna` 
-ADD CONSTRAINT `fk_item` 
+ADD CONSTRAINT `fk_item_TO_qna` 
 FOREIGN KEY (`q_itcode`)
 REFERENCES `tbl_item` (`it_code`);
 
 ALTER TABLE `tbl_review` 
-ADD CONSTRAINT `fk_member` 
+ADD CONSTRAINT `fk_member_TO_review` 
 FOREIGN KEY (`r_writer`)
 REFERENCES `tbl_member` (`mb_id`)
-ON DELETE SET NULL;
+ON DELETE CASCADE;
 
 ALTER TABLE `tbl_review` 
-ADD CONSTRAINT `fk_item` 
+ADD CONSTRAINT `fk_item_TO_review` 
 FOREIGN KEY (`r_itcode`)
 REFERENCES `tbl_item` (`it_code`);
 
 
--- 영진
+-- 영진 (설정 불가 xxx)
 ALTER TABLE `tbl_board` 
-ADD CONSTRAINT `fk_member` 
+ADD CONSTRAINT `fk_member_TO_board` 
 FOREIGN KEY (`bd_author`)
 REFERENCES `tbl_member` (`mb_id`)
 ON DELETE CASCADE;
 
+-- 영진(설정되어있음 ooo)
 ALTER TABLE `tbl_comment` 
 ADD CONSTRAINT `fk_board` 
 FOREIGN KEY (`cm_bdseq`)
 REFERENCES `tbl_board` (`bd_seq`)
 ON DELETE CASCADE;
 
+
 ALTER TABLE `tbl_comment` 
-ADD CONSTRAINT `fk_member` 
+ADD CONSTRAINT `fk_member_TO_comment` 
 FOREIGN KEY (`cm_mbid`)
 REFERENCES `tbl_member` (`mb_id`)
 ON DELETE CASCADE;
 
+
+-- 외래키 확인하기
+select * from information_schema.table_constraints where constraint_schema = 'db_malang';
+alter table tbl_select_option drop foreign key fk_it;

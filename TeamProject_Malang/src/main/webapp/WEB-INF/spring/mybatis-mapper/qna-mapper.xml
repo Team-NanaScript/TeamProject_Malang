@@ -4,18 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.malcom.malang.dao.QnaDao">
 
-<select id="select" resultType="QnaVO">
-	SELECT * FROM tbl_qna
+<select id="select" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	ORDER BY q_date DESC
+	LIMIT 5
 </select>
 
-<select id="selectByWriter" resultType="QnaVO">
-	SELECT * FROM tbl_qna
-	WHERE q_writer = #{q_writer}; 
+<select id="selectByWriter" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_writer = #{q_writer}
 </select>
 
-<select id="selectByContent" resultType="QnaVO">
-	SELECT * FROM tbl_qna
-	WHERE q_content = LIKE CONCAT('%', '#{q_content}', '%');
+<select id="selectByContent" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_content = LIKE CONCAT('%', '#{q_content}', '%')
 </select>
 
 <select id="findById" resultType="QnaVO">
