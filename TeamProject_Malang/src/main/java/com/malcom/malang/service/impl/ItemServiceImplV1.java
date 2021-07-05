@@ -11,7 +11,9 @@ import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service("itemServiceV1")
 public class ItemServiceImplV1 implements ItemService{
@@ -21,6 +23,7 @@ public class ItemServiceImplV1 implements ItemService{
 	@Override
 	public List<ItemVO> select() {
 		List<ItemVO> itemList = itDao.select();
+		log.debug(itemList.get(0).toString());
 		return itemList;
 	}
 
@@ -59,7 +62,7 @@ public class ItemServiceImplV1 implements ItemService{
 			todayList.add(allList.get(tmp));
 			allList.remove(tmp);
 		}
-		
+		log.debug(todayList.get(0).toString());
 		return todayList;
 	}
 

@@ -12,13 +12,13 @@ div.adiv {
     border-bottom: 2px solid rgba(94, 94, 94, 0.6);
     padding: 10px;
     white-space: nowrap;
-    color:rgba(0,0,0,0.6);
+    color:rgba(0,0,0,0.7);
 	
 }
 
 
 header {
-	font-family: "Noto Sans KR", sans-serif;
+	font-family: "noto_r";
 	display: flex;
 	justify-content: center;
 	position: relative;
@@ -94,6 +94,7 @@ nav#one ul li {
 	justify-content: center;
 	font-size: 18px;
 	cursor: pointer;
+
 }
 
 nav#two li:hover{
@@ -105,6 +106,7 @@ nav#two li:hover{
 nav#two li{
 	font-size:13px;
 	margin:5px;
+	
 }
 
 nav#two {

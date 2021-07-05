@@ -241,29 +241,21 @@
           <h2>문의 및 답변</h2>
           
           <table id="question" class="question">
-            <th>문의자</th>
-            <th>문의</th>
-            <th>등록일</th>
-            <tr>
-              <td>군만두</td>
-              <td>안녕하세요, 작가님 액자에 넣을 그림을 구매하고싶은데요</td>
-              <td>2021-06-11</td>
+          	<tr>
+	            <th>문의자</th>
+	            <th>문의</th>
+	            <th>등록일</th>
             </tr>
-            <tr>
-              <td>김치만두</td>
-              <td>언제쯤 완성되는지 궁금합니다.</td>
-              <td>2021-06-05</td>
-            </tr>
-            <tr>
-              <td>고기만두</td>
-              <td>상품 문의입니다.</td>
-              <td>2021-06-04</td>
-            </tr>
-            <tr>
-              <td>물만두</td>
-              <td>작가님 대량 주문 가능하나요?</td>
-              <td>2021-06-01</td>
-            </tr>
+            <c:choose>
+            	<c:when test="${empty= QNAS}">
+            	
+            	</c:when>
+	            <tr>
+	              <td>군만두</td>
+	              <td>안녕하세요, 작가님 액자에 넣을 그림을 구매하고싶은데요</td>
+	              <td>2021-06-11</td>
+	            </tr>
+            </c:choose>
           </table>
         </articlev>
       </article>

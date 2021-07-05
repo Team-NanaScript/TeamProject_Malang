@@ -36,7 +36,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/notice/view/delete", method=RequestMethod.POST)
-	public String nDelete(String bd_seq) {
+	public String nDelete(Long bd_seq) {
 		
 		bService.delete(bd_seq);
 		
@@ -80,7 +80,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/notice/view", method = RequestMethod.GET)
-	public String view(String bd_seq, Model model) {
+	public String view(Long bd_seq, Model model) {
 	
 		BoardVO vo = bService.findById(bd_seq);
 		model.addAttribute("VIEW",vo);

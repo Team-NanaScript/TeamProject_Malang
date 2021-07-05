@@ -20,5 +20,5 @@ public class ItemVO {
 	private int it_price;//			INT	NOT NULL,
 	private int it_shippingfee;//	INT	NOT NULL	DEFAULT 0,
 	private String it_content;//		VARCHAR(2000)	NOT NULL,
-	private String it_poto;//			VARCHAR(100)
+	private String it_poto = "/static/item/00000000.jpg";//			VARCHAR(100)
 }

@@ -150,3 +150,7 @@ RemoteSystemsTempFiles/
 
 # naver secret
 NaverSecret.*
+
+# pom.property
+pom.properties
+pom.properties*
