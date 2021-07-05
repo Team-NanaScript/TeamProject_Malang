@@ -176,11 +176,9 @@
           <h2>구매후기</h2>
 
           <table id="review" class="review">
-          	<tr>
-	            <th>구매자</th>
-	            <th>후기</th>
-	            <th>등록일</th>
-            </tr>
+            <th>구매자</th>
+            <th>후기</th>
+            <th>등록일</th>
             <tr>
               <td>구은주</td>
               <td>
