@@ -10,11 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class ItemController {
 
-	@RequestMapping(value = "/info", method = RequestMethod.GET)
-	public String info() {
-		return "item/info";
-	}
-	
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
 	public String review() {
 		return "item/review";

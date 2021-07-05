@@ -4,17 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.malcom.malang.dao.ReviewDao">
 
-<select id="select" resultType="ReviewVO">
-	SELECT * FROM tbl_review
+<select id="select" resultType="ReviewDTO">
+	SELECT * FROM view_review
+	ORDER BY r_date DESC
+	LIMIT 5
 </select>
 
-<select id="selectByWriter" resultType="ReviewVO">
-	SELECT * FROM tbl_review
+<select id="selectByWriter" resultType="ReviewDTO">
+	SELECT * FROM view_review
 	WHERE q_writer = #{q_writer}; 
 </select>
 
-<select id="findById" resultType="ReviewVO">
-	SELECT * FROM tbl_review
+<select id="findById" resultType="ReviewDTO">
+	SELECT * FROM view_review
 	WHERE r_code = #{r_code}
 </select>
 
