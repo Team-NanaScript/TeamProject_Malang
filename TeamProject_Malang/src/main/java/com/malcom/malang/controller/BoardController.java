@@ -35,7 +35,7 @@ public class BoardController {
 		return "board/notice";
 	}
 	
-	@RequestMapping(value="/notice/view/delete", method=RequestMethod.POST)
+	@RequestMapping(value="/notice/view/notice/delete", method=RequestMethod.GET)
 	public String nDelete(Long bd_seq) {
 		
 		bService.delete(bd_seq);
@@ -43,13 +43,55 @@ public class BoardController {
 		return "redirect:/notice";
 	}
 	
-	@RequestMapping(value="/notice/view/update", method=RequestMethod.POST)
+	@RequestMapping(value="/notice/view/notice/update", method=RequestMethod.GET)
+	public String nUpdate(Long bd_seq, Model model) {
+		
+		BoardVO vo = bService.findById(bd_seq);
+		model.addAttribute("CTUP",vo);
+
+		
+		return "/board/write";
+	}
+	
+	@RequestMapping(value="/notice/view/notice/update", method=RequestMethod.POST)
 	public String nUpdate(BoardVO vo) {
+	
+		log.debug("업데이트 {} ", vo);
 		
 		Integer result = bService.update(vo);
 		
+	
+		
 		return "redirect:/notice";
 	}
+	
+	@RequestMapping(value="/notice/view/comment/delete", method=RequestMethod.GET)
+	public String cDelete(Long cm_seq) {
+		
+		cService.delete(cm_seq);
+		
+		return "redirect:/notice";
+	}
+	
+	@RequestMapping(value="/notice/view/comment/update", method=RequestMethod.GET)
+	public String cUpdate(Long cm_seq, Model model) {
+		
+		CommentVO vo = cService.findById(cm_seq);
+		log.debug("ㅇㅇ {}", vo.toString());
+		model.addAttribute("UP",vo);
+		model.addAttribute("bd_seq",vo.getCm_bdseq());
+		
+		return "redirect:/notice/view";
+	}
+	
+	@RequestMapping(value="/notice/view/comment/update", method=RequestMethod.POST)
+	public String cUpdate(CommentVO vo) {
+		
+		Integer result = cService.update(vo);
+		
+		return "redirect:/notice";
+	}
+	
 	
 	@RequestMapping(value = "/advice", method = RequestMethod.GET)
 	public String advice() {

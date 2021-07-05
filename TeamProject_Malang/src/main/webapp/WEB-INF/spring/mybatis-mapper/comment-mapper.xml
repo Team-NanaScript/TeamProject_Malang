@@ -16,6 +16,12 @@ ORDER BY cm_seq DESC
 
 </select>
 
+<select id="findById" resultType="CommentVO">
+SELECT * FROM tbl_comment
+WHERE cm_seq = #{cm_seq}
+
+</select>
+
 <select id="findByList" resultType="CommentVO">
 SELECT * FROM tbl_comment
 WHERE cm_bdseq = #{cm_bdseq}
@@ -32,8 +38,8 @@ VALUES(#{cm_mbid}, #{cm_content}, #{cm_date}, #{cm_bdseq}, #{cm_mbnick})
 <update id="update" parameterType="CommentVO">
 
 UPDATE tbl_comment(cm_mbid, cm_content, cm_date) SET
-cm_mbid = #{cm_mbid}
-cm_content = #{cm_content}
+cm_mbid = #{cm_mbid},
+cm_content = #{cm_content},
 cm_date = #{cm_date}
 WHERE cm_seq = #{cm_seq}
 

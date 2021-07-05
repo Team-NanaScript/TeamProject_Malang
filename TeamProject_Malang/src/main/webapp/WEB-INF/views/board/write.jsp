@@ -108,7 +108,7 @@
             <a>작성자 : ${MEMBER.mb_nickname}</a>
             <input name="bd_author" value="${MEMBER.mb_nickname}" id="author"> 
             <div>
-            <input type="text" name="bd_title">
+            <input type="text" name="bd_title"  value="${CTUP.bd_title}">
             </div>
             <nav id="editor">
                 <ul>
@@ -134,7 +134,8 @@
                 </ul>
             </nav>
         <div>
-        <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30"></textarea>
+        <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}
+       </textarea>
         </div>
         <div id="btn_write">
             <button type="button" id="btn_write">작성하기</button>

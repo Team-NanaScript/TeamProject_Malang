@@ -51,7 +51,7 @@ public class BoardServiceImplV1 implements BoardService{
 	@Override
 	public Integer delete(Long bd_seq) {
 		
-		Integer result = bDao.delete(null);
+		Integer result = bDao.delete(bd_seq);
 		
 		return result;
 	}
