@@ -28,6 +28,7 @@
 							<td>제목</td>
 							<td>작성자</td>
 							<td>등록일</td>
+							<td>조회수</td>
 						</tr>
 					</thead>
 
@@ -45,6 +46,7 @@
 								
 								<td>${BD.bd_author}</td>
 								<td data-date="${BD.bd_date}">${BD.bd_date}</td>
+								<td>${BD.bd_count}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -70,9 +72,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", ()=>{
 
-	let date = document.querySelector("td").closest.dataset.date
 	
-	alert(date)
 	
 })
 </script>
