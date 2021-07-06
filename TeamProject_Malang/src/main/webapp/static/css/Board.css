@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+div.notice_view {
+	border: 1px solid lightgray;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: auto;
+	margin-left: 430px;
+	padding: 50px;
+}
+
+div#nv_header {
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid lightgray;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+div#nv_header h2#title {
+	margin: 10px 0px;
+}
+
+div#nv_header p#author {
+	margin-left: 0 auto;
+}
+
+div#nv_content {
+	border-bottom: 1px solid lightgray;
+	height: 20rem;
+	word-wrap: break-word;
+	margin: 0 10px;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+div#nv_comment {
+	display: flex;
+	border-bottom: 1px solid lightgray;
+	margin: 10px;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+div#nv_comment a#nick {
+	margin: 5px 0px;
+	margin-top: 0px;
+	font-size: 12px;
+}
+
+div#nv_comment a#content {
+	margin: 0px 60px;
+	font-size: 12px;
+}
+
+div#dud {
+	margin-left: auto;
+	font-size: 11px;
+}
+
+div#nv_comment a#update, div#nv_comment a#delete {
+	cursor: pointer;
+}
+
+div#nv_comment_input {
+	margin: 5px 5px;
+	color: rgba(0, 0, 0, 0.7);
+	border: 1px solid lightgray;
+}
+
+div#nv_comment_input textarea {
+	border: none;
+	outline: none;
+}
+
+div#nv_comment_input button {
+	background-color: white;
+	color: rgba(0, 0, 0, 0.8);
+	border-left: 1px solid lightgray;
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+	padding: 20px 40px;
+	white-space: nowrap;
+}
+
+textarea {
+	resize: none;
+}
+
+#none, .none {
+	display: none;
+}
+
+div#cc {
+	display: flex;
+}
+
+div#btn_content {
+	margin-left: auto;
+	margin-top: auto;
+}
+
+#btn_content button {
+	border: 1px solid lightgray;
+	color: rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+	background-color: white;
+}
+
+.btn_comment {
+	cursor: pointer;
+}
