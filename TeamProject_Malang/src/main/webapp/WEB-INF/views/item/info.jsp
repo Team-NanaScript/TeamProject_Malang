@@ -54,8 +54,7 @@ section.img_section div.image_preview {
 
 
 				<div>
-					<ul id="title" class="title">작품 옵션
-					</ul>
+					<ul id="title" class="title">작품 옵션</ul>
 					<ul>
 						<ol>
 							<li>제출 파일 유형</li>
@@ -81,8 +80,7 @@ section.img_section div.image_preview {
 
 				</div>
 				<form id="option" class="option">
-					<ul id="title" class="title">가격 옵션
-					</ul>
+					<ul id="title" class="title">가격 옵션</ul>
 					<ul>
 						<ol>
 							<li>사용</li>
@@ -166,9 +164,9 @@ section.img_section div.image_preview {
 				<table id="review" class="review">
 					<tr>
 						<th>구매자</th>
-						<th>평점</th>
 						<th>후기</th>
 						<th>등록일</th>
+						<th>평점</th>
 					</tr>
 					<c:choose>
 						<c:when test="${empty REVIEWS}">
@@ -179,13 +177,13 @@ section.img_section div.image_preview {
 						<c:otherwise>
 							<c:forEach items="${REVIEWS}" var="RV">
 							<tr data-rcode="${RV.r_code}">
-								<td>${RV.r_writer}</td>
+								<td>${RV.r_writer}<br/>
+									${RV.mb_nickname}</td>
 								<td>
-									<div>작가님 우리 아이들 예쁘게 그려주셔서 감사드려요^^ 상담도 친절하게 잘해주셨고 작업도 빠르게
-										해주셨답니다. 작가님 우리 또 만나요^^</div>
-									<p>구매작품: 사이즈: 정사각형 / 소품추가: 없음</p>
+									<div>${RV.r_content}</div>
 								</td>
-								<td>2021-06-10</td>
+								<td>${RV.r_date}</td>
+								<td>${RV.r_score}
 							</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -211,11 +209,14 @@ section.img_section div.image_preview {
 							</tr>
 						</c:when>
 						<c:otherwise>
-						<tr>
-							<td>군만두</td>
-							<td>안녕하세요, 작가님 액자에 넣을 그림을 구매하고싶은데요</td>
-							<td>2021-06-11</td>
-						</tr>
+						<c:forEach items="${QNAS}" var="Q">
+							<tr>
+								<td>${Q.q_writer}
+									${Q.mb_nickname}</td>
+								<td>${Q.q_content}</td>
+								<td>${Q.q_date}</td>
+							</tr>
+						</c:forEach>
 						</c:otherwise>
 					</c:choose>
 				</table>

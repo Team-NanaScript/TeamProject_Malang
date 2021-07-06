@@ -20,6 +20,11 @@
 	WHERE q_content = LIKE CONCAT('%', '#{q_content}', '%')
 </select>
 
+<select id="findByItem" resultType="QnaDTO">
+	SELECT * FROm view_qna
+	WHERE q_itcode = #{q_itcode}
+</select>
+
 <select id="findById" resultType="QnaVO">
 	SELECT * FROM tbl_qna
 	WHERE q_code = #{q_code}
