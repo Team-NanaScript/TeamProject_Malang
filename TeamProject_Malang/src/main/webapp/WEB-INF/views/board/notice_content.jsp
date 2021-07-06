@@ -44,7 +44,7 @@
 								
 								
 								<td>${BD.bd_author}</td>
-								<td>${BD.bd_date}</td>
+								<td data-date="${BD.bd_date}">${BD.bd_date}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -67,4 +67,13 @@
 			</div>
 		</div>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+
+	let date = document.querySelector("td").closest.dataset.date
+	
+	alert(date)
+	
+})
+</script>
 </html>

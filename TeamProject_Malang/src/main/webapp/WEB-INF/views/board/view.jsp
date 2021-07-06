@@ -7,24 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-05-002"/>
+<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-06-002"/>
 </head>
 <body>
 
 
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+	<div>
 			<div class="notice_view">
 				<div id="nv_header">
 					<h2 id="title">${VIEW.bd_title}</h2>
-					<a id="author">${VIEW.bd_author}</a>
+					<p id="author">${VIEW.bd_author}</p>
 				</div>
 
 				<div id="nv_content">
-					<a>${VIEW.bd_content}</a>
+					<p>${VIEW.bd_content}</p>
 
 					<div id="btn_content">
 						<button id="list">목록</button>
-						<c:if test="${MEMBER.mb_nickname == VIEW.bd_author}">
+						<c:if test="${MEMBER.mb_nickname == VIEW.bd_author || MEMBER.mb_role == 2}">
 						<button id="content_update" data-seq="${VIEW.bd_seq}">수정</button>
 						<button id="content_delete" data-seq="${VIEW.bd_seq}">삭제</button>
 						</c:if>
@@ -37,23 +38,29 @@
 				<c:if test="${not empty COMMENT}">
 					<c:forEach items="${COMMENT}" var="CM" varStatus="i">
 						<div id="nv_comment" >
-							<a id="nick">${CM.cm_mbnick}</a> <a id="content">${CM.cm_content}</a>
-							<input name="cm_seq" value="${CM.cm_seq}" class="none"/>
+						<ul id="nc">
+							<li id="nick">${CM.cm_mbnick}</li>
+							<li id="content">${CM.cm_content}</li> 
+						</ul>
+							<!--  <input name="cm_seq" value="${CM.cm_seq}" class="none"/> -->
+							
 							<div id="dud" data-seq="${CM.cm_seq}">
-								<a id="date">${CM.cm_date}</a>
-								<c:if test="${MEMBER.mb_nickname == CM.cm_mbnick}"> 
-								<a class="update">수정</a> 
-								<a class="delete">삭제</a>
+							<ul>
+								<li id="date">${CM.cm_date}</li>
+								<c:if test="${MEMBER.mb_nickname == CM.cm_mbnick || MEMBER.mb_role == 2}"> 
+								<li class="update">수정</li> 
+								<li class="delete">삭제</li>
 								</c:if>
+								</ul>
 							</div>
 						</div>
 					</c:forEach>
 				</c:if>
 				</div>
 
-
+				<c:if test="${not empty MEMBER}">
 				<div id="nv_comment_input">
-					<c:if test="${not empty MEMBER}">
+				
 						<form method="POST">
 							<input name="cm_mbid" value="${MEMBER.mb_id}" class="none">
 							<input name="cm_mbnick" value="${MEMBER.mb_nickname}" class="none">
@@ -63,10 +70,13 @@
 								<button id="btn_comment">입력</button>
 							</div>
 						</form>
-					</c:if>
-				</div>
+				
+				</div>	
+				
+				</c:if>
 
 			</div>
+		</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 <script>
@@ -80,6 +90,8 @@ for(db in del buttons {
 	db.addEventListener("click",click_func);
 }
 */
+
+
 
 let nv_comment = document.querySelector("div#comment_box");
 

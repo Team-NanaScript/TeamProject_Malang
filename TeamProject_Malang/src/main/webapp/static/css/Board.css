@@ -4,10 +4,11 @@ div.notice_view {
 	border: 1px solid lightgray;
 	display: flex;
 	flex-direction: column;
-	width: 50%;
-	margin: auto;
-	margin-left: 430px;
-	padding: 50px;
+	width: 800px;
+	margin: 10px auto;
+    padding: 50px;
+    position: relative;
+    left: -50px;
 }
 
 div#nv_header {
@@ -27,7 +28,6 @@ div#nv_header p#author {
 }
 
 div#nv_content {
-	border-bottom: 1px solid lightgray;
 	height: 20rem;
 	word-wrap: break-word;
 	margin: 0 10px;
@@ -35,21 +35,26 @@ div#nv_content {
 }
 
 div#nv_comment {
+	border-top: 1px solid lightgray;
 	display: flex;
-	border-bottom: 1px solid lightgray;
-	margin: 10px;
 	color: rgba(0, 0, 0, 0.7);
 }
 
-div#nv_comment a#nick {
-	margin: 5px 0px;
-	margin-top: 0px;
+div#nv_comment ul{
+
+	display: flex;
+	list-style: none;
+}
+
+div#nv_comment li {
+
+	margin:10px 10px;
 	font-size: 12px;
 }
 
-div#nv_comment a#content {
-	margin: 0px 60px;
-	font-size: 12px;
+#nc li:first-of-type {
+
+	font-weight:bold;
 }
 
 div#dud {
@@ -57,7 +62,7 @@ div#dud {
 	font-size: 11px;
 }
 
-div#nv_comment a#update, div#nv_comment a#delete {
+div#nv_comment li#update, div#nv_comment li#delete {
 	cursor: pointer;
 }
 
@@ -95,9 +100,14 @@ div#cc {
 	display: flex;
 }
 
+div#nv_header p {
+	font-weight:bold;
+	margin-left:auto;
+}
+
 div#btn_content {
-	margin-left: auto;
-	margin-top: auto;
+	position: relative;
+    top: 270px;
 }
 
 #btn_content button {
@@ -105,8 +115,11 @@ div#btn_content {
 	color: rgba(0, 0, 0, 0.6);
 	cursor: pointer;
 	background-color: white;
+	padding: 2px;
+    width: 50px;
 }
 
 .btn_comment {
+	
 	cursor: pointer;
 }

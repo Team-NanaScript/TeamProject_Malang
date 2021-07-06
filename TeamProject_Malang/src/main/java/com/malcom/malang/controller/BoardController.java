@@ -54,15 +54,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/notice/view/notice/update", method=RequestMethod.POST)
-	public String nUpdate(BoardVO vo) {
+	public String nUpdate(BoardVO vo, Model model) {
 	
 		log.debug("업데이트 {} ", vo);
 		
 		Integer result = bService.update(vo);
-		
+		model.addAttribute("bd_seq", vo.getBd_seq());
 	
 		
-		return "redirect:/notice";
+		return "redirect:/notice/view";
 	}
 	
 	@RequestMapping(value="/notice/view/comment/delete", method=RequestMethod.GET)
