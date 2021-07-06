@@ -18,5 +18,6 @@ public class BoardVO {
     private String bd_content;// VARCHAR(2000) NOT NULL,
     private String bd_author;// VARCHAR(15) NOT NULL,
     private String bd_date;// VARCHAR(30) NOT NULL
+	private int bd_count;
 	private int count;
 }

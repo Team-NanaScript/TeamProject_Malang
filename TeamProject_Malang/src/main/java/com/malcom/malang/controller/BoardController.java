@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -128,7 +130,16 @@ public class BoardController {
 	public String view(Long bd_seq, Model model) {
 	
 		BoardVO vo = bService.findById(bd_seq);
-		model.addAttribute("VIEW",vo);
+		if(bd_seq != null) {
+		
+			int count = vo.getBd_count() + 1;
+			vo.setBd_count(count);
+			log.debug("조회수{}",count);
+			bService.update(vo);
+			model.addAttribute("VIEW",vo);
+			
+		}
+		
 		
 		List<CommentVO> cList = cService.findByList(bd_seq);
 		model.addAttribute("COMMENT", cList);

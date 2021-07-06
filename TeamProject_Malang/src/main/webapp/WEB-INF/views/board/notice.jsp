@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 </head>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/customer.css?ver=2021-07-01-001">
+	href="${rootPath}/static/css/customer.css?ver=2021-07-06-002">
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<div class="s_container">
