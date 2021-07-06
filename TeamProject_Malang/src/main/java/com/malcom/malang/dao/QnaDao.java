@@ -13,5 +13,5 @@ public interface QnaDao extends GenericDao<QnaVO, Long>{
 
 	public List<QnaDTO> selectByWriter(@Param("q_writer") Long q_writer);
 	public List<QnaDTO> selectByContent(@Param("q_content") String q_content);
-	public List<QnaDTO> findById(@Param("q_itcode") String q_itcode);
+	public List<QnaDTO> findByItem(@Param("q_itcode") String q_itcode);
 }

@@ -28,8 +28,11 @@ public class ItemServiceImplV1 implements ItemService{
 	}
 
 	public ItemVO findById(String pk) {
-		// TODO Auto-generated method stub
-		return null;
+		ItemVO itemVO = itDao.findById(pk);
+		itemVO.setIt_content(ReplaceBr.enterToBr(itemVO.getIt_content()));
+			
+//		log.debug("상품내용 {}", itemVO.getIt_content());
+		return itemVO;
 	}
 	
 	@Override

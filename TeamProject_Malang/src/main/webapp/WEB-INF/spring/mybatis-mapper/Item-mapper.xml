@@ -9,7 +9,8 @@
 </select>
 
 <select id="findById" resultType="ItemVO">
-	
+	SELECT * FROM tbl_item
+	WHERE it_code = #{it_code}
 </select>
 
 <insert id="insert" parameterType="ItemVO">

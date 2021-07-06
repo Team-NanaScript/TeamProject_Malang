@@ -10,6 +10,7 @@ CREATE TABLE `tbl_review` (
 
 SELECT * FROM tbl_review;
 DROP TABLE tbl_review;
+DELETE FROM tbl_review;
 
 -- insert
 INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score, r_poto)
@@ -27,7 +28,7 @@ VALUES('nana','00000001',
 INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score, r_poto)
 VALUES('nana','00000001',
 '너무 이뻐요! 사진이랑은 다른 포근한 느낌도 있어서 정말 마음에 들어요 :) 감사합니다!',
-'2021-07-2', '4', '');
+'2021-07-02', '4', '');
 
 INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score, r_poto)
 VALUES('nana','00000001',
@@ -36,7 +37,7 @@ VALUES('nana','00000001',
                 만원도 안되는 금액으로 이정도 퀄리티라니... 진짜 돈이 하나도 안아까워요 ㅠㅠ<br>
                 저희 고양이 순간 보면 귀여운데 자세히보면 멍충해보이는 부분이랑 입 살짝 벌리고 있는데 그런 디테일도 다 살려주셨어요 ㅠㅠ<br>
                 다음에 또 다른 사진으로 작업 맡길께용♥️',
-'2021-07-5', '5', '');
+'2021-07-05', '5', '');
 
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_review AS
