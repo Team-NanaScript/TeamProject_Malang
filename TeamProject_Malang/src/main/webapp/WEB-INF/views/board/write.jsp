@@ -134,8 +134,7 @@
                 </ul>
             </nav>
         <div>
-        <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}
-       </textarea>
+        <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}</textarea>
         </div>
         <div id="btn_write">
             <button type="button" id="btn_write">작성하기</button>

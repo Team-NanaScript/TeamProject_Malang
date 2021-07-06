@@ -30,7 +30,7 @@ public class BoardController {
 	public String notice(Model model) {
 		
 		List<BoardVO> bdVO = bService.select();
-		model.addAttribute("BD",bdVO);
+		model.addAttribute("BDLIST",bdVO);
 
 		return "board/notice";
 	}
@@ -66,11 +66,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/notice/view/comment/delete", method=RequestMethod.GET)
-	public String cDelete(Long cm_seq) {
+	public String cDelete(Long cm_seq, Model model) {
 		
+		CommentVO vo = cService.findById(cm_seq);
+		model.addAttribute("bd_seq", vo.getCm_bdseq());
 		cService.delete(cm_seq);
 		
-		return "redirect:/notice";
+		
+		return "redirect:/notice/view";
 	}
 	
 	@RequestMapping(value="/notice/view/comment/update", method=RequestMethod.GET)
@@ -104,7 +107,7 @@ public class BoardController {
 		
 		
 
-		return "write";
+		return "board/write";
 	}
 	
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)

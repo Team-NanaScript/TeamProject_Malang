@@ -24,8 +24,10 @@
 
 					<div id="btn_content">
 						<button id="list">목록</button>
+						<c:if test="${MEMBER.mb_nickname == VIEW.bd_author}">
 						<button id="content_update" data-seq="${VIEW.bd_seq}">수정</button>
 						<button id="content_delete" data-seq="${VIEW.bd_seq}">삭제</button>
+						</c:if>
 					</div>
 				</div>
 
@@ -38,9 +40,11 @@
 							<a id="nick">${CM.cm_mbnick}</a> <a id="content">${CM.cm_content}</a>
 							<input name="cm_seq" value="${CM.cm_seq}" class="none"/>
 							<div id="dud" data-seq="${CM.cm_seq}">
-								<a id="date">${CM.cm_date}</a> 
-								<button class="update">수정</button> 
-								<button class="delete">삭제</button>
+								<a id="date">${CM.cm_date}</a>
+								<c:if test="${MEMBER.mb_nickname == CM.cm_mbnick}"> 
+								<a class="update">수정</a> 
+								<a class="delete">삭제</a>
+								</c:if>
 							</div>
 						</div>
 					</c:forEach>

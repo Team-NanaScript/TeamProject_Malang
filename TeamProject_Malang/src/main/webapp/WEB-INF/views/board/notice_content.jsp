@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -31,9 +32,9 @@
 					</thead>
 
 					<tbody id="content">
-						<c:forEach items="${BD}" var="BD">
+						<c:forEach items="${BDLIST}" var="BD" varStatus="st">
 							<tr>
-								<td>${BD.bd_seq}</td>
+								<td>${fn:length(BDLIST) - st.index}</td>
 								<td data-seq="${BD.bd_seq}" id="seq">${BD.bd_title}
 									<c:if test="${BD.count ne 0}">
 								<a>(${BD.count})</a>
