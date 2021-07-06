@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.malcom.malang.dao.ReviewDao;
+import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.ReviewVO;
 import com.malcom.malang.service.ReviewService;
 
@@ -47,9 +48,15 @@ public class ReviewServiceImplV1 implements ReviewService{
 	}
 
 	@Override
-	public List<ReviewVO> selectByWriter(Long r_writer) {
+	public List<ReviewDTO> selectByWriter(Long r_writer) {
 		
 		return rDao.selectByWriter(r_writer);
+	}
+
+	@Override
+	public List<ReviewDTO> findByItem(String r_itcode) {
+		
+		return rDao.findByItem(r_itcode);
 	}
 
 }

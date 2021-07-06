@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.malcom.malang.dao.QnaDao;
+import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.service.QnaService;
 
@@ -48,15 +49,21 @@ public class QnaServiceImplV1 implements QnaService{
 	}
 
 	@Override
-	public List<QnaVO> selectByWriter(Long q_writer) {
+	public List<QnaDTO> selectByWriter(Long q_writer) {
 
 		return qDao.selectByWriter(q_writer);
 	}
 
 	@Override
-	public List<QnaVO> selectByContent(String q_content) {
+	public List<QnaDTO> selectByContent(String q_content) {
 		
 		return qDao.selectByContent(q_content);
+	}
+
+	@Override
+	public List<QnaDTO> findByItem(String q_itcode) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
