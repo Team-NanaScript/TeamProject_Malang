@@ -21,7 +21,7 @@
 </select>
 
 <select id="findByItem" resultType="QnaDTO">
-	SELECT * FROm view_qna
+	SELECT * FROM view_qna
 	WHERE q_itcode = #{q_itcode}
 </select>
 

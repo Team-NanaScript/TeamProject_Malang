@@ -62,8 +62,8 @@ public class QnaServiceImplV1 implements QnaService{
 
 	@Override
 	public List<QnaDTO> findByItem(String q_itcode) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return qDao.findByItem(q_itcode);
 	}
 
 }

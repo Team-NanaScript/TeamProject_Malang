@@ -124,12 +124,12 @@ ul.product_nav_ul li:hover {
 }
 
 /* 아티클 */
-article.discription {
+article.description {
   /* border: 1px solid grey; */
   padding: 26px;
 }
 
-article.discription article {
+article.description article {
   /* border: 1px solid green; */
   margin-bottom: 1rem;
   padding: 1rem 0;
@@ -140,14 +140,14 @@ article h2 {
 }
 
 /* 아티클 테이블 */
-article.discription table {
+article.description table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   margin: 0 auto;
 }
 
-article.discription table th,
+article.description table th,
 td {
   border-top: 1px solid #aaa;
   padding: 10px;
@@ -156,15 +156,15 @@ td {
   text-align: center;
 }
 
-article.discription table th {
+article.description table th {
   background-color: #ccc;
 }
 
-article.discription table td:nth-child(2) {
+article.description table td:nth-child(2) {
   text-align: left;
 }
 
-article.discription table tr:last-child {
+article.description table tr:last-child {
   border-bottom: 1px solid #aaa;
 }
 /* 상세설명 */
