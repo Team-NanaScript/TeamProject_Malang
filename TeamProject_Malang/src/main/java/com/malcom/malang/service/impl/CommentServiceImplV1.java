@@ -27,11 +27,8 @@ public class CommentServiceImplV1 implements CommentService{
 
 	@Override
 	public Integer insert(CommentVO vo) {
-	
-		String sd = "yy/MM/dd";
-		String st = "HH:mm";
-		
-		String time = DateConfig.sDate(sd) + " " + DateConfig.stime(st);
+
+		String time = DateConfig.sDate("yy/MM/dd") + " " + DateConfig.stime("HH:mm");
 		
 		vo.setCm_date(time);
 		
@@ -50,15 +47,20 @@ public class CommentServiceImplV1 implements CommentService{
 	}
 
 	@Override
-	public Integer delete(String PK) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer delete(Long cm_seq) {
+		
+		int result = cDao.delete(cm_seq);
+		
+		return result;
 	}
 
 	@Override
-	public CommentVO findById(String PK) {
+	public CommentVO findById(Long cm_seq) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		CommentVO vo = cDao.findById(cm_seq);
+		
+		return vo;
 	}
 
 	@Override

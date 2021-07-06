@@ -27,10 +27,10 @@ VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date})
 
 <update id="update" parameterType="BoardVO">
 
-UPDATE tbl_board(bd_title, bd_content, bd_author, bd_date) SET
-bd_title = #{bd_title}
-bd_content = #{bd_content}
-bd_author = #{bd_author}
+UPDATE tbl_board SET
+bd_title = #{bd_title},
+bd_content = #{bd_content},
+bd_author = #{bd_author},
 bd_date = #{bd_date}
 WHERE bd_seq = #{bd_seq}
 
