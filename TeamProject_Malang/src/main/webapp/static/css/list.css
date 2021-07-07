@@ -18,6 +18,7 @@ section.item_section {
 	flex-wrap: wrap;
 }
 
+
 section.item_section div.item_content {
 	border: 1px solid skyblue;
 	margin: 5px;
@@ -28,6 +29,15 @@ section.item_section div.item_content {
 	height: 350px;
 	border: 1px solid rgba(170, 170, 170, 0.377);
 	border-radius: 5px;
+}
+section.item_section div.item_content.empty {
+	align-items: center;
+	justify-content: center;
+}
+
+section.item_section div.item_content.empty h2{
+		font-size:30px;
+		color:gray;
 }
 
 section.item_section div.item_content img {

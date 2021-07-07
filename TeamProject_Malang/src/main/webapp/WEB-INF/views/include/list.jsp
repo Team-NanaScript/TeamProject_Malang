@@ -2,9 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${rootPath}/static/css/list.css?ver=2021-07-05-0002" />
+<link rel="stylesheet" href="${rootPath}/static/css/list.css?ver=2021-07-07-0000" />
 <section class="item_section">
 	<!-- item_list1 -->
+	<c:if test="${empty ITEM_LIST}">
+		<div class="item_content empty">
+			<h2>상품 정보가 없습니다.</h2>
+		</div>
+	</c:if>
+	<c:if test="${not empty ITEM_LIST}">
 	<c:forEach items="${ITEM_LIST}" var="ITEM">
 		<div class="item_content" data-code="${ITEM.it_code}">
 			<img src="${rootPath}${ITEM.it_poto}" />
@@ -15,5 +21,6 @@
 			</div>
 		</div>
 	</c:forEach>
+	</c:if>
 </section>
 <!-- <script src="${rootPath}/static/js/"></script> -->
