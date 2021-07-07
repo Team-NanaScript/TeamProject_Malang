@@ -149,6 +149,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/notice/view", method=RequestMethod.POST)
 	public String comment(CommentVO vo, Model model) {
+
 		
 		Integer result = cService.insert(vo);
 		
@@ -157,4 +158,37 @@ public class BoardController {
 //		return "redirect:/notice/view?bd_seq=" + vo.getCm_bdseq();
 		return "redirect:/notice/view";
 	}
+	
+	
+	
+
+
+	@RequestMapping(value="/notice/search/title" , method=RequestMethod.GET)
+	public String searchTitle(Model model, String keyword) {
+		
+		log.debug("키워드 {}",keyword);
+		
+		List<BoardVO> bdList = bService.findByTitle(keyword);
+		log.debug("검색결과 {}", bdList.toString());
+		
+		model.addAttribute("RESULT", bdList);
+		
+		
+		return "/board/notice";
+	}
+	
+	@RequestMapping(value="/notice/search/content" , method=RequestMethod.GET)
+	public String searchContent(Model model, String keyword) {
+		
+		log.debug("키워드 {}",keyword);
+		
+		List<BoardVO> bdList = bService.findByContent(keyword);
+		log.debug("검색결과 {}", bdList.toString());
+		
+		model.addAttribute("RESULT", bdList);
+		
+		
+		return "/board/notice";
+	}
+
 }

@@ -21,8 +21,6 @@
 				</div>
 
 				<div id="nv_content">
-					<p>${VIEW.bd_content}</p>
-
 					<div id="btn_content">
 						<button id="list">목록</button>
 						<c:if test="${MEMBER.mb_nickname == VIEW.bd_author || MEMBER.mb_role == 2}">
@@ -30,6 +28,7 @@
 						<button id="content_delete" data-seq="${VIEW.bd_seq}">삭제</button>
 						</c:if>
 					</div>
+					<p>${VIEW.bd_content}</p>
 				</div>
 
 
