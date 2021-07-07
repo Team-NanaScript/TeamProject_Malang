@@ -21,7 +21,8 @@ CREATE TABLE `tbl_select_option` (
 	`so_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`so_itcode`	BIGINT	NOT NULL,
 	`so_name`	VARCHAR(30)	NOT NULL,
-	`so_content`	VARCHAR(50)	NOT NULL
+	`so_content`	VARCHAR(50)	NOT NULL,
+        `so_price` INT DEFAULT 0
 );
 
 CREATE TABLE `tbl_category` (
