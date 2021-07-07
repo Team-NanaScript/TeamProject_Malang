@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	document.querySelector("div.s_search").addEventListener("click", (e)=>{
 		let iName = e.target.id;
 		if(iName === "s_sch"){
-			alert("준비중입니다 !!!");
-			location.replace="${rootPath}"
+			
 		} else if(iName === "s_write"){
 			location.href="${rootPath}/notice/write";
 		}
@@ -29,7 +28,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<div class="s_container">
 		<%@ include file="/WEB-INF/views/include/s_nav.jsp"%>
+	
 		<%@ include file="/WEB-INF/views/board/notice_content.jsp"%>
+		
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>

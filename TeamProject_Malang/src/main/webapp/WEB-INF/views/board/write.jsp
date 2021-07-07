@@ -137,7 +137,7 @@
         <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}</textarea>
         </div>
         <div id="btn_write">
-            <button type="button" id="btn_write" >작성하기</button>
+            <button type="button" id="btn_write" onclick="submitContents()">작성하기</button>
             <button type="reset">다시쓰기</button>
         </div>       
         </form>
@@ -205,7 +205,9 @@ nhn.husky.EZCreator.createInIFrame({
 
 function submitContents(){
 	
-	oEditors.getById["class_tutorIntroduce"].exec("UPDATE_CONTENTS_FIELD", []);
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	document.querySelector("form#write").submit();
 	
 }
 </script>

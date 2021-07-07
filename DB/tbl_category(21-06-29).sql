@@ -73,7 +73,11 @@ insert into tbl_category(ct_code, ct_main, ct_sub)
 values('P010', '반려동물용품', '장난감');
 
 
+SELECT ct_sub FROM tbl_category
+WHERE ct_main = '일러스트';
 
+SELECT ct_main FROM tbl_category
+GROUP BY ct_main ORDER BY ct_code;
 
 DELETE FROm tbl_category
 WHERE ct_code = 'P000';
