@@ -18,6 +18,8 @@ CREATE TABLE `tbl_select_option` (
 
 DROP TABLE tbl_option;
 DROP TABLE tbl_select_option;
+
+desc tbl_option;
 desc tbl_select_option;
 
 select * from tbl_option;
