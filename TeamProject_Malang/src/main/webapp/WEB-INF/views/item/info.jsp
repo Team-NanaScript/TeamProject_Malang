@@ -56,26 +56,12 @@ section.img_section div.image_preview {
 				<div>
 					<ul id="title" class="title">작품 옵션</ul>
 					<ul>
+						<c:forEach items="${OPTION}" var="OP">
 						<ol>
-							<li>제출 파일 유형</li>
-							<li>Png</li>
+							<li>${OP.op_name}</li>
+							<li>${OP.op_content}</li>
 						</ol>
-						<ol>
-							<li>해상도</li>
-							<li>300dpi</li>
-						</ol>
-						<ol>
-							<li>기본 사이즈</li>
-							<li>1080px</li>
-						</ol>
-						<ol>
-							<li>수정 횟수</li>
-							<li>1회</li>
-						</ol>
-						<ol>
-							<li>작업 기간</li>
-							<li>시작일로부터 15일</li>
-						</ol>
+						</c:forEach>
 					</ul>
 
 				</div>
