@@ -33,10 +33,10 @@ CREATE TABLE `tbl_category` (
 
 -- 영진
 CREATE TABLE `tbl_member` (
-	`mb_id`	VARCHAR(20)	NOT NULL PRIMARY KEY,
+	`mb_id`	VARCHAR(20)	PRIMARY KEY,
 	`mb_pw`	VARCHAR(16)	NOT NULL,
-	`mb_name`	VARCHAR(10),
-	`mb_anum`	VARCHAR(20),
+	`mb_name`	VARCHAR(10) NOT NULL,
+	`mb_anum`	VARCHAR(20) NOT NULL,
 	`mb_role`	INT DEFAULT 0	NOT NULL,
 	`mb_tel`	VARCHAR(20)	NOT NULL,
 	`mb_birth`	CHAR(8),
@@ -58,9 +58,10 @@ CREATE TABLE `tbl_review` (
 	`r_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`r_writer`	VARCHAR(20)	NOT NULL,
 	`r_itcode`	CHAR(8)	NOT NULL,
-	`r_content`	VARCHAR(2000),
+	`r_content`	VARCHAR(2000) NOT NULL,
 	`r_date`	VARCHAR(30),
-	`r_score`	INT
+	`r_score`	INT	NOT NULL,
+    `r_poto`	VARCHAR(100)
 );
 
 CREATE TABLE `tbl_description` (
