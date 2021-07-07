@@ -65,6 +65,34 @@ public class BoardServiceImplV1 implements BoardService{
 		return vo;
 	}
 
+	@Override
+	public List<BoardVO> findByTitle(String keyword) {
+		// TODO Auto-generated method stub
+		
+		List<BoardVO> bList = bDao.findByTitle(keyword);
+		
+		return bList;
+	}
+
+	@Override
+	public List<BoardVO> findByNick(String bd_author) {
+		// TODO Auto-generated method stub
+		
+		List<BoardVO> bList = bDao.findByNick(bd_author);
+		
+		return bList;
+	}
+
+	@Override
+	public List<BoardVO> findByContent(String keyword) {
+		// TODO Auto-generated method stub
+		
+		List<BoardVO> bList = bDao.findByContent(keyword);
+		
+		
+		return bList;
+	}
+
 	
 	
 }

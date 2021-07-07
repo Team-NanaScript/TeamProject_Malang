@@ -10,6 +10,18 @@ WHERE bd_seq = #{bd_seq}
 
 </select>
 
+<select id="findByTitle" resultType="BoardVO">
+SELECT * FROM tbl_board
+WHERE bd_title LIKE CONCAT('%',#{keyword},'%')
+
+</select>
+
+<select id="findByContent" resultType="BoardVO">
+SELECT * FROM tbl_board
+WHERE bd_content LIKE CONCAT('%',#{keyword},'%')
+
+</select>
+
 <select id="select" resultType="BoardVO">
 select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_count,
 (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
