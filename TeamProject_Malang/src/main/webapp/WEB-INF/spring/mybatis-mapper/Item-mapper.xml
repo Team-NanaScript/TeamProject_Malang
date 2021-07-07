@@ -13,6 +13,17 @@
 	WHERE it_code = #{it_code}
 </select>
 
+<select id="categoryMain" resultType="String">
+	SELECT ct_main FROM tbl_category
+	GROUP BY ct_main
+</select>
+
+<select id="categorySub" resultType="String">
+	SELECT ct_sub FROM tbl_category
+	WHERE ct_main = #{ct_main}
+	ORDER BY ct_code DESC
+</select>
+
 <insert id="insert" parameterType="ItemVO">
 
 </insert>

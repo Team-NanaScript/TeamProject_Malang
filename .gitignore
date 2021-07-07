@@ -1,6 +1,11 @@
 # github 업로드하지 않을 파일 정보 등록하는 곳
 
 Servers*/
+
+# pom.property
+pom.properties
+pom.properties*
+
 # java 컴파일된 BIN 파일들
 *.class
 
@@ -150,7 +155,3 @@ RemoteSystemsTempFiles/
 
 # naver secret
 NaverSecret.*
-
-# pom.property
-pom.properties
-pom.properties*

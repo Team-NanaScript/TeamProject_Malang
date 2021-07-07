@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.malcom.malang.dao.ItemDao;
 import com.malcom.malang.model.ItemVO;
@@ -67,6 +68,15 @@ public class ItemServiceImplV1 implements ItemService{
 		}
 		log.debug(todayList.get(0).toString());
 		return todayList;
+	}
+
+	@Override
+	public String categoryList(Model model) {
+		List<String> ct_main = itDao.categoryMain();
+//		log.debug("Main category List {}",ct_main.toString());
+		List<String> ct_sub = itDao.categorySub(ct_main.get(0));
+//		log.debug("Sub category List {}",ct_sub.toString());
+		return null;
 	}
 
 }

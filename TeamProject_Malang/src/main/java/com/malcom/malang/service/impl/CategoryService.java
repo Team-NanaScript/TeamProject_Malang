@@ -3,6 +3,8 @@ package com.malcom.malang.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.malcom.malang.service.ItemService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CategoryService {
 	
 //	Qualifier해서 아이템관련 서비스 불러오기
+	protected final ItemService itService;
 	
 	public void listByMain(String cate_main, String sub_main,  Model model) {
 		if( cate_main.equalsIgnoreCase("I")) {
