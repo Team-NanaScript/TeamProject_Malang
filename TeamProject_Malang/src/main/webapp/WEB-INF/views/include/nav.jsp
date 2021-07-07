@@ -96,10 +96,10 @@ li a {
 		<div class="adiv">
 			<nav id="one">
 				<ul>
-					<li class="cate1">일러스트</li>
-					<li class="handi">수공예</li>
-					<li class="handf">수제간식</li>
-					<li class="animal">반려동물용품</li>
+					<li class="item/I">일러스트</li>
+					<li class="item/H">수공예</li>
+					<li class="item/E">수제간식</li>
+					<li class="item/P">반려동물용품</li>
 					<li class="review">실시간 후기</li>
 				</ul>
 			</nav>
