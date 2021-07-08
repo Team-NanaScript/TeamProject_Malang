@@ -23,11 +23,7 @@ table.review td:hover, table.question td:hover {
 }
 
 section.img_section div.image_preview {
-	/* 은빈언니가 itemVO 수정하면 아래걸로 변경하면 됨 
-	background: url("${rootPath}${ITEM.it_poto}") no-repeat; 
-	*/
 	background: url("${rootPath}/static/images/ex2.png") no-repeat;
-	
 }
 </style>
 </head>
@@ -41,9 +37,9 @@ section.img_section div.image_preview {
 			</section>
 			<aside id="product_aside" class="product_aside">
 				<div id="header" class="header">
-					<p>${ITEM.it_seid}</p>
-					<h2>${ITEM.it_title}</h2>
-					<h3>${ITEM.it_price}원</h3>
+					<p>맴맴 작가</p>
+					<h2>🥐🍩와플 속에 쏙! 귀여운 일러스트🥐🍩</h2>
+					<h3>9,900원</h3>
 				</div>
 
 
@@ -53,12 +49,7 @@ section.img_section div.image_preview {
 				</ol>
 				<ol>
 					<li>배송비</li>
-					<li>
-						<c:choose>
-							<c:when test="${ITEM.it_shippingfee == 0}">무료배송</c:when>
-							<c:otherwise>${ITEM.it_shippingfee}</c:otherwise>
-						</c:choose>
-					</li>
+					<li>무료배송</li>
 				</ol>
 
 
@@ -82,7 +73,7 @@ section.img_section div.image_preview {
 							<li>${SN}</li>
 							<li>
 								<select name="" id="">
-									<c:forEach items="${SOCONTENT[SN]}" var="SC">
+									<c:forEach items="${SOCONTENT}" var="SC">
 										<option value="">${SC.so_content}
 											<c:if test="${not empty SC.so_price}">
 												( +${SC.so_price}원 )
