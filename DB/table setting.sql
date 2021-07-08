@@ -1,3 +1,5 @@
+use db_malang;
+
 CREATE TABLE `tbl_item` (
 	`it_code`	CHAR(8)	NOT NULL PRIMARY KEY,
 	`it_decode`	BIGINT	NOT NULL,
