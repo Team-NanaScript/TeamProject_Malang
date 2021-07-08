@@ -34,9 +34,11 @@ doc.querySelector("header").addEventListener("submit", (e) => {
   
   function className(ev){
     let cName = ev.target.className;
+    
         if(cName == "" || cName === "" || cName == null ){
           return false;
         } else {
+        
           location.href = "/malang/" + cName;
         }  
   }

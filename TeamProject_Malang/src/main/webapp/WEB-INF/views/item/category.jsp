@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리</title>
+<title>상품 카테고리</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
 <link rel="stylesheet" type="text/css"
@@ -26,7 +26,6 @@
 			</ul>
 		</nav>
 	</div>
-	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>

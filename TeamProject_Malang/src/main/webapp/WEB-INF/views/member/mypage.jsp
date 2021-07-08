@@ -140,6 +140,14 @@ div.input ul li img{
 	transition: 0.5s;
 }
 </style>
+<script>
+let msg = "${MSG}";
+
+if(msg == "REJECT"){
+	alert("로그인이 필요한 서비스입니다")
+	location.href="${rootPath}/login"
+}
+</script>
 </head>
 <body>
 	<div class="mypage">

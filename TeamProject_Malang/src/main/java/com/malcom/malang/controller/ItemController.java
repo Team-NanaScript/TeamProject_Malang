@@ -19,16 +19,31 @@ public class ItemController {
 	
 	protected final ItemService itService;
 
-	@RequestMapping(value="/{cate}", method=RequestMethod.GET)
-	public String category(@PathVariable("cate") String cate, Model model) {
+//	@RequestMapping(value="/{cate}", method=RequestMethod.GET)
+//	public String category(@PathVariable("cate") String cate, Model model) {
+//		if(cate.isBlank() || cate.isEmpty()) {
+//			return "redirect:/";
+//		}
+//		itService.categoryList(model);
+//		return "item/category";
+//	}
+	
+	@RequestMapping(value="/{cate}/{sub}", method=RequestMethod.GET)
+	public String subCategory(@PathVariable("cate") String cate,
+			@PathVariable("sub") String sub, Model model) {
 		if(cate.isBlank() || cate.isEmpty()) {
 			return "redirect:/";
 		}
-		itService.categoryList();
+		if(sub.isBlank() || sub.isEmpty()) {
+			// 처음 sub 보여주기
+			
+			itService.itemByCategory(cate, sub, model);
+		}
+		itService.categoryList(model);
 		return "item/category";
 	}
 	
-	@RequestMapping(value = "/review", method = RequestMethod.GET)
+	@RequestMapping(value = "/review", method=RequestMethod.GET)
 	public String review() {
 		return "item/review";
 	}

@@ -81,3 +81,7 @@ GROUP BY ct_main ORDER BY ct_code;
 
 DELETE FROm tbl_category
 WHERE ct_code = 'P000';
+
+SELECT ct_main FROM tbl_category
+group by ct_main
+order by ct_main desc;

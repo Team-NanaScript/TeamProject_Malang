@@ -80,6 +80,13 @@ header a i#cart {
 	margin-top: 15px;
 }
 
+header a i#manage {
+	color: rgba(123, 164, 235, 0.993);
+	/* color: rgba(235, 164, 123, 0.993); */
+	right: -690px;
+	margin-top: 15px;
+}
+
 nav#one ul {
 	position: relative;
 	display: flex;
