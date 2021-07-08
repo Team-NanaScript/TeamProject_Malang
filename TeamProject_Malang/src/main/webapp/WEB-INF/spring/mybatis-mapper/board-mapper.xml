@@ -10,6 +10,10 @@ WHERE bd_seq = #{bd_seq}
 
 </select>
 
+<select id="findByMaxSeq" resultType="String">
+select max(bd_seq) from tbl_board
+</select>
+
 <select id="findByTitle" resultType="BoardVO">
 SELECT * FROM tbl_board
 WHERE bd_title LIKE CONCAT('%',#{keyword},'%')

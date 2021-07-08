@@ -63,10 +63,11 @@ div.s_nav ul li:hover {
 document.addEventListener("DOMContentLoaded",(e)=>{
 	
 	let path = document.location.pathname;
-	if(path === "${rootPath}/notice"){
+	let sch_Root = "${rootPath}/notice/search"
+	if(path == "${rootPath}/notice" || path == sch_Root + "/title" || path == sch_Root + "/content"){
 		document.querySelector("#notice").classList.add("on");
 	}
-	else if(path === "${rootPath}/advice"){
+	else if(path == "${rootPath}/advice"){
 		document.querySelector("#advice").classList.add("on");
 	}
 	

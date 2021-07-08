@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	<div class="s_container">
 		<%@ include file="/WEB-INF/views/include/s_nav.jsp"%>
 	
-		<%@ include file="/WEB-INF/views/board/notice_content.jsp"%>
+		<%@ include file="/WEB-INF/views/board/notice_list.jsp"%>
 		
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

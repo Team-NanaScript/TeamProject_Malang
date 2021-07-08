@@ -68,13 +68,15 @@ section.img_section div.image_preview {
 				<form id="option" class="option">
 					<ul id="title" class="title">가격 옵션</ul>
 					<ul>
+						<c:forEach items="${SOPTION}" var="SOP">
 						<ol>
-							<li>사용</li>
+							<li>${SOP.so_name}</li>
 							<li><select name="" id="">
 									<option value="">비상업용</option>
 									<option value="">상업용</option>
 							</select></li>
 						</ol>
+						</c:forEach>
 						<ol>
 							<li>추가옵션</li>
 							<li><select name="" id="">

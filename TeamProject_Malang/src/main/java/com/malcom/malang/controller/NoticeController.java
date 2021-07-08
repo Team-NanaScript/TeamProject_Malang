@@ -22,13 +22,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 @Controller
-public class BoardController {
+@RequestMapping(value="/notice")
+public class NoticeController {
 	
 	protected final BoardService bService;
 	
 	protected final CommentService cService;
 	
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	@RequestMapping(value = {"/",""} , method = RequestMethod.GET)
 	public String notice(Model model) {
 		
 		List<BoardVO> bdVO = bService.select();
@@ -37,7 +38,7 @@ public class BoardController {
 		return "board/notice";
 	}
 	
-	@RequestMapping(value="/notice/view/notice/delete", method=RequestMethod.GET)
+	@RequestMapping(value="/view/notice/delete", method=RequestMethod.GET)
 	public String nDelete(Long bd_seq) {
 		
 		bService.delete(bd_seq);
@@ -45,7 +46,7 @@ public class BoardController {
 		return "redirect:/notice";
 	}
 	
-	@RequestMapping(value="/notice/view/notice/update", method=RequestMethod.GET)
+	@RequestMapping(value="/view/notice/update", method=RequestMethod.GET)
 	public String nUpdate(Long bd_seq, Model model) {
 		
 		BoardVO vo = bService.findById(bd_seq);
@@ -55,7 +56,7 @@ public class BoardController {
 		return "/board/write";
 	}
 	
-	@RequestMapping(value="/notice/view/notice/update", method=RequestMethod.POST)
+	@RequestMapping(value="/view/notice/update", method=RequestMethod.POST)
 	public String nUpdate(BoardVO vo, Model model) {
 	
 		log.debug("업데이트 {} ", vo);
@@ -67,7 +68,7 @@ public class BoardController {
 		return "redirect:/notice/view";
 	}
 	
-	@RequestMapping(value="/notice/view/comment/delete", method=RequestMethod.GET)
+	@RequestMapping(value="/view/comment/delete", method=RequestMethod.GET)
 	public String cDelete(Long cm_seq, Model model) {
 		
 		CommentVO vo = cService.findById(cm_seq);
@@ -78,7 +79,7 @@ public class BoardController {
 		return "redirect:/notice/view";
 	}
 	
-	@RequestMapping(value="/notice/view/comment/update", method=RequestMethod.GET)
+	@RequestMapping(value="/view/comment/update", method=RequestMethod.GET)
 	public String cUpdate(Long cm_seq, Model model) {
 		
 		CommentVO vo = cService.findById(cm_seq);
@@ -89,7 +90,7 @@ public class BoardController {
 		return "redirect:/notice/view";
 	}
 	
-	@RequestMapping(value="/notice/view/comment/update", method=RequestMethod.POST)
+	@RequestMapping(value="/view/comment/update", method=RequestMethod.POST)
 	public String cUpdate(CommentVO vo) {
 		
 		Integer result = cService.update(vo);
@@ -98,13 +99,9 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping(value = "/advice", method = RequestMethod.GET)
-	public String advice() {
-		
-		return "board/advice";
-	}
 	
-	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {
 		
 		
@@ -112,21 +109,20 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
-	public String write(BoardVO vo) {
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(BoardVO vo, Model model) {
 		
-		Date date = new Date();
-		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
-		String sDate = sd.format(date);
-		log.debug("치키챠{}",sDate);
-		
-		vo.setBd_date(sDate);
 		bService.insert(vo);
+		String bd_seq = bService.findByMaxSeq();
+		
+		
+		model.addAttribute("bd_seq" , bd_seq);
+		
 
-		return "redirect:/notice";
+		return "redirect:/notice/view";
 	}
 	
-	@RequestMapping(value="/notice/view", method = RequestMethod.GET)
+	@RequestMapping(value="/view", method = RequestMethod.GET)
 	public String view(Long bd_seq, Model model) {
 	
 		BoardVO vo = bService.findById(bd_seq);
@@ -147,7 +143,7 @@ public class BoardController {
 		return "/board/view";
 	}
 	
-	@RequestMapping(value="/notice/view", method=RequestMethod.POST)
+	@RequestMapping(value="/view", method=RequestMethod.POST)
 	public String comment(CommentVO vo, Model model) {
 
 		
@@ -163,7 +159,7 @@ public class BoardController {
 	
 
 
-	@RequestMapping(value="/notice/search/title" , method=RequestMethod.GET)
+	@RequestMapping(value="/search/title" , method=RequestMethod.GET)
 	public String searchTitle(Model model, String keyword) {
 		
 		log.debug("키워드 {}",keyword);
@@ -177,7 +173,7 @@ public class BoardController {
 		return "/board/notice";
 	}
 	
-	@RequestMapping(value="/notice/search/content" , method=RequestMethod.GET)
+	@RequestMapping(value="/search/content" , method=RequestMethod.GET)
 	public String searchContent(Model model, String keyword) {
 		
 		log.debug("키워드 {}",keyword);
