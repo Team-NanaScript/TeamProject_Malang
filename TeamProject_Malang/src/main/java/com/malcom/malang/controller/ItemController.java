@@ -36,8 +36,10 @@ public class ItemController {
 		}
 		if(sub.isBlank() || sub.isEmpty()) {
 			// 처음 sub 보여주기
-			
-			itService.itemByCategory(cate, sub, model);
+			// cate > sub list setting attribute
+			// sub click > ( sub ) category code GET
+			// ( sub ) category code request parameter > list setting attribute  
+//			itService.itemByCategory(cate, sub, model);
 		}
 		itService.categoryList(model);
 		return "item/category";
