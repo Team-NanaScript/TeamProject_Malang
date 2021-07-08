@@ -25,8 +25,14 @@
 	WHERE r_itcode = #{r_itcode}
 </select>
 
-<select id="sumAndCountScore" resultType="">
-	SELECT
+<select id="avgScore" resultType="Float">
+	SELECT ROUND(sum(r_score)/COUNT(r_score),1) FROM tbl_review
+	WHERE r_itcode = #{r_itcode}
+</select>
+
+<select id="countScore" resultType="Integer">
+	SELECT COUNT(r_score) FROM tbl_review
+	WHERE r_itcode = #{r_itcode}
 </select>
 
 <insert id="insert" parameterType="ReviewVO">
