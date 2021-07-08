@@ -11,6 +11,7 @@ import com.malcom.malang.model.OptionVO;
 import com.malcom.malang.service.DescriptionService;
 import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.OptionService;
+import com.malcom.malang.service.insertService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,9 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class insertController {
 	
-	protected final ItemService itService;
-	protected final OptionService opService;
-	protected final DescriptionService dService;
+	protected final insertService iService;
 	
 	@RequestMapping(value="/insert", method = RequestMethod.GET)
 	public String insert() {
@@ -37,19 +36,9 @@ public class insertController {
 		
 		
 //		log.debug("옵션 {}",opList.toString());
-		log.debug("상품정보 {}", itVO.toString());
+//		log.debug("상품정보 {}", itVO.toString());
 		
-		int size = itVO.getOp_name().size();
-		
-		for(int i = 0; i < size ; i++) {
-			
-			OptionVO opVO = new OptionVO();
-			opVO.setOp_name(itVO.getOp_name().get(i));
-			opVO.setOp_content(itVO.getOp_content().get(i));
-	
-			opService.insert(opVO);
-		}
-		
+		iService.insert(itVO);
 		
 		
 		return "/item/insert";
