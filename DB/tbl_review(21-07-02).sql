@@ -53,7 +53,7 @@ SELECT * FROM view_review;
 SELECT ROUND(sum(r_score)/COUNT(r_score),1), COUNT(r_score) FROM tbl_review
 WHERE r_itcode = '00000005';
 
-select r_score, r_itcode from tbl_review
+select ROUND(sum(r_score)/COUNT(r_score),1) from tbl_review
 where r_itcode = '00000005';
 
 SELECT COUNT(r_score) FROM tbl_review

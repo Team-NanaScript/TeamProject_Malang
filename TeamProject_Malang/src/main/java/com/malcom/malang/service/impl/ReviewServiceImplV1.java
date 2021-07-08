@@ -59,4 +59,29 @@ public class ReviewServiceImplV1 implements ReviewService{
 		return rDao.findByItem(r_itcode);
 	}
 
+	@Override
+	public Integer avgScore(String r_itcode) {
+		Float avg = rDao.avgScore(r_itcode);
+		int score = 0;
+		if( avg >= 1 && avg < 2 ) {
+			score = 1;
+		} else if( avg >= 2 && avg < 3) {
+			score = 2;
+		} else if( avg >= 3 && avg < 4) {
+			score = 3;
+		} else if( avg >= 4 && avg < 5) {
+			score = 4;
+		} else {
+			score = 5;
+		}
+			
+		return score;
+//		return rDao.avgScore(r_itcode); 
+	}
+
+	@Override
+	public Integer countScore(String r_itcode) {
+		
+		return rDao.countScore(r_itcode);
+	}
 }
