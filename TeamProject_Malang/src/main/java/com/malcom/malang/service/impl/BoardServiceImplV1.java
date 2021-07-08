@@ -30,6 +30,10 @@ public class BoardServiceImplV1 implements BoardService{
 	public Integer insert(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
+		String sDate = DateConfig.sDate("yyyy-mm-dd");
+		
+		vo.setBd_date(sDate);
+		
 		bDao.insert(vo);
 		
 		return null;
@@ -91,6 +95,15 @@ public class BoardServiceImplV1 implements BoardService{
 		
 		
 		return bList;
+	}
+
+	@Override
+	public String findByMaxSeq() {
+		// TODO Auto-generated method stub
+		
+		String bd_seq = bDao.findByMaxSeq();
+		
+		return bd_seq;
 	}
 
 	

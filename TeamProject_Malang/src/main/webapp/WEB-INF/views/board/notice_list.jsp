@@ -96,7 +96,7 @@ select#search {
 					<option value="content">내용</option>
 					<option value="author">작성자</option>
 				</select> <input type="text" name="keyword" id="s_input">
-				<button id="s_sch" type="button">검색</button>
+				<button id="s_sch" type="button" >검색</button>
 				<c:if test="${MEMBER.mb_role == 2}">
 					<a id="s_write">글쓰기</a>
 				</c:if>
@@ -109,35 +109,42 @@ select#search {
 	</div>
 </body>
 <script>
-document.addEventListener("DOMContentLoaded", ()=>{
-
-	const s_search = document.querySelector("div.s_search");
 	
-	document.querySelector("button#s_sch").addEventListener("click", ()=>{	
+document.querySelector("button#s_sch").addEventListener("click", search);
+document.querySelector("input#s_input").addEventListener("keypress",()=>{
+	
+	if(window.event.keyCode == "13"){
 		
-		let s_value = document.querySelector("select#search").value;
+		search();
 		
-		if(s_value == "title"){
-			
-			let keyword = document.querySelector("input#s_input").value;		
-			location.href="${rootPath}/notice/search/title?keyword=" + keyword;
-			
-		} if(s_value == "content"){
+	}
+	
+})
+	
 
-			
-			let keyword = document.querySelector("input#s_input").value;
-			location.href="${rootPath}/notice/search/content?keyword=" + keyword;
-			
-		} if(s_value == "author"){
-			
-			let keyword = document.querySelector("input#s_input").value;
-			alert("작성자" + keyword)
-		}
-	})
+function search(){
+
+	let s_value = document.querySelector("select#search").value;
+
+	if(s_value == "title"){
+		
+		let keyword = document.querySelector("input#s_input").value;		
+		location.href="${rootPath}/notice/search/title?keyword=" + keyword;
+		
+	} if(s_value == "content"){
+
+		
+		let keyword = document.querySelector("input#s_input").value;
+		location.href="${rootPath}/notice/search/content?keyword=" + keyword;
+		
+	} if(s_value == "author"){
+		
+		let keyword = document.querySelector("input#s_input").value;
+		alert("작성자" + keyword)
+	}
 	
-	
-	
-});
+}
+
 
 
 </script>
