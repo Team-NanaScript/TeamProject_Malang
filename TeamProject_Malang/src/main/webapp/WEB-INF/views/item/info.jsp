@@ -24,7 +24,7 @@ table.review td:hover, table.question td:hover {
 
 section.img_section div.image_preview {
 	/* 은빈언니가 itemVO 수정하면 아래걸로 변경하면 됨 
-	background: url("${rootPath}${ITEM.it_poto}") no-repeat; 
+	background: url("${rootPath}${ITEM.it_photo}") no-repeat; 
 	*/
 	background: url("${rootPath}/static/images/ex2.png") no-repeat;
 	
@@ -49,7 +49,16 @@ section.img_section div.image_preview {
 
 				<ol>
 					<li>후기</li>
-					<li>★★★★☆ (240)</li>
+					<li>
+						<c:choose>
+							<c:when test="${AVG eq 0}">☆☆☆☆☆</c:when>
+							<c:when test="${AVG eq 1}">★☆☆☆☆</c:when>
+							<c:when test="${AVG eq 2}">★★☆☆☆</c:when>
+							<c:when test="${AVG eq 3}">★★★☆☆</c:when>
+							<c:when test="${AVG eq 4}">★★★★☆</c:when>
+							<c:otherwise>★★★★★</c:otherwise>
+						</c:choose>
+						 (${COUNT})</li>
 				</ol>
 				<ol>
 					<li>배송비</li>

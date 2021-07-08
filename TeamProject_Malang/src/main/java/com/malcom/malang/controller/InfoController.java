@@ -47,17 +47,21 @@ public class InfoController {
 		
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
+		Integer avgScore = rService.avgScore(itcode);
+		Integer countScore = rService.countScore(itcode);
+		
 		List<String> sOptionName = soService.findByOptionName(itcode);
 		//List<SelectOptionVO> sOptionContent = soService.findByOptionContent(itcode);
 		soService.findByOptionContent(itcode, model);
-		
-		
 		
 		DescriptionVO dVO = dService.findById(decode);
 		List<QnaDTO> qList = qService.findByItem(itcode);
 		List<ReviewDTO> rList = rService.findByItem(itcode);
 		
 		model.addAttribute("OPTION", oVO);
+		model.addAttribute("AVG", avgScore);
+		model.addAttribute("COUNT", countScore);
+		
 		model.addAttribute("SONAME", sOptionName);
 		//model.addAttribute("SOCONTENT", sOptionContent);
 		model.addAttribute("ITEM", iVO);
