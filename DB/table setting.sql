@@ -7,7 +7,7 @@ CREATE TABLE `tbl_item` (
 	`it_price`	INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
 	`it_content`	VARCHAR(2000)	NOT NULL,
-	`it_poto`	VARCHAR(100)
+	`it_photo`	VARCHAR(100)
 );
 
 CREATE TABLE `tbl_option` (
@@ -162,3 +162,7 @@ ON DELETE CASCADE;
 -- 외래키 확인하기
 select * from information_schema.table_constraints where constraint_schema = 'db_malang';
 alter table tbl_select_option drop foreign key fk_it;
+
+-- tbl_item 의 칼럼명 변경 ( it_poto -> it_photo )
+ALTER TABLE tbl_item CHANGE it_poto it_photo VARCHAR(100);
+DESC tbl_item;
