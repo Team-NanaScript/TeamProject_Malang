@@ -79,4 +79,10 @@ public class ItemServiceImplV1 implements ItemService{
 		return null;
 	}
 
+	@Override
+	public void itemByCategory(String cate, Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

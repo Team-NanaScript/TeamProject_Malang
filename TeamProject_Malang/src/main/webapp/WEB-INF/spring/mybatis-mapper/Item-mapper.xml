@@ -16,12 +16,17 @@
 <select id="categoryMain" resultType="String">
 	SELECT ct_main FROM tbl_category
 	GROUP BY ct_main
+	ORDER BY ct_main DESC
 </select>
 
 <select id="categorySub" resultType="String">
 	SELECT ct_sub FROM tbl_category
 	WHERE ct_main = #{ct_main}
 	ORDER BY ct_code DESC
+</select>
+
+<select id="selectCategory" resultType="CateVO">
+	SELECT * FROM tbl_category
 </select>
 
 <insert id="insert" parameterType="ItemVO">

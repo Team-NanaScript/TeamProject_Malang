@@ -11,4 +11,6 @@ public interface ItemService extends GenericService<ItemVO, String> {
 	public List<ItemVO> malangOfToday();
 	
 	public String categoryList(Model model);
+
+	public void itemByCategory(String cate, Model model);
 }

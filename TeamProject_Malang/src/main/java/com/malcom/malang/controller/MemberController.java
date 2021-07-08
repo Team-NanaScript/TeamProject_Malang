@@ -69,12 +69,30 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String mypage() {
+	public String mypage(HttpSession session, Model model) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG", "ADMIT");
+		}
 		return "member/mypage";
 	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String buy() {
+	public String cart(HttpSession session, Model model) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG", "ADMIT");
+		}
 		return "member/cart";
+	}
+	
+	@RequestMapping(value = "/manage", method = RequestMethod.GET)
+	public String mypage() {
+		
+		return "member/manage";
 	}
 }

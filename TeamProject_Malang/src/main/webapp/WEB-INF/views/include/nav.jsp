@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-07-02-004" />
+	href="${rootPath}/static/css/header.css?ver=2021-07-08-001" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -89,6 +89,9 @@ li a {
 				</button>
 			</form>
 			<div class="icon">
+			<c:if test="${MEMBER.mb_role == 2 }">
+				<a><i class="fas fa-user" id="manage"></i></a>
+			</c:if>
 			<a><i class="fas fa-user" id="user"></i></a> 
 			<a><i class="fas fa-shopping-cart" id="cart"></i></a>
 			</div>
@@ -136,5 +139,5 @@ li a {
 	</div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-06-16-004"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-07-08-002"></script>
 </html>
