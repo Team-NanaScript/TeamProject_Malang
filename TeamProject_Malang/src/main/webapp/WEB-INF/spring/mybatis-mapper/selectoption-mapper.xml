@@ -19,14 +19,14 @@
 </select>
 
 <!-- 아래두개 작성해야함  -->
-<select id="findByOptionName">
-	SELECT * FROM tbl_select_option
+<select id="findByOptionName" resultType="String">
+	SELECT so_name FROM tbl_select_option
 	WHERE so_itcode = #{so_itcode}
 	GROUP BY so_name
 </select>
 
-<select id="findByOptionContent" resultType="S">
-	SELECT * FROM tbl_select_option
+<select id="findByOptionContent" resultType="SelectOptionVO">
+	SELECT so_content, so_price FROM tbl_select_option
 	WHERE so_itcode = #{so_itcode} AND so_name= #{so_name}
 </select>
 

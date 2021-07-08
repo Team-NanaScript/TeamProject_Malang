@@ -40,20 +40,26 @@ public class InfoController {
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String home(String itcode, Model model) {
 		
-		itcode = "00000005";
+		itcode = "00000005"; // 수정필요
 		
 		ItemVO iVO = iService.findById(itcode);
 		Long decode = iVO.getIt_decode();
 		
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
-		List<SelectOptionVO> soVO = soService.findByItem(itcode);
+		List<String> sOptionName = soService.findByOptionName(itcode);
+		//List<SelectOptionVO> sOptionContent = soService.findByOptionContent(itcode);
+		soService.findByOptionContent(itcode, model);
+		
+		
+		
 		DescriptionVO dVO = dService.findById(decode);
 		List<QnaDTO> qList = qService.findByItem(itcode);
 		List<ReviewDTO> rList = rService.findByItem(itcode);
 		
 		model.addAttribute("OPTION", oVO);
-		model.addAttribute("SOPTION", soVO);
+		model.addAttribute("SONAME", sOptionName);
+		//model.addAttribute("SOCONTENT", sOptionContent);
 		model.addAttribute("ITEM", iVO);
 		model.addAttribute("DESC", dVO);
 		model.addAttribute("QNAS", qList);

@@ -25,6 +25,10 @@
 	WHERE r_itcode = #{r_itcode}
 </select>
 
+<select id="sumAndCountScore" resultType="">
+	SELECT
+</select>
+
 <insert id="insert" parameterType="ReviewVO">
 	INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score)
 	VALUES(#{r_writer}, #{r_itcode}, #{r_content}, #{r_date}, #{r_score})
