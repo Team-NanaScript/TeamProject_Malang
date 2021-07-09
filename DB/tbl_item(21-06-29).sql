@@ -8,13 +8,14 @@ CREATE TABLE `tbl_item` (
 	`it_title`			VARCHAR(125)	NOT NULL,
 	`it_price`			INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
-	`it_content`		VARCHAR(2000)	NOT NULL,
+	`it_content`		TEXT	NOT NULL,
 	`it_poto`			VARCHAR(100)
 );
 
 -- 칼럼 삭제
 -- ALTER TABLE tbl_item DROP COLUMN it_decode;
-
+-- 칼럼 타입변경
+ALTER TABLE tbl_item MODIFY it_content TEXT NOT NULL;
 
 drop table tbl_item;
 

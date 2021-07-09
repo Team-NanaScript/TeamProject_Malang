@@ -24,8 +24,12 @@ public class ReviewController {
 	@RequestMapping(value = {"/",""}, method=RequestMethod.GET)
 	public String home(Model model) {
 		
-		List<ReviewDTO> rList = rService.selectWithNickName();
-		model.addAttribute("REVIEWS", rList);
+//		List<ReviewDTO> rList = rService.selectWithNickName();
+//		for()
+//		rList.get(i)
+//		
+//		List<ReviewDTO> rItemList = rService.findByItem(r_itcode);
+//		model.addAttribute("REVIEWS", rList);
 		
 		return "item/review";
 	}
