@@ -36,7 +36,7 @@
 </select>
 
 <insert id="insert" parameterType="ItemVO">
-	INSTER INTO tbl_item (
+	INSERT INTO tbl_item (
 		it_code, it_decode, it_seid, it_ctcode, it_title,
 		it_price, it_shippingfee, it_content, it_photo
 	) VALUES (
