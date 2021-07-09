@@ -7,7 +7,7 @@ CREATE TABLE `tbl_item` (
 	`it_title`	VARCHAR(125)	NOT NULL,
 	`it_price`	INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
-	`it_content`	VARCHAR(2000)	NOT NULL,
+	`it_content`	TEXT	NOT NULL,
 	`it_photo`	VARCHAR(100)
 );
 
