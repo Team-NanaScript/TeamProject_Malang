@@ -15,4 +15,5 @@ public interface ItemDao extends GenericDao<ItemVO, String> {
 	public List<String> categorySub(@Param("ct_main") String ct_main);
 	
 	public List<CateVO> categorySubWithCode(@Param("ct_main") String ct_main);
+	public List<ItemVO> selectByCategory(@Param("it_ctcode") String it_ctcode);
 }

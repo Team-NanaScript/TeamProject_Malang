@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-07-08-001" />
+	href="${rootPath}/static/css/header.css?ver=2021-07-08-002" />
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")
@@ -89,10 +89,14 @@ li a {
 				</button>
 			</form>
 			<div class="icon">
-			<c:if test="${MEMBER.mb_role == 2 }">
-				<a><i class="fas fa-user" id="manage"></i></a>
-			</c:if>
-			<a><i class="fas fa-user" id="user"></i></a> 
+			<c:choose>
+				<c:when test="${MEMBER.mb_role == 2 }">
+					<a><i class="fas fa-user" id="manage"></i></a>
+				</c:when>
+				<c:otherwise>
+					<a><i class="fas fa-user" id="user"></i></a>
+				</c:otherwise>
+			</c:choose>
 			<a><i class="fas fa-shopping-cart" id="cart"></i></a>
 			</div>
 		</header>
@@ -108,20 +112,17 @@ li a {
 			</nav>
 
 			<nav id="two">
-				<c:if test="${empty MEMBER}">
 				<ul>
+				<c:if test="${empty MEMBER}">
 					<li class="login">로그인</li>
 					<li class="join">회원가입</li>
-					<li class="notice">고객센터</li>
-				</ul>
 				</c:if>
 				<c:if test="${not empty MEMBER}">
-				<ul>
 					<li><a>${MEMBER.mb_nickname}</a>님</li>
 					<li class="logout">로그아웃</li>
-					<li class="notice">고객센터</li>
-				</ul>
 				</c:if>
+				<li class="notice">고객센터</li>
+				</ul>
 			</nav>
 		</div>
 

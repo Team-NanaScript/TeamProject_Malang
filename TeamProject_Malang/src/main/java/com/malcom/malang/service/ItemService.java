@@ -13,4 +13,6 @@ public interface ItemService extends GenericService<ItemVO, String> {
 	public String categoryList(Model model);
 
 	public void itemByCategory(String cate, Model model);
+
+	public void itemByCategory(String cate, String sub, Model model);
 }

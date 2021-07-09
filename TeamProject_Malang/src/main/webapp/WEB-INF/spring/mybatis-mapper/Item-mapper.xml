@@ -13,31 +13,14 @@
 	WHERE it_code = #{it_code}
 </select>
 
-<select id="selectCategory" resultType="CateVO">
-	SELECT * FROM tbl_category
-</select>
-
-<select id="categoryMain" resultType="String">
-	SELECT ct_main FROM tbl_category
-	GROUP BY ct_main
-	ORDER BY ct_main DESC
-</select>
-
-<select id="categorySub" resultType="String">
-	SELECT ct_sub FROM tbl_category
-	WHERE ct_main = #{ct_main}
-	ORDER BY ct_code DESC
-</select>
-
-<select id="categorySubWithCode" resultType="CateVO">
-	SELECT ct_code, ct_sub FROM tbl_category
-	WHERE ct_main = #{ct_main}
-	ORDER BY ct_code DESC
+<select id="selectByCategory" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_ctcode = #{it_ctcode}
 </select>
 
 <insert id="insert" parameterType="ItemVO">
 	INSERT INTO tbl_item (
-		it_code, it_decode, it_seid, it_ctcode, it_title,
+		it_code, it_seid, it_ctcode, it_title,
 		it_price, it_shippingfee, it_content, it_photo
 	) VALUES (
 		#{it_code}, #{it_decode}, #{it_seid}, #{it_ctcode},
@@ -64,5 +47,28 @@
 	DELETE FROM tbl_item
 	WHERE it_code = #{it_code}
 </delete>
+
+<!-- category -->
+<select id="selectCategory" resultType="CateVO">
+	SELECT * FROM tbl_category
+</select>
+
+<select id="categoryMain" resultType="String">
+	SELECT ct_main FROM tbl_category
+	GROUP BY ct_main
+	ORDER BY ct_main DESC
+</select>
+
+<select id="categorySub" resultType="String">
+	SELECT ct_sub FROM tbl_category
+	WHERE ct_main = #{ct_main}
+	ORDER BY ct_code DESC
+</select>
+
+<select id="categorySubWithCode" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_code LIKE CONCAT( #{ct_main} , '%' )
+	ORDER BY ct_code DESC;
+</select>
 
 </mapper>
