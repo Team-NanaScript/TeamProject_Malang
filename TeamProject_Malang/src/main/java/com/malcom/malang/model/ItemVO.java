@@ -15,7 +15,6 @@ import lombok.ToString;
 @NoArgsConstructor
 public class ItemVO {
 	private String it_code;//			CHAR(8)		PRIMARY KEY,
-	private Long it_decode;//			BIGINT		NOT NULL,
 	private String it_seid;//			VARCHAR(20)	NOT NULL,
 	private String it_ctcode;//			CHAR(4)		NOT NULL,
 	private String it_title;//			VARCHAR(125)	NOT NULL,

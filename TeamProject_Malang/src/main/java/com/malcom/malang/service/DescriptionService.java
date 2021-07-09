@@ -4,5 +4,7 @@ import com.malcom.malang.model.DescriptionVO;
 
 public interface DescriptionService extends GenericService<DescriptionVO, Long>{
 
+	DescriptionVO findByItem(String itcode);
+
 
 }

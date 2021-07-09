@@ -84,4 +84,10 @@ public class ReviewServiceImplV1 implements ReviewService{
 		
 		return rDao.countScore(r_itcode);
 	}
+
+	@Override
+	public List<ReviewDTO> selectWithNickName() {
+		
+		return rDao.selectWithNickName();
+	}
 }
