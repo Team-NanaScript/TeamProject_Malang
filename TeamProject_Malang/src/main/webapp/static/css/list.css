@@ -20,17 +20,16 @@ section.item_section {
 
 
 section.item_section div.item_content {
-	border: 1px solid skyblue;
 	margin: 5px;
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
 	width: 250px;
 	height: 350px;
 	border: 1px solid rgba(170, 170, 170, 0.377);
 	border-radius: 5px;
 }
 section.item_section div.item_content.empty {
+	flex-grow:1;
 	align-items: center;
 	justify-content: center;
 }
@@ -41,6 +40,7 @@ section.item_section div.item_content.empty h2{
 }
 
 section.item_section div.item_content img {
+	border-radius:5px;
 	margin: 3px auto;
 	width: 240px;
 	height: 240px;
