@@ -36,15 +36,33 @@
 </select>
 
 <insert id="insert" parameterType="ItemVO">
-
+	INSTER INTO tbl_item (
+		it_code, it_decode, it_seid, it_ctcode, it_title,
+		it_price, it_shippingfee, it_content, it_photo
+	) VALUES (
+		#{it_code}, #{it_decode}, #{it_seid}, #{it_ctcode},
+		#{it_title}, #{it_price}, #{it_shippingfee},
+		#{it_content}, #{it_photo}
+	)
 </insert>
 
 <update id="update" parameterType="ItemVO">
-
+	UPDATE tbl_item SET
+		it_decode = #{it_decode},
+		it_seid = #{it_seid},
+		it_ctcode = #{it_ctcode},
+		it_title = #{it_title},
+		it_price = #{it_price},
+		it_shippingfee = #{it_shippingfee},
+		it_content = #{it_content},
+		it_photo = #{it_photo}
+	WHERE
+		it_code = #{it_code}
 </update>
 
 <delete id="delete">
-
+	DELETE FROM tbl_item
+	WHERE it_code = #{it_code}
 </delete>
 
 </mapper>
