@@ -2,7 +2,6 @@ use db_malang;
 
 CREATE TABLE `tbl_item` (
 	`it_code`	CHAR(8)	NOT NULL PRIMARY KEY,
-	`it_decode`	BIGINT	NOT NULL,
 	`it_seid`	VARCHAR(20)	NOT NULL,
 	`it_ctcode`	CHAR(4)	NOT NULL,
 	`it_title`	VARCHAR(125)	NOT NULL,
@@ -67,11 +66,13 @@ CREATE TABLE `tbl_review` (
 );
 
 CREATE TABLE `tbl_description` (
-	`de_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`de_shippingfee`	VARCHAR(300),
-	`de_shipping`	VARCHAR(300),
-	`de_refund`	VARCHAR(300)
+	`de_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
+	`de_itcode`	CHAR(8)	NOT NULL,
+	`de_shippingfee`	VARCHAR(300)	NULL,
+	`de_shipping`	VARCHAR(300)	NULL,
+	`de_refund`	VARCHAR(300)	NULL
 );
+
 
 CREATE TABLE `tbl_board` (
 	`bd_seq`	BIGINT	NOT NULL PRIMARY KEY,
@@ -89,10 +90,11 @@ CREATE TABLE `tbl_comment` (
 );
 
 
-ALTER TABLE `tbl_item` 
-ADD CONSTRAINT `fk_description_TO_item` 
-FOREIGN KEY (`it_decode`)
-REFERENCES `tbl_description` (`de_code`);
+ALTER TABLE `tbl_description` 
+ADD CONSTRAINT `fk_item_TO_description` 
+FOREIGN KEY (`de_itcode`)
+REFERENCES `tbl_item` (`it_code`)
+ON DELETE CASCADE;
 
 ALTER TABLE `tbl_item` 
 ADD CONSTRAINT `fk_member_TO_item` 
@@ -163,7 +165,7 @@ ON DELETE CASCADE;
 
 -- 외래키 확인하기
 select * from information_schema.table_constraints where constraint_schema = 'db_malang';
-alter table tbl_select_option drop foreign key fk_it;
+alter table tbl_item drop foreign key fk_description_TO_item;
 
 -- tbl_item 의 칼럼명 변경 ( it_poto -> it_photo )
 ALTER TABLE tbl_item CHANGE it_poto it_photo VARCHAR(100);

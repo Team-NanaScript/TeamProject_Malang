@@ -13,6 +13,11 @@
 	WHERE de_code = #{de_code}
 </select>
 
+<select id="findByItem" resultType="DescriptionVO">
+	SELECT * FROM tbl_description
+	WHERE de_itcode = #{de_itcode}
+</select>
+
 <insert id="insert" parameterType="DescriptionVO">
 	INSERT INTO tbl_description(de_shippingfee, de_shipping, de_refund)
 	VALUES(#{de_shippingfee}, #{de_shipping}, #{de_refund})

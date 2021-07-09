@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-06-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/info.css?ver=2021-07-06-001" />
+	href="${rootPath}/static/css/info.css?ver=2021-07-09-001" />
 <script>
 	var rootPath = "${rootPath}"
 </script>
@@ -104,9 +104,11 @@ section.img_section div.image_preview {
 						</c:forEach>
 					</ul>
 					<ul id="btn_box" class="btn_box">
-						<button id="btn_pack" class="btn_pack" type="button">장바구니</button>
-						<button id="btn_question" class="btn_question" type="button">문의하기</button>
-						<button id="btn_buy" class="btn_buy" type="button">구매하기</button>
+						<li>
+							<button id="btn_pack" class="btn_pack" type="button">장바구니</button>
+							<button id="btn_question" class="btn_question" type="button">문의하기</button>
+							<button id="btn_buy" class="btn_buy" type="button">구매하기</button>
+						</li>
 					</ul>
 				</form>
 

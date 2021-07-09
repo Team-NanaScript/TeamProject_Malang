@@ -42,4 +42,10 @@ public class DescriptionServiceImplV1 implements DescriptionService{
 		return dDao.findById(pk);
 	}
 
+	@Override
+	public DescriptionVO findByItem(String itcode) {
+		
+		return dDao.findByItem(itcode);
+	}
+
 }

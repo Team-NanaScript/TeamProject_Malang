@@ -43,7 +43,7 @@ public class InfoController {
 		itcode = "00000005"; // 수정필요
 		
 		ItemVO iVO = iService.findById(itcode);
-		Long decode = iVO.getIt_decode();
+//		Long decode = iVO.getIt_decode();
 		
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
@@ -54,7 +54,7 @@ public class InfoController {
 		//List<SelectOptionVO> sOptionContent = soService.findByOptionContent(itcode);
 		soService.findByOptionContent(itcode, model);
 		
-		DescriptionVO dVO = dService.findById(decode);
+		DescriptionVO dVO = dService.findByItem(itcode);
 		List<QnaDTO> qList = qService.findByItem(itcode);
 		List<ReviewDTO> rList = rService.findByItem(itcode);
 		

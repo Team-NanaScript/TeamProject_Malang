@@ -12,5 +12,6 @@ public interface ReviewDao extends GenericDao<ReviewVO, Long>{
 	public List<ReviewDTO> findByItem(@Param("r_itcode") String r_itcode);
 	public Float avgScore(@Param("r_itcode") String r_itcode);
 	public Integer countScore(@Param("r_itcode") String r_itcode);
+	public List<ReviewDTO> selectWithNickName();
 	
 }
