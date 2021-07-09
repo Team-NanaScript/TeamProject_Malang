@@ -19,14 +19,14 @@ public class ItemController {
 	
 	protected final ItemService itService;
 
-//	@RequestMapping(value="/{cate}", method=RequestMethod.GET)
-//	public String category(@PathVariable("cate") String cate, Model model) {
-//		if(cate.isBlank() || cate.isEmpty()) {
-//			return "redirect:/";
-//		}
-//		itService.categoryList(model);
-//		return "item/category";
-//	}
+	@RequestMapping(value="/{cate}", method=RequestMethod.GET)
+	public String category(@PathVariable("cate") String cate, Model model) {
+		if(cate.isBlank() || cate.isEmpty()) {
+			return "redirect:/";
+		}
+		itService.itemByCategory(cate, null, model);
+		return "item/category";
+	}
 	
 	@RequestMapping(value="/{cate}/{sub}", method=RequestMethod.GET)
 	public String subCategory(@PathVariable("cate") String cate,
@@ -34,14 +34,13 @@ public class ItemController {
 		if(cate.isBlank() || cate.isEmpty()) {
 			return "redirect:/";
 		}
-		if(sub.isBlank() || sub.isEmpty()) {
-			// 처음 sub 보여주기
-			// cate > sub list setting attribute
-			// sub click > ( sub ) category code GET
-			// ( sub ) category code request parameter > list setting attribute  
-//			itService.itemByCategory(cate, sub, model);
-		}
-		itService.categoryList(model);
+		// 처음 sub 보여주기
+		// cate > sub list setting attribute
+		// sub click > ( sub ) category code GET
+		// ( sub ) category code request parameter > list setting attribute  
+		itService.itemByCategory(cate, sub, model);
+		
+//		itService.categoryList(model);
 		return "item/category";
 	}
 	

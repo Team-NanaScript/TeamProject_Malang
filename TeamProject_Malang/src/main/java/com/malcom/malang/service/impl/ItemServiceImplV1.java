@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.malcom.malang.dao.ItemDao;
+import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.service.ItemService;
 
@@ -83,6 +84,21 @@ public class ItemServiceImplV1 implements ItemService{
 	public void itemByCategory(String cate, Model model) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void itemByCategory(String cate, String sub, Model model) {
+		// 대분류 세팅, 소분류 리스트 세팅, 아이템 리스트 세팅
+		List<CateVO> category = itDao.categorySubWithCode(cate);
+		log.debug("{} 해당하는 카테고리 리스트 {}", cate,category.toString());
+		model.addAttribute("CATE_MAIN",category.get(0).getCt_main());
+		model.addAttribute("CATE_SUB", category);
+		if(sub == null) {
+			List<ItemVO> itemList = itDao.selectByCategory(category.get(0).getCt_code());
+			model.addAttribute("ITEM_LIST", itemList);
+			log.debug("분류코드 {}", category.get(0).getCt_code());
+			log.debug("아이템 리스트 {}",itemList);
+		}
 	}
 
 }

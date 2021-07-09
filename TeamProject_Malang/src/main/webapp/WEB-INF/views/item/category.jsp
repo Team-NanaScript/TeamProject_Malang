@@ -21,7 +21,7 @@
 		<nav id="cate_nav">
 			<ul>
 				<c:forEach items="${CATE_SUB}" var="SUB">
-					<li class="tab"><h3>${SUB}</h3></li>
+					<li class="tab" data-code="${SUB.ct_code}"><h3>${SUB.ct_sub}</h3></li>
 				</c:forEach>
 			</ul>
 		</nav>
@@ -29,4 +29,9 @@
 	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+document.querySelector("nav#cate_nav").addEventListener("click",()=>{
+	let tab = ev.target.className
+})
+</script>
 </html>
