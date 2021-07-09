@@ -64,3 +64,8 @@ nav#cate_nav li:nth-of-type(1) {
 	margin-left: 10px;
 	background-color: white;
 }
+
+a {
+	text-decoration: none;
+	color:inherit;
+}

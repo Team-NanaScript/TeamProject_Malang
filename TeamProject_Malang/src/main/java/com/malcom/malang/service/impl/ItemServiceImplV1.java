@@ -83,22 +83,27 @@ public class ItemServiceImplV1 implements ItemService{
 	@Override
 	public void itemByCategory(String cate, Model model) {
 		// TODO Auto-generated method stub
-		
+//		List<ItemVO> itemList = itDao.selectByCategory(cate);
+//		log.debug("{} 카테고리 아이템 리스트 {}",cate,itemList.toString());
+//		model.addAttribute("ITEM_LIST", itemList);
 	}
 
 	@Override
 	public void itemByCategory(String cate, String sub, Model model) {
 		// 대분류 세팅, 소분류 리스트 세팅, 아이템 리스트 세팅
+		log.debug("카테고리 {}, {}",cate, sub);
 		List<CateVO> category = itDao.categorySubWithCode(cate);
-		log.debug("{} 해당하는 카테고리 리스트 {}", cate,category.toString());
+//		log.debug("{} 해당하는 카테고리 리스트 {}", cate,category.toString());
 		model.addAttribute("CATE_MAIN",category.get(0).getCt_main());
 		model.addAttribute("CATE_SUB", category);
+		List<ItemVO> itemList = new ArrayList<ItemVO>();
 		if(sub == null) {
-			List<ItemVO> itemList = itDao.selectByCategory(category.get(0).getCt_code());
-			model.addAttribute("ITEM_LIST", itemList);
-			log.debug("분류코드 {}", category.get(0).getCt_code());
-			log.debug("아이템 리스트 {}",itemList);
+			itemList = itDao.selectByCategory(category.get(0).getCt_code());
+		} else {
+			itemList = itDao.selectByCategory(sub);
 		}
+		log.debug("{}, {} 카테고리 아이템 리스트 {}",cate,sub, itemList.toString());
+		model.addAttribute("ITEM_LIST", itemList);
 	}
 
 }
