@@ -23,7 +23,7 @@
 		it_code, it_seid, it_ctcode, it_title,
 		it_price, it_shippingfee, it_content, it_photo
 	) VALUES (
-		#{it_code}, #{it_decode}, #{it_seid}, #{it_ctcode},
+		#{it_code}, #{it_seid}, #{it_ctcode},
 		#{it_title}, #{it_price}, #{it_shippingfee},
 		#{it_content}, #{it_photo}
 	)

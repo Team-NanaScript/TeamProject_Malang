@@ -89,17 +89,6 @@
     input#author{
     display:none;
     }
-    
-    .ng {
-    	font-family: 'Nanum Gothic', sans-serif;
-    }
-    .mj {
-    	font-family: 'Nanum Myeongjo', serif;
-    }
-    .sans {
-    	font-family: 'Noto Sans KR', sans-serif;
-    }
-  
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>

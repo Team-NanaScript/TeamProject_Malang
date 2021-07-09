@@ -1,10 +1,15 @@
 package com.malcom.malang.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.OptionVO;
@@ -32,13 +37,17 @@ public class insertController {
 	}
 	
 	@RequestMapping(value="/insert", method = RequestMethod.POST)
-	public String insert(ItemVO itVO) { // , @RequestBody Map<String, String> maps) {
+	public String insert(ItemVO itVO, MultipartFile one_file,
+			@RequestParam(name="multi_file", required = false) MultipartHttpServletRequest multi_file) throws IOException { // , @RequestBody Map<String, String> maps) {
 		
 		
+		log.debug("불러온 값 {}", itVO);
 //		log.debug("옵션 {}",opList.toString());
 //		log.debug("상품정보 {}", itVO.toString());
 		
-		iService.insert(itVO);
+		iService.insert(itVO, one_file, multi_file);
+		
+		
 		
 		
 		return "/item/insert";
