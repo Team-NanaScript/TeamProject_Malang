@@ -24,7 +24,11 @@ public class ItemController {
 		if(cate.isBlank() || cate.isEmpty()) {
 			return "redirect:/";
 		}
-		itService.itemByCategory(cate, null, model);
+		if(cate.length() < 2 ) {
+			itService.itemByCategory(cate, null, model);
+		} else {
+			itService.itemByCategory(cate.substring(0,1), cate, model);
+		}
 		return "item/category";
 	}
 	

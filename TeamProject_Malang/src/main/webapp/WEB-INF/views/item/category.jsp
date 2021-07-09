@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/category.css?ver=2021-06-15" />
+	href="${rootPath}/static/css/category.css?ver=2021-07-09-001" />
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
@@ -21,7 +21,9 @@
 		<nav id="cate_nav">
 			<ul>
 				<c:forEach items="${CATE_SUB}" var="SUB">
-					<li class="tab" data-code="${SUB.ct_code}"><h3>${SUB.ct_sub}</h3></li>
+					<li class="tab" id="tab">
+					<h3><a href="${rootPath}/item/${SUB.ct_code}">${SUB.ct_sub}</a></h3>
+					</li>
 				</c:forEach>
 			</ul>
 		</nav>
@@ -29,9 +31,4 @@
 	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
-<script>
-document.querySelector("nav#cate_nav").addEventListener("click",()=>{
-	let tab = ev.target.className
-})
-</script>
 </html>
