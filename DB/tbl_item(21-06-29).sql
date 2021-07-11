@@ -9,7 +9,7 @@ CREATE TABLE `tbl_item` (
 	`it_price`			INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
 	`it_content`		TEXT	NOT NULL,
-	`it_poto`			VARCHAR(100)
+	`it_photo`			VARCHAR(100)
 );
 
 -- 칼럼 삭제

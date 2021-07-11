@@ -39,12 +39,6 @@ VALUES('nana','00000005',
                 다음에 또 다른 사진으로 작업 맡길께용♥️',
 '2021-07-05', '5', '');
 
-
-INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score, r_poto)
-VALUES('nana','00000005',
-'너무 이뻐요! 사진이랑은 다른 포근한 느낌도 있어서 정말 마음에 들어요 :) 감사합니다!',
-'2021-07-02', '4', '');
-
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_review AS
 SELECT R.r_code, R.r_writer, R.r_itcode, 

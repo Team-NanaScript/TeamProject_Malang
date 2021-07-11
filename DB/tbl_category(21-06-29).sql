@@ -65,12 +65,12 @@ insert into tbl_category(ct_code, ct_main, ct_sub)
 values('P006', '반려동물용품', '침구');
 insert into tbl_category(ct_code, ct_main, ct_sub)
 values('P007', '반려동물용품', '악세사리');
+-- insert into tbl_category(ct_code, ct_main, ct_sub)
+-- values('P008', '반려동물용품', '쿠션');
 insert into tbl_category(ct_code, ct_main, ct_sub)
-values('P008', '반려동물용품', '쿠션');
+values('P008', '반려동물용품', '그릇');
 insert into tbl_category(ct_code, ct_main, ct_sub)
-values('P009', '반려동물용품', '그릇');
-insert into tbl_category(ct_code, ct_main, ct_sub)
-values('P010', '반려동물용품', '장난감');
+values('P009', '반려동물용품', '장난감');
 
 
 SELECT ct_sub FROM tbl_category
@@ -80,7 +80,7 @@ SELECT ct_main FROM tbl_category
 GROUP BY ct_main ORDER BY ct_code;
 
 DELETE FROm tbl_category
-WHERE ct_code = 'P000';
+WHERE ct_code = 'P008';
 
 SELECT ct_main FROM tbl_category
 group by ct_main
