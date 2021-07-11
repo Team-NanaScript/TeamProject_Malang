@@ -8,12 +8,14 @@ import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 
 public interface ItemDao extends GenericDao<ItemVO, String> {
-
+	
+	public List<ItemVO> findByTitle(@Param("it_title") String it_title);
+	public List<ItemVO> selectByCategory(@Param("it_ctcode") String it_ctcode);
+	
 	// category select
 	public List<CateVO> selectCategory();
 	public List<String> categoryMain();
 	public List<String> categorySub(@Param("ct_main") String ct_main);
 	
-	public List<CateVO> categorySubWithCode(@Param("ct_main") String ct_main);
-	public List<ItemVO> selectByCategory(@Param("it_ctcode") String it_ctcode);
+	public List<CateVO> categorySubWithCode(@Param("ct_main") String ct_main);	
 }

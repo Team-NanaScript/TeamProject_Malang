@@ -67,7 +67,7 @@ public class ItemServiceImplV1 implements ItemService{
 			todayList.add(allList.get(tmp));
 			allList.remove(tmp);
 		}
-		log.debug(todayList.get(0).toString());
+//		log.debug(todayList.get(0).toString());
 		return todayList;
 	}
 
@@ -81,19 +81,10 @@ public class ItemServiceImplV1 implements ItemService{
 	}
 
 	@Override
-	public void itemByCategory(String cate, Model model) {
-		// TODO Auto-generated method stub
-//		List<ItemVO> itemList = itDao.selectByCategory(cate);
-//		log.debug("{} 카테고리 아이템 리스트 {}",cate,itemList.toString());
-//		model.addAttribute("ITEM_LIST", itemList);
-	}
-
-	@Override
 	public void itemByCategory(String cate, String sub, Model model) {
 		// 대분류 세팅, 소분류 리스트 세팅, 아이템 리스트 세팅
-		log.debug("카테고리 {}, {}",cate, sub);
+//		log.debug("카테고리 {}, {}",cate, sub);
 		List<CateVO> category = itDao.categorySubWithCode(cate);
-//		log.debug("{} 해당하는 카테고리 리스트 {}", cate,category.toString());
 		model.addAttribute("CATE_MAIN",category.get(0).getCt_main());
 		model.addAttribute("CATE_SUB", category);
 		List<ItemVO> itemList = new ArrayList<ItemVO>();
@@ -102,8 +93,14 @@ public class ItemServiceImplV1 implements ItemService{
 		} else {
 			itemList = itDao.selectByCategory(sub);
 		}
-		log.debug("{}, {} 카테고리 아이템 리스트 {}",cate,sub, itemList.toString());
+//		log.debug("{}, {} 카테고리 아이템 리스트 {}",cate,sub, itemList.toString());
 		model.addAttribute("ITEM_LIST", itemList);
+	}
+
+	@Override
+	public List<ItemVO> findByTitle(String keyword) {
+		// item list by search keyword
+		return itDao.findByTitle(keyword);
 	}
 
 }
