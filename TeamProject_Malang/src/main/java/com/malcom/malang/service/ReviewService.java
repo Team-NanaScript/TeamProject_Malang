@@ -8,7 +8,7 @@ import com.malcom.malang.model.ReviewVO;
 public interface ReviewService extends GenericService<ReviewVO, Long>{
 	public List<ReviewDTO> selectByWriter(Long r_writer);
 	public List<ReviewDTO> findByItem(String r_itcode);
-	public Integer avgScore(String r_itcode);
+	public String avgScore(String r_itcode);
 	public Integer countScore(String r_itcode);
 	public List<ReviewDTO> selectWithNickName();
 }

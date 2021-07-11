@@ -49,15 +49,15 @@ section.img_section div.image_preview {
 
 				<ol>
 					<li>후기</li>
-					<li>
-						<c:choose>
+					<li>${AVG}
+<%-- 						<c:choose>
 							<c:when test="${AVG eq 0}">☆☆☆☆☆</c:when>
 							<c:when test="${AVG eq 1}">★☆☆☆☆</c:when>
 							<c:when test="${AVG eq 2}">★★☆☆☆</c:when>
 							<c:when test="${AVG eq 3}">★★★☆☆</c:when>
 							<c:when test="${AVG eq 4}">★★★★☆</c:when>
 							<c:otherwise>★★★★★</c:otherwise>
-						</c:choose>
+						</c:choose> --%>
 						 (${COUNT})</li>
 				</ol>
 				<ol>

@@ -51,8 +51,26 @@
       <section>
         <article class="review-list">
         
-        <c:forEach items="" var="">
+        <c:forEach items="${ITEMS}" var="IT">
           <ul class="review">
+            <div class="review-img"></div>
+            <li>
+              <p>${IT.it_seid}</p>
+              <h3>${IT.title}</h3>
+            </li>
+            <c:forEach items="${REVIEWS[IT]}" var="RV" begin=0 end=1>
+	            <li>
+	              <div>${RV.mb_nickname}
+	              (${RV.r_writer}) 
+	              ${RV.r_score}</div>
+	              <p>${RV.r_content}</p>
+	            </li>
+            </c:forEach>
+          </ul>
+		</c:forEach>
+		
+		
+<!-- 	<ul class="review">
             <div class="review-img"></div>
             <li>
               <p>그린달</p>
@@ -73,8 +91,7 @@
                 다들 어여 주문하세여!!!!😆😆
               </p>
             </li>
-          </ul>
-		</c:forEach>
+          </ul> -->
          
         </article>
       </section>

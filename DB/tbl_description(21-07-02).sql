@@ -23,6 +23,7 @@ VALUES(
 1:1 주문 제작 상품의 특성상 작업이 시작되면 교환/환불이 불가합니다.');
 
 DELETE FROM tbl_description
-WHERE de_itcode = '00000009';
+WHERE de_itcode = '00000010';
+
 
 -- 줄바꿈표시를 자바에서 \n replace </br> 

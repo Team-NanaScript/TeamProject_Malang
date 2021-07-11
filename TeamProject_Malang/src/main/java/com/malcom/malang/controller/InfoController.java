@@ -47,7 +47,7 @@ public class InfoController {
 		
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
-		Integer avgScore = rService.avgScore(itcode);
+		String avgScore = rService.avgScore(itcode);
 		Integer countScore = rService.countScore(itcode);
 		
 		List<String> sOptionName = soService.findByOptionName(itcode);
