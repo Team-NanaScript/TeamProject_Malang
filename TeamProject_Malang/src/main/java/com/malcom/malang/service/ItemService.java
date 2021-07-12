@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 
 public interface ItemService extends GenericService<ItemVO, String> {
@@ -15,4 +16,6 @@ public interface ItemService extends GenericService<ItemVO, String> {
 	public void itemByCategory(String cate, String sub, Model model);
 
 	public List<ItemVO> findByTitle(String keyword);
+	
+	public List<CateVO> selectAllCate();
 }
