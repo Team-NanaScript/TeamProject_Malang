@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-06-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/info.css?ver=2021-07-09-001" />
+	href="${rootPath}/static/css/info.css?ver=2021-07-09-004" />
 <script>
 	var rootPath = "${rootPath}"
 </script>
@@ -81,9 +81,10 @@ section.img_section div.image_preview {
 						<ol>
 							<li>${SN}</li>
 							<li>
-								<select name="" id="">
+								<select name="prices" id="price_select">
+									<option value="no">선택하세요</option>
 									<c:forEach items="${SOCONTENT[SN]}" var="SC">
-										<option value="">${SC.so_content}
+										<option value="${SC.so_code}">${SC.so_content}
 											<c:if test="${not empty SC.so_price}">
 												( +${SC.so_price}원 )
 											</c:if>
@@ -93,7 +94,15 @@ section.img_section div.image_preview {
 							</li>
 						</ol>
 						</c:forEach>
-						<h2 id="info_price">${ITEM.it_price} 원</h2>
+					</ul>
+					<ul id="selected_item">
+						<li>아니 어떻게 넘기지 정보를</li>
+					</ul>
+					<ul>
+						<ol>
+							<li>총 작품금액</li>
+							<li><h2 id="info_price">${ITEM.it_price} 원</h2></li>
+						</ol>
 					</ul>
 					<ul id="btn_box" class="btn_box">
 						<li>
@@ -119,7 +128,7 @@ section.img_section div.image_preview {
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	
 	<script>
-		document.querySelector("")
+		document.querySelector("select#price_select").addEventListener("click",())
 	</script>
 </body>
 
