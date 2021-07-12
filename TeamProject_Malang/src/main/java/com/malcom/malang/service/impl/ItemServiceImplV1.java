@@ -25,7 +25,7 @@ public class ItemServiceImplV1 implements ItemService{
 	@Override
 	public List<ItemVO> select() {
 		List<ItemVO> itemList = itDao.select();
-		log.debug(itemList.get(0).toString());
+//		log.debug(itemList.get(0).toString());
 		return itemList;
 	}
 
