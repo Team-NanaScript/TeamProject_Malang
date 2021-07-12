@@ -36,7 +36,6 @@
 
 <update id="update" parameterType="ItemVO">
 	UPDATE tbl_item SET
-		it_decode = #{it_decode},
 		it_seid = #{it_seid},
 		it_ctcode = #{it_ctcode},
 		it_title = #{it_title},
@@ -58,15 +57,20 @@
 	SELECT * FROM tbl_category
 </select>
 
+<select id="findCateById" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_code = #{ct_code}
+</select>
+
 <select id="categoryMain" resultType="String">
 	SELECT ct_main FROM tbl_category
 	GROUP BY ct_main
 	ORDER BY ct_main DESC
 </select>
 
-<select id="categorySub" resultType="String">
-	SELECT ct_sub FROM tbl_category
-	WHERE ct_main = #{ct_main}
+<select id="categorySub" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_parentcode = #{ct_parentcode}
 	ORDER BY ct_code DESC
 </select>
 

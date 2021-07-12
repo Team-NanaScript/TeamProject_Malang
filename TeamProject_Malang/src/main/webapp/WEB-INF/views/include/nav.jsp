@@ -87,7 +87,7 @@ var rootPath ="${rootPath}";
 			<a id="logo" href="${rootPath}">MALANG</a>
 			<form id="text">
 				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="text" />
-				<button type="submit">
+				<button type="button">
 					<i class="fas fa-search" id="icon" type="submit"></i>
 				</button>
 			</form>
@@ -106,10 +106,10 @@ var rootPath ="${rootPath}";
 		<div class="adiv">
 			<nav id="one">
 				<ul>
-					<li class="item/I">일러스트</li>
-					<li class="item/H">수공예</li>
-					<li class="item/E">수제간식</li>
-					<li class="item/P">반려동물용품</li>
+					<li class="item/0003">일러스트</li>
+					<li class="item/0002">수공예</li>
+					<li class="item/0001">수제간식</li>
+					<li class="item/0004">반려동물용품</li>
 					<li class="review">실시간 후기</li>
 				</ul>
 			</nav>
@@ -129,13 +129,11 @@ var rootPath ="${rootPath}";
 			</nav>
 		</div>
 
-
-
 		<div id="hid_nav">
 			<a id="logo" href="${rootPath}">MALANG</a>
 			<form id="hid">
 				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
-				<button type="submit">
+				<button type="button">
 					<i class="fas fa-search" id="icon"></i>
 				</button>
 			</form>
@@ -143,5 +141,5 @@ var rootPath ="${rootPath}";
 	</div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-07-12-000"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-07-12-002"></script>
 </html>
