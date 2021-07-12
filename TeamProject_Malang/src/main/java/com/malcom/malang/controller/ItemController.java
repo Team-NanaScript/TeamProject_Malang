@@ -44,7 +44,7 @@ public class ItemController {
 		return "item/review";
 	}
 	
-	@RequestMapping(value = "/search/{keword}", method=RequestMethod.GET)
+	@RequestMapping(value = "/search/{keyword}", method=RequestMethod.GET)
 	public String review(@PathVariable("keyword") String keyword, Model model) {
 		log.debug("keyword {}", keyword );
 		List<ItemVO> itemList = itService.findByTitle(keyword);

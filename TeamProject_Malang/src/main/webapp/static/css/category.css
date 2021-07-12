@@ -15,27 +15,6 @@ div.cate_header .cate_name {
 	background-color: #9e6e4e;
 }
 
-/* search */
-div.search_header {
-	height: 90px;
-}
-
-div.search_header .header_wrap {
-	width: 1056px;
-	margin: 0 auto;
-	line-height: 5rem;
-	border-bottom: 1px solid gray;
-	display: flex;
-}
-
-div.search_header .header_wrap h3 {
-	font-size:23px;
-}
-
-div.search_header .header_wrap p {
-	margin-left:5px;	
-}
-
 nav#cate_nav {
 	display: flex;
 	width: 1056px;

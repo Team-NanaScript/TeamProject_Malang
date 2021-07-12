@@ -50,3 +50,35 @@ section.item_section div.item_content div {
 	width: 240px;
 	margin: 2px auto;
 }
+
+section.item_section div.item_content div h3 {
+	width: inherit;
+	height: 52px;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* search */
+div.search_header {
+	height: 90px;
+}
+
+div.search_header .header_wrap {
+	width: 1056px;
+	margin: 0 auto;
+	line-height: 5rem;
+	border-bottom: 1px solid gray;
+	display: flex;
+}
+
+div.search_header .header_wrap h3 {
+	font-size:23px;
+}
+
+div.search_header .header_wrap p {
+	margin-left:5px;	
+}
