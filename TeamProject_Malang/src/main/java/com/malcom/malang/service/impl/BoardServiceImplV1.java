@@ -31,8 +31,9 @@ public class BoardServiceImplV1 implements BoardService{
 		// TODO Auto-generated method stub
 		
 		String sDate = DateConfig.sDate("yyyy-mm-dd");
+		String sTime = DateConfig.stime("hh:MM:ss");
 		
-		vo.setBd_date(sDate);
+		vo.setBd_date(sDate + " " + sTime);
 		
 		bDao.insert(vo);
 		
@@ -44,7 +45,9 @@ public class BoardServiceImplV1 implements BoardService{
 		
 		
 		String sDate = DateConfig.sDate("yyyy-MM-dd");
-		vo.setBd_date(sDate);
+		String sTime = DateConfig.stime("hh:MM:ss");
+		
+		vo.setBd_date(sDate + " " + sTime);
 		
 		Integer result = bDao.update(vo);
 	

@@ -41,8 +41,10 @@
 		
 	</div>
 	
-	<div id="item_category">
-	
+	<div class="item_category">
+		<select id="cate_st">
+		
+		</select>
 	</div>
 	
 </form>
@@ -87,6 +89,7 @@ function submitContents(){
 
 
 document.querySelector("#btn_option_add").addEventListener("click", ()=>{
+	
 	
 	let frm_input = document.querySelector("form#input")
 	let div_io = document.querySelector("div.item_option")
@@ -140,5 +143,28 @@ function json(){
 }
 
 */
+
+let cateList = JSON.parse('${cateList}');
+
+let cate1 = new Array();
+
+
+for(let i = 0 ; i < cateList.length ; i++){
+	
+		
+	let cate1_obj = new Object();			
+			
+	cate1_obj.ct_code = cateList[i].ct_code
+	cate1_obj.ct_main = cateList[i].ct_main
+	cate1.push(cate1_obj)
+
+		
+	console.log(cate1)
+}
+
+for(let j = 0 ; j < cate1.length )
+
+
+
 </script>
 </html>

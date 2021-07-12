@@ -28,11 +28,23 @@ public class NoticeController {
 	protected final BoardService bService;
 	protected final CommentService cService;
 	
+	
+	private List<BoardVO> subDate(List<BoardVO> bList) {
+	
+		for(int i = 0 ; i < bList.size() ; i++) {
+			String date = bList.get(i).getBd_date().substring(0, 10);
+			bList.get(i).setBd_date(date);
+		}
+		
+		return bList;
+	}
+	
 	@RequestMapping(value = {"/",""} , method = RequestMethod.GET)
 	public String notice(Model model) {
 		
 		List<BoardVO> bdVO = bService.select();
-		model.addAttribute("BDLIST",bdVO);
+		List<BoardVO> bdList = this.subDate(bdVO);
+		model.addAttribute("BDLIST",bdList);
 
 		return "board/notice";
 	}
@@ -158,11 +170,9 @@ public class NoticeController {
 	@RequestMapping(value="/search/title" , method=RequestMethod.GET)
 	public String searchTitle(Model model, String keyword) {
 		
-		log.debug("키워드 {}",keyword);
 		
-		List<BoardVO> bdList = bService.findByTitle(keyword);
-		log.debug("검색결과 {}", bdList.toString());
-		
+		List<BoardVO> bList = bService.findByTitle(keyword);
+		List<BoardVO> bdList = this.subDate(bList);
 		model.addAttribute("RESULT", bdList);
 		
 		
@@ -174,12 +184,10 @@ public class NoticeController {
 		
 		log.debug("키워드 {}",keyword);
 		
-		List<BoardVO> bdList = bService.findByContent(keyword);
-		log.debug("검색결과 {}", bdList.toString());
-		
+		List<BoardVO> bList = bService.findByContent(keyword);
+		List<BoardVO> bdList = this.subDate(bList);
 		model.addAttribute("RESULT", bdList);
 		
-		// return redirect:/notice
 		return "/board/notice";
 	}
 

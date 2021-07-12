@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-06-002"/>
+<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-12-001"/>
 </head>
 <body>
 
@@ -17,6 +17,7 @@
 			<div class="notice_view">
 				<div id="nv_header">
 					<h2 id="title">${VIEW.bd_title}</h2>
+					<p>${VIEW.bd_date}</p>
 					<p id="author">${VIEW.bd_author}</p>
 				</div>
 

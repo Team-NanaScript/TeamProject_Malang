@@ -12,7 +12,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CateVO {
-	private String ct_code;//`	CHAR(4)	NOT NULL PRIMARY KEY,
-	private String ct_main;//`	VARCHAR(30)	NOT NULL,
-	private String ct_sub;//`	VARCHAR(30)	NOT NULL
+	private String ct_code;//	char(4)
+	private String ct_name;//	varchar(30)
+	private String ct_parentcode;//	char(4)
+	private String ct_tier;//	char(1)
 }

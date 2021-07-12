@@ -24,7 +24,8 @@ div#nv_header h2#title {
 }
 
 div#nv_header p#author {
-	margin-left: 0 auto;
+	margin-left: auto;
+	font-weight: bold;
 }
 
 div#nv_content {
@@ -100,10 +101,6 @@ div#cc {
 	display: flex;
 }
 
-div#nv_header p {
-	font-weight:bold;
-	margin-left:auto;
-}
 
 div#btn_content {
 	position: relative;

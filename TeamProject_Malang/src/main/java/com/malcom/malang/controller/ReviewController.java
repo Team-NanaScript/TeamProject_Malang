@@ -35,13 +35,9 @@ public class ReviewController {
 		
 		List<ReviewDTO> rList = rService.selectWithNickName();
 		
-<<<<<<< HEAD
 		log.debug("r리스트임 {}",rList);
 		
-		List<ItemVO> iList = null;
-=======
 		List<ItemVO> iList =  new ArrayList<ItemVO>();
->>>>>>> 078cd4fde0f96edab547e4def4c4ce2d7eb11d4e
 		Map<String, List<ReviewDTO>> rMaps = new HashMap<>();
 		
 		for(int i = 0; i < rList.size(); i++) {
