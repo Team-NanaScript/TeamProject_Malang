@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 public class NoticeController {
 	
 	protected final BoardService bService;
-	
 	protected final CommentService cService;
 	
 	@RequestMapping(value = {"/",""} , method = RequestMethod.GET)
@@ -156,9 +155,6 @@ public class NoticeController {
 	}
 	
 	
-	
-
-
 	@RequestMapping(value="/search/title" , method=RequestMethod.GET)
 	public String searchTitle(Model model, String keyword) {
 		
@@ -183,7 +179,7 @@ public class NoticeController {
 		
 		model.addAttribute("RESULT", bdList);
 		
-		
+		// return redirect:/notice
 		return "/board/notice";
 	}
 

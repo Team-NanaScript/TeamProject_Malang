@@ -34,6 +34,8 @@ public class ReviewController {
 		
 		List<ReviewDTO> rList = rService.selectWithNickName();
 		
+		log.debug("r리스트임 {}",rList);
+		
 		List<ItemVO> iList = null;
 		Map<String, List<ReviewDTO>> rMaps = new HashMap<>();
 		
@@ -41,6 +43,7 @@ public class ReviewController {
 			log.debug("ItemName {} ", rList.get(i).toString());
 			String itcode = rList.get(i).getR_itcode();
 			ItemVO iVO = iService.findById(itcode);
+			
 			
 			iList.add(iVO);
 			
