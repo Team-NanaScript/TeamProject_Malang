@@ -13,32 +13,15 @@
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/info.css?ver=2021-06-14-001" />
     <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/view.css?ver=2021-06-14-004" />
     <style>
-		div.review-img {
+		div.review-img img{
 	        width: 240px;
 	        height: 240px;
-	        background-repeat: no-repeat;
+/*	        background-repeat: no-repeat;
 	
 	        background-image: url("${rootPath}/static/images/ex2.png");
-	        background-size: 100%;
+	        background-size: 100%; */
 	      }
 
-	      div.review-img4 {
-	        width: 240px;
-	        height: 240px;
-	        background-repeat: no-repeat;
-	
-	        background-image: url("${rootPath}/static/images/ex3.png");
-	        background-size: 100%;
-	      }
-	
-	      div.review-img5 {
-	        width: 240px;
-	        height: 240px;
-	        background-repeat: no-repeat;
-	
-	        background-image: url("${rootPath}/static/images/ex4.png");
-	        background-size: 100%;
-	      }
     </style>
   </head>
   <body>
@@ -53,12 +36,14 @@
         
         <c:forEach items="${ITEMS}" var="IT">
           <ul class="review">
-            <div class="review-img"></div>
+            <div class="review-img">
+            	<img src="${rootPath}${IT.it_photo}"/>
+            </div>
             <li>
               <p>${IT.it_seid}</p>
-              <h3>${IT.title}</h3>
+              <h3>${IT.it_title}</h3>
             </li>
-            <c:forEach items="${REVIEWS[IT]}" var="RV" begin=0 end=1>
+            <c:forEach items="${REVIEWS[IT.it_code]}" var="RV" begin="0" end="1">
 	            <li>
 	              <div>${RV.mb_nickname}
 	              (${RV.r_writer}) 
