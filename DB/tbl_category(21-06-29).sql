@@ -3,8 +3,9 @@ use db_malang;
 
 CREATE TABLE `tbl_category` (
 	`ct_code`	CHAR(4)	NOT NULL PRIMARY KEY,
-	`ct_main`	VARCHAR(30)	NOT NULL,
-	`ct_sub`	VARCHAR(30)	NOT NULL
+	`ct_name`	VARCHAR(30)	NOT NULL,
+	`ct_parentcode`	CHAR(4),
+    `ct_tier` CHAR(1)
 );
 
 SELECT * FROM tbl_category;
@@ -46,8 +47,10 @@ INSERT INTO tbl_category VALUES('0026', '악세사리', '0004', '1');
 INSERT INTO tbl_category VALUES('0027', '산책용품', '0004', '1');
 INSERT INTO tbl_category VALUES('0028', '장난감', '0004', '1');
 
+select * from tbl_category
+where ct_code = '0001';
 
-
+-- 지난 코드 
 SELECT ct_sub FROM tbl_category
 WHERE ct_main = '일러스트';
 

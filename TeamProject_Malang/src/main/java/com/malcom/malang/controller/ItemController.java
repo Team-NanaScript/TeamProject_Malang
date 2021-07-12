@@ -8,8 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
+import com.malcom.malang.model.OptionVO;
+import com.malcom.malang.model.QnaDTO;
+import com.malcom.malang.model.ReviewDTO;
+import com.malcom.malang.service.DescriptionService;
 import com.malcom.malang.service.ItemService;
+import com.malcom.malang.service.OptionService;
+import com.malcom.malang.service.QnaService;
+import com.malcom.malang.service.ReviewService;
+import com.malcom.malang.service.SelectOptionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,21 +30,22 @@ import lombok.extern.slf4j.Slf4j;
 public class ItemController {
 	
 	protected final ItemService itService;
+	protected final DescriptionService dService;
+	protected final QnaService qService;
+	protected final ReviewService rService;
+	protected final OptionService oService;
+	protected final SelectOptionService soService; 
 
 	@RequestMapping(value="/{cate}", method=RequestMethod.GET)
 	public String category(@PathVariable("cate") String cate, Model model) {
 		if(cate.isBlank() || cate.isEmpty()) {
 			return "redirect:/";
 		}	
-		// 처음 sub 보여주기
 		// cate > sub list setting attribute
 		// sub click > ( sub ) category code GET
 		// ( sub ) category code request parameter > list setting attribute
-		if(cate.length() < 2 ) {
-			itService.itemByCategory(cate, null, model);
-		} else {
-			itService.itemByCategory(cate.substring(0,1), cate, model);
-		}
+		
+		itService.itemByCategory(cate, model);
 		return "item/category";
 	}
 	
@@ -51,5 +61,33 @@ public class ItemController {
 		
 		model.addAttribute("ITEM_LIST", itemList);
 		return "item/search";
+	}
+	
+	@RequestMapping(value = "/infos/{it_code}", method=RequestMethod.GET)
+	public String info(@PathVariable("it_code") String itcode, Model model) {
+		ItemVO iVO = itService.findById(itcode);
+		
+		List<OptionVO> oVO = oService.findByItem(itcode);
+		String avgScore = rService.avgScore(itcode);
+		Integer countScore = rService.countScore(itcode);
+		
+		List<String> sOptionName = soService.findByOptionName(itcode);
+		soService.findByOptionContent(itcode, model);
+		
+		DescriptionVO dVO = dService.findByItem(itcode);
+		List<QnaDTO> qList = qService.findByItem(itcode);
+		List<ReviewDTO> rList = rService.findByItem(itcode);
+		
+		model.addAttribute("OPTION", oVO);
+		model.addAttribute("AVG", avgScore);
+		model.addAttribute("COUNT", countScore);
+		
+		model.addAttribute("SONAME", sOptionName);
+		model.addAttribute("ITEM", iVO);
+		model.addAttribute("DESC", dVO);
+		model.addAttribute("QNAS", qList);
+		model.addAttribute("REVIEWS", rList);
+		
+		return "/item/info";
 	}
 }

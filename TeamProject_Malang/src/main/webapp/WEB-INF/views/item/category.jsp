@@ -22,7 +22,7 @@
 			<ul>
 				<c:forEach items="${CATE_SUB}" var="SUB">
 					<li class="tab" id="tab">
-					<h3><a href="${rootPath}/item/${SUB.ct_code}">${SUB.ct_sub}</a></h3>
+					<h3><a href="${rootPath}/item/${SUB.ct_code}">${SUB.ct_name}</a></h3>
 					</li>
 				</c:forEach>
 			</ul>

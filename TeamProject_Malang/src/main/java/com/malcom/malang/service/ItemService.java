@@ -11,11 +11,11 @@ public interface ItemService extends GenericService<ItemVO, String> {
 	
 	public List<ItemVO> malangOfToday();
 	
-	public String categoryList(Model model);
-
 	public void itemByCategory(String cate, String sub, Model model);
 
 	public List<ItemVO> findByTitle(String keyword);
 	
 	public List<CateVO> selectAllCate();
+
+	public void itemByCategory(String cate, Model model);
 }
