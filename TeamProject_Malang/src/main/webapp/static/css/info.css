@@ -95,6 +95,16 @@ aside form.option select {
   width: 250px;
 }
 
+
+form ul#selected_item {
+	margin: 10px 0;
+	background-color: #eee;
+	padding: 5px;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+
 /* 네비게이션 */
 nav.product_nav {
   background-color: #aaa;
@@ -137,6 +147,10 @@ article.description article {
 
 article h2 {
   padding-bottom: 20px;
+}
+
+h2#info_price {
+	text-align: center;
 }
 
 /* 아티클 테이블 */
