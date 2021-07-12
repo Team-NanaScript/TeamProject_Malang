@@ -43,7 +43,11 @@
 	
 	<div class="item_category">
 		<select id="cate_st">
+			<option>-----</option>
+		</select>
 		
+		<select id="cate_st2">
+			<option>-----</option>
 		</select>
 	</div>
 	
@@ -58,6 +62,9 @@
 </body>
 <script src="${rootPath}/ne2/js/service/HuskyEZCreator.js" charset="UTF-8"></script> 
 <script>
+
+// 스마트 에디터 스크립트
+
 var oEditors = [];
 
 //에디터 셋팅
@@ -86,7 +93,7 @@ function submitContents(){
 }
 
 
-
+// 옵션 추가 스크립트 
 
 document.querySelector("#btn_option_add").addEventListener("click", ()=>{
 	
@@ -112,59 +119,84 @@ document.querySelector("#btn_option_add").addEventListener("click", ()=>{
 	
 })
 
-/* document.querySelector("button#item_submit").addEventListener("click",()=>{
-	
-	// json();
-	document.querySelector("form#item").submit();
-	
-	
-})
 
-function json(){
-	
-	let op_name = document.querySelector("input[name='op_name']").value
-	let op_content = document.querySelector("input[name='op_content']").value
-	
-	let json = {op_name : op_name,op_content}
-	
-	let jsonString = JSON.stringify(json)
-	
-	fetch("${rootPath}/insert",{
-		method:"POST",
-		body:jsonString,
-		headers : {
-			"content-Type":"application/json"
-		}
-		
-	})
-	
-	
-	
-}
-
-*/
+/* 카테고리 스크립트 */
 
 let cateList = JSON.parse('${cateList}');
 
 let cate1 = new Array();
+let cate2 = new Array();
 
 
 for(let i = 0 ; i < cateList.length ; i++){
 	
+	if(cateList[i].ct_tier == "0"){
+	
+		let cate1_obj = new Object();			
 		
-	let cate1_obj = new Object();			
-			
-	cate1_obj.ct_code = cateList[i].ct_code
-	cate1_obj.ct_main = cateList[i].ct_main
-	cate1.push(cate1_obj)
+		cate1_obj.ct_code = cateList[i].ct_code
+		cate1_obj.ct_name = cateList[i].ct_name
+		cate1.push(cate1_obj)
+		
+	}	
+	
+	if(cateList[i].ct_tier == "1"){
+		
+		let cate2_obj = new Object();			
+		
+		cate2_obj.ct_code = cateList[i].ct_code
+		cate2_obj.ct_name = cateList[i].ct_name
+		cate2_obj.ct_parentcode = cateList[i].ct_parentcode
+		cate2.push(cate2_obj)
 
 		
-	console.log(cate1)
+	}
+
 }
 
-for(let j = 0 ; j < cate1.length )
 
 
+let cate_st =  document.querySelector("select#cate_st")
+let cate_st2 =  document.querySelector("select#cate_st2")
+
+for(let i = 0 ; i < cate1.length ; i++){
+	
+		let option = document.createElement("option")
+		option.innerHTML = cate1[i].ct_name;
+		option.setAttribute("value", cate1[i].ct_code);
+		
+		cate_st.appendChild(option)
+}
+
+cate_st.addEventListener("change", ()=>{
+
+	cate_st2.options.length=0; 
+	cate1_value = document.querySelector("#cate_st option:checked").value
+
+	
+	for(let i = 0 ; i < cate2.length ; i++){
+			
+			if(cate2[i].ct_parentcode == cate1_value){
+				
+				let option2 = document.createElement("option")
+				option2.innerHTML = cate2[i].ct_name;
+				option2.setAttribute("value", cate2[i].ct_code);
+				option2.setAttribute("class", "cate2");
+				
+				cate_st2.appendChild(option2)
+				
+				
+			} 
+			
+		}
+		
+	
+})
+
+
+		
+	
+	
 
 </script>
 </html>

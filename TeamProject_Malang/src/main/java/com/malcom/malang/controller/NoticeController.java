@@ -28,17 +28,6 @@ public class NoticeController {
 	protected final BoardService bService;
 	protected final CommentService cService;
 	
-	
-	private List<BoardVO> subDate(List<BoardVO> bList) {
-	
-		for(int i = 0 ; i < bList.size() ; i++) {
-			String date = bList.get(i).getBd_date().substring(0, 10);
-			bList.get(i).setBd_date(date);
-		}
-		
-		return bList;
-	}
-	
 	@RequestMapping(value = {"/",""} , method = RequestMethod.GET)
 	public String notice(Model model) {
 		
@@ -133,6 +122,8 @@ public class NoticeController {
 		return "redirect:/notice/view";
 	}
 	
+	// --------------------- select method ----------------------------------
+	
 	@RequestMapping(value="/view", method = RequestMethod.GET)
 	public String view(Long bd_seq, Model model) {
 	
@@ -167,6 +158,8 @@ public class NoticeController {
 	}
 	
 	
+	// --------------------- 검색 method ----------------------------------
+	
 	@RequestMapping(value="/search/title" , method=RequestMethod.GET)
 	public String searchTitle(Model model, String keyword) {
 		
@@ -189,6 +182,17 @@ public class NoticeController {
 		model.addAttribute("RESULT", bdList);
 		
 		return "/board/notice";
+	}
+	
+
+	private List<BoardVO> subDate(List<BoardVO> bList) {
+	
+		for(int i = 0 ; i < bList.size() ; i++) {
+			String date = bList.get(i).getBd_date().substring(0, 10);
+			bList.get(i).setBd_date(date);
+		}
+		
+		return bList;
 	}
 
 }
