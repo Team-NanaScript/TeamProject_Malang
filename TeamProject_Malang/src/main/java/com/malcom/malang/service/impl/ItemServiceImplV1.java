@@ -33,7 +33,6 @@ public class ItemServiceImplV1 implements ItemService{
 		ItemVO itemVO = itDao.findById(pk);
 		itemVO.setIt_content(ReplaceBr.enterToBr(itemVO.getIt_content()));
 			
-//		log.debug("상품내용 {}", itemVO.getIt_content());
 		return itemVO;
 	}
 	
@@ -67,23 +66,19 @@ public class ItemServiceImplV1 implements ItemService{
 			todayList.add(allList.get(tmp));
 			allList.remove(tmp);
 		}
-//		log.debug(todayList.get(0).toString());
 		return todayList;
 	}
 
 	@Override
 	public String categoryList(Model model) {
 		List<String> ct_main = itDao.categoryMain();
-//		log.debug("Main category List {}",ct_main.toString());
 		List<String> ct_sub = itDao.categorySub(ct_main.get(0));
-//		log.debug("Sub category List {}",ct_sub.toString());
 		return null;
 	}
 
 	@Override
 	public void itemByCategory(String cate, String sub, Model model) {
 		// 대분류 세팅, 소분류 리스트 세팅, 아이템 리스트 세팅
-//		log.debug("카테고리 {}, {}",cate, sub);
 		List<CateVO> category = itDao.categorySubWithCode(cate);
 		model.addAttribute("CATE_MAIN",category.get(0).getCt_main());
 		model.addAttribute("CATE_SUB", category);
@@ -93,7 +88,6 @@ public class ItemServiceImplV1 implements ItemService{
 		} else {
 			itemList = itDao.selectByCategory(sub);
 		}
-//		log.debug("{}, {} 카테고리 아이템 리스트 {}",cate,sub, itemList.toString());
 		model.addAttribute("ITEM_LIST", itemList);
 	}
 
@@ -101,6 +95,11 @@ public class ItemServiceImplV1 implements ItemService{
 	public List<ItemVO> findByTitle(String keyword) {
 		// item list by search keyword
 		return itDao.findByTitle(keyword);
+	}
+
+	@Override
+	public List<CateVO> selectAllCate() {
+		return itDao.selectCategory();
 	}
 
 }
