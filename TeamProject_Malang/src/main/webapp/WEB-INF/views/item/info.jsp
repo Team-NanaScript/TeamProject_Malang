@@ -49,16 +49,7 @@ section.img_section div.image_preview {
 
 				<ol>
 					<li>후기</li>
-					<li>${AVG}
-<%-- 						<c:choose>
-							<c:when test="${AVG eq 0}">☆☆☆☆☆</c:when>
-							<c:when test="${AVG eq 1}">★☆☆☆☆</c:when>
-							<c:when test="${AVG eq 2}">★★☆☆☆</c:when>
-							<c:when test="${AVG eq 3}">★★★☆☆</c:when>
-							<c:when test="${AVG eq 4}">★★★★☆</c:when>
-							<c:otherwise>★★★★★</c:otherwise>
-						</c:choose> --%>
-						 (${COUNT})</li>
+					<li>${AVG} (${COUNT})</li>
 				</ol>
 				<ol>
 					<li>배송비</li>
@@ -102,6 +93,7 @@ section.img_section div.image_preview {
 							</li>
 						</ol>
 						</c:forEach>
+						<h2 id="info_price">${ITEM.it_price} 원</h2>
 					</ul>
 					<ul id="btn_box" class="btn_box">
 						<li>
@@ -125,6 +117,11 @@ section.img_section div.image_preview {
 		<%@ include file="/WEB-INF/views/item/info_include/description.jsp"%>
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	
+	<script>
+		document.querySelector("")
+	</script>
 </body>
+
 
 </html>

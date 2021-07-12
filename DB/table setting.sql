@@ -23,13 +23,14 @@ CREATE TABLE `tbl_select_option` (
 	`so_itcode`	BIGINT	NOT NULL,
 	`so_name`	VARCHAR(30)	NOT NULL,
 	`so_content`	VARCHAR(50)	NOT NULL,
-        `so_price` INT DEFAULT 0
+	`so_price` INT DEFAULT 0
 );
 
 CREATE TABLE `tbl_category` (
 	`ct_code`	CHAR(4)	NOT NULL PRIMARY KEY,
-	`ct_main`	VARCHAR(30)	NOT NULL,
-	`ct_sub`	VARCHAR(30)	NOT NULL
+	`ct_name`	VARCHAR(30)	NOT NULL,
+	`ct_parentcode`	CHAR(4),
+    `ct_tier` CHAR(1)
 );
 
 -- 영진
@@ -87,6 +88,13 @@ CREATE TABLE `tbl_comment` (
 	`cm_bdseq`	BIGINT	NOT NULL,
 	`cm_mbid`	BIGINT	NOT NULL,
 	`cm_content`	VARCHAR(500)
+);
+
+CREATE TABLE `tbl_files` (
+  `file_seq` bigint PRIMARY KEY AUTO_INCREMENT,
+  `file_itcode` char(8) NOT NULL,
+  `file_origin` varchar(256) DEFAULT NULL,
+  `file_upname` varchar(256) DEFAULT NULL
 );
 
 
@@ -162,11 +170,20 @@ FOREIGN KEY (`cm_mbid`)
 REFERENCES `tbl_member` (`mb_id`)
 ON DELETE CASCADE;
 
+ALTER TABLE `tbl_files` 
+ADD CONSTRAINT `fk_item_TO_files` 
+FOREIGN KEY (`file_itcode`)
+REFERENCES `tbl_item` (`it_code`)
+ON DELETE CASCADE;
+
 
 -- 외래키 확인하기
 select * from information_schema.table_constraints where constraint_schema = 'db_malang';
-alter table tbl_item drop foreign key fk_description_TO_item;
+alter table tbl_item drop foreign key fk_category_TO_item;
 
 -- tbl_item 의 칼럼명 변경 ( it_poto -> it_photo )
 ALTER TABLE tbl_item CHANGE it_poto it_photo VARCHAR(100);
 DESC tbl_item;
+
+-- 
+ALTER TABLE tbl_item CHANGE it_ctcode it_ctcode CHAR(4) NOT NULL;

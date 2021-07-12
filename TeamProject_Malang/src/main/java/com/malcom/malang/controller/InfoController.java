@@ -58,6 +58,9 @@ public class InfoController {
 		List<QnaDTO> qList = qService.findByItem(itcode);
 		List<ReviewDTO> rList = rService.findByItem(itcode);
 		
+		
+		
+		
 		model.addAttribute("OPTION", oVO);
 		model.addAttribute("AVG", avgScore);
 		model.addAttribute("COUNT", countScore);

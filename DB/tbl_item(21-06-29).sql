@@ -34,24 +34,24 @@ UPDATE tbl_member SET mb_role = 1 WHERE mb_id = 'seller';
 
 SELECT * FROM tbl_item;
 
-INSERT INTO tbl_item VALUES('00000001', 1, 'seller', 'E001',
+INSERT INTO tbl_item VALUES('00000001', 'seller', 'E001',
 '말랑한 말랑말랑 몰랑간식', 3000, 0, '말랑한 간식 동물친구들과 집사들도 건강하게 먹을 수 있는 몰랑간식!',
 NULL);
 
-INSERT INTO tbl_item VALUES('00000002', 2, 'seller', 'I002',
+INSERT INTO tbl_item VALUES('00000002', 'seller', 'I002',
 '[갑분말] 갑자기 분위기 말랑말랑', 10000, 0,
 '올 여름 멍냥이들에게 닥친 말랑분위기.. 몰랑에서 말랑한 그림을 받아보세요 :)', NULL);
 
-INSERT INTO tbl_item VALUES('00000003', 3, 'seller', 'P010',
+INSERT INTO tbl_item VALUES('00000003', 'seller', 'P010',
 '몰랑은 역시 최고야', 3000, 0,
 '끝나지 않는 장난감 무한굴레에서 벗어나기 좋은 몰랑말랑장난감~ 특히 소형견에게 추천드려요^^', NULL);
 
-INSERT INTO tbl_item VALUES('00000004', 4, 'seller', 'H005',
+INSERT INTO tbl_item VALUES('00000004', 'seller', 'H005',
 '반려동물 패션 끝판왕', 3000, 0,
 '어떤 옷이든 주문제작 가능한 몰랑에서 나온 신제품! 넉넉한 사이즈에 귀여움을 돋보이게하는 센스까지~',
 '/static/item/00000004.jpg');
 
-INSERT INTO tbl_item VALUES('00000005', 5, 'seller', 'I001',
+INSERT INTO tbl_item VALUES('00000005', 'seller', 'I001',
 '🥐🍩와플 속에 쏙! 귀여운 일러스트🥐🍩', 9900, 0,
 '크레파스로 그린 듯한 따뜻한 느낌의 반려동물 그림이에요 (어류와 파충류는 제작하지 않습니다.)
  🔺설명 끝까지 읽어주세요! 읽지 않아생기는 일은 책임 못 드립니다.
@@ -81,21 +81,21 @@ INSERT INTO tbl_item VALUES('00000005', 5, 'seller', 'I001',
  💛완성된 그림은 작가의 포트폴리오로 개인 SNS에 업로드 됩니다.
  💛 원치 않으시는 분은 미리 말씀해주세요','/static/item/00000005.jpg');
 
-INSERT INTO tbl_item VALUES('00000006', 6, 'seller', 'H002',
+INSERT INTO tbl_item VALUES('00000006', 'seller', 'H002',
 '나만의 냥냥한 포토앨범', 5000, 3000,
 '멍냥이 사진은 몰랑에서 제작하세요!', '/static/item/00000006.jpg');
 
-INSERT INTO tbl_item VALUES('00000007', 7, 'seller', 'I001',
+INSERT INTO tbl_item VALUES('00000007', 'seller', 'I001',
 '[일러스트]분위기 있는 일러스트 작업', 5000, 0,
 '집사만큼 인생샷이 잘나왔다면 소장하는게 당연하죠! 그런데 분위기를 곁들인..',
 '/static/item/00000007.jpg');
 
-INSERT INTO tbl_item VALUES('00000008', 8, 'seller', 'I002',
+INSERT INTO tbl_item VALUES('00000008', 'seller', 'I002',
 '[캐리커쳐] 고퀄 멍냥이 초상화', 7000, 0,
 '멍냥이의 멍냥에 의한 멍냥이를 위한 초상화!(다른 반려동물도 가능합니다^^)',
 '/static/item/00000008.jpg');
 
-INSERT INTO tbl_item VALUES('00000009', 9, 'seller', 'I001',
+INSERT INTO tbl_item VALUES('00000009', 'seller', 'I001',
 '🔥주문폭주_🐱캐릭터 되고 싶은 반려동물 모여라🐶', 2500, 0,
 'ಇ( ˵ᐛ ˵)ಇ
 

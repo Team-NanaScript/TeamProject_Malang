@@ -41,7 +41,7 @@ public class ReviewController {
 		Map<String, List<ReviewDTO>> rMaps = new HashMap<>();
 		
 		for(int i = 0; i < rList.size(); i++) {
-			log.debug("ItemName {} ", rList.get(i).toString());
+//			log.debug("ItemName {} ", rList.get(i).toString());
 			String itcode = rList.get(i).getR_itcode();
 			ItemVO iVO = iService.findById(itcode);
 			
