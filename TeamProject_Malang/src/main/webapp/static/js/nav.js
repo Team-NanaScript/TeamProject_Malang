@@ -21,14 +21,16 @@ function onScroll() {
 let keyword = doc.querySelector(".text");
 let hKeyword = doc.querySelector(".hid_input");
 doc.querySelector("header").addEventListener("submit", (e) => {
-  doc.location.href =
-    "https://search.naver.com/search.naver?query=" + keyword.value;
+  /* doc.location.href =
+    "https://search.naver.com/search.naver?query=" + keyword.value; */
+    doc.location.href= `${rootPath}/item/search/`+ keyword.value
   e.preventDefault();
 });
 
   doc.querySelector("form#hid").addEventListener("submit", (e) => {
-    doc.location.href =
-      "https://search.naver.com/search.naver?query=" + hKeyword.value;
+    /* doc.location.href =
+      "https://search.naver.com/search.naver?query=" + hKeyword.value; */
+      doc.location.href= `${rootPath}/item/search/`+ keyword.value
     e.preventDefault();
   });
   

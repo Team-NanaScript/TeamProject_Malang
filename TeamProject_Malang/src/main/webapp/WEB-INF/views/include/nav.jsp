@@ -77,6 +77,9 @@ li a {
 }
 
 </style>
+<script>
+var rootPath ="${rootPath}";
+</script>
 </head>
 <body>
 	<div class="h_container">
@@ -140,5 +143,5 @@ li a {
 	</div>
 
 </body>
-<script src="${rootPath}/static/js/nav.js?ver=2021-07-08-002"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-07-12-000"></script>
 </html>
