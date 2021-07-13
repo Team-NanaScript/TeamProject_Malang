@@ -3,6 +3,7 @@ package com.malcom.malang.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.malcom.malang.dao.MemberDao;
 import com.malcom.malang.model.MemberVO;
@@ -19,7 +20,7 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public List<MemberVO> select() {
 		// TODO Auto-generated method stub
-		return null;
+		return mDao.select();
 	}
 
 	@Override
@@ -63,6 +64,19 @@ public class MemberServiceImplV1 implements MemberService{
 	public MemberVO findById(String PK) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void adminManage(Model model) {
+		// TODO Auto-generated method stub
+		List<MemberVO> mList = this.select();
+		for(MemberVO mVO : mList) {
+			if(mVO.getMb_role() == 2 ) {
+				mList.remove(mVO);
+			}
+		}
+		
+		model.addAttribute("MEMBER",mList);
 	}
 
 
