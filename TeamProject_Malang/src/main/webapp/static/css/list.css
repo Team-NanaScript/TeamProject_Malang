@@ -38,26 +38,33 @@ section.item_section div.item_content.empty {
 	justify-content: center;
 }
 
+section.item_section div.item_content.empty:hover {
+	cursor: default;	
+}
+
 section.item_section div.item_content.empty h2{
-		font-size:30px;
-		color:gray;
+	font-size:30px;
+	color:gray;
 }
 
 section.item_section div.item_content img {
 	border-radius:5px;
-	margin: 3px auto;
+	margin: 2px auto;
 	width: 240px;
 	height: 240px;
 }
 
-section.item_section div.item_content div {
+section.item_section div.item_content .item{
 	width: 240px;
-	margin: 2px auto;
+	margin: 0 auto;
 }
 
-section.item_section div.item_content div h3 {
-	width: inherit;
-	height: 52px;
+section.item_section div.item_content p.item.nick_name {
+	height:23px;
+}
+
+section.item_section div.item_content h3.item.title {
+	height: 50px;
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-line-clamp: 2;

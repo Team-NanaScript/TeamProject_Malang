@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>말랑말랑해요</title>
-<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
+<link rel="stylesheet" type="text/css" href="${rootPath}/static/css/font.css?ver=2021-07-13-001" />
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp" %>
