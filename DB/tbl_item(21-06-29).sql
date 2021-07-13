@@ -9,13 +9,13 @@ CREATE TABLE `tbl_item` (
 	`it_price`			INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
 	`it_content`		TEXT	NOT NULL,
-	`it_photo`			VARCHAR(100)
+	`it_photo`			VARCHAR(512)
 );
 
 -- 칼럼 삭제
 -- ALTER TABLE tbl_item DROP COLUMN it_decode;
 -- 칼럼 타입변경
-ALTER TABLE tbl_item MODIFY it_content TEXT NOT NULL;
+ALTER TABLE tbl_item MODIFY it_photo VARCHAR(512);
 
 drop table tbl_item;
 

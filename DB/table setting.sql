@@ -8,7 +8,7 @@ CREATE TABLE `tbl_item` (
 	`it_price`	INT	NOT NULL,
 	`it_shippingfee`	INT	NOT NULL	DEFAULT 0,
 	`it_content`	TEXT	NOT NULL,
-	`it_photo`	VARCHAR(100)
+	`it_photo`	VARCHAR(512)
 );
 
 CREATE TABLE `tbl_option` (
@@ -162,7 +162,7 @@ ADD CONSTRAINT `fk_board`
 FOREIGN KEY (`cm_bdseq`)
 REFERENCES `tbl_board` (`bd_seq`)
 ON DELETE CASCADE;
-
+tbl_item
 
 ALTER TABLE `tbl_comment` 
 ADD CONSTRAINT `fk_member_TO_comment` 
