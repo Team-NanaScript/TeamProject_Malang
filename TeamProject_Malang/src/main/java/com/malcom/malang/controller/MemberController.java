@@ -91,7 +91,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/manage", method = RequestMethod.GET)
-	public String mypage() {
+	public String adminManage(HttpSession session, Model model) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null || membervo.getMb_role() < 2) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			mService.adminManage(model);
+		}
 		
 		return "member/manage";
 	}

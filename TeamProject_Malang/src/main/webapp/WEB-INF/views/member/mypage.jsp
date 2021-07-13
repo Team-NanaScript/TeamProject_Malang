@@ -26,7 +26,7 @@
 	margin: 0;
 }
 
-/* div.login{ */
+/* div.login */
 div.mypage {
 	display: flex;
 	justify-content: center;
@@ -66,18 +66,6 @@ div.logo {
 	display: flex;
 }
 
-/* div.main {
-	position: absolute;
-    top: 100px;
-    left: 50%;
-    width: 500px;
-    padding: 15%;
-    margin: 0 -335px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-top: 2px solid rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-} */
 div.my_info {
 	position: absolute;
 	top: 100px;
@@ -124,9 +112,7 @@ div.input ul li img{
 	background-color: rgba(235, 164, 123, 0.8);
 	font-size: 17px;
 	font-weight: bold;
-	/* }
 
-.btn_wrap button{ */
 	border: none;
 	display: block;
 	width: 98%;
@@ -170,7 +156,6 @@ if(msg == "REJECT"){
 					<ul>
 					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>닉네임</li>
-							<li class="nickname">없음</li>
 						<li class="nickname">${MEMBER.mb_nickname}</li>
 					</ul>
 					
@@ -184,9 +169,11 @@ if(msg == "REJECT"){
 					<li><img src="${rootPath}/static/icons/my_icon.png"/></li>
 						<li>주소</li>
 						<c:if test="${empty MEMBER.mb_addr}">
-							<li class="tel">없음</li>
+							<li class="addr">없음</li>
 						</c:if>
-						<li class="addr">${MEMBER.mb_addr}</li>
+						<c:if test="${not empty MEMBER.mb_addr}">
+							<li class="addr">${MEMBER.mb_addr}</li>
+						</c:if>
 					</ul>
 
 				</div>

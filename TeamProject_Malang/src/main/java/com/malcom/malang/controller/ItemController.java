@@ -56,7 +56,7 @@ public class ItemController {
 	
 	@RequestMapping(value = "/search/{keyword}", method=RequestMethod.GET)
 	public String review(@PathVariable("keyword") String keyword, Model model) {
-		log.debug("keyword {}", keyword );
+//		log.debug("keyword {}", keyword );
 		List<ItemVO> itemList = itService.findByTitle(keyword);
 		
 		model.addAttribute("ITEM_LIST", itemList);
@@ -66,14 +66,14 @@ public class ItemController {
 	@RequestMapping(value = "/infos/{itcode}", method=RequestMethod.GET)
 	public String info(@PathVariable("itcode") String itcode, Model model) {
 		ItemVO iVO = itService.findById(itcode);
-		log.debug("상품 {}", iVO.toString());
+//		log.debug("상품 {}", iVO.toString());
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
-		log.debug("상품 옵션 {}", oVO.toString());
+//		log.debug("상품 옵션 {}", oVO.toString());
 		String avgScore = rService.avgScore(itcode);
-		log.debug("평점 : {}",avgScore);
+//		log.debug("평점 : {}",avgScore);
 		Integer countScore = rService.countScore(itcode);
-		log.debug("후기 리뷰수 : {}", countScore);
+//		log.debug("후기 리뷰수 : {}", countScore);
 		
 		List<String> sOptionName = soService.findByOptionName(itcode);
 		soService.findByOptionContent(itcode, model);
