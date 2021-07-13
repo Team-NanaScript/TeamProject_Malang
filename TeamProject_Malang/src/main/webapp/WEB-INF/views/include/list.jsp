@@ -13,7 +13,7 @@
 	<c:if test="${not empty ITEM_LIST}">
 	<c:forEach items="${ITEM_LIST}" var="ITEM">
 		<div class="item_content" data-code="${ITEM.it_code}">
-			<img src="${rootPath}${ITEM.it_photo}" />
+			<img src="${ITEM.it_photo}" />
 			<div>
 				<p class="item nick_name">${ITEM.it_seid}</p>
 				<h3 class="item title">${ITEM.it_title}</h3>
