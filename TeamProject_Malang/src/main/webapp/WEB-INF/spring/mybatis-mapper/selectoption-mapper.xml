@@ -26,6 +26,11 @@
 </select>
 
 <select id="findByOptionContent" resultType="SelectOptionVO">
+	SELECT * FROM tbl_select_option
+	WHERE so_itcode = #{so_itcode} AND so_name= #{so_name}
+</select>
+
+<select id="backup_findByOptionContent" resultType="SelectOptionVO">
 	SELECT so_content, so_price FROM tbl_select_option
 	WHERE so_itcode = #{so_itcode} AND so_name= #{so_name}
 </select>

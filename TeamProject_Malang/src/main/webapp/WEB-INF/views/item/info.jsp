@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-06-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/info.css?ver=2021-07-09-004" />
+	href="${rootPath}/static/css/info.css?ver=2021-07-013-001" />
 <script>
 	var rootPath = "${rootPath}"
 </script>
@@ -81,22 +81,23 @@ section.img_section div.image_preview {
 						<ol>
 							<li>${SN}</li>
 							<li>
-								<select name="prices" id="price_select">
-									<option value="no">선택하세요</option>
+								<select name="prices" class="selectBox" onchange="changeFunc(this);">
+									<option value="no">옵션을 선택하세요</option>
 									<c:forEach items="${SOCONTENT[SN]}" var="SC">
 										<option value="${SC.so_code}">${SC.so_content}
 											<c:if test="${not empty SC.so_price}">
-												( +${SC.so_price}원 )
+																( +${SC.so_price}원 )
 											</c:if>
 										</option>
 									</c:forEach>
+									
 								</select>
 							</li>
 						</ol>
 						</c:forEach>
 					</ul>
-					<ul id="selected_item">
-						<li>아니 어떻게 넘기지 정보를</li>
+					<ul >
+						<li id="selected_item"></li>
 					</ul>
 					<ul>
 						<ol>
@@ -128,7 +129,85 @@ section.img_section div.image_preview {
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	
 	<script>
-		document.querySelector("select#price_select").addEventListener("click",())
+//		document.querySelector("select#price_select").addEventListener("blur",()=>{
+//			document.getElementById("selected_item").innerHTML = "아니 어떻게 넘겨오냐고"
+//		})
+
+	function changeFunc(arg) {
+		// var selectedValue = document.querySelector("#selectBox").value
+		alert(arg.value)
+		
+		let value = arg.value
+		
+		fetch("${rootPath}/info/option/" + value)
+		.then(response=>response.text())
+		.then(result=>{
+			
+		})
+	}	
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+/* 선택옵션 (with JSON)*/
+/*
+let soName = '${SONAME}'
+console.log(soName)
+
+console.log('${SOJSON}') // 아직 배열형태 (큰따옴표 안됨)
+let soJson = JSON.parse('${SOJSON}') // 파씽하면
+console.log(soJson) // 이뻐짐. index도 붙음.
+
+
+let soList = new Array()
+let selectBox = document.querySelector("#selectBox")
+let soSelect =  document.querySelector("#optionSelect")
+
+// 셀렉트 수만큼
+for(let i = 0; j < soName.length; j++){
+	
+	///////
+	let select = document.createElement("select")
+	
+	for(let i = 0; i < soJson.length; i++){
+		
+		if(soJson[i].so_name == soName[j]){
+			
+			let objSo = new Object();
+			
+			objSo.so_code = soJson[i].so_code // 옵션 code 과
+			objSo.so_name = soJson[i].so_name // 옵션 name 을
+			soList.push(objSo) // soList에 저장
+		}
+	}
+	
+	
+	
+	let soSelect =  document.querySelector("#optionSelect")
+	
+	for(let i = 0; i < soList.length; i++){
+		
+		let option = document.createElement("option")
+		option.innerHTML =  soList[i].so_name;
+		option.setAttribute("value", soList[i].so_code);
+		
+	}
+	
+	/////
+	//select.innerHTML = "";
+}
+
+*/ 
+
+
+
 	</script>
 </body>
 

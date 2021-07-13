@@ -96,7 +96,7 @@ aside form.option select {
 }
 
 
-form ul#selected_item {
+li#selected_item {
 	margin: 10px 0;
 	background-color: #eee;
 	padding: 5px;

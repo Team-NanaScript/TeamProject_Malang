@@ -13,4 +13,5 @@ public interface SelectOptionService extends GenericService<SelectOptionVO, Long
 	public List<String> findByOptionName(String so_itcode);
 	// public List<SelectOptionVO> findByOptionContent(String so_itcode);
 	public List<SelectOptionVO> findByOptionContent(String so_itcode, Model model);
+	public String selectJson(String itcode);
 }
