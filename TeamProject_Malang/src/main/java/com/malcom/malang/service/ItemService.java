@@ -10,8 +10,6 @@ import com.malcom.malang.model.ItemVO;
 public interface ItemService extends GenericService<ItemVO, String> {
 	
 	public List<ItemVO> malangOfToday();
-	
-	public void itemByCategory(String cate, String sub, Model model);
 
 	public List<ItemVO> findByTitle(String keyword);
 	

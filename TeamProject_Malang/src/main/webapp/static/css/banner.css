@@ -1,15 +1,8 @@
 @charset "UTF-8";
-
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
 section.banner {
 	background-color: #ffd3c2;
 	width: 100%;
-	height: 50vh;
+	height: 484px;
 	margin: 0 auto;
 	position: relative;
 }

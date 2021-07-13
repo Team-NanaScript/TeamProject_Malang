@@ -63,13 +63,17 @@ public class ItemController {
 		return "item/search";
 	}
 	
-	@RequestMapping(value = "/infos/{it_code}", method=RequestMethod.GET)
-	public String info(@PathVariable("it_code") String itcode, Model model) {
+	@RequestMapping(value = "/infos/{itcode}", method=RequestMethod.GET)
+	public String info(@PathVariable("itcode") String itcode, Model model) {
 		ItemVO iVO = itService.findById(itcode);
+		log.debug("상품 {}", iVO.toString());
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
+		log.debug("상품 옵션 {}", oVO.toString());
 		String avgScore = rService.avgScore(itcode);
+		log.debug("평점 : {}",avgScore);
 		Integer countScore = rService.countScore(itcode);
+		log.debug("후기 리뷰수 : {}", countScore);
 		
 		List<String> sOptionName = soService.findByOptionName(itcode);
 		soService.findByOptionContent(itcode, model);

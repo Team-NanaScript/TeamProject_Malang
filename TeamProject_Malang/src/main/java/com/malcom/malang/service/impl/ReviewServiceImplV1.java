@@ -62,7 +62,10 @@ public class ReviewServiceImplV1 implements ReviewService{
 	public String avgScore(String r_itcode) {
 		Float avg = rDao.avgScore(r_itcode);
 		String score = "☆☆☆☆☆";
-		if( avg >= 1 && avg < 2 ) {
+		
+		if (avg == null) {
+			return score;
+		} else if( avg >= 1 && avg < 2 ) {
 			score = "★☆☆☆☆";
 		} else if( avg >= 2 && avg < 3) {
 			score = "★★☆☆☆";

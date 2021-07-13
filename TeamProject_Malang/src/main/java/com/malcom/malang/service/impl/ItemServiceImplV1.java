@@ -25,7 +25,6 @@ public class ItemServiceImplV1 implements ItemService{
 	@Override
 	public List<ItemVO> select() {
 		List<ItemVO> itemList = itDao.select();
-//		log.debug(itemList.get(0).toString());
 		return itemList;
 	}
 
@@ -76,40 +75,25 @@ public class ItemServiceImplV1 implements ItemService{
 	}
 
 	@Override
-	public void itemByCategory(String cate, String sub, Model model) {
-		// 대분류 세팅, 소분류 리스트 세팅, 아이템 리스트 세팅
-		List<CateVO> category = itDao.categorySubWithCode(cate);
-//		model.addAttribute("CATE_MAIN",category.get(0).getCt_main());
-		model.addAttribute("CATE_SUB", category);
-		List<ItemVO> itemList = new ArrayList<ItemVO>();
-		if(sub == null) {
-			itemList = itDao.selectByCategory(category.get(0).getCt_code());
-		} else {
-			itemList = itDao.selectByCategory(sub);
-		}
-		model.addAttribute("ITEM_LIST", itemList);
-	}
-	
-	@Override
 	public void itemByCategory(String cate, Model model) {
 		// 대분류는 tier 0, 소분류는 1
-		log.debug("Main category  {}",cate);
 		CateVO vo = itDao.findCateById(cate);
+		List<CateVO> subList = new ArrayList<CateVO>();
 		if(vo.getCt_tier().equals("0")) {
 			// 대분류 클릭
-			model.addAttribute("CATE_MAIN",  vo.getCt_name());
-			
-			List<CateVO> subList = itDao.categorySub(cate);
-			model.addAttribute("CATE_SUB", subList);
+			subList = itDao.categorySub(cate);
 			cate = subList.get(0).getCt_code();
+			
 		} else  if (vo.getCt_tier().equals("1")) {
 			// 소분류 클릭
 			vo = itDao.findCateById(vo.getCt_parentcode());
-			model.addAttribute("CATE_MAIN",  vo.getCt_name());
-			List<CateVO> subList = itDao.categorySub(vo.getCt_code());
-			model.addAttribute("CATE_SUB", subList);
+			
+			subList = itDao.categorySub(vo.getCt_code());
 		}
 		
+		model.addAttribute("CATE_MAIN",  vo.getCt_name());
+		
+		model.addAttribute("CATE_SUB", subList);
 		List<ItemVO> itemList = itDao.selectByCategory(cate);
 		model.addAttribute("ITEM_LIST", itemList);
 	}

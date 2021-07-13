@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>상품 카테고리</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/font.css?ver=2021-06-14-001" />
+	href="${rootPath}/static/css/font.css?ver=2021-07-13-001" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/category.css?ver=2021-07-09-001" />
 </head>
@@ -20,8 +20,8 @@
 		</div>
 		<nav id="cate_nav">
 			<ul>
-				<c:forEach items="${CATE_SUB}" var="SUB">
-					<li class="tab" id="tab">
+				<c:forEach items="${CATE_SUB}" var="SUB" varStatus="index">
+					<li class="tab" id="${index.count}">
 					<h3><a href="${rootPath}/item/${SUB.ct_code}">${SUB.ct_name}</a></h3>
 					</li>
 				</c:forEach>
@@ -31,4 +31,7 @@
 	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+
+</script>
 </html>
