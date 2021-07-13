@@ -8,10 +8,10 @@
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 	
-	<mvc:resources location="/images/, file:///c:/bizworks/Malang/TeamProject_Malang/src/main/webapp/static/images/" mapping="/images/**"/>
+	<mvc:resources location="/MalangImages/, file:///c://bizworks/MalangImages/" mapping="/MalangImages/**"/>
 
 	<bean id="winPath" class="java.lang.String">
-		<constructor-arg value="c:/bizworks/Malang/TeamProject_Malang/src/main/webapp/static/images"/>
+		<constructor-arg value="/bizworks/MalangImages"/>
 	</bean>
 
 

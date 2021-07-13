@@ -11,6 +11,5 @@ public interface insertService {
 
 	public int insert(ItemVO itVO, MultipartFile file, MultipartHttpServletRequest files) throws IOException;
 
-	public String test(MultipartFile file) throws IOException;
 
 }

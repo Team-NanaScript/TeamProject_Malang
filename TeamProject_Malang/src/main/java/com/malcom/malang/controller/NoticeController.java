@@ -38,6 +38,8 @@ public class NoticeController {
 		return "board/notice";
 	}
 	
+	// --------------------- 게시글 삭제/업데이트 ----------------------------------
+	
 	@RequestMapping(value="/view/notice/delete", method=RequestMethod.GET)
 	public String nDelete(Long bd_seq) {
 		
@@ -59,14 +61,14 @@ public class NoticeController {
 	@RequestMapping(value="/view/notice/update", method=RequestMethod.POST)
 	public String nUpdate(BoardVO vo, Model model) {
 	
-		log.debug("업데이트 {} ", vo);
-		
 		Integer result = bService.update(vo);
 		model.addAttribute("bd_seq", vo.getBd_seq());
 	
 		
 		return "redirect:/notice/view";
 	}
+	
+	// --------------------- 댓글 삭제/업데이트 ----------------------------------
 	
 	@RequestMapping(value="/view/comment/delete", method=RequestMethod.GET)
 	public String cDelete(Long cm_seq, Model model) {
@@ -83,7 +85,6 @@ public class NoticeController {
 	public String cUpdate(Long cm_seq, Model model) {
 		
 		CommentVO vo = cService.findById(cm_seq);
-		log.debug("ㅇㅇ {}", vo.toString());
 		model.addAttribute("UP",vo);
 		model.addAttribute("bd_seq",vo.getCm_bdseq());
 		
@@ -99,7 +100,7 @@ public class NoticeController {
 	}
 	
 	
-	
+	// --------------------- 게시글 작성 ----------------------------------
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {
@@ -122,18 +123,16 @@ public class NoticeController {
 		return "redirect:/notice/view";
 	}
 	
-	// --------------------- select method ----------------------------------
+	// --------------------- 게시글 view / 댓글 작성 method ----------------------------------
 	
 	@RequestMapping(value="/view", method = RequestMethod.GET)
 	public String view(Long bd_seq, Model model) {
 	
 		BoardVO vo = bService.findById(bd_seq);
 		if(bd_seq != null) {
+			
 		
-			int count = vo.getBd_count() + 1;
-			vo.setBd_count(count);
-			log.debug("조회수{}",count);
-			bService.update(vo);
+			bService.updateCount(bd_seq);
 			model.addAttribute("VIEW",vo);
 			
 		}
@@ -148,12 +147,10 @@ public class NoticeController {
 	@RequestMapping(value="/view", method=RequestMethod.POST)
 	public String comment(CommentVO vo, Model model) {
 
-		
 		Integer result = cService.insert(vo);
 		
 		model.addAttribute("bd_seq" , vo.getCm_bdseq());
-		
-//		return "redirect:/notice/view?bd_seq=" + vo.getCm_bdseq();
+
 		return "redirect:/notice/view";
 	}
 	
@@ -175,8 +172,6 @@ public class NoticeController {
 	@RequestMapping(value="/search/content" , method=RequestMethod.GET)
 	public String searchContent(Model model, String keyword) {
 		
-		log.debug("키워드 {}",keyword);
-		
 		List<BoardVO> bList = bService.findByContent(keyword);
 		List<BoardVO> bdList = this.subDate(bList);
 		model.addAttribute("RESULT", bdList);
@@ -184,7 +179,17 @@ public class NoticeController {
 		return "/board/notice";
 	}
 	
-
+	@RequestMapping(value="/search/writer" , method=RequestMethod.GET)
+	public String searchWriter(Model model, String keyword) {
+		
+		List<BoardVO> bList = bService.findByNick(keyword);
+		List<BoardVO> bdList = this.subDate(bList);
+		model.addAttribute("RESULT", bdList);
+		
+		return "/board/notice";
+	}
+	
+	
 	private List<BoardVO> subDate(List<BoardVO> bList) {
 	
 		for(int i = 0 ; i < bList.size() ; i++) {

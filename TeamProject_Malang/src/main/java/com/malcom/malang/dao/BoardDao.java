@@ -8,9 +8,10 @@ public interface BoardDao extends GenericDao<BoardVO, Long>{
 	
 	public String findByMaxSeq();
 	public BoardVO findBySeq(Long seq);
+	public int updateCount(Long seq);
 	
 	public List<BoardVO> findByTitle(String keyword);
-	public List<BoardVO> findByNick(String bd_author);
+	public List<BoardVO> findByNick(String keyword);
 	public List<BoardVO> findByContent(String keyword);
 	
 }

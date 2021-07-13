@@ -111,10 +111,10 @@ select#search {
 <script>
 	
 document.querySelector("button#s_sch").addEventListener("click", search);
-document.querySelector("input#s_input").addEventListener("keypress",()=>{
+document.querySelector("div.s_search").addEventListener("keydown",()=>{
 	
 	if(window.event.keyCode == "13"){
-		
+		alert("enter!")
 		search();
 		
 	}
@@ -124,25 +124,24 @@ document.querySelector("input#s_input").addEventListener("keypress",()=>{
 
 function search(){
 
-	let s_value = document.querySelector("select#search").value;
+	
+	let op_value = document.querySelector("select#search option:checked").value;
+	let keyword = document.querySelector("input#s_input").value;
 
-	if(s_value == "title"){
+	if(op_value === "title"){
 		
-		let keyword = document.querySelector("input#s_input").value;		
 		location.href="${rootPath}/notice/search/title?keyword=" + keyword;
 		
-	} if(s_value == "content"){
-
+	}else if(op_value === "content"){
 		
-		let keyword = document.querySelector("input#s_input").value;
 		location.href="${rootPath}/notice/search/content?keyword=" + keyword;
 		
-	} if(s_value == "author"){
+	}else if(op_value === "author"){
 		
-		let keyword = document.querySelector("input#s_input").value;
-		alert("작성자" + keyword)
+		location.href="${rootPath}/notice/search/writer?keyword=" + keyword;
 	}
 	
+	location.href="${rootPath}/notice/search/"+op_value +"?keyword=" +keyword;
 }
 
 

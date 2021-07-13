@@ -39,8 +39,7 @@ public class insertController {
 		try {
 			cateList = obMapper.writeValueAsString(cList);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} 
 		
 		model.addAttribute("cateList", cateList);
@@ -52,15 +51,7 @@ public class insertController {
 	public String insert(ItemVO itVO, MultipartFile one_file,
 			@RequestParam(name="multi_file", required = false) MultipartHttpServletRequest multi_file) throws IOException { // , @RequestBody Map<String, String> maps) {
 		
-		
-		log.debug("불러온 값 {}", itVO);
-//		log.debug("옵션 {}",opList.toString());
-//		log.debug("상품정보 {}", itVO.toString());
-		
 		iService.insert(itVO, one_file, multi_file);
-		
-
-		
 		
 		
 		return "home";

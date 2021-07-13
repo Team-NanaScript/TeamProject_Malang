@@ -69,6 +69,8 @@ public class FileServiceImplV1 implements FileService{
 		 
 		log.debug("파일 {}",strUUID);
 		
+		String image_path = fileUploadPath + "/" + strUUID;
+		
 		return strUUID;
 	}
 

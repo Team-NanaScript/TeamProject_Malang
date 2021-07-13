@@ -47,14 +47,12 @@ public class insertServiceImplV1 implements insertService {
 
 			if(vo == null) {
 				
-				itVO.setIt_ctcode("E000");
 				itVO.setIt_code(it_code);
 				itVO.setIt_photo(fileName);
 				
 				
 				itDao.insert(itVO);
 				
-				log.debug("아이템코드 {}",itVO.getIt_code());
 				break;
 			}
 			
@@ -77,16 +75,6 @@ public class insertServiceImplV1 implements insertService {
 		
 
 		return 0;
-	}
-
-	
-	@Override
-	public String test(MultipartFile file) throws IOException {
-		// TODO Auto-generated method stub
-		
-		
-		
-		return fService.fileUp(file);
 	}
 	
 	

@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded",(e)=>{
 	
 	let path = document.location.pathname;
 	let sch_Root = "${rootPath}/notice/search"
-	if(path == "${rootPath}/notice" || path == sch_Root + "/title" || path == sch_Root + "/content"){
+	if(path == "${rootPath}/notice" || path == sch_Root + "/title" || path == sch_Root + "/content" || path == sch_Root + "/writer"){
 		document.querySelector("#notice").classList.add("on");
 	}
 	else if(path == "${rootPath}/advice"){

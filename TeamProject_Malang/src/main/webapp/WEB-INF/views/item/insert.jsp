@@ -19,10 +19,11 @@
 <form method="POST" id="item" enctype="multipart/form-data">
 
 	<div id="item_main">
-		<input name="it_title" placeholder="상품 이름" required="required">
-		<input name="it_price" placeholder="상품 가격" required="required">
-		<input name="it_shippingfee" placeholder="배송비" required="required">
+		<input name="it_title" placeholder="상품 이름" >
+		<input name="it_price" placeholder="상품 가격" >
+		<input name="it_shippingfee" placeholder="배송비" >
 		<input name="it_seid" class="none" value="${MEMBER.mb_id}">
+		<input name="it_ctcode" class="none" id="it_ctcode">
 		<label>상품 설명</label>
 		<textarea name="it_content" id="content"></textarea>
 		<input name="one_file" type="file">
@@ -41,12 +42,12 @@
 		
 	</div>
 	
-	<div class="item_category">
-		<select id="cate_st">
+	<div class="item_category"> 
+		<select id="cate_st" required="required">
 			<option>-----</option>
 		</select>
 		
-		<select id="cate_st2">
+		<select id="cate_st2" required="required">
 			<option>-----</option>
 		</select>
 	</div>
@@ -171,7 +172,7 @@ for(let i = 0 ; i < cate1.length ; i++){
 cate_st.addEventListener("change", ()=>{
 
 	cate_st2.options.length=0; 
-	cate1_value = document.querySelector("#cate_st option:checked").value
+	let cate1_value = document.querySelector("#cate_st option:checked").value
 
 	
 	for(let i = 0 ; i < cate2.length ; i++){
@@ -194,6 +195,17 @@ cate_st.addEventListener("change", ()=>{
 })
 
 
+cate_st2.addEventListener("change", ()=>{
+	
+	
+	let checked_cate = document.querySelector("#cate_st2 option:checked").value 
+	
+	document.getElementById("it_ctcode").setAttribute("value", checked_cate)
+		
+	
+})
+
+console.log(cateList)
 		
 	
 	

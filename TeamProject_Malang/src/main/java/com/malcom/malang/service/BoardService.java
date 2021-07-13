@@ -8,6 +8,8 @@ public interface BoardService extends GenericService<BoardVO, Long>{
 
 	public String findByMaxSeq();
 	
+	public int updateCount(Long seq);
+	
 	public List<BoardVO> findByTitle(String keyword);
 	public List<BoardVO> findByNick(String bd_author);
 	public List<BoardVO> findByContent(String keyword);

@@ -82,10 +82,10 @@ public class BoardServiceImplV1 implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> findByNick(String bd_author) {
+	public List<BoardVO> findByNick(String keyword) {
 		// TODO Auto-generated method stub
 		
-		List<BoardVO> bList = bDao.findByNick(bd_author);
+		List<BoardVO> bList = bDao.findByNick(keyword);
 		
 		return bList;
 	}
@@ -107,6 +107,15 @@ public class BoardServiceImplV1 implements BoardService{
 		String bd_seq = bDao.findByMaxSeq();
 		
 		return bd_seq;
+	}
+
+	@Override
+	public int updateCount(Long seq) {
+		// TODO Auto-generated method stub
+		
+		bDao.updateCount(seq);
+		
+		return 0;
 	}
 
 	
