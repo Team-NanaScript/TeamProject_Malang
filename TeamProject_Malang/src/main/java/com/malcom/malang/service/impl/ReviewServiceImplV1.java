@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.malcom.malang.config.DateConfig;
 import com.malcom.malang.dao.ReviewDao;
 import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.ReviewVO;
@@ -26,7 +27,11 @@ public class ReviewServiceImplV1 implements ReviewService{
 	@Override
 	public Integer insert(ReviewVO vo) {
 		
-
+		String sDate = DateConfig.sDate("yyyy-MM-dd");
+		String sTime = DateConfig.sTime("hh:mm:ss");
+		
+		vo.setR_date(sDate);
+		vo.setR_time(sTime);
 		
 		return rDao.insert(vo);
 	}

@@ -144,13 +144,10 @@ public class InfoController {
 		
 		// 오더 code를 받아서 해당 주문을 VO로 가져옴
 		OrderVO orVO = odService.findById(od_code);
-//		// orderVO 정보 중 option 뽑아냄
-//		String od_option = orVO.getOd_option();
 		// orderVO 정보 중 itcode 뽑아냄
 		String it_code = orVO.getOd_itcode();
 		// it_code를 이용해 itemVO 정보 중 title 뽑아냄
 		ItemVO itVO = iService.findById(it_code);
-		
 		
 		
 
@@ -167,8 +164,14 @@ public class InfoController {
 			Model model) {
 		
 		
+		rService.insert(reviewVO);
+		
 		return "redirect:/user";
 	}
+	
+	
+	
+	
 	
 	
 	// 사용안함 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
