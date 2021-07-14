@@ -8,28 +8,37 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	input#it_code {
+	input.hidden {
 		display: none;
+	}
+	
+	div#btn_box{
+		
 	}
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<h1>문의하기</h1>
-	<form>
+	<form id="qna_insert" method="POST">
 		<label>상품명</label>
 		<input name="it_title" value="${ITEM.it_title}" disabled/>
-		<input id="it_code" name="it_code" value="${ITEM.it_code}" readonly/>
 		
-		<label>작성자</label>
-		<input name="mb"  value="${MEMBER.mb_nickname}(${MEMBER.mb_id})" readonly/>
+		<%-- 상품코드, 작성일자 숨겨서 보내기 --%>
+		<input class="hidden" name="it_code" value="${ITEM.it_code}" readonly/>
+		<input class="hidden" name="q_date" value="${ }"/>
 		
+		<label>작성자 ID</label>
+		<input name="q_writer"  value="${MEMBER.mb_id}" readonly/>
+
+
+				
 		<label>제목</label>
-		<input name="title"/>
+		<input name="q_title"/>
 		
-		<textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30"></textarea>
+		<textarea class ="ng" id="content" name="q_content" maxlength="1000" required="required" cols="100" rows="30"></textarea>
 		
-        <div id="btn_write">
+        <div id="btn_box">
             <button type="button" id="btn_write" onclick="submitContents()">작성하기</button>
             <button type="reset">다시쓰기</button>
         </div>    
@@ -62,7 +71,7 @@ function submitContents(){
 	
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	
-	document.querySelector("form#write").submit();
+	document.querySelector("form#qna_insert").submit();
 	
 }
 </script>

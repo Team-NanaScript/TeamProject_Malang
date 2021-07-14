@@ -31,7 +31,7 @@ public class BoardServiceImplV1 implements BoardService{
 		// TODO Auto-generated method stub
 		
 		String sDate = DateConfig.sDate("yyyy-mm-dd");
-		String sTime = DateConfig.stime("hh:MM:ss");
+		String sTime = DateConfig.sTime("hh:MM:ss");
 		
 		vo.setBd_date(sDate);
 		vo.setBd_time(sTime);
@@ -46,7 +46,7 @@ public class BoardServiceImplV1 implements BoardService{
 		
 		
 		String sDate = DateConfig.sDate("yyyy-mm-dd");
-		String sTime = DateConfig.stime("hh:MM:ss");
+		String sTime = DateConfig.sTime("hh:MM:ss");
 		
 		vo.setBd_date(sDate);
 		vo.setBd_time(sTime);

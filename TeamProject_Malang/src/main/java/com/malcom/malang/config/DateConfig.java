@@ -18,7 +18,7 @@ public class DateConfig {
 		return sDate;
 	}
 	
-	public static String stime(String st) {
+	public static String sTime(String st) {
 		
 		Date date = new Date();
 		

@@ -75,13 +75,15 @@ VALUES('nana','00000009',
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_review AS
 SELECT R.r_code, R.r_writer, R.r_itcode, 
-	R.r_content, R.r_date, R.r_score, 
+	R.r_content, R.r_date, R.r_time, R.r_score, 
     R.r_poto, MB.mb_nickname
 FROM tbl_review R
 	LEFT JOIN tbl_member MB
 		ON R.r_writer = MB.mb_id;
         
 SELECT * FROM view_review;
+
+-- DROP VIEW view_review;
 
 SELECT ROUND(sum(r_score)/COUNT(r_score),1), COUNT(r_score) FROM tbl_review
 WHERE r_itcode = '00000005';

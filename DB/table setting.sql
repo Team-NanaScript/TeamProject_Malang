@@ -53,8 +53,12 @@ CREATE TABLE `tbl_qna` (
 	`q_itcode`	CHAR(8)	NOT NULL,
 	`q_title`	VARCHAR(100)	NOT NULL,
 	`q_content`	VARCHAR(2000)	NOT NULL,
-	`q_date`	VARCHAR(30)
+	`q_date`	VARCHAR(30),
+    `q_time`	VARCHAR(30)
 );
+
+-- 칼럼추가
+alter table tbl_qna add q_time VARCHAR(30); 
 
 CREATE TABLE `tbl_review` (
 	`r_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -62,9 +66,13 @@ CREATE TABLE `tbl_review` (
 	`r_itcode`	CHAR(8)	NOT NULL,
 	`r_content`	VARCHAR(2000) NOT NULL,
 	`r_date`	VARCHAR(30),
+    `r_time`	VARCHAR(30),
 	`r_score`	INT	NOT NULL,
     `r_poto`	VARCHAR(100)
 );
+
+-- 칼럼추가
+alter table tbl_review add r_time VARCHAR(30); 
 
 CREATE TABLE `tbl_description` (
 	`de_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
@@ -80,8 +88,12 @@ CREATE TABLE `tbl_board` (
 	`bd_author`	BIGINT	NOT NULL,
 	`bd_title`	VARCHAR(125),
 	`bd_content`	VARCHAR(2000),
-	`bd_date`	VARCHAR(30)
+	`bd_date`	VARCHAR(30),
+    `bd_time`	VARCHAR(30)
 );
+
+-- 칼럼추가
+alter table tbl_board add bd_time VARCHAR(30); 
 
 CREATE TABLE `tbl_comment` (
 	`cm_seq`	BIGINT	NOT NULL PRIMARY KEY,
@@ -156,13 +168,15 @@ FOREIGN KEY (`bd_author`)
 REFERENCES `tbl_member` (`mb_id`)
 ON DELETE CASCADE;
 
+
+
 -- 영진(설정되어있음 ooo)
 ALTER TABLE `tbl_comment` 
 ADD CONSTRAINT `fk_board` 
 FOREIGN KEY (`cm_bdseq`)
 REFERENCES `tbl_board` (`bd_seq`)
 ON DELETE CASCADE;
-tbl_item
+
 
 ALTER TABLE `tbl_comment` 
 ADD CONSTRAINT `fk_member_TO_comment` 
@@ -187,3 +201,13 @@ DESC tbl_item;
 
 -- 
 ALTER TABLE tbl_item CHANGE it_ctcode it_ctcode CHAR(4) NOT NULL;
+
+
+-- 시간,날짜순
+
+SELECT * FROM tbl_board
+ORDER BY bd_time DESC, bd_date DESC;
+
+	SELECT * FROM tbl_review
+	ORDER BY r_time DESC, r_date DESC;
+    
