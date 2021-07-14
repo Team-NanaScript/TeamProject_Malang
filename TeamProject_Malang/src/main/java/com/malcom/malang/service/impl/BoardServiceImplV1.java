@@ -44,7 +44,6 @@ public class BoardServiceImplV1 implements BoardService{
 	@Override
 	public Integer update(BoardVO vo) {
 		
-		
 		String sDate = DateConfig.sDate("yyyy-mm-dd");
 		String sTime = DateConfig.sTime("hh:MM:ss");
 		
