@@ -5,27 +5,27 @@
 <mapper namespace="com.malcom.malang.dao.OrderDao">
 
 <select id="select" resultType="CartVO">
-	SELECT * FROM tbl_cart
+	SELECT * FROM tbl_order
 </select>
 
 <select id="findById" resultType="CartVO">
-	SELECT * FROM tbl_cart
-	WHERE cr_code = #{cr_code}
+	SELECT * FROM tbl_order
+	WHERE od_code = #{od_code}
 </select>
 
 <select id="findByBuyerId" resultType="CartVO">
-	SELECT * FROM tbl_cart
+	SELECT * FROM tbl_order
 	WHERE cr_buyerid = #{cr_buyerid}
 	ORDER BY cr_code DESC
 </select>
 
 <insert id="insert" parameterType="CartVO">
-	INSERT INTO tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	INSERT INTO tbl_order(q_writer, q_itcode, q_title, q_content, q_date, q_time)
 	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date}, #{q_time})
 </insert>
 
 <update id="update" parameterType="CartVO">
-	UPDATE tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	UPDATE tbl_order(q_writer, q_itcode, q_title, q_content, q_date, q_time)
 	SET 
 	q_writer = #{q_writer}
 	q_itcode = #{q_itcode}
@@ -37,7 +37,7 @@
 </update>
 
 <delete id="delete">
-	DELETE FROM tbl_cart
+	DELETE FROM tbl_order
 	WHERE q_code = #{q_code}
 </delete>
 

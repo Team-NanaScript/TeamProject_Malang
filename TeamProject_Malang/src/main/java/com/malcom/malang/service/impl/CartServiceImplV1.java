@@ -2,6 +2,8 @@ package com.malcom.malang.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.malcom.malang.dao.CartDao;
 import com.malcom.malang.model.CartVO;
 import com.malcom.malang.service.CartService;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Service
 @RequiredArgsConstructor
 public class CartServiceImplV1 implements CartService{
 
