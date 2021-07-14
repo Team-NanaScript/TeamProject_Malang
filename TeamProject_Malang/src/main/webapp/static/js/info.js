@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const quesClick = (e) => {
-    alert("문의글을 작성합니다.");
+
+ 	location.href = `${rootPath}/info/qna/${itCode}`;   
+
   }
  
  
