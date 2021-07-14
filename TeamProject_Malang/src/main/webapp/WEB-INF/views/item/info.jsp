@@ -10,13 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Info</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/font.css?ver=2021-07-06-001" />
+	href="${rootPath}/static/css/font.css?ver=2021-07-14-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/info.css?ver=2021-07-013-001" />
+	href="${rootPath}/static/css/info.css?ver=2021-07-14-001" />
 <script>
 	var rootPath = "${rootPath}"
+	var itCode = "${ITEM.it_code}"
 </script>
-<script src="${rootPath}/static/js/info.js?ver=2021-06-14-001"></script>
+<script src="${rootPath}/static/js/info.js?ver=2021-07-14-005"></script>
 <style>
 table.review td:hover, table.question td:hover {
 	cursor: pointer;

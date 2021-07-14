@@ -2,14 +2,18 @@ package com.malcom.malang.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
+import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.OptionVO;
 import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.ReviewDTO;
@@ -90,6 +94,21 @@ public class InfoController {
 		return "오잉";
 	}
 	
+	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)
+	public String qna(@PathVariable("it_code") String it_code, Model model, HttpSession hSession) {
+		
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+		if(mVO == null) {
+			
+			return "redirect:/login";
+		}
+		
+		ItemVO itVO = iService.findById(it_code);
+		model.addAttribute("ITEM", itVO);
+		
+		
+		return "/item/qna_insert";
+	}
 	
 	
 	
