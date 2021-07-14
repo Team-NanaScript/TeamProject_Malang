@@ -25,5 +25,4 @@ public class ReviewDTO {
 	private String r_time;//	VARCHAR(30),
 	private Integer r_score;//	INT
 	private String mb_nickname;
-	private String od_option;
 }

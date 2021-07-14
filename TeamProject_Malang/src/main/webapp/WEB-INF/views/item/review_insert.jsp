@@ -28,6 +28,9 @@
 		<label>작성자 ID</label>
 		<input name="r_writer"  value="${MEMBER.mb_id}" readonly/>
 
+		<label>평점</label>
+		<input name="r_score" type="radio"/>
+		
 		
 
 				
