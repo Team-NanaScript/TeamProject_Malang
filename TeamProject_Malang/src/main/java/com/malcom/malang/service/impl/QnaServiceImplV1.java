@@ -28,8 +28,8 @@ public class QnaServiceImplV1 implements QnaService{
 	@Override
 	public Integer insert(QnaVO vo) {
 		
-		String sDate = DateConfig.sDate("yyyy-mm-dd");
-		String sTime = DateConfig.sTime("hh:MM:ss");
+		String sDate = DateConfig.sDate("yyyy-MM-dd");
+		String sTime = DateConfig.sTime("hh:mm:ss");
 		
 		vo.setQ_date(sDate);
 		vo.setQ_time(sTime);
