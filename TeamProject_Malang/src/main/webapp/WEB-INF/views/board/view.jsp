@@ -17,7 +17,7 @@
 			<div class="notice_view">
 				<div id="nv_header">
 					<h2 id="title">${VIEW.bd_title}</h2>
-					<p>${VIEW.bd_date}</p>
+					<p>${VIEW.bd_date}&nbsp;${VIEW.bd_time}</p>
 					<p id="author">${VIEW.bd_author}</p>
 				</div>
 
