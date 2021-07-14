@@ -31,18 +31,19 @@
 </select>
 
 <insert id="insert" parameterType="QnaVO">
-	INSERT INTO tbl_qna(q_writer, q_itcode, q_title, q_content, q_date)
-	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date})
+	INSERT INTO tbl_qna(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date}, #{q_time})
 </insert>
 
 <update id="update" parameterType="QnaVO">
-	UPDATE tbl_qna(q_writer, q_itcode, q_title, q_content, q_date)
+	UPDATE tbl_qna(q_writer, q_itcode, q_title, q_content, q_date, q_time)
 	SET 
 	q_writer = #{q_writer}
 	q_itcode = #{q_itcode}
 	q_title = #{q_title}
 	q_content = #{q_content}
 	q_date = #{q_date}
+	q_time = #{q_time}
 	WHERE q_code = #{q_code}
 </update>
 

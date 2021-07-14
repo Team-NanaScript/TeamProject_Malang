@@ -15,13 +15,17 @@ import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.OptionVO;
+import com.malcom.malang.model.OrderVO;
 import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.model.ReviewDTO;
+import com.malcom.malang.model.ReviewVO;
 import com.malcom.malang.model.SelectOptionVO;
+import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.DescriptionService;
 import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.OptionService;
+import com.malcom.malang.service.OrderService;
 import com.malcom.malang.service.QnaService;
 import com.malcom.malang.service.ReviewService;
 import com.malcom.malang.service.SelectOptionService;
@@ -41,8 +45,9 @@ public class InfoController {
 	protected final ReviewService rService;
 	protected final OptionService oService;
 	protected final SelectOptionService soService; 
+	protected final CartService cService;
+	protected final OrderService odService;
 	
-
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String home(String itcode, Model model) {
@@ -96,11 +101,11 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)
-	public String qna(@PathVariable("it_code") String it_code, Model model, HttpSession hSession) {
+	public String qnaWrite(@PathVariable("it_code") String it_code, Model model, HttpSession hSession) {
 		
+		// 로그인확인
 		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
 		if(mVO == null) {
-			
 			return "redirect:/login";
 		}
 		
@@ -127,9 +132,43 @@ public class InfoController {
 	}
 	
 	
+	// 일단 화면확인을 위한 임시주소.
+	@RequestMapping(value="/review/{od_code}", method=RequestMethod.GET)
+	public String reviewWrite(@PathVariable("od_code") Long od_code,
+			Model model, HttpSession hSession) {
+		// 로그인확인
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+		if(mVO == null) {
+			return "redirect:/login";
+		}
+		
+		// 오더 code를 받아서 해당 주문을 VO로 가져옴
+		OrderVO orVO = odService.findById(od_code);
+//		// orderVO 정보 중 option 뽑아냄
+//		String od_option = orVO.getOd_option();
+		// orderVO 정보 중 itcode 뽑아냄
+		String it_code = orVO.getOd_itcode();
+		// it_code를 이용해 itemVO 정보 중 title 뽑아냄
+		ItemVO itVO = iService.findById(it_code);
+		
+		
+		
+
+		model.addAttribute("ITEM", itVO);
+		model.addAttribute("ORDER", orVO);
+		
+		
+		return "item/review_insert";
+	}
 	
-	
-	
+	@RequestMapping(value="/review/{it_code}", method=RequestMethod.POST)
+	public String reviewInsert(@PathVariable("it_code") String it_code, 
+			ReviewVO reviewVO, 
+			Model model) {
+		
+		
+		return "redirect:/user";
+	}
 	
 	
 	// 사용안함 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

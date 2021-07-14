@@ -4,11 +4,16 @@ CREATE TABLE `tbl_review` (
 	`r_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`r_writer`	VARCHAR(20)	NOT NULL,
 	`r_itcode`	CHAR(8)	NOT NULL,
+    `r_odoption` VARCHAR(256),
 	`r_content`	VARCHAR(2000) NOT NULL,
 	`r_date`	VARCHAR(30),
+    `r_time`	VARCHAR(30),
 	`r_score`	INT	NOT NULL,
-    `r_poto`	VARCHAR(100)
+    `r_photo`	VARCHAR(256)
 );
+
+-- 칼럼변경
+-- ALTER TABLE tbl_review CHANGE r_photo r_photo VARCHAR(256);
 
 SELECT * FROM tbl_review;
 -- DROP TABLE tbl_review;
@@ -74,12 +79,14 @@ VALUES('nana','00000009',
 
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_review AS
-SELECT R.r_code, R.r_writer, R.r_itcode, 
-	R.r_content, R.r_date, R.r_time, R.r_score, 
-    R.r_poto, MB.mb_nickname
+SELECT R.r_code, R.r_writer, R.r_itcode,  IT.it_title, IT.it_photo,
+	R.r_odoption, R.r_content, R.r_date, R.r_time, 
+    R.r_score, R.r_photo, MB.mb_nickname
 FROM tbl_review R
 	LEFT JOIN tbl_member MB
-		ON R.r_writer = MB.mb_id;
+		ON R.r_writer = MB.mb_id
+	LEFT JOIN tbl_item IT
+		ON R.r_itcode = IT.it_code;
         
 SELECT * FROM view_review;
 

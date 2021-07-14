@@ -56,7 +56,7 @@ public class QnaServiceImplV1 implements QnaService{
 	}
 
 	@Override
-	public List<QnaDTO> selectByWriter(Long q_writer) {
+	public List<QnaDTO> selectByWriter(String q_writer) {
 
 		return qDao.selectByWriter(q_writer);
 	}

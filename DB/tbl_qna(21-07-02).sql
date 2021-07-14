@@ -4,7 +4,8 @@ CREATE TABLE `tbl_qna` (
 	`q_itcode`	CHAR(8)	NOT NULL,
 	`q_title`	VARCHAR(100)	NOT NULL,
 	`q_content`	VARCHAR(2000)	NOT NULL,
-	`q_date`	VARCHAR(30)
+	`q_date`	VARCHAR(30),
+    `q_time`	VARCHAR(30)
 );
 
 SELECT * FROM tbl_member;
@@ -35,17 +36,23 @@ DROP TABLE tbl_qna;
 
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_qna AS
-SELECT Q.q_code, Q.q_writer, Q.q_itcode, 
+SELECT Q.q_code, Q.q_writer, Q.q_itcode, IT.it_title, 
 	Q.q_title, Q.q_content, Q.q_date, Q.q_time,
     MB.mb_nickname
 FROM tbl_qna Q
 	LEFT JOIN tbl_member MB
-		ON Q.q_writer = MB.mb_id;
+		ON Q.q_writer = MB.mb_id
+	LEFT JOIN tbl_item IT
+		ON Q.q_itcode = IT.it_code;
         
 -- DROP VIEW view_qna;
-        
+
+DELETE FROM tbl_qna
+WHERE q_code = 10;
 -- 시범
 SELECT * FROM view_qna;
+SELECT * FROM tbl_qna;
 
 	SELECT * FROM view_qna
 	WHERE q_itcode = '00000005';
+    
