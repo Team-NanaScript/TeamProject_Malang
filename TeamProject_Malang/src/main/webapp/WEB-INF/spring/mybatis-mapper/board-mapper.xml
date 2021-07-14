@@ -50,8 +50,8 @@ order by bd_seq desc
 
 <insert id="insert" parameterType="BoardVO">
 
-INSERT INTO tbl_board(bd_title,bd_content,bd_author,bd_date)
-VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date})
+INSERT INTO tbl_board(bd_title,bd_content,bd_author,bd_date,bd_time)
+VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date}, #{bd_time})
 
 </insert>
 
@@ -63,6 +63,7 @@ bd_content = #{bd_content},
 bd_author = #{bd_author},
 bd_date = #{bd_date},
 bd_count = #{bd_count}
+bd_time = #{bd_time}
 WHERE bd_seq = #{bd_seq}
 
 </update>
