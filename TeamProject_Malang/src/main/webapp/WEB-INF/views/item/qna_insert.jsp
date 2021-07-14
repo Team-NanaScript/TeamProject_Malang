@@ -24,10 +24,6 @@
 		<label>상품명</label>
 		<input name="it_title" value="${ITEM.it_title}" disabled/>
 		
-		<%-- 상품코드, 작성일자 숨겨서 보내기 --%>
-		<input class="hidden" name="it_code" value="${ITEM.it_code}" readonly/>
-		<input class="hidden" name="q_date" value="${ }"/>
-		
 		<label>작성자 ID</label>
 		<input name="q_writer"  value="${MEMBER.mb_id}" readonly/>
 

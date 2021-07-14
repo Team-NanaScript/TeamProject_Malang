@@ -116,9 +116,14 @@ public class InfoController {
 			QnaVO qnaVO,
 			Model model) {
 		
+		// it_code 넣어주기
+		qnaVO.setQ_itcode(it_code);
+		// 작성 날짜, 시간 넣어주고나서  insert 하기 
 		qService.insert(qnaVO);
 		
-		return null;
+		
+		// 여기 은빈언니가 item 합치면 바꿔야할 부분입니다.
+		return "redirect:/item/infos/" + it_code;
 	}
 	
 	
