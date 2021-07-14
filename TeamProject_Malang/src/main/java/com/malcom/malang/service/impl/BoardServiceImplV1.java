@@ -33,7 +33,8 @@ public class BoardServiceImplV1 implements BoardService{
 		String sDate = DateConfig.sDate("yyyy-mm-dd");
 		String sTime = DateConfig.stime("hh:MM:ss");
 		
-		vo.setBd_date(sDate + " " + sTime);
+		vo.setBd_date(sDate);
+		vo.setBd_time(sTime);
 		
 		bDao.insert(vo);
 		
@@ -44,10 +45,11 @@ public class BoardServiceImplV1 implements BoardService{
 	public Integer update(BoardVO vo) {
 		
 		
-		String sDate = DateConfig.sDate("yyyy-MM-dd");
+		String sDate = DateConfig.sDate("yyyy-mm-dd");
 		String sTime = DateConfig.stime("hh:MM:ss");
 		
-		vo.setBd_date(sDate + " " + sTime);
+		vo.setBd_date(sDate);
+		vo.setBd_time(sTime);
 		
 		Integer result = bDao.update(vo);
 	

@@ -31,8 +31,7 @@ public class NoticeController {
 	@RequestMapping(value = {"/",""} , method = RequestMethod.GET)
 	public String notice(Model model) {
 		
-		List<BoardVO> bdVO = bService.select();
-		List<BoardVO> bdList = this.subDate(bdVO);
+		List<BoardVO> bdList = bService.select();
 		model.addAttribute("BDLIST",bdList);
 
 		return "board/notice";
@@ -161,8 +160,7 @@ public class NoticeController {
 	public String searchTitle(Model model, String keyword) {
 		
 		
-		List<BoardVO> bList = bService.findByTitle(keyword);
-		List<BoardVO> bdList = this.subDate(bList);
+		List<BoardVO> bdList = bService.findByTitle(keyword);
 		model.addAttribute("RESULT", bdList);
 		
 		
@@ -172,8 +170,7 @@ public class NoticeController {
 	@RequestMapping(value="/search/content" , method=RequestMethod.GET)
 	public String searchContent(Model model, String keyword) {
 		
-		List<BoardVO> bList = bService.findByContent(keyword);
-		List<BoardVO> bdList = this.subDate(bList);
+		List<BoardVO> bdList = bService.findByContent(keyword);
 		model.addAttribute("RESULT", bdList);
 		
 		return "/board/notice";
@@ -182,22 +179,21 @@ public class NoticeController {
 	@RequestMapping(value="/search/writer" , method=RequestMethod.GET)
 	public String searchWriter(Model model, String keyword) {
 		
-		List<BoardVO> bList = bService.findByNick(keyword);
-		List<BoardVO> bdList = this.subDate(bList);
+		List<BoardVO> bdList = bService.findByNick(keyword);
 		model.addAttribute("RESULT", bdList);
 		
 		return "/board/notice";
 	}
 	
 	
-	private List<BoardVO> subDate(List<BoardVO> bList) {
-	
-		for(int i = 0 ; i < bList.size() ; i++) {
-			String date = bList.get(i).getBd_date().substring(0, 10);
-			bList.get(i).setBd_date(date);
-		}
-		
-		return bList;
-	}
+//	private List<BoardVO> subDate(List<BoardVO> bList) {
+//	
+//		for(int i = 0 ; i < bList.size() ; i++) {
+//			String date = bList.get(i).getBd_date().substring(0, 10);
+//			bList.get(i).setBd_date(date);
+//		}
+//		
+//		return bList;
+//	}
 
 }

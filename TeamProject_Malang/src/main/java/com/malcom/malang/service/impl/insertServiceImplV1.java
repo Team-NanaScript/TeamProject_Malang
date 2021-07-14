@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -12,7 +13,9 @@ import com.malcom.malang.dao.ItemDao;
 import com.malcom.malang.dao.OptionDao;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.OptionVO;
+import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.service.FileService;
+import com.malcom.malang.service.SelectOptionService;
 import com.malcom.malang.service.insertService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,9 +30,11 @@ public class insertServiceImplV1 implements insertService {
 	protected final OptionDao opDao;
 	protected final DescriptionDao desDao;
 	protected final FileService fService;
+	protected final SelectOptionService soService;
 
 	@Override
-	public int insert(ItemVO itVO, MultipartFile file, MultipartHttpServletRequest files) throws IOException {
+	public int insert(ItemVO itVO, SelectOptionVO soVO, 
+						MultipartFile file, MultipartHttpServletRequest files, Model model) throws IOException {
 		// TODO Auto-generated method stub
 
 		String fileName = fService.fileUp(file);
@@ -51,7 +56,10 @@ public class insertServiceImplV1 implements insertService {
 				itVO.setIt_photo(fileName);
 				
 				
-				itDao.insert(itVO);
+				int itRes = itDao.insert(itVO);
+				if(itRes < 1) {
+					
+				}
 				
 				break;
 			}
@@ -68,11 +76,18 @@ public class insertServiceImplV1 implements insertService {
 			opVO.setOp_content(itVO.getOp_content().get(i));
 			opVO.setOp_itcode(itVO.getIt_code());
 			
-			opDao.insert(opVO);
+			int opRes = opDao.insert(opVO);
+			if(opRes < 1) {
+				
+			}
 
 		}
 		
-		
+		soVO.setSo_itcode(itVO.getIt_code());
+		int soRes = soService.insert(soVO);
+		if(soRes < 1) {
+			
+		}
 
 		return 0;
 	}

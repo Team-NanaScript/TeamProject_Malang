@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
+import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.insertService;
 
@@ -48,10 +49,10 @@ public class insertController {
 	}
 	
 	@RequestMapping(value="/insert", method = RequestMethod.POST)
-	public String insert(ItemVO itVO, MultipartFile one_file,
-			@RequestParam(name="multi_file", required = false) MultipartHttpServletRequest multi_file) throws IOException { // , @RequestBody Map<String, String> maps) {
+	public String insert(ItemVO itVO, SelectOptionVO soVO ,MultipartFile one_file,
+			@RequestParam(name="multi_file", required = false) MultipartHttpServletRequest multi_file, Model model) throws IOException { // , @RequestBody Map<String, String> maps) {
 		
-		iService.insert(itVO, one_file, multi_file);
+		iService.insert(itVO, soVO, one_file, multi_file, model);
 		
 		
 		return "home";

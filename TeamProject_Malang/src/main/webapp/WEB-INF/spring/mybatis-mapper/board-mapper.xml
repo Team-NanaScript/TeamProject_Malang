@@ -16,7 +16,7 @@ select max(bd_seq) from tbl_board
 
 <select id="findByTitle" resultType="BoardVO">
 SELECT 
-bd_seq, bd_title, bd_content, bd_author, bd_date, bd_count,
+bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
 (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count  
 FROM tbl_board
 WHERE bd_title LIKE CONCAT('%',#{keyword},'%')
@@ -25,7 +25,7 @@ WHERE bd_title LIKE CONCAT('%',#{keyword},'%')
 
 <select id="findByNick" resultType="BoardVO">
 SELECT 
-bd_seq, bd_title, bd_content, bd_author, bd_date, bd_count,
+bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
 (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count  
 FROM tbl_board
 WHERE bd_author LIKE CONCAT('%',#{keyword},'%')
@@ -33,7 +33,7 @@ WHERE bd_author LIKE CONCAT('%',#{keyword},'%')
 </select>
 
 <select id="findByContent" resultType="BoardVO">
-SELECT bd_seq, bd_title, bd_content, bd_author, bd_date, bd_count,
+SELECT bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
 (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count 
 FROM tbl_board
 WHERE bd_content LIKE CONCAT('%',#{keyword},'%')
@@ -41,7 +41,7 @@ WHERE bd_content LIKE CONCAT('%',#{keyword},'%')
 </select>
 
 <select id="select" resultType="BoardVO">
-select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_count,
+select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
 (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
 from tbl_board
 order by bd_seq desc
