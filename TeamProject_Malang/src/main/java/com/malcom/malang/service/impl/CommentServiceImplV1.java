@@ -28,7 +28,7 @@ public class CommentServiceImplV1 implements CommentService{
 	@Override
 	public Integer insert(CommentVO vo) {
 
-		String time = DateConfig.sDate("yy/MM/dd") + " " + DateConfig.stime("HH:mm");
+		String time = DateConfig.sDate("yy/MM/dd") + " " + DateConfig.sTime("HH:mm");
 		
 		vo.setCm_date(time);
 		

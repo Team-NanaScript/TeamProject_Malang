@@ -9,6 +9,7 @@ CREATE TABLE `tbl_qna` (
 
 SELECT * FROM tbl_member;
 
+
 INSERT INTO tbl_qna(q_writer, q_itcode, q_title, q_content, q_date)
 VALUES('noso42','00000005','안녕하세요, 작가님 액자에 넣을 그림을 구매하고싶은데요', 
 '출력해도 색이나 화질이 깨지지않도록 작업 가능할까요? 또 개인소장용으로 상품을 제작해도 될까요?','2021-07-05');
@@ -35,11 +36,13 @@ DROP TABLE tbl_qna;
 -- 닉네임 넣은 VIEW만들기
 CREATE VIEW view_qna AS
 SELECT Q.q_code, Q.q_writer, Q.q_itcode, 
-	Q.q_title, Q.q_content, Q.q_date, 
+	Q.q_title, Q.q_content, Q.q_date, Q.q_time,
     MB.mb_nickname
 FROM tbl_qna Q
 	LEFT JOIN tbl_member MB
 		ON Q.q_writer = MB.mb_id;
+        
+-- DROP VIEW view_qna;
         
 -- 시범
 SELECT * FROM view_qna;

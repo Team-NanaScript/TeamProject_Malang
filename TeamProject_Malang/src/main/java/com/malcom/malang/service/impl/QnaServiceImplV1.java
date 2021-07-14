@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.malcom.malang.config.DateConfig;
 import com.malcom.malang.dao.QnaDao;
 import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.QnaVO;
@@ -26,6 +27,12 @@ public class QnaServiceImplV1 implements QnaService{
 
 	@Override
 	public Integer insert(QnaVO vo) {
+		
+		String sDate = DateConfig.sDate("yyyy-mm-dd");
+		String sTime = DateConfig.sTime("hh:MM:ss");
+		
+		vo.setQ_date(sDate);
+		vo.setQ_time(sTime);
 		
 		return qDao.insert(vo);
 	}

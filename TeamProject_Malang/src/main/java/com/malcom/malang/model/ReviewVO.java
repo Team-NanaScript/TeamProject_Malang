@@ -19,5 +19,6 @@ public class ReviewVO {
 	private String r_itcode;//	CHAR(8)	NOT NULL,
 	private String r_content;//	VARCHAR(2000),
 	private String r_date;//	VARCHAR(30),
+	private String r_time;//	VARCHAR(30),
 	private Integer r_score;//	INT
 }

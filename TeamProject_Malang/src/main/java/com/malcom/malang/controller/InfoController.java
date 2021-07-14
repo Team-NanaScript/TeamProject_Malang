@@ -16,6 +16,7 @@ import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.OptionVO;
 import com.malcom.malang.model.QnaDTO;
+import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.service.DescriptionService;
@@ -108,6 +109,16 @@ public class InfoController {
 		
 		
 		return "/item/qna_insert";
+	}
+	
+	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.POST)
+	public String qnaInsert(@PathVariable("it_code") String it_code, 
+			QnaVO qnaVO,
+			Model model) {
+		
+		qService.insert(qnaVO);
+		
+		return null;
 	}
 	
 	

@@ -30,8 +30,8 @@ public class BoardServiceImplV1 implements BoardService{
 	public Integer insert(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
-		String sDate = DateConfig.sDate("yyyy-MM-dd");
-		String sTime = DateConfig.stime("HH:mm:ss");
+		String sDate = DateConfig.sDate("yyyy-mm-dd");
+		String sTime = DateConfig.sTime("hh:MM:ss");
 		
 		vo.setBd_date(sDate);
 		vo.setBd_time(sTime);
@@ -44,9 +44,8 @@ public class BoardServiceImplV1 implements BoardService{
 	@Override
 	public Integer update(BoardVO vo) {
 		
-		
-		String sDate = DateConfig.sDate("yyyy-MM-dd");
-		String sTime = DateConfig.stime("HH:mm:ss");
+		String sDate = DateConfig.sDate("yyyy-mm-dd");
+		String sTime = DateConfig.sTime("hh:MM:ss");
 		
 		vo.setBd_date(sDate);
 		vo.setBd_time(sTime);

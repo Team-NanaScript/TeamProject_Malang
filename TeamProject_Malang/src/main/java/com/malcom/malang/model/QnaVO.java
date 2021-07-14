@@ -20,4 +20,5 @@ public class QnaVO {
 	private String q_title;//	VARCHAR(100)	NOT NULL,
 	private String q_content;//	VARCHAR(2000)	NOT NULL,
 	private String q_date;//	VARCHAR(30)
+	private String q_time;//	VARCHAR(30)
 }
