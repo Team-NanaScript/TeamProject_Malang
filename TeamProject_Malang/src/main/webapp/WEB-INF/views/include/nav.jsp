@@ -14,6 +14,7 @@
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/header.css?ver=2021-07-08-002" />
+<link href="${rootPath}/static/css/font.css" rel="stylesheet">
 <style>
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap")

@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 div.s_nav {
 	display: flex;
-	font-family: "Noto Sans KR", sans-serif;
 	text-decoration: none;
 	padding: 5px;
 	position: relative;
@@ -27,13 +27,12 @@ div.s_nav ul li {
 	padding: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-bottom: none;
-	text-align: center;
+	text-align: center;	
 }
 
 div.s_nav ul li:hover {
 	background-color: rgba(235, 164, 123, 0.993);
 	color: white;
-	font-weight: bold;
 	transition: 0.3s ease;
 	cursor: pointer;
 }
@@ -42,7 +41,6 @@ div.s_nav ul li:hover {
 .on {
 	background-color: rgba(235, 164, 123, 0.993);
 	color: white;
-	font-weight: bold;
 	border:none;
 }
 </style>

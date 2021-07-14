@@ -20,7 +20,10 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public List<MemberVO> select() {
 		// TODO Auto-generated method stub
-		return mDao.select();
+		
+		List<MemberVO> mList = mDao.select();
+		
+		return mList;
 	}
 
 	@Override
