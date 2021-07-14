@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Slide BannerV1</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/banner.css?ver=2021-07-13-002" />
+	href="${rootPath}/static/css/banner.css?ver=2021-07-14-002" />
 <style>
 section.banner article.nav div {
 	width:64px;

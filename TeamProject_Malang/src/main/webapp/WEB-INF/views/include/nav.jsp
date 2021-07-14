@@ -106,10 +106,10 @@ var rootPath ="${rootPath}";
 		<div class="adiv">
 			<nav id="one">
 				<ul>
-					<li class="item/0003">일러스트</li>
-					<li class="item/0002">수공예</li>
-					<li class="item/0001">수제간식</li>
-					<li class="item/0004">반려동물용품</li>
+					<li class="item/0022">일러스트</li>
+					<li class="item/0018">수공예</li>
+					<li class="item/0013">수제간식</li>
+					<li class="item/0028">반려동물용품</li>
 					<li class="review">실시간 후기</li>
 				</ul>
 			</nav>
