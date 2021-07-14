@@ -11,7 +11,7 @@ import com.malcom.malang.model.QnaVO;
 @Repository
 public interface QnaDao extends GenericDao<QnaVO, Long>{
 
-	public List<QnaDTO> selectByWriter(@Param("q_writer") Long q_writer);
+	public List<QnaDTO> selectByWriter(@Param("q_writer") String q_writer);
 	public List<QnaDTO> selectByContent(@Param("q_content") String q_content);
 	public List<QnaDTO> findByItem(@Param("q_itcode") String q_itcode);
 }

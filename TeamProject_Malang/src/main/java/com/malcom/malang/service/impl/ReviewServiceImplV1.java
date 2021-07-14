@@ -26,6 +26,8 @@ public class ReviewServiceImplV1 implements ReviewService{
 	@Override
 	public Integer insert(ReviewVO vo) {
 		
+
+		
 		return rDao.insert(vo);
 	}
 
@@ -48,7 +50,7 @@ public class ReviewServiceImplV1 implements ReviewService{
 	}
 
 	@Override
-	public List<ReviewDTO> selectByWriter(Long r_writer) {
+	public List<ReviewDTO> selectByWriter(String r_writer) {
 		
 		return rDao.selectByWriter(r_writer);
 	}
@@ -92,4 +94,5 @@ public class ReviewServiceImplV1 implements ReviewService{
 		
 		return rDao.selectWithNickName();
 	}
+	
 }

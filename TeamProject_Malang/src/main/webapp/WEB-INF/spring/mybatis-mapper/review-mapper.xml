@@ -41,17 +41,19 @@
 </select>
 
 <insert id="insert" parameterType="ReviewVO">
-	INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score)
-	VALUES(#{r_writer}, #{r_itcode}, #{r_content}, #{r_date}, #{r_score})
+	INSERT INTO tbl_review(r_writer, r_itcode, r_odoption, r_content, r_date, r_time, r_score)
+	VALUES(#{r_writer}, #{r_itcode}, #{r_odoption}, #{r_content}, #{r_date}, #{r_time}, #{r_score})
 </insert>
 
 <update id="update" parameterType="ReviewVO">
-	UPDATE tbl_review(r_writer, r_itcode, r_content, r_date, r_score)
+	UPDATE tbl_review(r_writer, r_itcode, r_odoption, r_content, r_date, r_time, r_score)
 	SET 
 	r_writer = #{r_writer}
 	r_itcode = #{r_itcode}
+	r_odoption = #{r_odoption}
 	r_content = #{r_content}
 	r_date = #{r_date}
+	r_time = #{r_time}
 	r_score = #{r_score}
 	WHERE r_code = #{r_code}
 </update>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.CartDao">
+
+<select id="select" resultType="CartVO">
+	SELECT * FROM tbl_cart
+</select>
+
+<select id="findById" resultType="CartVO">
+	SELECT * FROM tbl_cart
+	WHERE cr_code = #{cr_code}
+</select>
+
+<select id="findByBuyerId" resultType="CartVO">
+	SELECT * FROM tbl_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+	ORDER BY cr_code DESC
+</select>
+
+<insert id="insert" parameterType="CartVO">
+	INSERT INTO tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date}, #{q_time})
+</insert>
+
+<update id="update" parameterType="CartVO">
+	UPDATE tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	SET 
+	q_writer = #{q_writer}
+	q_itcode = #{q_itcode}
+	q_title = #{q_title}
+	q_content = #{q_content}
+	q_date = #{q_date}
+	q_time = #{q_time}
+	WHERE q_code = #{q_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_cart
+	WHERE q_code = #{q_code}
+</delete>
+
+</mapper>

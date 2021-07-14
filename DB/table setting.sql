@@ -109,6 +109,27 @@ CREATE TABLE `tbl_files` (
   `file_upname` varchar(256) DEFAULT NULL
 );
 
+CREATE TABLE `tbl_cart` (
+	`cr_code`	BIGINT	PRIMARY KEY,
+	`cr_buyerid`	VARCHAR(20)	NOT NULL,
+	`cr_itcode`	CHAR(8)	NOT NULL,
+	`cr_option`	VARCHAR(256) NOT NULL,
+	`cr_price`	INT NOT NULL,
+	`cr_amount`	INT DEFAULT 1,
+	`cr_shippingfee`	INT NOT NULL
+);
+
+CREATE TABLE `tbl_order` (
+	`od_code`	BIGINT	PRIMARY KEY,
+	`od_buyerid`	VARCHAR(20)	NOT NULL,
+	`od_itcode`	CHAR(8)	NOT NULL,
+	`od_option`	VARCHAR(256)	NOT NULL,
+	`od_price`	INT	NOT NULL,
+	`od_anum`	VARCHAR(20)	NOT NULL,
+	`od_addr`	VARCHAR(200)	NOT NULL,
+	`od_paydate`	VARCHAR(60)	NOT NULL,
+	`od_orderdate`	VARCHAR(60)	NOT NULL
+);
 
 ALTER TABLE `tbl_description` 
 ADD CONSTRAINT `fk_item_TO_description` 
@@ -190,6 +211,14 @@ FOREIGN KEY (`file_itcode`)
 REFERENCES `tbl_item` (`it_code`)
 ON DELETE CASCADE;
 
+ALTER TABLE `tbl_cart` 
+ADD CONSTRAINT `fk_member_TO_cart` 
+FOREIGN KEY (`cr_buyerid`)
+REFERENCES `tbl_member` (`mb_id`);
+
+
+
+
 
 -- 외래키 확인하기
 select * from information_schema.table_constraints where constraint_schema = 'db_malang';
@@ -210,4 +239,4 @@ ORDER BY bd_time DESC, bd_date DESC;
 
 	SELECT * FROM tbl_review
 	ORDER BY r_time DESC, r_date DESC;
-    
+    COMMIT;
