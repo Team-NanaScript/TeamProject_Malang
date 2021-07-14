@@ -101,4 +101,6 @@ public class MemberController {
 		
 		return "member/manage";
 	}
+	
+	
 }
