@@ -180,7 +180,8 @@ if(msg == "REJECT"){
 
 				<div class="btn_wrap">
 					<button id="update">정보수정</button>
-					<button id="cart">장바구니</button>
+					<button id="qna">내 문의글 보기</button>
+					<button id="review">내 후기글 보기</button>
 				</div>
 
 			</form>

@@ -21,8 +21,8 @@
 		<nav id="cate_nav">
 			<ul>
 				<c:forEach items="${CATE_SUB}" var="SUB">
-					<li class="tab <c:if test="${SUB.ct_code == cate}">active</c:if>">
-					<h3><a href="${rootPath}/item/${SUB.ct_code}">${SUB.ct_name}</a></h3>
+					<li class="tab <c:if test="${SUB.ct_code == cate}">active</c:if>" data-code="${SUB.ct_code}">
+					<h3>${SUB.ct_name}</h3>
 					</li>
 				</c:forEach>
 			</ul>
@@ -35,10 +35,9 @@
 const cate_nav = document.querySelector("nav#cate_nav")
 
 cate_nav.addEventListener("click", (e)=>{
-	let li = e.target
-	if(li.tagName === "LI"){
-		location.href="${rootPath}/item/" + ${SUB.ct_code};
-	}
+	let ct_code = e.target.closest("LI").dataset.code
+	/* alert("여기야! " + code) */
+	location.href="${rootPath}/item/" + ct_code;
 })
 </script>
 </html>
