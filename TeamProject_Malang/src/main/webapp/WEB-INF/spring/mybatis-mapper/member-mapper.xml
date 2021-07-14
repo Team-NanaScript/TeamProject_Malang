@@ -6,7 +6,14 @@
 <select id="select" resultType="MemberVO">
 select * from tbl_member
 
+<<<<<<< HEAD
 </select>
+=======
+<select id="select" resultType="MemberVO">
+SELECT * FROM tbl_member
+</select>
+
+>>>>>>> 116085b31e7aa3bce56502e8f1dce8f2a3600d72
 <select id="findById" resultType="MemberVO">
 SELECT * FROM tbl_member
 WHERE mb_id = #{mb_id} AND mb_pw = #{mb_pw}

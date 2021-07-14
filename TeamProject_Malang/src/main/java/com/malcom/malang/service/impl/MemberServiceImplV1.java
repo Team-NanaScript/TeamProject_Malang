@@ -1,5 +1,6 @@
 package com.malcom.malang.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -10,7 +11,9 @@ import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service("memberServiceV1")
 @RequiredArgsConstructor
 public class MemberServiceImplV1 implements MemberService{
@@ -72,14 +75,16 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public void adminManage(Model model) {
 		// TODO Auto-generated method stub
-		List<MemberVO> mList = this.select();
-		for(MemberVO mVO : mList) {
+		List<MemberVO> mListAll = mDao.select();
+		List<MemberVO> mList = new ArrayList<MemberVO>();
+		for(MemberVO mVO : mListAll) {
 			if(mVO.getMb_role() == 2 ) {
-				mList.remove(mVO);
+				continue;
 			}
+			mList.add(mVO);
 		}
-		
-		model.addAttribute("MEMBER",mList);
+		log.debug("회원 리스트 {}", mList.toString());
+		model.addAttribute("M_MEMBER",mList);
 	}
 
 
