@@ -136,14 +136,15 @@ public class InfoController {
 	@RequestMapping(value="/review/{od_code}", method=RequestMethod.GET)
 	public String reviewWrite(@PathVariable("od_code") Long od_code,
 			Model model, HttpSession hSession) {
-		// 로그인확인
-		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
-		if(mVO == null) {
-			return "redirect:/login";
-		}
+		// 로그인확인 (만드는동안 일단 비활성화)
+//		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+//		if(mVO == null) {
+//			return "redirect:/login";
+//		}
 		
 		// 오더 code를 받아서 해당 주문을 VO로 가져옴
 		OrderVO orVO = odService.findById(od_code);
+		log.debug("orVO : {}", orVO);
 		// orderVO 정보 중 itcode 뽑아냄
 		String it_code = orVO.getOd_itcode();
 		// it_code를 이용해 itemVO 정보 중 title 뽑아냄

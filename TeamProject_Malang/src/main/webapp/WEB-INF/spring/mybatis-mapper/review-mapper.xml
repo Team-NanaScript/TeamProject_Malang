@@ -16,7 +16,7 @@
 
 <select id="selectByWriter" resultType="ReviewDTO">
 	SELECT * FROM view_review
-	WHERE q_writer = #{q_writer}; 
+	WHERE r_writer = #{r_writer}; 
 </select>
 
 <select id="findById" resultType="ReviewDTO">
