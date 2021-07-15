@@ -73,4 +73,9 @@ public class QnaServiceImplV1 implements QnaService{
 		return qDao.findByItem(q_itcode);
 	}
 
+	@Override
+	public QnaDTO findBySeq(Long q_code) {
+		return qDao.findBySeq(q_code);
+	}
+
 }

@@ -6,11 +6,6 @@
 #F29A8C 핑크
 
 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 div.container {
   /* background-color: #AAA; */

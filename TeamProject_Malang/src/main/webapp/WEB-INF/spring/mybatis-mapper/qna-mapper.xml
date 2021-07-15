@@ -25,6 +25,11 @@
 	ORDER BY q_time DESC, q_date DESC;
 </select>
 
+<select id="findBySeq" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_code = #{q_code}
+</select>
+
 <select id="findById" resultType="QnaVO">
 	SELECT * FROM tbl_qna
 	WHERE q_code = #{q_code}
