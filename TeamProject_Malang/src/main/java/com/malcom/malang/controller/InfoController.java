@@ -126,6 +126,17 @@ public class InfoController {
 	public String option(@RequestBody UserOptionDTO dto, Model model) {
 		
 		log.debug(dto.toString());
+		
+		int inputSize = dto.getOptions().size();
+		int originSize = Integer.valueOf( dto.getSelectBoxSize());
+//		dto.getOptions().size() == dto.getSelectBoxSize()
+		if(inputSize == originSize) {
+			String options = dto.getOptions().toString();
+			log.debug("옵션확인옵션확인 {}", options);
+		} else {
+			
+		}
+
 		return "OK";
 		
 	}

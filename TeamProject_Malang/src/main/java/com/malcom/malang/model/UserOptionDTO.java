@@ -16,7 +16,8 @@ import lombok.ToString;
 public class UserOptionDTO {
 
 	private List<String> options;
-	private String name;
-	private int age;
+	private String selectBoxSize;
+	//private String name;
+	//private int age;
 	
 }
