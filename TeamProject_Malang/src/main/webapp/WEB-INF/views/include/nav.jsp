@@ -29,12 +29,6 @@
 	font-style: normal;
 }
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
 input, button{
 	outline:none;
 }

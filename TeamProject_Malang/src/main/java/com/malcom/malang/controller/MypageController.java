@@ -48,7 +48,7 @@ public class MypageController {
 	public String myReview(String code, Model model) {
 		Long r_code = Long.valueOf(code);
 		ReviewDTO rDTO = rService.findBySeq(r_code);
-		
+		log.debug("reviewDTO {}", rDTO.toString());
 		model.addAttribute("REVIEW", rDTO);
 		
 		return "member/myreview_view";
@@ -58,6 +58,8 @@ public class MypageController {
 	public String myQna(String code, Model model) {
 		Long q_code = Long.valueOf(code);
 		QnaDTO qDTO = qService.findBySeq(q_code);
+		
+		log.debug("qnaDTO {}", qDTO.toString());
 		
 		model.addAttribute("QNA", qDTO);
 		
