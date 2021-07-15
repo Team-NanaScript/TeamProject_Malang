@@ -33,8 +33,7 @@ public class insertServiceImplV1 implements insertService {
 	protected final SelectOptionService soService;
 
 	@Override
-	public int insert(ItemVO itVO, SelectOptionVO soVO, 
-						MultipartFile file, MultipartHttpServletRequest files, Model model) throws IOException {
+	public int insert(ItemVO itVO, MultipartFile file, MultipartHttpServletRequest files, Model model) throws IOException {
 		// TODO Auto-generated method stub
 
 		String fileName = fService.fileUp(file);
@@ -67,9 +66,9 @@ public class insertServiceImplV1 implements insertService {
 		}
 		
 
-		int size = itVO.getOp_name().size();
+		int op_name_size = itVO.getOp_name().size();
 
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < op_name_size; i++) {
 
 			OptionVO opVO = new OptionVO();
 			opVO.setOp_name(itVO.getOp_name().get(i));
@@ -83,10 +82,16 @@ public class insertServiceImplV1 implements insertService {
 
 		}
 		
-		soVO.setSo_itcode(itVO.getIt_code());
-		int soRes = soService.insert(soVO);
-		if(soRes < 1) {
-			
+		int so_name_size = itVO.getSo_name().size();
+		for(int j = 0 ; j < so_name_size ; j++) {
+			SelectOptionVO soVO = new SelectOptionVO();
+			soVO.setSo_content(itVO.getSo_content().get(j));
+			soVO.setSo_name(itVO.getSo_name().get(j).trim());
+			soVO.setSo_itcode(itVO.getIt_code());
+			int soRes = soService.insert(soVO);
+			if(soRes < 1) {
+				
+			}
 		}
 
 		return 0;

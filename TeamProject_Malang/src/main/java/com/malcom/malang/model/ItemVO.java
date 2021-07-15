@@ -27,4 +27,9 @@ public class ItemVO {
   
 	private List<String> op_name ;
 	private List<String> op_content;
+	
+	private List<String> so_name ;
+	private List<String> so_content;
+	private List<Integer> price ;
+	
 }

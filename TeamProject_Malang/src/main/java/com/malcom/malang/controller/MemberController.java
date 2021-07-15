@@ -1,11 +1,17 @@
 package com.malcom.malang.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.service.MemberService;
@@ -66,6 +72,24 @@ public class MemberController {
 		
 		
 		return "redirect:/";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/role_update", method=RequestMethod.GET)
+	public String update(@RequestParam(value="id") String id, 
+						 @RequestParam(value="role") String role) {
+		
+		
+		
+		int mb_role = Integer.valueOf(role);
+		int res = mService.roleUpdate(id, mb_role);
+		log.debug("RESULT 값 {} ",res);
+		
+		if(0 == res) {
+			return "OK";
+		}
+		
+		return "FAIL";
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)

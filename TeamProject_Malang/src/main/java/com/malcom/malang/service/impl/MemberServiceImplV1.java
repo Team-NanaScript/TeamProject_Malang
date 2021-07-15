@@ -57,7 +57,9 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public Integer update(MemberVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return mDao.update(vo);
 	}
 
 	@Override
@@ -69,7 +71,10 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public MemberVO findById(String PK) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		MemberVO mVO = mDao.findById(PK); 
+		
+		return mVO;
 	}
 
 	@Override
@@ -84,7 +89,16 @@ public class MemberServiceImplV1 implements MemberService{
 			mList.add(mVO);
 		}
 		log.debug("회원 리스트 {}", mList.toString());
-		model.addAttribute("M_MEMBER",mList);
+		model.addAttribute("MLIST",mList);
+	}
+
+	@Override
+	public int roleUpdate(String mb_id, int mb_role) {
+		// TODO Auto-generated method stub
+		
+		mDao.roleUpdate(mb_id, mb_role);
+		
+		return 0;
 	}
 
 

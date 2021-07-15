@@ -31,25 +31,36 @@
 	
 	<div class="item_option">
 	
+		<div id="option_btn">
+			<button id="btn_option_add" type="button">옵션 추가</button>
+		</div>
+	
 		<div class="input_option">
 			<input name="op_name" placeholder="옵션 이름" required="required">
 			<input name="op_content" placeholder="옵션 내용" required="required">
 		</div>
 		
-		<div id="option_btn">
-			<button id="btn_option_add" type="button">옵션 추가</button>
-		</div>
+		
 		
 	</div>
 	
 	<div class="item_category"> 
-		<select id="cate_st" required="required">
+		<select id="cate_st">
 			<option>-----</option>
 		</select>
 		
-		<select id="cate_st2" required="required">
+		<select id="cate_st2">
 			<option>-----</option>
 		</select>
+	</div>
+	
+	<div class="item_select_option">
+		<div class="input_so">
+		<button id="btn_so_add" type="button">옵션 추가</button>
+		<label>옵션 명</label><input name="so_name" placeholder="">
+		<label>옵션 내용</label><input name="so_content" placeholder="">
+		<input name="so_price" type="number" value=0>
+		</div>
 	</div>
 	
 </form>
@@ -96,27 +107,49 @@ function submitContents(){
 
 // 옵션 추가 스크립트 
 
+
 document.querySelector("#btn_option_add").addEventListener("click", ()=>{
 	
-	
-	let frm_input = document.querySelector("form#input")
 	let div_io = document.querySelector("div.item_option")
+
+	let io_div = document.createElement("div")
+	let input_io_name = document.createElement("input")
+	let input_io_content = document.createElement("input")
 	
-	let div = document.createElement("div")
-	let input_name = document.createElement("input")
-	let input_content = document.createElement("input")
+	io_div.setAttribute("class", "input_option")
+	input_io_name.setAttribute("name", "op_name")
+	input_io_name.setAttribute("placeholder", "옵션 이름")
 	
-	div.setAttribute("class", "input_option")
-	input_name.setAttribute("name", "op_name")
-	input_name.setAttribute("placeholder", "옵션 이름")
-	
-	input_content.setAttribute("name", "op_content")
-	input_content.setAttribute("placeholder", "옵션 내용")
+	input_io_content.setAttribute("name", "op_content")
+	input_io_content.setAttribute("placeholder", "옵션 내용")
 
 	
-	div.appendChild(input_name)
-	div.appendChild(input_content)
-	div_io.appendChild(div)
+	io_div.appendChild(input_io_name)
+	io_div.appendChild(input_io_content)
+	div_io.appendChild(io_div)
+	
+})
+
+document.querySelector("#btn_so_add").addEventListener("click", ()=>{
+	
+	let div_so = document.querySelector("div.item_select_option")
+		
+	let so_div = document.createElement("div")
+	let input_so_name = document.createElement("input")
+	let input_so_content = document.createElement("input")
+	let input_so_price = document.createElement("input")
+	
+	so_div.setAttribute("class", "input_so")
+	input_so_name.setAttribute("name", "so_name")
+	input_so_content.setAttribute("name", "so_content")
+	
+	input_so_price.setAttribute("name", "so_price")
+	input_so_price.setAttribute("value", "0")
+	
+	so_div.appendChild(input_so_name)
+	so_div.appendChild(input_so_content)
+	so_div.appendChild(input_so_price)
+	div_so.appendChild(so_div)
 	
 })
 
@@ -169,18 +202,26 @@ for(let i = 0 ; i < cate1.length ; i++){
 		cate_st.appendChild(option)
 }
 
+function cate2_chg(){
+	
+	let checked_cate = document.querySelector("#cate_st2 option:checked").value 
+	
+	document.getElementById("it_ctcode").setAttribute("value", checked_cate)
+	
+}
+
 cate_st.addEventListener("change", ()=>{
 
 	cate_st2.options.length=0; 
 	let cate1_value = document.querySelector("#cate_st option:checked").value
-
 	
 	for(let i = 0 ; i < cate2.length ; i++){
-			
+		
 			if(cate2[i].ct_parentcode == cate1_value){
 				
-				let option2 = document.createElement("option")
+			let option2 = document.createElement("option")				
 				option2.innerHTML = cate2[i].ct_name;
+				option2.setAttribute("selected", "selected");
 				option2.setAttribute("value", cate2[i].ct_code);
 				option2.setAttribute("class", "cate2");
 				
@@ -190,20 +231,13 @@ cate_st.addEventListener("change", ()=>{
 			} 
 			
 		}
-		
+
+	cate2_chg();
 	
 })
 
 
-cate_st2.addEventListener("change", ()=>{
-	
-	
-	let checked_cate = document.querySelector("#cate_st2 option:checked").value 
-	
-	document.getElementById("it_ctcode").setAttribute("value", checked_cate)
-		
-	
-})
+cate_st2.addEventListener("change", cate2_chg());
 
 console.log(cateList)
 		

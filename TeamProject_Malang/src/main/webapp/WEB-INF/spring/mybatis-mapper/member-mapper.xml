@@ -21,13 +21,19 @@ VALUES(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_tel}, #{mb_nickname})
 
 <update id="update" parameterType="MemberVO">
 
-UPDATE tbl_member(mb_id, mb_role, mb_pw, mb_addr, mb_tel) SET
+UPDATE tbl_member SET
 mb_role = #{mb_role},
 mb_pw = #{mb_pw},
 mb_addr = #{mb_addr},
 mb_tel = #{mb_tel}
 WHERE mb_id = #{mb_id}
 
+</update>
+
+<update id="roleUpdate">
+update tbl_member
+set mb_role = #{mb_role}
+where mb_id = #{mb_id}
 </update>
 
 <delete id="delete">
