@@ -15,11 +15,30 @@
 	div#btn_box{
 		
 	}
+	
+	.rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background-image: url('${rootPath}/static/icons/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+	}
+	
+	.rating .rate_radio:checked + label {
+	    background-color: #ff8;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<h1>후기작성</h1>
+	
 	<form id="review_insert" method="POST">
 		<label>상품명</label>
 		<input name="it_title" value="${ITEM.it_title}" disabled/>
@@ -28,15 +47,12 @@
 		<label>작성자 ID</label>
 		<input name="r_writer"  value="${MEMBER.mb_id}" readonly/>
 
-		<label>평점</label>
+
 		
-		
-		<input name="r_score" type="radio"/>
-        <input type="hidden" name="rate" id="rate" value="0"/>
-        <p class="title_star">별점과 리뷰를 남겨주세요.</p>
- 
+		<label>평점</label>	
+        <input type="hidden" name="r_score" id="rate" value="5"/>
         <div class="review_rating">
-            <div class="warning_msg">별점을 선택해 주세요.</div>
+            <div class="warning_msg">평점을 선택해 주세요.</div>
             <div class="rating">
                 <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
                 <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">

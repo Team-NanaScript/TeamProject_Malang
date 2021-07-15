@@ -20,25 +20,25 @@
 </select>
 
 <insert id="insert" parameterType="CartVO">
-	INSERT INTO tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
-	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date}, #{q_time})
+	INSERT INTO tbl_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
+	VALUES(#{cr_buyerid}, #{cr_itcode}, #{cr_option}, #{cr_price}, #{cr_amount}, #{cr_shippingfee})
 </insert>
 
 <update id="update" parameterType="CartVO">
-	UPDATE tbl_cart(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	UPDATE tbl_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
 	SET 
-	q_writer = #{q_writer}
-	q_itcode = #{q_itcode}
-	q_title = #{q_title}
-	q_content = #{q_content}
-	q_date = #{q_date}
-	q_time = #{q_time}
-	WHERE q_code = #{q_code}
+	cr_buyerid = #{cr_buyerid}
+	cr_itcode = #{cr_itcode}
+	cr_option = #{cr_option}
+	cr_price = #{cr_price}
+	cr_amount = #{cr_amount}
+	cr_shippingfee = #{cr_shippingfee}
+	WHERE cr_code = #{cr_code}
 </update>
 
 <delete id="delete">
 	DELETE FROM tbl_cart
-	WHERE q_code = #{q_code}
+	WHERE cr_code = #{cr_code}
 </delete>
 
 </mapper>

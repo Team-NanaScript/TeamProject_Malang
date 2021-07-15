@@ -110,7 +110,7 @@ CREATE TABLE `tbl_files` (
 );
 
 CREATE TABLE `tbl_cart` (
-	`cr_code`	BIGINT	PRIMARY KEY,
+	`cr_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
 	`cr_buyerid`	VARCHAR(20)	NOT NULL,
 	`cr_itcode`	CHAR(8)	NOT NULL,
 	`cr_option`	VARCHAR(256) NOT NULL,
@@ -119,8 +119,9 @@ CREATE TABLE `tbl_cart` (
 	`cr_shippingfee`	INT NOT NULL
 );
 
+
 CREATE TABLE `tbl_order` (
-	`od_code`	BIGINT	PRIMARY KEY,
+	`od_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
 	`od_buyerid`	VARCHAR(20)	NOT NULL,
 	`od_itcode`	CHAR(8)	NOT NULL,
 	`od_option`	VARCHAR(256)	NOT NULL,
