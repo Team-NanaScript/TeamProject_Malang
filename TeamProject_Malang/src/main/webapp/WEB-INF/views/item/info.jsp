@@ -141,17 +141,15 @@ section.img_section div.image_preview {
 		
 		// 선택박스가 바뀔때마다 3개 다 선택되어 있는지를 체크하기
 		
-		
-		
-		
 		let value = arg.value
 		
+		// All로 가져오면 배열로 가져와짐 (node 배열)
 		const selectOption = document.querySelectorAll("select.selectBox")
 		const selectOptions = selectOption.length
 		
 		let selectArray = []
 		for(let i = 0 ; i < selectOptions;i++) {
-			let value = selectOption[i].value
+			let value = selectOption[i].value // select의 value는 선택된 옵션의 value가 넘어오는것
 			console.log("value", value)
 			if(value != 'no') {
 				selectArray.push(value)
@@ -165,8 +163,9 @@ section.img_section div.image_preview {
 		// options 라는 이름으로 배열을 담는 JSON  객체 1개 생성
 		const sendJson = {
 			options:selectArray,
-			name:'홍길동',
-			age : 33
+			selectBoxSize : selectOptions
+			//name:'홍길동',
+			//age : 33
 			
 		}
 		
@@ -184,12 +183,19 @@ section.img_section div.image_preview {
 			}
 		})
 		.then(response=>response.text())
-		.then(result=>console.log(result))
+		//.then(result=>console.log(result))
+		.then(result=>{
+			
+			
+		})
+		
+		
 		//}
 		// */
 
 	}	
 
+/*
 	
 	function checkAllSelect(value){
 		var selectOption = document.querySelector("select.selectBox")	
@@ -205,7 +211,7 @@ section.img_section div.image_preview {
 		}
 	}
 		
-		
+*/		
 
 		
 		
