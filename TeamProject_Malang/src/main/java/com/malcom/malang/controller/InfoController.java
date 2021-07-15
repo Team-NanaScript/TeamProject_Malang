@@ -130,14 +130,35 @@ public class InfoController {
 		int inputSize = dto.getOptions().size();
 		int originSize = Integer.valueOf( dto.getSelectBoxSize());
 //		dto.getOptions().size() == dto.getSelectBoxSize()
+		
+		String options = dto.getOptions().toString();
+		List<String> optionList = dto.getOptions();
 		if(inputSize == originSize) {
-			String options = dto.getOptions().toString();
 			log.debug("옵션확인옵션확인 {}", options);
-		} else {
 			
+			String strOptions = "선택옵션 : ";
+			for(int i = 0; i < optionList.size(); i++) {
+				
+				Long opcode = Long.valueOf(optionList.get(i)) ;
+				SelectOptionVO soVO = soService.findById(opcode);
+				String so_name = soVO.getSo_name();
+				String so_content = soVO.getSo_content();
+				Integer so_price = soVO.getSo_price();
+				
+				if(i == optionList.size() - 1) {
+					strOptions += so_name + ":" + so_content;
+				} else {
+					strOptions += so_name + ":" + so_content + "/";
+				}
+			}
+			
+			log.debug("옵션스트링리스트확인 {}", strOptions);
+			
+			return "OK";
+		} else {
+			log.debug("실패옵션확인 {}", options);
+			return "NO";
 		}
-
-		return "OK";
 		
 	}
 	
