@@ -136,16 +136,74 @@ section.img_section div.image_preview {
 
 	function changeFunc(arg) {
 		// var selectedValue = document.querySelector("#selectBox").value
-		alert(arg.value)
+		// alert(arg.value)
+		
+		
+		// 선택박스가 바뀔때마다 3개 다 선택되어 있는지를 체크하기
+		
+		
+		
 		
 		let value = arg.value
 		
-		fetch("${rootPath}/info/option/" + value)
-		.then(response=>response.text())
-		.then(result=>{
+		const selectOption = document.querySelectorAll("select.selectBox")
+		const selectOptions = selectOption.length
+		
+		let selectArray = []
+		for(let i = 0 ; i < selectOptions;i++) {
+			let value = selectOption[i].value
+			console.log("value", value)
+			if(value != 'no') {
+				selectArray.push(value)
+			}
+		}
+		
+		console.log("선택값")
+		console.table(selectArray)
+		
+		
+		// options 라는 이름으로 배열을 담는 JSON  객체 1개 생성
+		const sendJson = {
+			options:selectArray,
+			name:'홍길동',
+			age : 33
 			
+		}
+		
+		
+		// selectOption = selectOption.option[selectOption.selectedIndex].value;
+		
+		// alert(selectOption);
+		//if(selectOption != "no"){
+		// fetch를 사용해서 POST 로 전송	
+		fetch("${rootPath}/info/option",{
+			method:"POST",
+			body : JSON.stringify(sendJson),
+			headers : {
+				"content-Type" : "application/json"
+			}
 		})
+		.then(response=>response.text())
+		.then(result=>console.log(result))
+		//}
+		// */
+
 	}	
+
+	
+	function checkAllSelect(value){
+		var selectOption = document.querySelector("select.selectBox")	
+		selectOption = selectOption.option[selectOption.selectedIndex].value;
+		
+		alert(selectOption);
+		if(selectOption != "no"){
+			fetch("${rootPath}/info/option/" + value)
+			.then(response=>response.text())
+			.then(result=>{
+				
+			})
+		}
+	}
 		
 		
 

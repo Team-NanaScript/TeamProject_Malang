@@ -7,7 +7,6 @@
 <select id="select" resultType="QnaDTO">
 	SELECT * FROM view_qna
 	ORDER BY q_date DESC
-	LIMIT 5
 </select>
 
 <select id="selectByWriter" resultType="QnaDTO">
@@ -23,11 +22,13 @@
 <select id="findByItem" resultType="QnaDTO">
 	SELECT * FROM view_qna
 	WHERE q_itcode = #{q_itcode}
+	ORDER BY q_time DESC, q_date DESC;
 </select>
 
 <select id="findById" resultType="QnaVO">
 	SELECT * FROM tbl_qna
 	WHERE q_code = #{q_code}
+	ORDER BY q_time DESC, q_date DESC;
 </select>
 
 <insert id="insert" parameterType="QnaVO">
@@ -36,8 +37,7 @@
 </insert>
 
 <update id="update" parameterType="QnaVO">
-	UPDATE tbl_qna(q_writer, q_itcode, q_title, q_content, q_date, q_time)
-	SET 
+	UPDATE tbl_qna SET 
 	q_writer = #{q_writer}
 	q_itcode = #{q_itcode}
 	q_title = #{q_title}

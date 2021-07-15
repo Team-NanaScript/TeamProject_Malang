@@ -1,5 +1,6 @@
 package com.malcom.malang.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +23,7 @@ import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.ReviewVO;
 import com.malcom.malang.model.SelectOptionVO;
+import com.malcom.malang.model.UserOptionDTO;
 import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.DescriptionService;
 import com.malcom.malang.service.ItemService;
@@ -87,18 +90,46 @@ public class InfoController {
 	
 	@ResponseBody
 	@RequestMapping(value="/option", method=RequestMethod.GET)
-	public String option(Long value, Model model) {
+	public String option(@PathVariable("option") Long value, Model model) {
 		
 		SelectOptionVO soVO = soService.findById(value);
 		
-		/*
-		soVO.
-		soService.
+		String so_name = soVO.getSo_name();
+		String so_content = soVO.getSo_content();
+		int so_price = soVO.getSo_price();
+
+		List<SelectOptionVO> soList = new ArrayList<SelectOptionVO>();
 		
-		soVO
-		*/
+		for(int i = 0; i < soList.size(); i++) {
+			if(so_name == soList.get(i).getSo_name()) {
+				SelectOptionVO vo = SelectOptionVO.builder()
+						.so_name(so_name)
+						.so_content(so_content)
+						.so_price(so_price)
+						.build();
+				soList.add(i, vo);
+			}
+		}
 		return "오잉";
 	}
+	
+	/*
+	 * 
+	 * @RequestBody
+	 * Jackson-bind를 통해서
+	 * JSONString(serialize)로 수신된 데이터를
+	 * parsing해서 DTO 에 담아라
+	 * 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/option", method=RequestMethod.POST)
+	public String option(@RequestBody UserOptionDTO dto, Model model) {
+		
+		log.debug(dto.toString());
+		return "OK";
+		
+	}
+	
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)
 	public String qnaWrite(@PathVariable("it_code") String it_code, Model model, HttpSession hSession) {
@@ -111,9 +142,8 @@ public class InfoController {
 		
 		ItemVO itVO = iService.findById(it_code);
 		model.addAttribute("ITEM", itVO);
-		
-		
 		return "/item/qna_insert";
+		
 	}
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.POST)
@@ -159,59 +189,14 @@ public class InfoController {
 		return "item/review_insert";
 	}
 	
-	@RequestMapping(value="/review/{it_code}", method=RequestMethod.POST)
-	public String reviewInsert(@PathVariable("it_code") String it_code, 
+	@RequestMapping(value="/review/{od_code}", method=RequestMethod.POST)
+	public String reviewInsert(@PathVariable("od_code") Long od_code, 
 			ReviewVO reviewVO, 
 			Model model) {
 		
-		
 		rService.insert(reviewVO);
-		
-		return "redirect:/user";
-	}
-	
-	
-	
-	
-	
-	
-	// 사용안함 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-	public String backup_home(String itcode, Model model) {
-		
-		itcode = "00000005"; // 수정필요
-		
-		ItemVO iVO = iService.findById(itcode);
-//		Long decode = iVO.getIt_decode();
-		
-		
-		List<OptionVO> oVO = oService.findByItem(itcode);
-		String avgScore = rService.avgScore(itcode);
-		Integer countScore = rService.countScore(itcode);
-
-		DescriptionVO dVO = dService.findByItem(itcode);
-		List<QnaDTO> qList = qService.findByItem(itcode);
-		List<ReviewDTO> rList = rService.findByItem(itcode);
-		
-		
-		model.addAttribute("OPTION", oVO);
-		model.addAttribute("AVG", avgScore);
-		model.addAttribute("COUNT", countScore);
-		
-		model.addAttribute("ITEM", iVO);
-		model.addAttribute("DESC", dVO);
-		model.addAttribute("QNAS", qList);
-		model.addAttribute("REVIEWS", rList);
-		
-		// 카테고리 옵션
-			// 이름만
-		List<String> soName = soService.findByOptionName(itcode);
-		model.addAttribute("SONAME", soName);
-		
-			// Json 으로 전부
-		String soJson = soService.selectJson(itcode);
-		model.addAttribute("SOJSON", soJson);
-		
 		
 		return "/item/info";
 	}
+	
 }

@@ -22,6 +22,7 @@
 <select id="findById" resultType="ReviewDTO">
 	SELECT * FROM view_review
 	WHERE r_code = #{r_code}
+	ORDER BY r_time DESC, r_date DESC;
 </select>
 
 <select id="findByItem" resultType="ReviewDTO">
@@ -46,8 +47,7 @@
 </insert>
 
 <update id="update" parameterType="ReviewVO">
-	UPDATE tbl_review(r_writer, r_itcode, r_odoption, r_content, r_date, r_time, r_score)
-	SET 
+	UPDATE tbl_review SET 
 	r_writer = #{r_writer}
 	r_itcode = #{r_itcode}
 	r_odoption = #{r_odoption}

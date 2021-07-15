@@ -27,9 +27,7 @@
 </insert>
 
 <update id="update" parameterType="OrderVO">
-	UPDATE tbl_order(od_buyerid, od_itcode, od_option, od_price, 
-				od_anum, od_addr, od_paydate, od_orderdate)
-	SET 
+	UPDATE tbl_order SET 
 	od_buyerid = #{od_buyerid}
 	od_itcode = #{od_itcode}
 	od_option = #{od_option}

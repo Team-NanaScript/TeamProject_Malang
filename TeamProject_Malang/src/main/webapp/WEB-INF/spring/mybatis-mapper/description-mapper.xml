@@ -24,8 +24,7 @@
 </insert>
 
 <update id="update" parameterType="DescriptionVO">
-	UPDATE tbl_description(de_shippingfee, de_shipping, de_refund)
-	SET 
+	UPDATE tbl_description SET 
 	de_shippingfee = #{de_shippingfee}
 	de_shipping = #{de_shipping}
 	de_refund = #{de_refund}
