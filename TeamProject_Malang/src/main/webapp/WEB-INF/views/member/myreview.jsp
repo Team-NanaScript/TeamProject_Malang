@@ -102,7 +102,7 @@ document.querySelector("table.review_table").addEventListener("click", (e)=>{
 	let code = e.target.closest("TR").dataset.code
 	/* alert(code) */
 	/* location.href="${rootPath}/member/view_review/"+code */
-	location.href="${rootPath}/view_review?r_code="+code
+	location.href="${rootPath}/view_review?code="+code
 	
 	
 })

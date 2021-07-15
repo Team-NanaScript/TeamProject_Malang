@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>내 문의글 보기</title>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>

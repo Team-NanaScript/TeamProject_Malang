@@ -7,8 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>QNA VIEW</title>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <article class="qna_wrap">
 <div class="button_box">
 	<button class="update">수정하기</button>
@@ -28,5 +31,6 @@
 
 </article>
 
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>
