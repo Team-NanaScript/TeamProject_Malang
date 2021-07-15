@@ -24,8 +24,7 @@
 </insert>
 
 <update id="update" parameterType="OptionVO">
-	UPDATE tbl_option(op_code, op_itcode, op_name, op_content)
-	SET 
+	UPDATE tbl_option SET 
 	op_code = #{op_code}
 	op_itcode = #{op_itcode}
 	op_name = #{op_name}

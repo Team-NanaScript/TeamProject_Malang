@@ -41,8 +41,7 @@
 </insert>
 
 <update id="update" parameterType="SelectOptionVO">
-	UPDATE tbl_select_option(so_code, so_itcode, so_name, so_content, so_price)
-	SET 
+	UPDATE tbl_select_option SET 
 	so_code = #{so_code}
 	so_itcode = #{so_itcode}
 	so_name = #{so_name}

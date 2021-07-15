@@ -25,8 +25,7 @@
 </insert>
 
 <update id="update" parameterType="CartVO">
-	UPDATE tbl_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
-	SET 
+	UPDATE tbl_cart SET 
 	cr_buyerid = #{cr_buyerid}
 	cr_itcode = #{cr_itcode}
 	cr_option = #{cr_option}

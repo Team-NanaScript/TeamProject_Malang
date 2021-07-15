@@ -33,7 +33,49 @@
 	.rating .rate_radio:checked + label {
 	    background-color: #ff8;
 	}
+	
+	/* 레이아웃 외곽 너비 400px 제한*/
+	.wrap{
+	    max-width: 480px;
+	    margin: 0 auto; /* 화면 가운데로 */
+	    background-color: #fff;
+	    height: 100%;
+	    padding: 20px;
+	    box-sizing: border-box;
+	
+	}
+	.reviewform textarea{
+	    width: 100%;
+	    padding: 10px;
+	    box-sizing: border-box;
+	}
+	.rating .rate_radio {
+	    position: relative;
+	    display: inline-block;
+	    z-index: 20;
+	    opacity: 0.001;
+	    width: 60px;
+	    height: 60px;
+	    background-color: #fff;
+	    cursor: pointer;
+	    vertical-align: top;
+	    display: none;
+	}
+
+	.warning_msg {
+    display: none;
+    position: relative;
+    text-align: center;
+    background: #ffffff;
+    line-height: 26px;
+    width: 100%;
+    color: red;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+	}
 </style>
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
@@ -42,6 +84,7 @@
 	<form id="review_insert" method="POST">
 		<label>상품명</label>
 		<input name="it_title" value="${ITEM.it_title}" disabled/>
+		<input type="hidden" name="r_itcode" value="${ITEM.it_code}"/>
 		<label>상품옵션</label>
 		<input name="r_odoption" value="${ORDER.od_option}" readonly/>
 		<label>작성자 ID</label>
@@ -66,17 +109,12 @@
                 <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
                 <label for="rating5"></label>
             </div>
-        </div>		
+        </div>	
 		
-
-				
-		<label>제목</label>
-		<input name="q_title"/>
+		<textarea class ="ng" id="content" name="r_content" maxlength="1000" required="required" cols="100" rows="30"></textarea>
 		
-		<textarea class ="ng" id="content" name="q_content" maxlength="1000" required="required" cols="100" rows="30"></textarea>
-		
-        <div id="btn_box">
-            <button type="button" id="btn_write" onclick="submitContents()">작성하기</button>
+        <div class="btn_box">
+            <button type="button" id="btn_save" onclick="submitContents()">작성하기</button>
             <button type="reset">다시쓰기</button>
         </div>    
 	</form>
@@ -108,8 +146,52 @@ function submitContents(){
 	
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	
-	document.querySelector("form#qna_insert").submit();
+	document.querySelector("form#review_insert").submit();
 	
 }
+
+
+//별점 마킹 모듈 프로토타입으로 생성
+function Rating(){};
+Rating.prototype.rate = 0;
+Rating.prototype.setRate = function(newrate){
+    //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
+    this.rate = newrate;
+    let items = document.querySelectorAll('.rate_radio');
+    items.forEach(function(item, idx){
+        if(idx < newrate){
+            item.checked = true;
+        }else{
+            item.checked = false;
+        }
+    });
+}
+let rating = new Rating();//별점 인스턴스 생성
+
+document.addEventListener('DOMContentLoaded', function(){
+    //별점선택 이벤트 리스너
+    document.querySelector('.rating').addEventListener('click',function(e){
+        let elem = e.target;
+        if(elem.classList.contains('rate_radio')){
+            rating.setRate(parseInt(elem.value));
+        }
+    })
+});
+
+
+//저장 전송전 필드 체크 이벤트 리스너
+document.querySelector('#btn_save').addEventListener('click', function(e){
+    //별점 선택 안했으면 메시지 표시
+    if(rating.rate == 0){
+        rating.showMessage('rate');
+        return false;
+    }
+    //리뷰 5자 미만이면 메시지 표시
+    if(document.querySelector('.review_textarea').value.length < 5){
+        rating.showMessage('review');
+        return false;
+    }
+    //폼 서밋
+});
 </script>
 </html>
