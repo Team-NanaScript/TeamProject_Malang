@@ -9,6 +9,7 @@
 <title>내 문의글 보기</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
 <article>
 <h2>내 문의글 보기</h2>
@@ -37,5 +38,7 @@
 </c:if>
 </table>
 </article>
+
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>

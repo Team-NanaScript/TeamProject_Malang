@@ -79,7 +79,7 @@ div.my_info {
 }
 
 /* input#user, input#pw, input#name { */
-.id, .name, .addr, .tel {
+.id, .name, .addr, .tel, .nickname {
 	display: inline-block;
 	width: 200px;
 	padding: 6%;
@@ -179,13 +179,23 @@ if(msg == "REJECT"){
 				</div>
 
 				<div class="btn_wrap">
-					<button id="update">정보수정</button>
-					<button id="qna">내 문의글 보기</button>
-					<button id="review">내 후기글 보기</button>
+					<button id="update" type="button">정보수정</button>
+					<button id="myqna" type="button">내 문의글 보기</button>
+					<button id="myreview" type="button">내 후기글 보기</button>
 				</div>
 
 			</form>
 		</div>
 	</div>
 </body>
+
+<script>
+document.querySelector("div.btn_wrap").addEventListener("click", (e)=>{
+	const buttonId = e.target.id
+	/* alert(button) */
+	/* location.href = "${rootPath}/member/" + buttonId */
+	location.href = "${rootPath}/" + buttonId;
+	
+	})
+</script>
 </html>
