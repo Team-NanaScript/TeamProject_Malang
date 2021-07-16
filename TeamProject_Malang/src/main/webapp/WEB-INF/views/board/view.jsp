@@ -38,7 +38,7 @@
 				<c:if test="${not empty COMMENT}">
 					<c:forEach items="${COMMENT}" var="CM" varStatus="i">
 						<div class="nv_comment">
-						<form method="post" id="update_input">
+						<form method="post" id="update_input" class="${CM.cm_seq}">
 							<input name="cm_mbid" value="${MEMBER.mb_id}" type="hidden">
 							<input name="cm_mbnick" value="${MEMBER.mb_nickname}" type="hidden">
 							<input name="cm_bdseq" value="${VIEW.bd_seq}" type="hidden">
@@ -124,32 +124,26 @@ if(nv_comment){
 		} if(className === "update"){
 			
 			let tg_content = document.getElementById(seq);
+			
 			let content = tg_content.textContent
 			tg_content.innerHTML = "<textarea name='cm_content'>" + content;
 			tg_content.innerHTML += "<button id='comment_update' type='button' >수정</button>"
 			
-			
-			
 		}
-	})
-
-	
-}	let form_update = document.querySelector("form#update_input")
-
-	form_update.addEventListener("click",(e)=>{
 		
-		let id = e.target.id;
+		let form_update = document.querySelector("form#update_input")
 		
-		let seq = e.target.closest("LI").id
-		
-		alert("id " + seq)
 		if(id == "comment_update"){
+		
+			e.target.closest("form").submit();
 			
-			e.currentTarget.submit();
 			
 		}
 		
 	})
+	
+}
+	
 
 
 	

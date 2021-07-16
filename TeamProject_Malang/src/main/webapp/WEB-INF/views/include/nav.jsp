@@ -9,7 +9,15 @@
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/header.css?ver=2021-07-08-002" />
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/notice.css?ver=2021-07-16-002" />
+
 <style>
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
 
 input, button{
 	outline:none;

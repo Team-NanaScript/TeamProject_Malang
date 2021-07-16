@@ -2,45 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<style>
-
-div.s_nav {
-	display: flex;
-	text-decoration: none;
-	padding: 5px;
-	position: relative;
-	top: 11px;
-	left: -45px;
-}
-
-div.s_nav ul {
-	list-style: none;
-	display: flex;
-}
-
-div.s_nav ul li {
-	padding: 10px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-bottom: none;
-	text-align: center;	
-}
-
-div.s_nav ul li:hover {
-	background-color: rgba(235, 164, 123, 0.993);
-	color: white;
-	transition: 0.3s ease;
-	cursor: pointer;
-}
-
-
-.on {
-	background-color: rgba(235, 164, 123, 0.993);
-	color: white;
-	border:none;
-}
-</style>
-</head>
-<body>
 	<div class="s_nav">
 		<nav>
 			<ul>
