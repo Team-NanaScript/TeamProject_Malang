@@ -182,6 +182,8 @@ section.img_section div.image_preview {
 				"content-Type" : "application/json"
 			}
 		})
+		
+		
 		.then(response=>response.text())
 		//.then(result=>console.log(result))
 		.then(result=>{

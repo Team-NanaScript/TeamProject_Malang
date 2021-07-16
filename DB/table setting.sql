@@ -21,11 +21,12 @@ CREATE TABLE `tbl_option` (
 
 CREATE TABLE `tbl_select_option` (
 	`so_code`	BIGINT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`so_itcode`	BIGINT	NOT NULL,
+	`so_itcode`	CHAR(8)	NOT NULL,
 	`so_name`	VARCHAR(30)	NOT NULL,
 	`so_content`	VARCHAR(50)	NOT NULL,
 	`so_price` INT DEFAULT 0
 );
+
 
 CREATE TABLE `tbl_category` (
 	`ct_code`	CHAR(4)	NOT NULL PRIMARY KEY,
@@ -130,8 +131,13 @@ CREATE TABLE `tbl_order` (
 	`od_anum`	VARCHAR(20)	NOT NULL,
 	`od_addr`	VARCHAR(200)	NOT NULL,
 	`od_paydate`	VARCHAR(60)	NOT NULL,
-	`od_orderdate`	VARCHAR(60)	NOT NULL
+	`od_orderdate`	VARCHAR(60)	NOT NULL,
+	`od_rcode`	BIGINT DEFAULT NULL
 );
+DESC tbl_order;
+COMMIT;
+-- 칼럼추가
+alter table tbl_order add od_rcode BIGINT DEFAULT NULL; 
 
 ALTER TABLE `tbl_description` 
 ADD CONSTRAINT `fk_item_TO_description` 
