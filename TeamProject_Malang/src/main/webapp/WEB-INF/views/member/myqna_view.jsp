@@ -9,6 +9,14 @@
 <title>QNA VIEW</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
+<style>
+article.qna_wrap, table.qna_view {
+	width:1056px;
+	margin: 2px auto;
+}
+
+
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
