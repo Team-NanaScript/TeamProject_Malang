@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://kit.fontawesome.com/d9b9bbc6a7.js"
 	crossorigin="anonymous"></script>
 
@@ -75,8 +70,6 @@ li a {
 <script>
 var rootPath ="${rootPath}";
 </script>
-</head>
-<body>
 	<div class="h_container">
 		<header>
 			<a id="logo" href="${rootPath}">MALANG</a>
@@ -137,7 +130,4 @@ var rootPath ="${rootPath}";
 			</form>
 		</div>
 	</div>
-
-</body>
 <script src="${rootPath}/static/js/nav.js?ver=2021-07-12-002"></script>
-</html>

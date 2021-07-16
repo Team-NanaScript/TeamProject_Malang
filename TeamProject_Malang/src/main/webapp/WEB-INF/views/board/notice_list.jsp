@@ -3,11 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 tbody#content td a {
 	font-weight: normal;
@@ -107,7 +102,6 @@ select#search {
 			<a>1</a>
 		</div>
 	</div>
-</body>
 <script>
 	
 document.querySelector("button#s_sch").addEventListener("click", search);
@@ -147,4 +141,3 @@ function search(){
 
 
 </script>
-</html>

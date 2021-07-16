@@ -28,26 +28,26 @@ div#nv_header p#author {
 	font-weight: bold;
 }
 
-div#nv_content {
+div.nv_content {
 	height: 20rem;
 	word-wrap: break-word;
 	margin: 0 10px;
 	color: rgba(0, 0, 0, 0.7);
 }
 
-div#nv_comment {
+div.nv_comment {
 	border-top: 1px solid lightgray;
 	display: flex;
 	color: rgba(0, 0, 0, 0.7);
 }
 
-div#nv_comment ul{
+div.nv_comment ul{
 
 	display: flex;
 	list-style: none;
 }
 
-div#nv_comment li {
+div.nv_comment li {
 
 	margin:10px 10px;
 	font-size: 12px;
@@ -63,22 +63,22 @@ div#dud {
 	font-size: 11px;
 }
 
-div#nv_comment li#update, div#nv_comment li#delete {
+div.nv_comment li.update, div.nv_comment li.delete {
 	cursor: pointer;
 }
 
-div#nv_comment_input {
+div.nv_comment_input {
 	margin: 5px 5px;
 	color: rgba(0, 0, 0, 0.7);
 	border: 1px solid lightgray;
 }
 
-div#nv_comment_input textarea {
+div.nv_comment_input textarea {
 	border: none;
 	outline: none;
 }
 
-div#nv_comment_input button {
+div.nv_comment_input button {
 	background-color: white;
 	color: rgba(0, 0, 0, 0.8);
 	border-left: 1px solid lightgray;
@@ -119,4 +119,8 @@ div#btn_content {
 .btn_comment {
 	
 	cursor: pointer;
+}
+
+div#dud li{
+	cursor:pointer;
 }

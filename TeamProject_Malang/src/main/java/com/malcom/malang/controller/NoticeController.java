@@ -145,12 +145,24 @@ public class NoticeController {
 	
 	@RequestMapping(value="/view", method=RequestMethod.POST)
 	public String comment(CommentVO vo, Model model) {
-
-		Integer result = cService.insert(vo);
 		
-		model.addAttribute("bd_seq" , vo.getCm_bdseq());
+		log.debug("댓글 VO {}", vo.toString());
 
-		return "redirect:/notice/view";
+		if(vo.getCm_seq() == null) {
+			
+			Integer result = cService.insert(vo);
+			
+			model.addAttribute("bd_seq" , vo.getCm_bdseq());
+
+			return "redirect:/notice/view";
+			
+		} else {
+			cService.update(vo);
+			
+			model.addAttribute("bd_seq" , vo.getCm_bdseq());
+			
+			return "redirect:/notice/view";	
+		}
 	}
 	
 	

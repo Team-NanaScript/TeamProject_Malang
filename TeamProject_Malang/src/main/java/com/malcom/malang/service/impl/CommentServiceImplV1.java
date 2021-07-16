@@ -43,7 +43,13 @@ public class CommentServiceImplV1 implements CommentService{
 	@Override
 	public Integer update(CommentVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		
+
+		String time = DateConfig.sDate("yy/MM/dd") + " " + DateConfig.sTime("HH:mm");
+		
+		vo.setCm_date(time);
+		
+		return cDao.update(vo);
 	}
 
 	@Override
