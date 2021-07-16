@@ -17,7 +17,32 @@ if(msg == "REJECT"){
 </script>
 </head>
 <body>
-	<
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+	<section>
+		<nav class="mypage_nav">
+			<ul>
+				<li class="my">
+				</li>
+			</ul>
+		</nav>
+		<c:choose>
+			<c:when test="${BODY == 'MY_QNA' }">
+			<%@ include file="/WEB-INF/views/include/myqna.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'QNA_VIEW' }">
+			<%@ include file="/WEB-INF/views/include/myqna_view.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'MY_REVIEW' }">
+			<%@ include file="/WEB-INF/views/include/myreview.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'REVIEW_VIEW' }">
+			<%@ include file="/WEB-INF/views/include/myreview_view.jsp"%>
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+		</c:choose>
+	</section>
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 
 <script>
