@@ -10,5 +10,6 @@ public interface ReviewService extends GenericService<ReviewVO, Long>{
 	public List<ReviewDTO> findByItem(String r_itcode);
 	public String avgScore(String r_itcode);
 	public Integer countScore(String r_itcode);
+	public ReviewDTO findBySeq(Long r_code);
 	public List<ReviewDTO> selectWithNickName();
 }

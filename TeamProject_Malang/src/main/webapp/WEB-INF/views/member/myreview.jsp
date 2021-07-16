@@ -7,12 +7,66 @@
 <head>
 <meta charset="UTF-8">
 <title>내 후기글 보기</title>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
+<style>
+div.my_header {
+	height: 144px;
+	background-color: #9e6e4e;
+}
+
+div.my_header div.header_name {
+	color: white;
+	
+	width: 1056px;
+	margin: 0 auto;
+	text-align:left;
+	line-height: 6rem;
+	background-color: #9e6e4e;
+}
+
+div.my_header div.header_name h2 {
+	font-size: 30px;
+}
+
+article.review_container, table.review_table {
+	width:1056px;
+	margin: 2px auto;
+}
+
+article.review_container table.review_table th, td {
+	border-top: 1px solid #aaa;
+	padding: 10px;
+	max-width: 500px;
+
+	text-align: center;
+}
+article.review_container table.review_table th {
+	background-color: #ccc;
+}
+
+article.review_container table.review_table td.content p {
+	width:100%;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+</style>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
-<article>
-<h2>내 후기글 보기</h2>
-<table>
+<div class="my_header">
+	<div class="header_name">
+		<h2>내 후기글 보기</h2>
+	</div>
+</div>
+<article class="review_container">
+
+<table class="review_table">
 
 <c:if test="${empty MYREVIEW}">
 	<tr>
@@ -28,9 +82,9 @@
 		<th>평점</th>
 	</tr>
 <c:forEach items="${MYREVIEW}" var="MYR">
-	<tr data-seq="${MYR.r_code}">
-		<td>${MYR.it_photo}</td>
-		<td>${MYR.r_content}</td>
+	<tr data-code="${MYR.r_code}">
+		<td><img src="${MYR.it_photo}"></td>
+		<td class="content"><p>${MYR.r_content}</td>
 		<td>${MYR.r_date}</td>
 		<td>${MYR.r_score}</td>
 	</tr>
@@ -39,5 +93,18 @@
 </c:if>
 </table>
 </article>
+
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+document.querySelector("table.review_table").addEventListener("click", (e)=>{
+	
+	let code = e.target.closest("TR").dataset.code
+	/* alert(code) */
+	/* location.href="${rootPath}/member/view_review/"+code */
+	location.href="${rootPath}/view_review?code="+code
+	
+	
+})
+</script>
 </html>

@@ -95,9 +95,13 @@ public class ReviewServiceImplV1 implements ReviewService{
 	}
 
 	@Override
+	public ReviewDTO findBySeq(Long r_code) {
+		return rDao.findBySeq(r_code);
+	}
+
+	@Override
 	public List<ReviewDTO> selectWithNickName() {
-		
 		return rDao.selectWithNickName();
 	}
-	
+
 }

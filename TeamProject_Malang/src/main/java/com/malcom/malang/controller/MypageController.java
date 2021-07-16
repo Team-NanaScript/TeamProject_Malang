@@ -27,7 +27,7 @@ public class MypageController {
 	protected final ReviewService rService;
 	
 	@RequestMapping(value="/myqna")
-	public String myQna(HttpSession session, Model model) {
+	public String myQnaList(HttpSession session, Model model) {
 		MemberVO mVO = (MemberVO) session.getAttribute("MEMBER");
 		List<QnaDTO> myQna = qService.selectByWriter(mVO.getMb_id());
 		model.addAttribute("MYQNA", myQna);
@@ -36,11 +36,33 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/myreview")
-	public String myReview(HttpSession session, Model model) {
+	public String myReviewList(HttpSession session, Model model) {
 		MemberVO mVO = (MemberVO) session.getAttribute("MEMBER");
 		List<ReviewDTO> myReview = rService.selectByWriter(mVO.getMb_id());
 		model.addAttribute("MYREVIEW", myReview);
 		
 		return "member/myreview";
+	}
+	
+	@RequestMapping(value="/view_review")
+	public String myReview(String code, Model model) {
+		Long r_code = Long.valueOf(code);
+		ReviewDTO rDTO = rService.findBySeq(r_code);
+		log.debug("reviewDTO {}", rDTO.toString());
+		model.addAttribute("REVIEW", rDTO);
+		
+		return "member/myreview_view";
+	}
+	
+	@RequestMapping(value="/view_qna")
+	public String myQna(String code, Model model) {
+		Long q_code = Long.valueOf(code);
+		QnaDTO qDTO = qService.findBySeq(q_code);
+		
+		log.debug("qnaDTO {}", qDTO.toString());
+		
+		model.addAttribute("QNA", qDTO);
+		
+		return "member/myqna_view";
 	}
 }

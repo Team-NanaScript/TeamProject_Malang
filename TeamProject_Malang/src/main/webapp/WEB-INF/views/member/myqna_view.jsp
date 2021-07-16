@@ -6,39 +6,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 문의글 보기</title>
+<title>QNA VIEW</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
-
-<article>
-<h2>내 문의글 보기</h2>
-<table>
-
-<c:if test="${empty MYQNA}">
-	<tr>
-		<td colspan="3">작성한 문의글이 없습니다.</td>
-	</tr>
-</c:if>
-
-<c:if test="${not empty MYQNA}">
-	<tr>
-		<th>상품이름</th>
-		<th>제목</th>
-		<th>등록일</th>
-	</tr>
-<c:forEach items="${MYQNA}" var="MYQ">
-	<tr data-seq="${MYQ.q_code}">
-		<td>${MYQ.it_title}</td>
-		<td>${MYQ.q_title}</td>
-		<td>${MYQ.q_date}</td>
-	</tr>
-</c:forEach>
-
-</c:if>
+<article class="qna_wrap">
+<div class="button_box">
+	<button class="update">수정하기</button>
+	<button class="delete">삭제하기</button>
+</div>
+<table class="qna_veiw">
+<tr>
+	<td colspan="2">${QNA.it_title}</td>
+</tr>
+<tr>
+	<td>${QNA.q_title}</td>
+	<td>${QNA.q_date}</td>
+</tr>
+<tr>
+	<td colspan="2">${QNA.q_content}</td>
 </table>
+
 </article>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
