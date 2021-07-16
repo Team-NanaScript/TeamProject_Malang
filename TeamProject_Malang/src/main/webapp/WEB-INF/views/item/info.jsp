@@ -187,7 +187,15 @@ section.img_section div.image_preview {
 		.then(response=>response.text())
 		//.then(result=>console.log(result))
 		.then(result=>{
-			
+			if(result == 'OK'){
+				
+				// 선택된 옵션 초기화
+				for(let i = 0 ; i < selectOptions;i++) {
+					selectOption[i].value = 'no';
+				}
+			} else if(result == 'NO'){
+				
+			}
 			
 		})
 		

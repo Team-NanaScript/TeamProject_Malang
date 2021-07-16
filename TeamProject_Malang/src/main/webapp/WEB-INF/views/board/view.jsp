@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-12-001"/>
+<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-16-005" />
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 					<p id="author">${VIEW.bd_author}</p>
 				</div>
 
-				<div id="nv_content">
+				<div class="nv_content">
 					<div id="btn_content">
 						<button id="list">목록</button>
 						<c:if test="${MEMBER.mb_nickname == VIEW.bd_author || MEMBER.mb_role == 2}">
@@ -37,11 +37,17 @@
 				<!-- 여기요 -->
 				<c:if test="${not empty COMMENT}">
 					<c:forEach items="${COMMENT}" var="CM" varStatus="i">
-						<div id="nv_comment" >
-						<ul id="nc">
-							<li id="nick">${CM.cm_mbnick}</li>
-							<li id="content">${CM.cm_content}</li> 
+						<div class="nv_comment">
+						<form method="post" id="update_input" class="${CM.cm_seq}">
+							<input name="cm_mbid" value="${MEMBER.mb_id}" type="hidden">
+							<input name="cm_mbnick" value="${MEMBER.mb_nickname}" type="hidden">
+							<input name="cm_bdseq" value="${VIEW.bd_seq}" type="hidden">
+							<input name="cm_seq" value="${CM.cm_seq}" type="hidden">
+						<ul>
+							<li class="nick">${CM.cm_mbnick}</li>
+							<li class="content" id="${CM.cm_seq}">${CM.cm_content}</li> 
 						</ul>
+						</form>
 							<!--  <input name="cm_seq" value="${CM.cm_seq}" class="none"/> -->
 							
 							<div id="dud" data-seq="${CM.cm_seq}">
@@ -59,7 +65,7 @@
 				</div>
 
 				<c:if test="${not empty MEMBER}">
-				<div id="nv_comment_input">
+				<div class="nv_comment_input">
 				
 						<form method="POST">
 							<input name="cm_mbid" value="${MEMBER.mb_id}" class="none">
@@ -97,6 +103,9 @@ let nv_comment = document.querySelector("div#comment_box");
 
 if(nv_comment){
 		nv_comment.addEventListener("click", (e)=>{
+			
+		
+			
 		let id = e.target.id;
 		let className = e.target.className;
 		// let seq = e.target.dataset.seq; // document.querySelector("input.none").value;
@@ -113,25 +122,39 @@ if(nv_comment){
 			}
 			
 		} if(className === "update"){
-			alert(seq)
-			location.href="${rootPath}/notice/view/comment/update?cm_seq=" + seq;
+			
+			let tg_content = document.getElementById(seq);
+			
+			let content = tg_content.textContent
+			tg_content.innerHTML = "<textarea name='cm_content'>" + content;
+			tg_content.innerHTML += "<button id='comment_update' type='button' >수정</button>"
+			
 		}
+		
+		let form_update = document.querySelector("form#update_input")
+		
+		if(id == "comment_update"){
+		
+			e.target.closest("form").submit();
+			
+			
+		}
+		
 	})
-
 	
 }
+	
 
 
 	
 	document.querySelector("div#btn_content").addEventListener("click", (e)=>{
 		
 		let id = e.target.id;
+		let seq = e.target.closest("BUTTON").dataset.seq;
 		
 		if(id === "content_delete"){
 		
 			if(confirm("게시글을 삭제하시겠습니까?")){
-				
-				let seq = e.target.closest("BUTTON").dataset.seq;
 				
 				location.href="${rootPath}/notice/view/notice/delete?bd_seq=" + seq;
 				
@@ -141,8 +164,6 @@ if(nv_comment){
 			}
 			
 		} else if(id === "content_update"){
-				
-				let seq = e.target.closest("BUTTON").dataset.seq;
 				
 				location.href="${rootPath}/notice/view/notice/update?bd_seq=" + seq;
 			

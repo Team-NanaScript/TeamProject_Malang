@@ -98,31 +98,6 @@
             <input name="bd_author" value="${MEMBER.mb_nickname}" id="author"> 
             <div>
             <input type="text" name="bd_title"  value="${CTUP.bd_title}">
-            <!-- </div>
-             <nav id="editor">
-                <ul>
-                    <li><label for="input_file">사진</label><input type="file" id="input_file"></li>
-                    <li><select id="font_st">
-                        <option value="ng" selected="selected">나눔 고딕</option>
-                        <option value="mj">나눔 명조</option>
-                        <option value="sans">노토 산스</option>    
-                    </select>
-                    </li>
-                    <li><select id="font_size">
-                        <option>8px</option>
-                        <option>9px</option>
-                        <option>10px</option>
-                        <option>11px</option>
-                        <option selected="selected">12px</option>
-                    </select>
-                    </li>
-                    <li>가운데</li>
-                    <li>왼쪽</li>
-                    <li>오른쪽</li>
-                    <li>굵기</li>
-                </ul>
-            </nav> 
-        <div>-->
         <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}</textarea>
         </div>
         <div id="btn_write">
@@ -136,42 +111,6 @@
 <script src="${rootPath}/ne2/js/service/HuskyEZCreator.js" charset="UTF-8"></script> 
 
 <script>
-
-/*document.querySelector("button#btn_write").addEventListener("click",()=>{
-	
-	document.querySelector("form#write").submit();	
-	
-});
-
-let font_st = document.querySelector("select#font_st")
-let font_size = document.querySelector("select#font_size")
-let content = document.querySelector("textarea#content")
-
-font_st.addEventListener("change", (e)=>{
-	
-	ft_value = font_st.value;
-	
-	if(!ft_value == "ng"){
-		content.classList.remove("ng");
-	}
-	
-	if(ft_value == "mj"){
-		content.classList.add("mj");
-	}else{
-		content.classList.remove("mj");
-	}
-	
-	if(ft_value == "sans"){
-		content.classList.add("sans");
-	}else{
-		content.classList.remove("sans");
-	}
-	
-});
-
-font_size.addEventListener("change", ()=>{
-	
-});*/
 
 var oEditors = [];
 

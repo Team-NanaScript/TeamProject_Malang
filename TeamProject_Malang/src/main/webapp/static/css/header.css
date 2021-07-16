@@ -68,7 +68,7 @@ header form button i#icon {
 	margin-top: -20px;
 }
 
-header a i#user {
+header a i#mypage {
 	color: rgba(235, 164, 123, 0.993);
 	right: -730px;
 	margin-top: 15px;
@@ -104,10 +104,13 @@ nav#one ul li {
 
 }
 
-nav#two li:hover{
-	cursor: pointer;
-	text-decoration: underline;
-	transition:1s ease;
+nav#two {
+	margin-left:75px;
+}
+
+nav#two ul{
+	list-style: none;
+	display:flex;
 }
 
 nav#two li{
@@ -116,11 +119,12 @@ nav#two li{
 	
 }
 
-nav#two {
-	margin-left:75px;
+nav#two li:hover{
+	cursor: pointer;
+	text-decoration: underline;
+	transition:1s ease;
 }
 
-nav#two ul{
-	list-style: none;
-	display:flex;
+nav#two ul li.myinfo {
+	font-weight: bold;
 }
