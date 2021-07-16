@@ -59,6 +59,8 @@ public class InfoController {
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String home(String itcode, Model model) {
+		// cartList 초기화하기 (관련 method : settingCart)
+		cartList = new ArrayList<CartVO>();
 		
 		itcode = "00000005"; // 수정필요
 		
@@ -139,7 +141,7 @@ public class InfoController {
 		
 //		Map<Integer, List<CartVO>> cartMap = new HashMap<Integer, List<CartVO>>();
 		
-		if(cartList == null) {
+		if(cartList.size() < 1) {
 //			List<CartVO> cartList = new ArrayList<CartVO>(); 
 			cartList = new ArrayList<CartVO>();
 		}
