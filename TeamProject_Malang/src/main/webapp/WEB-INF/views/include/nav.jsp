@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-07-08-002" />
+	href="${rootPath}/static/css/header.css?ver=2021-07-16-003" />
 <style>
 
 input, button{
@@ -96,7 +96,7 @@ var rootPath ="${rootPath}";
 					<li class="join">회원가입</li>
 				</c:if>
 				<c:if test="${not empty MEMBER}">
-					<li class="myinfo"><a>${MEMBER.mb_nickname}</a>님</li>
+					<li class="myinfo">${MEMBER.mb_nickname}님</li>
 					<c:if test="${MEMBER.mb_role > 0}">
 						<li class="insert">상품등록</li>
 					</c:if>
