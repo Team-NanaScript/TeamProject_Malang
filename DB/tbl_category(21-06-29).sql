@@ -50,6 +50,12 @@ INSERT INTO tbl_category VALUES('0028', '장난감', '0004', '1');
 select * from tbl_category
 where ct_code = '0001';
 
+select * from tbl_category
+where ct_parentcode = '0001'
+order by ct_code desc;
+
+-- 
+-- 
 -- 지난 코드 
 SELECT ct_sub FROM tbl_category
 WHERE ct_main = '일러스트';
