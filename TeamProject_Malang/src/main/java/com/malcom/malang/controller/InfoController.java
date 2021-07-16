@@ -1,7 +1,9 @@
 package com.malcom.malang.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.malcom.malang.model.CartVO;
 import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
@@ -50,6 +53,8 @@ public class InfoController {
 	protected final SelectOptionService soService; 
 	protected final CartService cService;
 	protected final OrderService odService;
+	
+	protected List<CartVO> cartList;
 	
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
@@ -123,44 +128,48 @@ public class InfoController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/option", method=RequestMethod.POST)
-	public String option(@RequestBody UserOptionDTO dto, Model model) {
+	public String option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
 		
-		log.debug(dto.toString());
+//		log.debug(dto.toString());
 		
-		int inputSize = dto.getOptions().size();
-		int originSize = Integer.valueOf( dto.getSelectBoxSize());
-//		dto.getOptions().size() == dto.getSelectBoxSize()
+		int inputSize = dto.getOptions().size(); //  선택된 옵션의 
+		int originSize = Integer.valueOf( dto.getSelectBoxSize()); // 선택옵션 
 		
-		String options = dto.getOptions().toString();
+//		String options = dto.getOptions().toString(); // 확인코드
+		
+//		Map<Integer, List<CartVO>> cartMap = new HashMap<Integer, List<CartVO>>();
+		
+		if(cartList == null) {
+//			List<CartVO> cartList = new ArrayList<CartVO>(); 
+			cartList = new ArrayList<CartVO>();
+		}
+		
+
+		
+		
+		// 선택한 옵션들 리스트
 		List<String> optionList = dto.getOptions();
+		
+//		Integer num = 0;
 		if(inputSize == originSize) {
-			log.debug("옵션확인옵션확인 {}", options);
+//			log.debug("0.성공옵션확인 {}", options); // 확인코드
+		
+//			num += 1;
+			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
+//			cartMap.put(num, soService.settingCart(optionList));
+			soService.settingCart(optionList, cartList);
 			
-			String strOptions = "선택옵션 : ";
-			for(int i = 0; i < optionList.size(); i++) {
-				
-				Long opcode = Long.valueOf(optionList.get(i)) ;
-				SelectOptionVO soVO = soService.findById(opcode);
-				String so_name = soVO.getSo_name();
-				String so_content = soVO.getSo_content();
-				Integer so_price = soVO.getSo_price();
-				
-				if(i == optionList.size() - 1) {
-					strOptions += so_name + ":" + so_content;
-				} else {
-					strOptions += so_name + ":" + so_content + "/";
-				}
-			}
-			
-			log.debug("옵션스트링리스트확인 {}", strOptions);
-			
+			log.debug("1. CartVO Map 확인{}", cartList.toString());
 			return "OK";
 		} else {
-			log.debug("실패옵션확인 {}", options);
+//			log.debug("0.실패옵션확인 {}", options);
 			return "NO";
 		}
 		
 	}
+	
+//	MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+//	cartVO.setCr_buyerid(mVO.getMb_id());
 	
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)

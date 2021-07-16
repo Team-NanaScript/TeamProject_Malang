@@ -45,7 +45,7 @@ FROM tbl_qna Q
 	LEFT JOIN tbl_item IT
 		ON Q.q_itcode = IT.it_code;
         
--- DROP VIEW view_qna;
+DROP VIEW view_qna;
 
 DELETE FROM tbl_qna
 WHERE q_code = 10;
