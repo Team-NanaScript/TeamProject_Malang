@@ -2,12 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style>
+article.footer{
+	margin-top:10px;
+	width:100%;
+	background-color:white;
+	bottom:0;
+}
+
 nav.ft ul {
 	position: relative;
     margin-top: -15px;
@@ -66,8 +69,8 @@ nav.ft a{
 
 
 </style>
-</head>
-<body>
+
+<article class="footer">
 	<div class="ft_nav">
 		<nav class="ft">
 			<ul>
@@ -81,5 +84,4 @@ nav.ft a{
 	<div class="ft_div">
 			<p>Copyright &copy Malang Comp. 2021 All Rights Reserved.
 	</div>
-</body>
-</html>
+</article>

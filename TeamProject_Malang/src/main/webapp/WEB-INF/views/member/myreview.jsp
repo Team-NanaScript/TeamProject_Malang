@@ -83,7 +83,7 @@ article.review_container table.review_table td.content p {
 	</tr>
 <c:forEach items="${MYREVIEW}" var="MYR">
 	<tr data-code="${MYR.r_code}">
-		<td><img src="${MYR.it_photo}"></td>
+		<td><img src="${rootPath}/MalangImages/${MYR.it_photo}"></td>
 		<td class="content"><p>${MYR.r_content}</td>
 		<td>${MYR.r_date}</td>
 		<td>${MYR.r_score}</td>
