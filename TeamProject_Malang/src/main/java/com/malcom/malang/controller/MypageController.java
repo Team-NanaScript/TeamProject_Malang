@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 // 나중에 MemberController로 이동할 TestController
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor

@@ -50,8 +50,11 @@ public class ReviewServiceImplV1 implements ReviewService{
 
 	@Override
 	public ReviewVO findById(Long pk) {
+		ReviewVO vo = rDao.findById(pk);
 		
-		return rDao.findById(pk);
+		vo.setR_content(ReplaceBr.enterToBr(vo.getR_content()));
+		
+		return vo;
 	}
 
 	@Override
@@ -92,11 +95,15 @@ public class ReviewServiceImplV1 implements ReviewService{
 	public Integer countScore(String r_itcode) {
 		
 		return rDao.countScore(r_itcode);
-	}
+	} 
 
 	@Override
-	public ReviewDTO findBySeq(Long r_code) {
-		return rDao.findBySeq(r_code);
+	public ReviewDTO findBySeq(Long r_code) { 
+		ReviewDTO rDTO = rDao.findBySeq(r_code);
+		
+		rDTO.setR_content(ReplaceBr.enterToBr(rDTO.getR_content()));
+		
+		return rDTO;
 	}
 
 	@Override

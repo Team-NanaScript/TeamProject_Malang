@@ -100,3 +100,10 @@ where r_itcode = '00000005';
 
 SELECT COUNT(r_score) FROM tbl_review
 WHERE r_itcode = '00000005';
+
+
+select * from tbl_review
+where r_writer = 'noso42' and r_itcode = '00000005';
+
+select * from view_review
+where r_writer = 'noso42' and r_itcode = '00000005';

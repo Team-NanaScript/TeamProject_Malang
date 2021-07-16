@@ -92,7 +92,7 @@ public class MemberController {
 		return "FAIL";
 	}
 	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage(HttpSession session, Model model) {
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
 		if(membervo == null) {
@@ -101,6 +101,17 @@ public class MemberController {
 			model.addAttribute("MSG", "ADMIT");
 		}
 		return "member/mypage";
+	}
+	
+	@RequestMapping(value = "/myinfo", method = RequestMethod.GET)
+	public String myinfo(HttpSession session, Model model) {
+		/*MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG", "ADMIT");
+		}*/
+		return "member/myinfo";
 	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)

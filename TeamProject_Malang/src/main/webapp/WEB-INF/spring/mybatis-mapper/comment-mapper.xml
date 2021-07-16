@@ -37,7 +37,7 @@ VALUES(#{cm_mbid}, #{cm_content}, #{cm_date}, #{cm_bdseq}, #{cm_mbnick})
 
 <update id="update" parameterType="CommentVO">
 
-UPDATE tbl_comment(cm_mbid, cm_content, cm_date) SET
+UPDATE tbl_comment SET
 cm_mbid = #{cm_mbid},
 cm_content = #{cm_content},
 cm_date = #{cm_date}
