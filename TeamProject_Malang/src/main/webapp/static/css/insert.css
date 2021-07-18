@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+input.hidden {
+	display: none;
+}
+
+div.container {
+	width: 700px;
+	margin: 0 auto;
+}
+
+h1.title {
+	padding: 25px 0 10px;
+	border-bottom: 1px solid #383d48;
+}
+
+form.insert {
+/* 	border: 1px solid #e6e6e6; */
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 15px 0;
+}
+
+form.insert div {
+	padding: 5px 20px;
+}
+
+form.insert label {
+	display: inline-block;
+	width: 150px;
+	text-align: left;
+	vertical-align: top; /* textarea의 label 을 위로 올리기위함*/
+}
+
+form.insert input {
+	padding: 0 10px;
+	height: 25px;
+	background-color: transparent;
+	border: 1px solid #ddd;
+}
+
+form.insert input::placeholder { /* 이거 대체 왜 안먹음? */
+	color: 1px solid #ddd;
+}
+
+
+form.insert input.short {
+	whidth: 230px;
+}
+
+form.insert input.long {
+	width:	500px;
+}
+
+form.insert textarea {
+	padding: 7px 10px;
+	width: 500px;
+	height: 320px;
+	resize: none;
+	border: 1px solid #ddd;	
+}
+
+form.insert textarea::placeholder { /* 이것도 안먹는 것 같음*/
+	color: 1px solid #ddd;
+}
+
+/* 버튼 */
+div.btn_box button {
+	display: block;
+
+	padding: 10px;
+	width: 450px;
+	height: 60px;
+	margin: 0 auto;
+		
+	border: none;
+		
+	cursor: pointer;
+	
+	background-color: rgb(239, 239, 239);
+}
+
+div.btn_box button:hover {
+	color: white;
+	background-color: #ccc;
+}
