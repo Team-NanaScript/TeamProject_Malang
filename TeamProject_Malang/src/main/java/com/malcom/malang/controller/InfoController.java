@@ -141,10 +141,10 @@ public class InfoController {
 		
 //		Map<Integer, List<CartVO>> cartMap = new HashMap<Integer, List<CartVO>>();
 		
-		if(cartList.size() < 1) {
-//			List<CartVO> cartList = new ArrayList<CartVO>(); 
-			cartList = new ArrayList<CartVO>();
-		}
+//		if(cartList.size() < 1) {
+////			List<CartVO> cartList = new ArrayList<CartVO>(); 
+//			cartList = new ArrayList<CartVO>();
+//		}
 		
 
 		
