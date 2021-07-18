@@ -1,5 +1,5 @@
 use db_malang;
-
+DESC tbl_select_option;
 
 CREATE TABLE `tbl_item` (
 	`it_code`	CHAR(8)	NOT NULL PRIMARY KEY,
