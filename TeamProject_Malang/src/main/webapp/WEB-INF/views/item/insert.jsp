@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>말랑 - 상품등록</title>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/insert.css?ver=2021-07-19-001" />
 </head>
-<style>
-	input.none {
-		display:none;
-	}
-</style>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="insert_container">
@@ -22,8 +19,8 @@
 		<input name="it_title" placeholder="상품 이름" >
 		<input name="it_price" placeholder="상품 가격" >
 		<input name="it_shippingfee" placeholder="배송비" >
-		<input name="it_seid" class="none" value="${MEMBER.mb_id}">
-		<input name="it_ctcode" class="none" id="it_ctcode">
+		<input name="it_seid" class="hidden" value="${MEMBER.mb_id}">
+		<input name="it_ctcode" class="hidden" id="it_ctcode">
 		<label>상품 설명</label>
 		<textarea name="it_content" id="content"></textarea>
 		<input name="one_file" type="file">

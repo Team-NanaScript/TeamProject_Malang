@@ -136,6 +136,10 @@ CREATE TABLE `tbl_order` (
 );
 DESC tbl_order;
 COMMIT;
+INSERT INTO tbl_order
+VALUES('1','noso42','00000005','옵션내용',9900,60220,'광주 북구 ㅇㅇ동 ㅁㅁ아파트', '2021-07-18', '2021-07-18');
+
+
 -- 칼럼추가
 alter table tbl_order add od_rcode BIGINT DEFAULT NULL; 
 
