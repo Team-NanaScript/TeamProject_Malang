@@ -99,8 +99,11 @@ public class InfoController {
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.POST)
 	public String homePost(String itcode, Model model) {
+		// log.debug("여기까지 List가 올 수 있을까 {}",cartList.getCartList().toString());// 확인코드
+		List<CartVO> cList = cartList.getCartList();
 		
-		return null;
+		
+		return "redirect:/cart";
 	}
 	
 	@ResponseBody
@@ -142,6 +145,7 @@ public class InfoController {
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
 			soService.settingCart(optionList, cartList.getCartList());
 			log.debug("1. CartVO List 확인{}", cartList.getCartList().toString());
+			
 			
 			cartList.setFlag("OK");
 			return cartList;
