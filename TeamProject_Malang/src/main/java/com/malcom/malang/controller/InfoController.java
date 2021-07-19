@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.malcom.malang.model.CartVO;
 import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
@@ -160,8 +162,27 @@ public class InfoController {
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
 //			cartMap.put(num, soService.settingCart(optionList));
 			soService.settingCart(optionList, cartList);
+			log.debug("1. CartVO List 확인{}", cartList.toString());
 			
-			log.debug("1. CartVO Map 확인{}", cartList.toString());
+//Json을사용해보려던 나의처절한노력			
+//			String jsonCartList = "";
+//			
+//			ObjectMapper obMapper = new ObjectMapper();
+//				try {
+//					// Java 오브젝트로 부터 JSON을 만들고 
+//					// 이를 문자열 혹은 Byte 배열로 반환한다.
+//					jsonCartList = obMapper.writeValueAsString(cartList);
+//				} catch (JsonProcessingException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//
+//			model.addAttribute("CARTLIST", jsonCartList);
+
+			
+			model.addAttribute("CARTLIST", cartList);
+			
+			
 			return "OK";
 		} else {
 //			log.debug("0.실패옵션확인 {}", options);
