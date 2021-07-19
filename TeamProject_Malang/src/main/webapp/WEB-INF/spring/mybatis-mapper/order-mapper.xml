@@ -13,7 +13,7 @@
 	WHERE od_code = #{od_code}
 </select>
 
-<select id="findByBuyerId" resultType="OrderVO">
+<select id="findByBuyerId" resultType="OrderDTO">
 	SELECT * FROM tbl_order
 	WHERE od_buyerid = #{od_buyerid}
 	ORDER BY od_code DESC
@@ -36,6 +36,7 @@
 	od_addr = #{od_addr}
 	od_paydate = #{od_paydate}
 	od_orderdate = #{od_orderdate}
+	od_rcode = #{od_rcode}
 	WHERE od_code = #{od_code}
 </update>
 
