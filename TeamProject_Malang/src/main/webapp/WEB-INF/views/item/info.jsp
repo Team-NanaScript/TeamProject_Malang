@@ -17,7 +17,7 @@
 	var rootPath = "${rootPath}"
 	var itCode = "${ITEM.it_code}"
 </script>
-<script src="${rootPath}/static/js/info.js?ver=2021-07-14-005"></script>
+<script src="${rootPath}/static/js/info.js?ver=2021-07-19-001"></script>
 <style>
 table.review td:hover, table.question td:hover {
 	cursor: pointer;
@@ -28,6 +28,16 @@ section.img_section div.image_preview {
 	background: url("${rootPath}/MalangImages/${ITEM.it_photo}") no-repeat; 
 	/*background: url("${rootPath}/static/images/ex2.png") no-repeat;*/
 	
+}
+
+
+
+ul#selected_item li{
+	margin: 10px 0;
+	background-color: #eee;
+	padding: 5px;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
 }
 </style>
 </head>
@@ -96,12 +106,8 @@ section.img_section div.image_preview {
 						</ol>
 						</c:forEach>
 					</ul>
-					<ul>
-						<c:forEach items="${CARTLIST}" var="CL">
-							<li id="selected_item">
-								${CL.cr_option}
-							</li>
-						</c:forEach>
+					<ul id="selected_item" >
+						<%-- 여기에 선택된 옵션과 가격이 삽입된다 --%>
 					</ul>
 					<ul>
 						<ol>
@@ -137,7 +143,8 @@ section.img_section div.image_preview {
 //			document.getElementById("selected_item").innerHTML = "아니 어떻게 넘겨오냐고"
 //		})
 
-	let totalPrice = ${ITEM.it_price} 
+	let totalPrice = ${ITEM.it_price}
+	let totalPriceList = new Array()
 
 	function changeFunc(arg) {
 		// var selectedValue = document.querySelector("#selectBox").value
@@ -190,40 +197,75 @@ section.img_section div.image_preview {
 		
 		.then(response=>response.json())
 		.then(result=>{
-			if(result.result != 'NO'){
-				console.log(result)	
+			if(result.flag != 'NO'){
 			
+				// 가격 초기화
+				let totalPrice = ${ITEM.it_price}
+				
 				// 선택된 옵션 초기화
 				for(let i = 0 ; i < selectOptions;i++) {
 					selectOption[i].value = 'no';
 				}
 				
-				let cartList = JSON.parse(result)
-				console.table(cartList);
-			} else {
+				let r_cartList = result.cartList 
+				let index = r_cartList.length - 1
+					// console.log(last_cartList)
 				
+				// cartVO List의 요소가 잘 들어왔나 console table로 확인
+				console.table(r_cartList);
+				
+				totalPrice += r_cartList[index].cr_price // 가격
+				let cr_option = r_cartList[index].cr_option // 선택옵션
+				
+				
+				// 옵션과 가격을 보여줄 div생성
+					// 원하는 위치의 부모를 select
+				let selected_item = document.querySelector("ul#selected_item")
+					// 원하는 태그(li)를 생성
+				let add_li = document.createElement("li")
+				add_li.setAttribute("id", index)
+				
+				add_li.innerHTML = "<p>" + cr_option + "</p>"
+				add_li.innerHTML += "<div>" + totalPrice + " 원</div>"
+					// 띄어쓰기 안하니까 0id = 이난리남
+				add_li.innerHTML += "<button class=" + index + " id='btn_del' type='button'>삭제</button>"
+				
+					// selected_item(ul)에 add_li(li) appendChild
+				selected_item.appendChild(add_li)
+
+				// 한 세트의 가격을 가격List에 push
+				totalPriceList.push(totalPrice)
+				//	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
+				//totalPriceList.splice(index, 0, totalPrice)
+				
+			} else {
+				// 옵션이 전부 선택되지 않은 경우 아무일도 일어나지 않는다.	
 			}
 		})		
 
-/*		
-		.then(response=>response.text())
-		.then(result=>{
-			if(result == 'OK'){
+		
+		// 버블링
+		// ul에 click 이벤트 준다
+		document.querySelector("ul#selected_item").addEventListener("click", (e)=>{
+		
+			// button을 select한다
+			let btn_del = document.querySelector("button#btn_del")
+			// button을 눌렀을 때
+			if(btn_del){
 				
-				// 선택된 옵션 초기화
-				for(let i = 0 ; i < selectOptions;i++) {
-					selectOption[i].value = 'no';
-				}
-
-			} else if(result == 'NO'){
+				// 버튼의 className을 가져온다 (index)
+				let btn_class = e.target.className
+				// console.log("클래스확인" + btn_class) // 확인코드
 				
+				// 버튼의 className과 같은 Id를 가진 Element를 삭제한다. (li)
+				document.getElementById(btn_class).remove()
+				
+				// 버튼 className과 같은 수의 index를 List에서 삭제
+				// ( delete를 사용한 경우 index번호는 유지하면서 내용만 지워진다)
+				delete totalPriceList[btn_class]
 			}
 		})
-*/
 
-
-		let cartList = JSON.parse('${CARTLIST}')
-		console.table(cartList);
 		
 	}	
 

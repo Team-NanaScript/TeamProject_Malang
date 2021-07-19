@@ -1,9 +1,7 @@
 package com.malcom.malang.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.malcom.malang.model.CartListVO;
 import com.malcom.malang.model.CartVO;
 import com.malcom.malang.model.DescriptionVO;
 import com.malcom.malang.model.ItemVO;
@@ -27,7 +24,6 @@ import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.ReviewVO;
-import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.model.UserOptionDTO;
 import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.DescriptionService;
@@ -56,15 +52,18 @@ public class InfoController {
 	protected final CartService cService;
 	protected final OrderService odService;
 	
-	protected List<CartVO> cartList;
+//	protected List<CartVO> cartList;
+	protected CartListVO cartList;
 	
 	
 	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
 	public String home(String itcode, Model model) {
 		// cartList 초기화하기 (관련 method : settingCart)
-		cartList = new ArrayList<CartVO>();
+		cartList = new CartListVO();// new ArrayList<CartVO>();
+		cartList.setCartList( new ArrayList<CartVO>());
 		
 		itcode = "00000005"; // 수정필요
+		
 		
 		ItemVO iVO = iService.findById(itcode);
 //		Long decode = iVO.getIt_decode();
@@ -97,6 +96,13 @@ public class InfoController {
 		return "/item/info";
 	}
 	
+	
+	@RequestMapping(value= {"/",""}, method=RequestMethod.POST)
+	public String homePost(String itcode, Model model) {
+		
+		return null;
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/option", method=RequestMethod.GET)
 	public String option(@PathVariable("option") Long value, Model model) {
@@ -113,9 +119,10 @@ public class InfoController {
 	 * 
 	 */
 	// json 보낼때 encoding 하는 코드 (  produces = "application/json;char=UTF8" )
+	// ResponseBody 는 return을 어떤형태로든 josn으로 보낼 수 있다.
 	@ResponseBody
 	@RequestMapping(value="/option", method=RequestMethod.POST, produces = "application/json;char=UTF8")
-	public String option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
+	public CartListVO option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
 		
 //		log.debug(dto.toString());
 		
@@ -133,27 +140,36 @@ public class InfoController {
 			log.debug("0.성공옵션확인 {}", options); // 확인코드
 		
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
-			soService.settingCart(optionList, cartList);
-			log.debug("1. CartVO List 확인{}", cartList.toString());
+			soService.settingCart(optionList, cartList.getCartList());
+			log.debug("1. CartVO List 확인{}", cartList.getCartList().toString());
 			
+			cartList.setFlag("OK");
+			return cartList;
 		
-			String jsonCartList = "";
+//			String jsonCartList = "";
+//			
+//			ObjectMapper obMapper = new ObjectMapper();
+//				try {
+//					// Java 오브젝트로 부터 JSON을 만들고 
+//					// 이를 문자열 혹은 Byte 배열로 반환한다.
+//					jsonCartList = obMapper.writeValueAsString(cartList);
+//				} catch (JsonProcessingException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//
+//			 	return jsonCartList;
 			
-			ObjectMapper obMapper = new ObjectMapper();
-				try {
-					// Java 오브젝트로 부터 JSON을 만들고 
-					// 이를 문자열 혹은 Byte 배열로 반환한다.
-					jsonCartList = obMapper.writeValueAsString(cartList);
-				} catch (JsonProcessingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			return jsonCartList;
 		// 옵션중 일부만 선택했을 경우
 		} else {
-			log.debug("0.실패옵션확인 {}", options); // 확인코드
-			return "{result:'NO'}";
+			try {
+//				log.debug("0.실패옵션확인 {}", options); // 확인코드
+				cartList.setFlag("NO");
+			} catch (Exception e) {
+				// TODO: handle exception
+				log.debug("ERROR");
+			}
+			return cartList;
 		}
 		
 	}

@@ -19,7 +19,7 @@ public class CartVO {
 	private String cr_buyerid;//	VARCHAR(20)	NOT NULL,
 	private String cr_itcode;//	CHAR(8)	NOT NULL,
 	private String cr_option;//	VARCHAR(256) NOT NULL,
-	private int cr_price = 0;//	INT NOT NULL,
-	private int cr_amount = 0;//	INT DEFAULT 1,
-	private int cr_shippingfee = 0;//	INT NOT NULL
+	private int cr_price ;//	INT NOT NULL,
+	private int cr_amount ;//	INT DEFAULT 1,
+	private int cr_shippingfee ;//	INT NOT NULL
 }
