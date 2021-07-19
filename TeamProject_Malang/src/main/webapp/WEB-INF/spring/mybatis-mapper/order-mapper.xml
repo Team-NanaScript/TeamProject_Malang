@@ -14,7 +14,7 @@
 </select>
 
 <select id="findByBuyerId" resultType="OrderDTO">
-	SELECT * FROM tbl_order
+	SELECT * FROM view_order
 	WHERE od_buyerid = #{od_buyerid}
 	ORDER BY od_code DESC
 </select>

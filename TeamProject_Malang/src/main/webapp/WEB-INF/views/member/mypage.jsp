@@ -11,7 +11,52 @@
 header.mypage {
 	width:100%;
 	height:144px;
-	background-color: 
+	background-color: #9e6e4e;
+	display: flex;
+	flex-direction: column;
+	margin:0 auto;
+}
+
+header.mypage h2{
+	color:white;
+	font-size: 30px;
+	width: 1056px;
+	margin: 0 auto;
+	padding-left: 10px;
+	line-height: 6rem;
+	background-color: #9e6e4e;
+}
+
+nav#mypage_nav {
+	display: flex;
+	width: 1056px;
+	margin: 0 auto;
+	align-items: flex-end;
+}
+
+nav#mypage_nav ul {
+	display: flex;
+	align-items: flex-end;
+}
+
+nav#mypage_nav li {
+	background-color: #DEBA9B;
+	font-size: 15px;
+	width: 140px;
+	height: 48px;
+	line-height: 48px;
+	margin-left: 5px;
+	text-align: center;
+	cursor: pointer;
+	list-style: none;
+}
+
+nav#mypage_nav li:nth-of-type(1) {
+	margin-left: 10px;
+}
+
+nav#mypage_nav li.active {
+	background-color: white;
 }
 </style>
 <script>
@@ -25,19 +70,19 @@ if(msg == "REJECT"){
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
-<header>
+<header class="mypage">
 	<h2>${HEADER_NAME}</h2>
 	<nav id="mypage_nav">
 			<ul>
-				<li class="myqna
-				<c:if test="${BODY == 'MY_ORDER'}">
-				on</c:if>">내 주문 목록</li>
-				<li class="myqna
-				<c:if test="${BODY == 'MY_QNA' || 'QNA_VIEW'}">
-				on</c:if>">내 문의글 보기</li>
-				<li class="myreview
-				<c:if test="${BODY == 'MY_REVIEW' || 'REVIEW_VIEW'}">
-				on</c:if>">내 후기글 보기</li>
+				<li id="myorder" class="tab
+				<c:if test="${BODY == 'MY_ORDER' || BODY == 'ORDER_VIEW'}">
+				active</c:if>">내 주문 목록</li>
+				<li	id="myqna" class="tab
+				<c:if test="${BODY == 'MY_QNA' || BODY == 'QNA_VIEW'}">
+				active</c:if>">내 문의글 보기</li>
+				<li	id="myreview" class="tab
+				<c:if test="${BODY == 'MY_REVIEW' || BODY == 'REVIEW_VIEW'}">
+				active</c:if>">내 후기글 보기</li>
 			</ul>
 		</nav>
 </header>
@@ -70,9 +115,8 @@ if(msg == "REJECT"){
 
 <script>
 document.querySelector("nav#mypage_nav").addEventListener("click", (e)=>{
-	const nav_tab = e.target.closest("LI").className
-	location.href = "${rootPath}/" + member;
-	
+	const nav_tab = e.target.closest("LI").id
+	location.href = "${rootPath}/mypage/" + nav_tab;
 	})
 </script>
 </html>

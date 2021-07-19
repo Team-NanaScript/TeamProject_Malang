@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>QNA VIEW</title>
+
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 <style>
@@ -17,9 +13,7 @@ article.qna_wrap, table.qna_view {
 
 
 </style>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+
 <article class="qna_wrap">
 <div class="button_box">
 	<button class="update">수정하기</button>
@@ -38,7 +32,3 @@ article.qna_wrap, table.qna_view {
 </table>
 
 </article>
-
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-</body>
-</html>
