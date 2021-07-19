@@ -49,8 +49,12 @@ public class OrderServiceImplV1 implements OrderService{
 
 	@Override
 	public List<OrderDTO> findByBuyerId(String buyerid) {
-		// TODO Auto-generated method stub
-		return oDao.findByBuyer(buyerid);
+		return oDao.findByBuyerId(buyerid);
+	}
+
+	@Override
+	public OrderDTO findBySeq(Long code) {
+		return oDao.findBySeq(code);
 	}
 
 }

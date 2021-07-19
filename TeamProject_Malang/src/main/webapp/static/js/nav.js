@@ -47,6 +47,9 @@ doc.querySelector("header").addEventListener("submit", (e) => {
     let iName = ev.target.id;
         if(iName == "" || iName === "" || iName == null){
           return false;
+        } else if(iName == "mypage") {
+        	// location.href = `${rootPath}/member/`+ iName + "/myorder";
+        	location.href = `${rootPath}/`+ iName + "/myorder"; 
         } else {
           location.href = "/malang/" + iName;
         }  

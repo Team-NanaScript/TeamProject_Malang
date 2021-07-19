@@ -8,7 +8,13 @@ import org.springframework.ui.Model;
 
 import com.malcom.malang.dao.MemberDao;
 import com.malcom.malang.model.MemberVO;
+import com.malcom.malang.model.OrderDTO;
+import com.malcom.malang.model.QnaDTO;
+import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.service.MemberService;
+import com.malcom.malang.service.OrderService;
+import com.malcom.malang.service.QnaService;
+import com.malcom.malang.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +24,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class MemberServiceImplV1 implements MemberService{
 	
+	protected final OrderService oService;
+	protected final QnaService qService;
+	protected final ReviewService rService;
 	protected final MemberDao mDao;
 
 	@Override
@@ -101,13 +110,46 @@ public class MemberServiceImplV1 implements MemberService{
 		return 0;
 	}
 
+	@Override
+	public void mypage(String memberId, String nav_name, Model model) {
+		if(nav_name.equals("myorder")) {
+			List<OrderDTO> myorder = oService.findByBuyerId(memberId);
+			log.debug("주문 목록 {}", myorder);
+			model.addAttribute("BODY", "MY_ORDER");
+			model.addAttribute("MYORDER", myorder);
+			model.addAttribute("HEADER_NAME", "내 주문 목록");
+		} else if(nav_name.equals("myqna")) {
+			List<QnaDTO> myQna = qService.selectByWriter(memberId);
+			model.addAttribute("BODY", "MY_QNA");
+			model.addAttribute("MYQNA", myQna);
+			model.addAttribute("HEADER_NAME", "내 문의글 보기");
+		} else if(nav_name.equals("myreview")) {
+			List<ReviewDTO> myReview = rService.selectByWriter(memberId);
+			model.addAttribute("BODY", "MY_REVIEW");
+			model.addAttribute("MYREVIEW", myReview);
+			model.addAttribute("HEADER_NAME", "내 후기글 보기");
+		}
+	}
 
-
-
-	
-	
-	
-
-	
+	@Override
+	public void mypage(String nav_name, Model model, Long r_code) {
+		if(nav_name.equals("view_order")) {
+			OrderDTO oDTO = oService.findBySeq(r_code);
+			model.addAttribute("BODY", "ORDER_VIEW");
+			model.addAttribute("ORDER", oDTO);
+			model.addAttribute("HEADER_NAME", "내 주문 목록");
+		} else if(nav_name.equals("view_review")) {
+			ReviewDTO rDTO = rService.findBySeq(r_code);
+			model.addAttribute("BODY", "REVIEW_VIEW");
+			model.addAttribute("REVIEW", rDTO);
+			model.addAttribute("HEADER_NAME", "내 후기글 보기");
+		} else if(nav_name.equals("view_qna")) {
+			QnaDTO qDTO = qService.findBySeq(r_code);
+			model.addAttribute("BODY", "QNA_VIEW");
+			model.addAttribute("QNA", qDTO);
+			model.addAttribute("HEADER_NAME", "내 문의글 보기");
+		}
+		
+	}
 	
 }
