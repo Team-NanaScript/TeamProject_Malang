@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/header.css?ver=2021-07-16-000" />
+	href="${rootPath}/static/css/header.css?ver=2021-07-19-002" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/notice.css?ver=2021-07-16-002" />
 <style>
@@ -61,6 +61,11 @@ li a {
 	text-decoration: none;
 }
 
+div.nav_2{
+	position: relative;
+	left:95px;
+}
+
 </style>
 <script>
 var rootPath ="${rootPath}";
@@ -87,6 +92,7 @@ var rootPath ="${rootPath}";
 			</div>
 		</header>
 		<div class="adiv">
+			<div class="nav_1">
 			<nav id="one">
 				<ul>
 					<li class="item/0022">일러스트</li>
@@ -96,7 +102,9 @@ var rootPath ="${rootPath}";
 					<li class="review">실시간 후기</li>
 				</ul>
 			</nav>
-
+			</div>
+			
+			<div class="nav_2">
 			<nav id="two">
 				<ul>
 				<c:if test="${empty MEMBER}">
@@ -113,6 +121,7 @@ var rootPath ="${rootPath}";
 				<li class="notice">고객센터</li>
 				</ul>
 			</nav>
+		</div>
 		</div>
 
 		<div id="hid_nav">

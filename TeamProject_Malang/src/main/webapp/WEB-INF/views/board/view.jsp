@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-16-005" />
+<link rel="stylesheet" href="${rootPath}/static/css/Board.css?ver=2021-07-19-001" />
 </head>
 <body>
 

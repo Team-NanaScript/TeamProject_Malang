@@ -132,7 +132,6 @@ document.querySelector("table.manage tbody").addEventListener("change", (e)=>{
 	
 	let role = e.target.value
 	let id = e.target.dataset.id
-	let url = "${rootPath}/role_update";
 	let params = "id=" + id + "&role=" + role;
 
 	

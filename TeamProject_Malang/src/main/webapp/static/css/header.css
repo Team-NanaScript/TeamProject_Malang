@@ -13,7 +13,7 @@ div.adiv {
     padding: 10px;
     white-space: nowrap;
     color:rgba(0,0,0,0.7);
-	
+	position:relative;
 }
 
 
@@ -69,21 +69,21 @@ header form button i#icon {
 }
 
 header a i#mypage {
-	color: rgba(235, 164, 123, 0.993);
-	right: -730px;
+	color : rgba(235, 164, 123, 0.993);
+	left : 810px;
 	margin-top: 15px;
 }
 
 header a i#cart {
 	color: rgba(235, 164, 123, 0.993);
-	right: -770px;
+	left : 840px;
 	margin-top: 15px;
 }
 
 header a i#manage {
 	color: rgba(123, 164, 235, 0.993);
 	/* color: rgba(235, 164, 123, 0.993); */
-	right: -730px;
+	left: 810px;
 	margin-top: 15px;
 }
 

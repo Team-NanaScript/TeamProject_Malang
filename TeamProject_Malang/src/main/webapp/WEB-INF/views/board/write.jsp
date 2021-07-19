@@ -6,12 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 쓰기</title>
 </head>
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@100&display=swap');
-	
-
+/*
     div#write{
         display:flex;
         border:1px solid rgba(0,0,0,0.4);
@@ -89,18 +87,23 @@
     input#author{
     display:none;
     }
+*/
 </style>
+<link rel="stylesheet" type="text/css"
+	href="${rootPath}/static/css/insert.css?ver=2021-07-19-001" />
 <body>
-	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-	<div id="write">
-        <form method="POST" id="write">
-            <a>작성자 : ${MEMBER.mb_nickname}</a>
-            <input name="bd_author" value="${MEMBER.mb_nickname}" id="author"> 
-            <div>
-            <input type="text" name="bd_title"  value="${CTUP.bd_title}">
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>		
+	<div class="container">
+        <form method="POST" id="write" class="insert">
+        <div>
+            <label>작성자 : ${MEMBER.mb_nickname}</label>
+            <input name="bd_author" value="${MEMBER.mb_nickname}" type="hidden" class="long">
+       	</div> 
+        <div>
+            <input type="text" name="bd_title"  value="${CTUP.bd_title}" class="long">
         <textarea class ="ng" id="content" name="bd_content" maxlength="1000" required="required" cols="100" rows="30">${CTUP.bd_content}</textarea>
         </div>
-        <div id="btn_write">
+        <div id="btn_write" class="btn_box">
             <button type="button" id="btn_write" onclick="submitContents()">작성하기</button>
             <button type="reset">다시쓰기</button>
         </div>       
