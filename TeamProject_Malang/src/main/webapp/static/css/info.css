@@ -91,7 +91,8 @@ aside form.option select {
 }
 
 
-li#selected_item {
+/* 이거 적용이 안돼서 info.jsp 에 옮김. id값은 css분리가 안되는걸까?*/
+ul#selected_item li{
 	margin: 10px 0;
 	background-color: #eee;
 	padding: 5px;
