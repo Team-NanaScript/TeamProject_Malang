@@ -11,4 +11,8 @@ public interface MemberService extends GenericService<MemberVO, String> {
 	public void adminManage(Model model);
 
 	public int roleUpdate(String mb_id, int mb_role);
+
+	public void mypage(String memeberId, String nav_name, Model model);
+
+	public void mypage(String nav_name, Model model, Long code);
 }

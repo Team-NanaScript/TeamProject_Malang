@@ -7,6 +7,8 @@ import com.malcom.malang.model.OrderVO;
 
 public interface OrderDao extends GenericDao<OrderVO, Long>{
 
-	List<OrderDTO> findByBuyer(String buyerid);
+	public List<OrderDTO> findByBuyerId(String buyerid);
+
+	public OrderDTO findBySeq(Long code);
 
 }

@@ -10,13 +10,13 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-13-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/category.css?ver=2021-07-14-000" />
+	href="${rootPath}/static/css/category.css?ver=2021-07-19-005" />
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-	<div class="cate_header">
+	<header class="cate_header">
 		<div class="cate_name">
-			<h3>${CATE_MAIN}</h3>
+			<h2>${CATE_MAIN}</h2>
 		</div>
 		<nav id="cate_nav">
 			<ul>
@@ -27,7 +27,7 @@
 				</c:forEach>
 			</ul>
 		</nav>
-	</div>
+	</header>
 	<%@ include file="/WEB-INF/views/include/list.jsp"%>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>

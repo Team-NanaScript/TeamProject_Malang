@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>REVIEW VIEW</title>
+
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 <style>
@@ -32,9 +28,6 @@ table.review_view tr:last-child th, table.review_view tr:last-child td {
 	border-bottom: 1px solid #aaa;
 }
 </style>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
 <article class="review_wrap">
 <div class="button_box">
@@ -55,7 +48,3 @@ table.review_view tr:last-child th, table.review_view tr:last-child td {
 	<td colspan="3">${REVIEW.r_content}</td>
 </table>
 </article>
-
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-</body>
-</html>
