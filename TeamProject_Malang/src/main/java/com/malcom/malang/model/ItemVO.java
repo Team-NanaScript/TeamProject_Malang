@@ -22,9 +22,9 @@ public class ItemVO {
 	private int it_shippingfee;//	INT	NOT NULL	DEFAULT 0,
 	private String it_content;//		VARCHAR(2000)	NOT NULL,
 
-	private String it_photo = "noImage.jpg";//			VARCHAR(100)
+	private String it_photo;//			VARCHAR(100)
 	// 사진 경로는 파일 저장 경로 정해지면 바꾸겠음
-  
+	// noImage || null >> defaultImage setting
 	private List<String> op_name ;
 	private List<String> op_content;
 	

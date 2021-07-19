@@ -1,7 +1,5 @@
 package com.malcom.malang.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,13 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.malcom.malang.model.MemberVO;
-import com.malcom.malang.model.OrderDTO;
-import com.malcom.malang.model.QnaDTO;
-import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.service.MemberService;
-import com.malcom.malang.service.OrderService;
-import com.malcom.malang.service.QnaService;
-import com.malcom.malang.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value="/mypage")
 public class MypageController {
 
-	protected final QnaService qService;
-	protected final ReviewService rService;
-	protected final OrderService oService;
 	protected final MemberService mService;
 	
 	@RequestMapping(value="/{nav_name}", method=RequestMethod.GET)
@@ -53,74 +42,4 @@ public class MypageController {
 		return "member/mypage";
 	}
 	
-	@RequestMapping(value="/myordernono", method=RequestMethod.GET)
-	public String myOrderList(HttpSession session, Model model) {
-		MemberVO mVO = (MemberVO) session.getAttribute("MEMBER");
-		List<OrderDTO> myorder = oService.findByBuyerId(mVO.getMb_id());
-		log.debug("주문 목록 {}", myorder);
-		model.addAttribute("BODY", "MY_ORDER");
-		model.addAttribute("MYORDER", myorder);
-		model.addAttribute("HEADER_NAME", "내 주문 목록");
-		
-		return "redirect:/member/mypage";
-	}
-	
-	@RequestMapping(value="/myqnanono", method=RequestMethod.GET)
-	public String myQnaList(HttpSession session, Model model) {
-		MemberVO mVO = (MemberVO) session.getAttribute("MEMBER");
-		List<QnaDTO> myQna = qService.selectByWriter(mVO.getMb_id());
-		model.addAttribute("BODY", "MY_QNA");
-		model.addAttribute("MYQNA", myQna);
-		model.addAttribute("HEADER_NAME", "내 문의글 보기");
-		
-		return "redirect:/member/mypage";
-	}
-	
-	@RequestMapping(value="/myreviewnono", method=RequestMethod.GET)
-	public String myReviewList(HttpSession session, Model model) {
-		MemberVO mVO = (MemberVO) session.getAttribute("MEMBER");
-		List<ReviewDTO> myReview = rService.selectByWriter(mVO.getMb_id());
-		model.addAttribute("BODY", "MY_REVIEW");
-		model.addAttribute("MYREVIEW", myReview);
-		model.addAttribute("HEADER_NAME", "내 후기글 보기");
-		
-		return "redirect:/member/mypage";
-	}
-	
-	@RequestMapping(value="/view_ordernono", method=RequestMethod.GET)
-	public String myOrderView(String code, Model model) {
-		Long r_code = Long.valueOf(code);
-		OrderDTO oDTO = oService.findBySeq(r_code);
-		model.addAttribute("BODY", "ORDER_VIEW");
-		model.addAttribute("ORDER", oDTO);
-		model.addAttribute("HEADER_NAME", "내 주문 목록");
-		
-		return "redirect:/member/mypage";
-	}
-	
-	@RequestMapping(value="/view_reviewnono", method=RequestMethod.GET)
-	public String myReview(String code, Model model) {
-		Long r_code = Long.valueOf(code);
-		ReviewDTO rDTO = rService.findBySeq(r_code);
-//		log.debug("reviewDTO {}", rDTO.toString());
-		model.addAttribute("BODY", "REVIEW_VIEW");
-		model.addAttribute("REVIEW", rDTO);
-		model.addAttribute("HEADER_NAME", "내 후기글 보기");
-		
-		return "redirect:/member/mypage";
-	}
-	
-	@RequestMapping(value="/view_qnanono", method=RequestMethod.GET)
-	public String myQna(String code, Model model) {
-		Long q_code = Long.valueOf(code);
-		QnaDTO qDTO = qService.findBySeq(q_code);
-		
-//		log.debug("qnaDTO {}", qDTO.toString());
-		
-		model.addAttribute("BODY", "QNA_VIEW");
-		model.addAttribute("QNA", qDTO);
-		model.addAttribute("HEADER_NAME", "내 문의글 보기");
-		
-		return "redirect:/member/mypage";
-	}
 }
