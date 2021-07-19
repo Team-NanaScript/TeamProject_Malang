@@ -1,70 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>말랑 - 상품등록</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/insert.css?ver=2021-07-19-001" />
+	href="${rootPath}/static/css/insert.css?ver=2021-07-19-004" />
+<style type="text/css">
+/* 스마트 에디터가 잘리는 현상을 막기위해 width 넓힘 */
+	div.container {
+		width: 750px; 
+	}
+	
+	form.insert iframe {
+		margin: 15px 0;
+	}
+
+	div.input_option {
+		display: inline-block;
+		padding: 0;
+	}
+	
+	div.option_btn{
+		display: inline-block;
+		padding: 0 10px;
+	}
+	
+	div.item_option button, div.input_so button{
+		padding : 2px 4px;
+		border: 1px solid #ddd;
+	}
+	
+	form.insert select {
+		padding: 0 10px;
+		height: 25px;
+		width: 150px;
+	}
+</style>
 </head>
+
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
-<div class="insert_container">
+<div class="container">
+	<h1 class="title">상품 등록</h1>
+	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
+		<div>
+			<label>상품 이름</label>
+			<input class="long" name="it_title" placeholder="상품 이름" >
+		</div>
+		<div>
+			<label>상품 기본가격</label>
+			<input class="short" name="it_price" placeholder="상품 기본가격" >
+		</div>
+		<div>
+			<label>배송비</label>
+			<input class="short" name="it_shippingfee" placeholder="배송비" >
+		</div>
 
-
-<form method="POST" id="item" enctype="multipart/form-data">
-
-	<div id="item_main">
-		<input name="it_title" placeholder="상품 이름" >
-		<input name="it_price" placeholder="상품 가격" >
-		<input name="it_shippingfee" placeholder="배송비" >
 		<input name="it_seid" class="hidden" value="${MEMBER.mb_id}">
 		<input name="it_ctcode" class="hidden" id="it_ctcode">
-		<label>상품 설명</label>
-		<textarea name="it_content" id="content"></textarea>
-		<input name="one_file" type="file">
-	</div>
-	
-	<div class="item_option">
-	
-		<div id="option_btn">
+
+		<div>
+			<label>상품 설명</label>
+			<textarea name="it_content" id="content"></textarea>
+		</div>
+		<div>
+			<label>파일 등록</label>
+			<input name="one_file" type="file">
+		</div>
+		
+		<div class="item_option">
+			<label>상품 옵션</label>
+			<div class="input_option" style="padding:0">
+				<input name="op_name" placeholder="옵션 이름" required="required">
+				<input name="op_content" placeholder="옵션 내용" required="required">
+			</div>
 			<button id="btn_option_add" type="button">옵션 추가</button>
 		</div>
-	
-		<div class="input_option">
-			<input name="op_name" placeholder="옵션 이름" required="required">
-			<input name="op_content" placeholder="옵션 내용" required="required">
+		
+		<div class="item_category"> 
+			<label>카테고리</label>
+			<select id="cate_st">
+				<option>-----</option>
+			</select>
+			
+			<select id="cate_st2">
+				<option>-----</option>
+			</select>
 		</div>
 		
-		
-		
-	</div>
-	
-	<div class="item_category"> 
-		<select id="cate_st">
-			<option>-----</option>
-		</select>
-		
-		<select id="cate_st2">
-			<option>-----</option>
-		</select>
-	</div>
-	
-	<div class="item_select_option">
-		<div class="input_so">
-		<button id="btn_so_add" type="button">옵션 추가</button>
-		<label>옵션 명</label><input name="so_name" placeholder="">
-		<label>옵션 내용</label><input name="so_content" placeholder="">
-		<input name="so_price" type="number" value=0>
+		<div class="item_select_option">
+			<label>가격 옵션</label>
+			<div class="input_so">
+				<input name="so_name" placeholder="옵션 이름">
+				<input name="so_content" placeholder="옵션 내용">
+				<input name="so_price" type="number" value=0 placeholder="옵션 추가가격">
+				<button id="btn_so_add" type="button">옵션 추가</button>
+			</div>
+
 		</div>
-	</div>
-	
-</form>
-
-
-
-<button type="button" id="item_submit" onclick="submitContents()">전송</button>
+		<div class="btn_box">
+			<button type="button" id="item_submit" onclick="submitContents()">등록하기</button>
+		</div>	
+	</form>
 
 </div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
@@ -112,6 +153,7 @@ document.querySelector("#btn_option_add").addEventListener("click", ()=>{
 	let io_div = document.createElement("div")
 	let input_io_name = document.createElement("input")
 	let input_io_content = document.createElement("input")
+	let label = document.createElement("label")
 	
 	io_div.setAttribute("class", "input_option")
 	input_io_name.setAttribute("name", "op_name")
@@ -123,8 +165,8 @@ document.querySelector("#btn_option_add").addEventListener("click", ()=>{
 	
 	io_div.appendChild(input_io_name)
 	io_div.appendChild(input_io_content)
+	div_io.appendChild(label)
 	div_io.appendChild(io_div)
-	
 })
 
 document.querySelector("#btn_so_add").addEventListener("click", ()=>{

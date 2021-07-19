@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Malang - 문의하기</title>
+<title>말랑 - 문의하기</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/insert.css?ver=2021-07-19-001" />
 </head>
