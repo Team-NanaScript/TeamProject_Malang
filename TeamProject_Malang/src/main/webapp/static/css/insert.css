@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
 
 
 input.hidden {
@@ -17,7 +12,7 @@ div.container {
 }
 
 h1.title {
-	padding: 25px 0 10px;
+	padding: 40px 0 10px;
 	border-bottom: 1px solid #383d48;
 }
 
@@ -40,7 +35,7 @@ form.insert label {
 
 form.insert input {
 	padding: 0 10px;
-	height: 25px;
+	height: 26px;
 	background-color: transparent;
 	border: 1px solid #ddd;
 }

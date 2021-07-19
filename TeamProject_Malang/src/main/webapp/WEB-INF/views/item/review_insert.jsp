@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Malang - 후기작성</title>
+<title>말랑 - 후기작성</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/insert.css?ver=2021-07-19-001" />
 <style>
