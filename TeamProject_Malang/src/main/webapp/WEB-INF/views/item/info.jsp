@@ -188,8 +188,24 @@ section.img_section div.image_preview {
 			}
 		})
 		
+		.then(response=>response.json())
+		.then(result=>{
+			if(result.result != 'NO'){
+				console.log(result)	
+			
+				// 선택된 옵션 초기화
+				for(let i = 0 ; i < selectOptions;i++) {
+					selectOption[i].value = 'no';
+				}
+				
+				let cartList = JSON.parse(result)
+				console.table(cartList);
+			} else {
+				
+			}
+		})		
 
-		
+/*		
 		.then(response=>response.text())
 		.then(result=>{
 			if(result == 'OK'){
@@ -203,7 +219,9 @@ section.img_section div.image_preview {
 				
 			}
 		})
-		
+*/
+
+
 		let cartList = JSON.parse('${CARTLIST}')
 		console.table(cartList);
 		
