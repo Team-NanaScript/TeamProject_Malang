@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.malcom.malang.dao.CartDao;
+import com.malcom.malang.model.CartDTO;
 import com.malcom.malang.model.CartVO;
 import com.malcom.malang.service.CartService;
 
@@ -52,6 +53,12 @@ public class CartServiceImplV1 implements CartService{
 	public List<CartVO> findByBuyerId(String cr_buyerid) {
 		// TODO Auto-generated method stub
 		return cDao.findByBuyerId(cr_buyerid);
+	}
+
+	@Override
+	public List<CartDTO> findViewByBuyer(String cr_buyerid) {
+		// TODO Auto-generated method stub
+		return cDao.findViewByBuyer(cr_buyerid);
 	}
 
 }

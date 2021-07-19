@@ -19,6 +19,13 @@
 	ORDER BY cr_code DESC
 </select>
 
+<!-- CartDTO select -->
+<select id="findViewByBuyer" resultType="CartDTO">
+	SELECT * FROM view_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+	ORDER BY cr_code DESC
+</select>
+
 <insert id="insert" parameterType="CartVO">
 	INSERT INTO tbl_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
 	VALUES(#{cr_buyerid}, #{cr_itcode}, #{cr_option}, #{cr_price}, #{cr_amount}, #{cr_shippingfee})

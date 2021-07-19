@@ -114,7 +114,7 @@ public class MemberServiceImplV1 implements MemberService{
 	public void mypage(String memberId, String nav_name, Model model) {
 		if(nav_name.equals("myorder")) {
 			List<OrderDTO> myorder = oService.findByBuyerId(memberId);
-			log.debug("주문 목록 {}", myorder);
+//			log.debug("주문 목록 {}", myorder);
 			model.addAttribute("BODY", "MY_ORDER");
 			model.addAttribute("MYORDER", myorder);
 			model.addAttribute("HEADER_NAME", "내 주문 목록");
