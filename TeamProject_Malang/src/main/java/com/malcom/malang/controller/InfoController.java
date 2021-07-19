@@ -112,8 +112,9 @@ public class InfoController {
 	 * parsing해서 DTO 에 담아라
 	 * 
 	 */
-//	@ResponseBody
-	@RequestMapping(value="/option", method=RequestMethod.POST)
+	// json 보낼때 encoding 하는 코드 (  produces = "application/json;char=UTF8" )
+	@ResponseBody
+	@RequestMapping(value="/option", method=RequestMethod.POST, produces = "application/json;char=UTF8")
 	public String option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
 		
 //		log.debug(dto.toString());
@@ -121,7 +122,7 @@ public class InfoController {
 		int inputSize = dto.getOptions().size(); //  선택된 옵션의 
 		int originSize = Integer.valueOf( dto.getSelectBoxSize()); // 선택옵션 
 		
-//		String options = dto.getOptions().toString(); // 확인코드
+		String options = dto.getOptions().toString(); // 확인코드
 		
 		
 		// 선택한 옵션들 리스트
@@ -129,7 +130,7 @@ public class InfoController {
 		
 		// 모든 옵션을 선택했을 경우
 		if(inputSize == originSize) {
-//			log.debug("0.성공옵션확인 {}", options); // 확인코드
+			log.debug("0.성공옵션확인 {}", options); // 확인코드
 		
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
 			soService.settingCart(optionList, cartList);
@@ -148,13 +149,11 @@ public class InfoController {
 					e.printStackTrace();
 				}
 
-			model.addAttribute("CARTLIST", jsonCartList);
-			
-			return "OK";
+			return jsonCartList;
 		// 옵션중 일부만 선택했을 경우
 		} else {
-			return "NO";
-//			return "NO";
+			log.debug("0.실패옵션확인 {}", options); // 확인코드
+			return "{result:'NO'}";
 		}
 		
 	}
