@@ -101,24 +101,6 @@ public class InfoController {
 	@RequestMapping(value="/option", method=RequestMethod.GET)
 	public String option(@PathVariable("option") Long value, Model model) {
 		
-		SelectOptionVO soVO = soService.findById(value);
-		
-		String so_name = soVO.getSo_name();
-		String so_content = soVO.getSo_content();
-		int so_price = soVO.getSo_price();
-
-		List<SelectOptionVO> soList = new ArrayList<SelectOptionVO>();
-		
-		for(int i = 0; i < soList.size(); i++) {
-			if(so_name == soList.get(i).getSo_name()) {
-				SelectOptionVO vo = SelectOptionVO.builder()
-						.so_name(so_name)
-						.so_content(so_content)
-						.so_price(so_price)
-						.build();
-				soList.add(i, vo);
-			}
-		}
 		return "오잉";
 	}
 	
@@ -130,7 +112,7 @@ public class InfoController {
 	 * parsing해서 DTO 에 담아라
 	 * 
 	 */
-	@ResponseBody
+//	@ResponseBody
 	@RequestMapping(value="/option", method=RequestMethod.POST)
 	public String option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
 		
@@ -141,52 +123,38 @@ public class InfoController {
 		
 //		String options = dto.getOptions().toString(); // 확인코드
 		
-//		Map<Integer, List<CartVO>> cartMap = new HashMap<Integer, List<CartVO>>();
-		
-//		if(cartList.size() < 1) {
-////			List<CartVO> cartList = new ArrayList<CartVO>(); 
-//			cartList = new ArrayList<CartVO>();
-//		}
-		
-
-		
 		
 		// 선택한 옵션들 리스트
 		List<String> optionList = dto.getOptions();
 		
-//		Integer num = 0;
+		// 모든 옵션을 선택했을 경우
 		if(inputSize == originSize) {
 //			log.debug("0.성공옵션확인 {}", options); // 확인코드
 		
-//			num += 1;
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
-//			cartMap.put(num, soService.settingCart(optionList));
 			soService.settingCart(optionList, cartList);
 			log.debug("1. CartVO List 확인{}", cartList.toString());
 			
-//Json을사용해보려던 나의처절한노력			
-//			String jsonCartList = "";
-//			
-//			ObjectMapper obMapper = new ObjectMapper();
-//				try {
-//					// Java 오브젝트로 부터 JSON을 만들고 
-//					// 이를 문자열 혹은 Byte 배열로 반환한다.
-//					jsonCartList = obMapper.writeValueAsString(cartList);
-//				} catch (JsonProcessingException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//			model.addAttribute("CARTLIST", jsonCartList);
+		
+			String jsonCartList = "";
+			
+			ObjectMapper obMapper = new ObjectMapper();
+				try {
+					// Java 오브젝트로 부터 JSON을 만들고 
+					// 이를 문자열 혹은 Byte 배열로 반환한다.
+					jsonCartList = obMapper.writeValueAsString(cartList);
+				} catch (JsonProcessingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
-			
-			model.addAttribute("CARTLIST", cartList);
-			
+			model.addAttribute("CARTLIST", jsonCartList);
 			
 			return "OK";
+		// 옵션중 일부만 선택했을 경우
 		} else {
-//			log.debug("0.실패옵션확인 {}", options);
 			return "NO";
+//			return "NO";
 		}
 		
 	}
