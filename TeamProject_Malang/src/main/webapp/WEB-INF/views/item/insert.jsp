@@ -46,7 +46,7 @@
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="container">
 	<h1 class="title">상품 등록</h1>
-	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
+	<form class="insert" method="POST" id="item">
 		<div>
 			<label>상품 이름</label>
 			<input class="long" name="it_title" placeholder="상품 이름" >
@@ -75,8 +75,8 @@
 		<div class="item_option">
 			<label>상품 옵션</label>
 			<div class="input_option" style="padding:0">
-				<input name="op_name" placeholder="옵션 이름" required="required">
-				<input name="op_content" placeholder="옵션 내용" required="required">
+				<input name="op_name" placeholder="옵션 이름">
+				<input name="op_content" placeholder="옵션 내용">
 			</div>
 			<button id="btn_option_add" type="button">옵션 추가</button>
 		</div>
@@ -120,15 +120,15 @@ var oEditors = [];
 //에디터 셋팅
 nhn.husky.EZCreator.createInIFrame({
  oAppRef: oEditors,
- elPlaceHolder: "content",  //textarea ID 입력
- sSkinURI: "${rootPath}/ne2/SmartEditor2Skin.html",  //martEditor2Skin.html 경로 입력
+ elPlaceHolder: "content",  //textarea ID
+ sSkinURI: "${rootPath}/ne2/SmartEditor2Skin.html",  //martEditor2Skin.html 경로
  fCreator: "createSEditor2",
  htParams : { 
- 	// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+ 	// 툴바 사용 여부 
      bUseToolbar : true, 
-	// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+	// 입력창 크기 조절바 사용 여부
 	bUseVerticalResizer : false, 
-	// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+	// 모드 탭(Editor | HTML | TEXT) 사용 여부
 	bUseModeChanger : false 
 	
  }

@@ -127,10 +127,12 @@ var rootPath ="${rootPath}";
 		<div id="hid_nav">
 			<a id="logo" href="${rootPath}">MALANG</a>
 			<form id="hid">
+				<div>
 				<input type="text" placeholder="찾고싶은 상품을 검색하세요" class="hid_input" />
 				<button type="button">
 					<i class="fas fa-search" id="icon"></i>
 				</button>
+				</div>
 			</form>
 		</div>
 	</div>
