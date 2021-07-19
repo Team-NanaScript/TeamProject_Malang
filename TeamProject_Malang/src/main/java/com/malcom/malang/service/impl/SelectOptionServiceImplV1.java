@@ -132,7 +132,7 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 			String so_name = soVO.getSo_name(); // 옵션명
 			String so_content = soVO.getSo_content(); // 옵션내용
 			Integer so_price = soVO.getSo_price(); // 옵션가격
-			
+
 
 			// 가져온 정보들로 옵션 String 을 만든다.
 			// ex) 선택옵션 - 사용:비상업용/추가옵션:배경추가/테스트:테스트2

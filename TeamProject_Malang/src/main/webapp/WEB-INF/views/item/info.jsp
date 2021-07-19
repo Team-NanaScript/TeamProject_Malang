@@ -97,8 +97,12 @@ section.img_section div.image_preview {
 						</ol>
 						</c:forEach>
 					</ul>
-					<ul >
-						<li id="selected_item"></li>
+					<ul>
+						<c:forEach items="${CARTLIST}" var="CL">
+							<li id="selected_item">
+								${CL.cr_option}
+							</li>
+						</c:forEach>
 					</ul>
 					<ul>
 						<ol>
@@ -133,6 +137,8 @@ section.img_section div.image_preview {
 //		document.querySelector("select#price_select").addEventListener("blur",()=>{
 //			document.getElementById("selected_item").innerHTML = "아니 어떻게 넘겨오냐고"
 //		})
+
+	let totalPrice = ${ITEM.it_price} 
 
 	function changeFunc(arg) {
 		// var selectedValue = document.querySelector("#selectBox").value
@@ -193,6 +199,14 @@ section.img_section div.image_preview {
 				for(let i = 0 ; i < selectOptions;i++) {
 					selectOption[i].value = 'no';
 				}
+				
+				let cartList = '${CARTLIST}'
+				let clIndex = '${CARTLIST}'.size() - 1
+				
+				
+				let totalPrice += cartList[clIndex]
+				
+				console.log(totalPrice)
 			} else if(result == 'NO'){
 				
 			}
