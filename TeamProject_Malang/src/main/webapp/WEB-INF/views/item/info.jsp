@@ -188,9 +188,9 @@ section.img_section div.image_preview {
 			}
 		})
 		
+
 		
 		.then(response=>response.text())
-		//.then(result=>console.log(result))
 		.then(result=>{
 			if(result == 'OK'){
 				
@@ -198,25 +198,22 @@ section.img_section div.image_preview {
 				for(let i = 0 ; i < selectOptions;i++) {
 					selectOption[i].value = 'no';
 				}
-				
-				let cartList = '${CARTLIST}'
-				let clIndex = '${CARTLIST}'.size() - 1
-				
-				
-				let totalPrice += cartList[clIndex]
-				
-				console.log(totalPrice)
+
 			} else if(result == 'NO'){
 				
 			}
-			
 		})
 		
+		let cartList = JSON.parse('${CARTLIST}')
+		console.table(cartList);
 		
-		//}
-		// */
-
 	}	
+
+
+
+
+
+
 
 /*
 	
