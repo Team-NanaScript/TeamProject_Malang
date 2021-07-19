@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MY PAGE</title>
+<style>
+header.mypage {
+	width:100%;
+	height:144px;
+	background-color: 
+}
+</style>
 <script>
 let msg = "${MSG}";
 
@@ -18,25 +25,41 @@ if(msg == "REJECT"){
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
-	<section>
-		<nav class="mypage_nav">
+<header>
+	<h2>${HEADER_NAME}</h2>
+	<nav id="mypage_nav">
 			<ul>
-				<li class="my">
-				</li>
+				<li class="myqna
+				<c:if test="${BODY == 'MY_ORDER'}">
+				on</c:if>">내 주문 목록</li>
+				<li class="myqna
+				<c:if test="${BODY == 'MY_QNA' || 'QNA_VIEW'}">
+				on</c:if>">내 문의글 보기</li>
+				<li class="myreview
+				<c:if test="${BODY == 'MY_REVIEW' || 'REVIEW_VIEW'}">
+				on</c:if>">내 후기글 보기</li>
 			</ul>
 		</nav>
+</header>
+	<section>
 		<c:choose>
+			<c:when test="${BODY == 'MY_ORDER' }">
+			<%@ include file="/WEB-INF/views/member/include/myorder.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'ORDER_VIEW' }">
+			<%@ include file="/WEB-INF/views/member/include/myorder_view.jsp"%>
+			</c:when>
 			<c:when test="${BODY == 'MY_QNA' }">
-			<%@ include file="/WEB-INF/views/include/myqna.jsp"%>
+			<%@ include file="/WEB-INF/views/member/include/myqna.jsp"%>
 			</c:when>
 			<c:when test="${BODY == 'QNA_VIEW' }">
-			<%@ include file="/WEB-INF/views/include/myqna_view.jsp"%>
+			<%@ include file="/WEB-INF/views/member/include/myqna_view.jsp"%>
 			</c:when>
 			<c:when test="${BODY == 'MY_REVIEW' }">
-			<%@ include file="/WEB-INF/views/include/myreview.jsp"%>
+			<%@ include file="/WEB-INF/views/member/include/myreview.jsp"%>
 			</c:when>
 			<c:when test="${BODY == 'REVIEW_VIEW' }">
-			<%@ include file="/WEB-INF/views/include/myreview_view.jsp"%>
+			<%@ include file="/WEB-INF/views/member/include/myreview_view.jsp"%>
 			</c:when>
 			<c:otherwise>
 			</c:otherwise>
@@ -46,11 +69,9 @@ if(msg == "REJECT"){
 </body>
 
 <script>
-document.querySelector("div.btn_wrap").addEventListener("click", (e)=>{
-	const buttonId = e.target.id
-	/* alert(button) */
-	/* location.href = "${rootPath}/member/" + buttonId */
-	location.href = "${rootPath}/" + buttonId;
+document.querySelector("nav#mypage_nav").addEventListener("click", (e)=>{
+	const nav_tab = e.target.closest("LI").className
+	location.href = "${rootPath}/" + member;
 	
 	})
 </script>

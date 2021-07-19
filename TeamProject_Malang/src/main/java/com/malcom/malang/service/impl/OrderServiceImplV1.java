@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.malcom.malang.dao.OrderDao;
+import com.malcom.malang.model.OrderDTO;
 import com.malcom.malang.model.OrderVO;
 import com.malcom.malang.service.OrderService;
 
@@ -47,9 +48,9 @@ public class OrderServiceImplV1 implements OrderService{
 	}
 
 	@Override
-	public List<OrderVO> findByBuyerId(String cr_buyerid) {
+	public List<OrderDTO> findByBuyerId(String buyerid) {
 		// TODO Auto-generated method stub
-		return null;
+		return oDao.findByBuyer(buyerid);
 	}
 
 }

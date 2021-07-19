@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>내 후기글 보기</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-15-000" />
 <style>
@@ -55,15 +50,6 @@ article.review_container table.review_table td.content p {
 	text-overflow: ellipsis;
 }
 </style>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-
-<div class="my_header">
-	<div class="header_name">
-		<h2>내 후기글 보기</h2>
-	</div>
-</div>
 <article class="review_container">
 
 <table class="review_table">
@@ -94,8 +80,6 @@ article.review_container table.review_table td.content p {
 </table>
 </article>
 
-	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-</body>
 <script>
 document.querySelector("table.review_table").addEventListener("click", (e)=>{
 	
@@ -107,4 +91,3 @@ document.querySelector("table.review_table").addEventListener("click", (e)=>{
 	
 })
 </script>
-</html>

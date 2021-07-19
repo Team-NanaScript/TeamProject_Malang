@@ -18,11 +18,10 @@ import lombok.Getter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderVO {
+public class OrderDTO {
 	private Long od_code;//	BIGINT	PRIMARY KEY,
 	private String od_buyerid;//	VARCHAR(20)	NOT NULL,
 	private String od_itcode;//	CHAR(8)	NOT NULL,
-	private String it_title;
 	private String od_option;//	VARCHAR(256)	NOT NULL,
 	private int od_price = 0;//	INT	NOT NULL,
 	private String od_anum;//	VARCHAR(20)	NOT NULL,

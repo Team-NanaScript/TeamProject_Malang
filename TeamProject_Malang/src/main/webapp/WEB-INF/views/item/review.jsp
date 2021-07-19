@@ -37,7 +37,7 @@
         <c:forEach items="${ITEMS}" var="IT">
           <ul class="review">
             <div class="review_img">
-            	<img src="${rootPath}${IT.it_photo}"/>
+            	<img src="${rootPath}/MalangImages/${IT.it_photo}"/>
             </div>
             <li>
               <p>${IT.it_seid}</p>
