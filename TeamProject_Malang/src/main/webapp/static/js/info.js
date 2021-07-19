@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("nav#product_nav");
   const pack = document.querySelector("aside button#btn_pack");
   const ques = document.querySelector("aside button#btn_question");
-  const buy = document.querySelector("aside button#btn_buy");
 
   const navClick = (e) => {
     let tagName = e.target.tagName;
@@ -31,14 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
  
  
+
  
-  const buyClick = (e) => {
-    location.href = `${rootPath}/buy`;
-  }
-  
   nav.addEventListener("click", navClick);
   pack.addEventListener("click", packClick);
   ques.addEventListener("click", quesClick);
-  buy.addEventListener("click", buyClick);
+
 
 });

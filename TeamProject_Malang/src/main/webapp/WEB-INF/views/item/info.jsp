@@ -17,7 +17,7 @@
 	var rootPath = "${rootPath}"
 	var itCode = "${ITEM.it_code}"
 </script>
-<script src="${rootPath}/static/js/info.js?ver=2021-07-19-001"></script>
+<script src="${rootPath}/static/js/info.js?ver=2021-07-19-002"></script>
 <style>
 table.review td:hover, table.question td:hover {
 	cursor: pointer;
@@ -145,6 +145,7 @@ ul#selected_item li{
 
 	let totalPrice = ${ITEM.it_price}
 	let totalPriceList = new Array()
+	let countLi = 0 // 생성된 selected_item li의 개수
 
 	function changeFunc(arg) {
 		// var selectedValue = document.querySelector("#selectBox").value
@@ -238,6 +239,9 @@ ul#selected_item li{
 				//	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
 				//totalPriceList.splice(index, 0, totalPrice)
 				
+				// li 개수를 카운트 ( +1 )
+				countLi += 1
+				
 			} else {
 				// 옵션이 전부 선택되지 않은 경우 아무일도 일어나지 않는다.	
 			}
@@ -263,14 +267,39 @@ ul#selected_item li{
 				// 버튼 className과 같은 수의 index를 List에서 삭제
 				// ( delete를 사용한 경우 index번호는 유지하면서 내용만 지워진다)
 				delete totalPriceList[btn_class]
+				
+				// li 개수를 카운트 ( -1 )
+				countLi -= 1
 			}
 		})
 
 		
-	}	
+	}
 
 
+/*		
+	// 남아있는 cart의 index를 모아보자
+	let indexList = new Array()
 
+		
+	document.querySelector("button#btn_buy").addEventListener("click", ()=>{
+		
+		document.querySelector("form#option").submit()
+		
+		console.log("countLi" + countLi)
+		// 현재 남아있는 li 개수 카운트만큼 반복
+		for(let i = 0; i < countLi < i++){
+		
+			   let tag_btn = document.getElementsByTagName('button');
+			   // document에서 button태그 요소를 HTMLCollection 배열로 가져온다.
+			   
+			   console.log(tag_btn[i].className);
+			   // <button> </button>
+			
+		}
+	})
+
+*/
 
 
 
