@@ -17,7 +17,8 @@ CREATE TABLE `tbl_review` (
 
 SELECT * FROM tbl_review;
 -- DROP TABLE tbl_review;
-DELETE FROM tbl_review;
+DELETE FROM tbl_review
+WHERE r_code = 13;
 
 -- insert
 INSERT INTO tbl_review(r_writer, r_itcode, r_content, r_date, r_score, r_photo)

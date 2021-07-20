@@ -14,7 +14,7 @@ SELECT * FROM tbl_description;
 
 INSERT INTO tbl_description(de_itcode, de_shippingfee, de_shipping, de_refund)
 VALUES(
-'00000010',
+'00000005',
 '기본료 : 3000원
 제주 / 도서산간 추가비용 : 0원',
 '3일 이내
