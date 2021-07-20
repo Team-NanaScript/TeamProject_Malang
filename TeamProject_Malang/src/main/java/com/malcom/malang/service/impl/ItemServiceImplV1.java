@@ -50,7 +50,7 @@ public class ItemServiceImplV1 implements ItemService{
 	@Override
 	public Integer delete(String PK) {
 		// TODO Auto-generated method stub
-		return null;
+		return itDao.delete(PK);
 	}
 
 	@Override

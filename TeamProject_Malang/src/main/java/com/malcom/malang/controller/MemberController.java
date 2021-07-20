@@ -159,7 +159,9 @@ public class MemberController {
 	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
 	public String itemList(String it_code) {
 		
+		log.debug("상품번호 {} ",it_code);
 		int result = itService.delete(it_code);
+		
 		if(result < 0) {
 			
 			return "NO";

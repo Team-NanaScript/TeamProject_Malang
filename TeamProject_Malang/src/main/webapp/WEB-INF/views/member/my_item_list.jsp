@@ -37,13 +37,19 @@ document.querySelector("table").addEventListener("click",(e)=>{
 	if(id == 'item_delete'){
 		
 		let it_code =  e.target.closest("TR").dataset.code
+		alert(it_code)
+		
+		if(!confirm("삭제하시겠습니까?")){
+			return false;
+		}
 		
 		fetch("${rootPath}/mypage/items/delete?it_code=" + it_code)
-		.then(res=>response.text())
+		.then(res=>res.text())
 		.then(result=>{
 			
 			if(result == "OK"){
 				alert("삭제 완료 !!")
+				location.reload(true)
 			} else if (result == "NO"){
 				alert("오류 !! 삭제 실패 ")				
 			}
