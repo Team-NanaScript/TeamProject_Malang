@@ -25,8 +25,4 @@ public class CartDTO {
 	private int cr_price ;//	INT NOT NULL,
 	private int cr_amount ;//	INT DEFAULT 1,
 	private int cr_shippingfee ;//	INT NOT NULL
-	
-	private int itemPrice;
-	private int shippingfee;
-	private int totalPrice;
 }

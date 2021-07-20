@@ -3,6 +3,7 @@ package com.malcom.malang.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.malcom.malang.dao.CartDao;
 import com.malcom.malang.model.CartDTO;
@@ -59,6 +60,19 @@ public class CartServiceImplV1 implements CartService{
 	public List<CartDTO> findViewByBuyer(String cr_buyerid) {
 		// TODO Auto-generated method stub
 		return cDao.findViewByBuyer(cr_buyerid);
+	}
+
+	@Override
+	public void cartList(String mb_id, Model model) {
+		List<CartDTO> cList = cDao.findViewByBuyer(mb_id);
+		int itemPrice = cDao.sumItemPrice(mb_id);
+		int shippingPrice = cDao.sumShippingfee(mb_id);
+		int totalPrice = itemPrice + shippingPrice;
+		
+		model.addAttribute("itemPrice", itemPrice);
+		model.addAttribute("shippingPrice", shippingPrice);
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("CART_LIST",cList);
 	}
 
 }

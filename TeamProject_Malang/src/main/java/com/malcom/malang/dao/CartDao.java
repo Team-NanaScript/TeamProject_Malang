@@ -14,4 +14,8 @@ public interface CartDao extends GenericDao<CartVO, Long>{
 
 	public List<CartDTO> findViewByBuyer(String cr_buyerid);
 	
+	public Integer sumItemPrice(String cr_buyerid);
+	public Integer sumShippingfee(String cr_buyerid);
+	
+	public int deleteAll(String cr_buyerid);
 }
