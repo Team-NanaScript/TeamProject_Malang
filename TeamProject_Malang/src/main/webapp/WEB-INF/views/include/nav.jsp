@@ -7,17 +7,12 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/font.css?ver=2021-07-13-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/hid_nav.css?ver=2021-06-16-001" />
+	href="${rootPath}/static/css/hid_nav.css?ver=2021-07-20-000" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/header.css?ver=2021-07-19-004" />
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/notice.css?ver=2021-07-16-002" />
 <style>
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
 
 input, button{
 	outline:none;
@@ -136,4 +131,4 @@ var rootPath ="${rootPath}";
 			</form>
 		</div>
 	</div>
-<script src="${rootPath}/static/js/nav.js?ver=2021-07-19-003"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2021-07-20-000"></script>
