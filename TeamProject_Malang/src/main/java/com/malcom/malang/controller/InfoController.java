@@ -56,13 +56,13 @@ public class InfoController {
 	protected CartListVO cartList;
 	
 	
-	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public String home(String itcode, Model model) {
+	@RequestMapping(value= {"/{itcode}"}, method=RequestMethod.GET)
+	public String home(@PathVariable("itcode") String itcode, Model model) {
 		// cartList 초기화하기 (관련 method : settingCart)
 		cartList = new CartListVO();// new ArrayList<CartVO>();
 		cartList.setCartList( new ArrayList<CartVO>());
 		
-		itcode = "00000005"; // 수정필요
+//		itcode = "00000005"; // 수정필요
 		
 		
 		ItemVO iVO = iService.findById(itcode);
@@ -97,8 +97,8 @@ public class InfoController {
 	}
 	
 	
-	@RequestMapping(value= {"/",""}, method=RequestMethod.POST)
-	public String homePost(String itcode, Model model) {
+	@RequestMapping(value= "/{itcode}", method=RequestMethod.POST)
+	public String homePost(@PathVariable("itcode") String itcode, Model model) {
 		// log.debug("여기까지 List가 올 수 있을까 {}",cartList.getCartList().toString());// 확인코드
 		List<CartVO> cList = cartList.getCartList();
 		
@@ -109,11 +109,11 @@ public class InfoController {
 
 	// RequestBody List<String> index << js에서보낸 Json 객체의 Key값 이름 같아야한대 
 	@ResponseBody
-	@RequestMapping(value= "/cartInsert", method=RequestMethod.POST, produces = "application/json;char=UTF8")
-	public String cartInsert(@RequestBody List<String> index, Model model) {
-		
+	@RequestMapping(value= "/cartInsert", method=RequestMethod.POST)
+	public String cartInsert(@RequestBody List<String> indexListId, Model model) {
 		List<CartVO> cList = cartList.getCartList();
-		log.debug("여기에 과연 index가 넘어올까 {}", index);
+		
+		log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
 		
 		
 		return "OK";

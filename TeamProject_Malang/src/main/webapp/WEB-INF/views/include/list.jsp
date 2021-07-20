@@ -24,4 +24,4 @@ var rootPath = "${rootPath}"
 	</c:forEach>
 	</c:if>
 </section>
-<script src="${rootPath}/static/js/list.js?ver=2021-07-13-002"></script>
+<script src="${rootPath}/static/js/list.js?ver=2021-07-20-001"></script>
