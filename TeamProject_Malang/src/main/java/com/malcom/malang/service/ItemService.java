@@ -17,5 +17,5 @@ public interface ItemService extends GenericService<ItemVO, String> {
 
 	public void itemByCategory(String cate, Model model);
 
-	public List<ItemVO> findByCeller(String it_mbid);
+	
 }
