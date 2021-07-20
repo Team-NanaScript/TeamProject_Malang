@@ -108,17 +108,87 @@ public class InfoController {
 	
 
 	// RequestBody List<String> index << js에서보낸 Json 객체의 Key값 이름 같아야한대 
+	// 받으려는 것이 하나의 List일 경우엔 그냥 그 리스트롤 보내주면 된대...
 	@ResponseBody
-	@RequestMapping(value= "/cartInsert", method=RequestMethod.POST)
-	public String cartInsert(@RequestBody List<String> indexListId, Model model) {
+	@RequestMapping(value= "/cartInsert/{itcode}", method=RequestMethod.POST)
+	public String cartInsert(@RequestBody List<String> indexListId,
+			@PathVariable("itcode") String itcode,
+			Model model, HttpSession hSession) {
 		List<CartVO> cList = cartList.getCartList();
 		
 		log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
 		
+		// 최종적으로 Cart table에 insert 하기 위한 준비
+		List<CartVO> insertCartList = new ArrayList<CartVO>();
+		for(int i = 0; i < indexListId.size(); i++) {
+			// cartList에 담긴 것들중 
+			//	마지막으로 소비자가 선택한 옵션의 index로
+			//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
+			Integer index = Integer.valueOf(indexListId.get(i));
+			insertCartList.add(cList.get(index));
+		}
 		
+		// 아이디를 위해 Session MEMBER 가져오기
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		// 배송비 가져오기
+		ItemVO iVO = iService.findById(itcode);
+		for(int i = 0; i < insertCartList.size(); i++) {
+			CartVO cartVO = insertCartList.get(i);
+			
+			// 아이디 셋팅
+			cartVO.setCr_buyerid(mVO.getMb_id());
+			// 배송비 셋팅
+			cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
+			// 가격 추가하고 셋팅
+			int price = cartVO.getCr_price();
+			price += iVO.getIt_price();
+			cartVO.setCr_price(price);
+			
+			cService.insert(cartVO);
+		}
 		return "OK";
 	}
+	
+	
+	@RequestMapping(value= "/cartInsert/{itcode}", method=RequestMethod.POST)
+	public String cartSetting(@RequestBody List<String> indexListId,
+			@PathVariable("itcode") String itcode,
+			Model model, HttpSession hSession) {
+		List<CartVO> cList = cartList.getCartList();
+		
+		// 최종적으로 Cart table에 insert 하기 위한 준비
+		List<CartVO> insertCartList = new ArrayList<CartVO>();
+		for(int i = 0; i < indexListId.size(); i++) {
+			// cartList에 담긴 것들중 
+			//	마지막으로 소비자가 선택한 옵션의 index로
+			//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
+			Integer index = Integer.valueOf(indexListId.get(i));
+			insertCartList.add(cList.get(index));
+		}
+		
+		// 아이디를 위해 Session MEMBER 가져오기
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		// 배송비 가져오기
+		ItemVO iVO = iService.findById(itcode);
+		for(int i = 0; i < insertCartList.size(); i++) {
+			CartVO cartVO = insertCartList.get(i);
+			
+			// 아이디 셋팅
+			cartVO.setCr_buyerid(mVO.getMb_id());
+			// 배송비 셋팅
+			cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
+			// 가격 추가하고 셋팅
+			int price = cartVO.getCr_price();
+			price += iVO.getIt_price();
+			cartVO.setCr_price(price);
+			
+		}
+		
+		model.addAttribute("CART_LIST", insertCartList);
+		model.addAttribute("MEMBER", mVO);
 
+		return "member/cart_renew";
+	}
 	
 	/*
 	 * 
@@ -153,24 +223,12 @@ public class InfoController {
 			soService.settingCart(optionList, cartList.getCartList());
 			log.debug("1. CartVO List 확인{}", cartList.getCartList().toString());
 			
+			// 총가격 변경하려면 여기서 처리해야함!! 
+			
 			
 			cartList.setFlag("OK");
 			return cartList;
-		
-//			String jsonCartList = "";
-//			
-//			ObjectMapper obMapper = new ObjectMapper();
-//				try {
-//					// Java 오브젝트로 부터 JSON을 만들고 
-//					// 이를 문자열 혹은 Byte 배열로 반환한다.
-//					jsonCartList = obMapper.writeValueAsString(cartList);
-//				} catch (JsonProcessingException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//			 	return jsonCartList;
-			
+
 		// 옵션중 일부만 선택했을 경우
 		} else {
 			try {
@@ -185,8 +243,6 @@ public class InfoController {
 		
 	}
 	
-//	MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
-//	cartVO.setCr_buyerid(mVO.getMb_id());
 	
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)
@@ -216,7 +272,7 @@ public class InfoController {
 		
 		
 		// 여기 은빈언니가 item 합치면 바꿔야할 부분입니다.
-		return "redirect:/item/infos/" + it_code;
+		return "redirect:/item/info/" + it_code;
 	}
 	
 	
@@ -224,11 +280,11 @@ public class InfoController {
 	@RequestMapping(value="/review/{od_code}", method=RequestMethod.GET)
 	public String reviewWrite(@PathVariable("od_code") Long od_code,
 			Model model, HttpSession hSession) {
-		// 로그인확인 (만드는동안 일단 비활성화)
-//		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
-//		if(mVO == null) {
-//			return "redirect:/login";
-//		}
+		// 로그인확인
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+		if(mVO == null) {
+			return "redirect:/login";
+		}
 		
 		// 오더 code를 받아서 해당 주문을 VO로 가져옴
 		OrderVO orVO = odService.findById(od_code);

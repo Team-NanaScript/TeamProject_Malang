@@ -8,7 +8,9 @@ CREATE TABLE `tbl_qna` (
     `q_time`	VARCHAR(30)
 );
 
-SELECT * FROM tbl_member;
+SELECT * FROM tbl_qna;
+
+
 
 
 INSERT INTO tbl_qna(q_writer, q_itcode, q_title, q_content, q_date)

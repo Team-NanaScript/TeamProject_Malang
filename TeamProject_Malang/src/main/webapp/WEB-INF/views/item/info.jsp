@@ -282,20 +282,40 @@ ul#selected_item li{
 	let indexList = new Array()
 	let indexListId = new Array()
 
+			
+	
+
 	// 구매하기
 	document.querySelector("button#btn_buy").addEventListener("click", ()=>{
-		// index값을추출하고		
+		// index값 추출	
+		let container = document.querySelector("ul#selected_item");
 		
+		indexList = container.querySelectorAll("li")
 		
-		// submit -> /cart
-		document.querySelector("form#option").submit()
+		for(let i = 0 ; i < indexList.length ; i++) {
+			indexListId.push(indexList[i].id)
+		}
+		
+		// json을 fetch를 사용해 전송
+		fetch("${rootPath}/info/cartInsert/${ITEM.it_code}",{
+			method:"POST",
+			body: JSON.stringify(indexListId),
+			headers : {
+				"content-Type": "application/json;char=UTF8",
+			}
+		})
+		.then(response=>response.text())
+		.then(result=>{
+				// submit -> /cart
+				document.querySelector("form#option").submit()
+		})
 	})
 	
 	
 	// 장바구니
 	document.querySelector("button#btn_pack").addEventListener("click", ()=>{
 	    
-		
+		// index값 추출	
 		let container = document.querySelector("ul#selected_item");
 		
 		indexList = container.querySelectorAll("li")
@@ -306,16 +326,14 @@ ul#selected_item li{
 		
 		console.table(indexListId)
 		
-		
-		
-	
 		// index 라는 이름으로 리스트를 담는 JSON  객체 1개 생성
-		const sendIndexJson = {
+/*		const sendIndexJson = {
 			index:indexListId
 		}
-		
-		// 여기 백틱으로 바꿔..?
-		fetch("${rootPath}/info/cartInsert",{
+*/
+
+		// json을 fetch를 사용해 전송
+		fetch("${rootPath}/info/cartInsert/${ITEM.it_code}",{
 			method:"POST",
 			body: JSON.stringify(indexListId),
 			headers : {
@@ -327,6 +345,10 @@ ul#selected_item li{
 		
 			if(result == 'OK'){
 				alert("장바구니에 담았습니다")	
+				let selected_item_ul = document.querySelector("ul#selected_item")
+				let selected_item_li = document.querySelector("ul#selected_item li")
+				
+				selected_item_ul.removeChild(selected_item_li)
 			} else {
 				alert("장바구니 담기에 실패했습니다")
 			}
