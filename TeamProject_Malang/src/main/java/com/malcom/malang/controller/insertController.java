@@ -49,10 +49,11 @@ public class insertController {
 	}
 	
 	@RequestMapping(value="/insert", method = RequestMethod.POST)
-	public String insert(ItemVO itVO,MultipartFile one_file,
+	public String insert(ItemVO itVO,@RequestParam(name="one_file") MultipartFile one_file,
 			@RequestParam(name="multi_file", required = false) MultipartHttpServletRequest multi_file, Model model) throws IOException { // , @RequestBody Map<String, String> maps) {
 		
-		iService.insert(itVO, one_file, multi_file, model);
+		log.debug("파일 이름 {} ", one_file);
+//		iService.insert(itVO, one_file, multi_file, model);
 		
 		// 나중에 바꿔야함@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@은빈@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		return "redirect:/item/infos/" + itVO.getIt_code();

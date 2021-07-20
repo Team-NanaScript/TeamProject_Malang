@@ -57,6 +57,12 @@ public class ItemServiceImplV1 implements ItemService{
 	public List<ItemVO> malangOfToday() {
 		List<ItemVO> allList = this.select();
 		
+		int iSize = allList.size();
+		
+		if(iSize < 4) {
+			return null;
+		}
+		
 		Random rnd = new Random();
 		
 		List<ItemVO> todayList = new ArrayList<ItemVO>();
@@ -65,6 +71,7 @@ public class ItemServiceImplV1 implements ItemService{
 			todayList.add(allList.get(tmp));
 			allList.remove(tmp);
 		}
+		
 		return todayList;
 	}
 
