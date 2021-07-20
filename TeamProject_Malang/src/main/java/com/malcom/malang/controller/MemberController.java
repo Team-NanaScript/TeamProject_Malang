@@ -1,6 +1,5 @@
 package com.malcom.malang.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.MemberService;
+import com.malcom.malang.service.TempCartService;
 import com.malcom.malang.service.insertService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,10 +29,15 @@ public class MemberController {
 	protected final MemberService mService;
 	protected final insertService iServce;
 	protected final ItemService itService;
+	protected final TempCartService tcService;
 	
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession hSession) {
+		
+		// logout 하기전에 해당 아이디의 tempCart를 비워준다.
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		tcService.deleteById(mVO.getMb_id());
 		
 		hSession.removeAttribute("MEMBER");
 		hSession = null;
