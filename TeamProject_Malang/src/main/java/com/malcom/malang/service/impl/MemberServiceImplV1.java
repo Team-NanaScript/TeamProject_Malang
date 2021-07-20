@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.malcom.malang.dao.ItemDao;
 import com.malcom.malang.dao.MemberDao;
+import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.OrderDTO;
 import com.malcom.malang.model.QnaDTO;
@@ -28,6 +30,7 @@ public class MemberServiceImplV1 implements MemberService{
 	protected final QnaService qService;
 	protected final ReviewService rService;
 	protected final MemberDao mDao;
+	protected final ItemDao iDao;
 
 	@Override
 	public List<MemberVO> select() {
@@ -150,6 +153,17 @@ public class MemberServiceImplV1 implements MemberService{
 			model.addAttribute("HEADER_NAME", "내 문의글 보기");
 		}
 		
+	}
+
+	@Override
+	public void seller(String nav_name, String mb_id, Model model) {
+		if(nav_name.equals("itemList")) {
+			List<ItemVO> itList = itDao.findBySeller(mb_id);
+			model.addAttribute("BODY", "ITEM_LIST");
+			model.addAttribute("ITLIST",itList);
+		} else if(nav_name.equals("itemInsert")) {
+			model.addAttribute("BODY", "ITEM_INSERT");
+		}
 	}
 	
 }

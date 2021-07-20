@@ -115,7 +115,7 @@ table th{
 			</article>
 
 			<form id="pay_form" class="pay_form">
-				<div id="pay_inpo" class="pay_inpo">
+				<div id="pay_info" class="pay_info">
 					<article id="art_2">
 						<h2>배송지 정보</h2>
 						<table id="addr_table" class="addr_table">
@@ -145,8 +145,48 @@ table th{
 </body>
 <script>
 let cart_form = document.querySelector("form#pay_form")
+const payButton = document.querySelector("button#pay")
+const anumInput = document.querySelector("input[name='od_anum']")
+const addrInput = document.querySelector("input[name='od_addr']")
 
-cart_form
+payButton.addEventListener("click", ()=> {
+	let anumValue = anumInput.value
+	let addrValue = addrInput.value
+	if(anumValue == null || anumValue == "") {
+		alert("please input your address number!")
+		anumInput.focus();
+		return false;
+	} else if(addrValue == null || addrValue == "") {
+		alert("please input your address!")
+		addrInput.focus();
+		return false;
+	}
+	
+	if(confirm("구매하시겠습니까?")){
+		cart_form.submit()
+	}
+	
+})
+
+document.querySelector("table#question").addEventListener("click", (e)=>{
+	let btnClass = e.target.className
+	
+	if( btnClass == 'delete' ){
+		let code = e.target.closest("TR").dataset.code
+		
+		fetch("${rootPath}/mypage/cart/delete?cr_code="+code)
+		.then(res=>res.text()).then(result=>{
+			
+			if(result == "OK"){
+				alert("장바구니에서 삭제되었습니다.")
+				location.reload(true)
+			} else {
+				alert("삭제 실패")
+			}
+			
+		})
+	}
+})
 
 </script>
 <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>

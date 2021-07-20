@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>말랑 - 상품등록</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/insert.css?ver=2021-07-19-004" />
 <style type="text/css">
@@ -38,6 +43,10 @@
 		font-size:12px;
 	}
 </style>
+</head>
+
+<body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="container">
 	<h1 class="title">상품 등록</h1>
 	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
@@ -103,7 +112,8 @@
 	</form>
 
 </div>
-
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+</body>
 <script src="${rootPath}/ne2/js/service/HuskyEZCreator.js" charset="UTF-8"></script> 
 <script>
 
@@ -279,13 +289,22 @@ cate_st.addEventListener("change", ()=>{
 				option2.setAttribute("class", "cate2");
 				
 				cate_st2.appendChild(option2)
-
-			} 			
+				
+				
+			} 
+			
 		}
 
 	cate2_chg();
+	
 })
 
 cate_st2.addEventListener("change", cate2_chg);
 
+
+
+	
+	
+
 </script>
+</html>
