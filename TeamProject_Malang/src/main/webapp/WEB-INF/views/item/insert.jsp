@@ -46,7 +46,7 @@
 <%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="container">
 	<h1 class="title">상품 등록</h1>
-	<form class="insert" method="POST" id="item">
+	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
 		<div>
 			<label>상품 이름</label>
 			<input class="long" name="it_title" placeholder="상품 이름" >
@@ -243,9 +243,10 @@ for(let i = 0 ; i < cate1.length ; i++){
 
 function cate2_chg(){
 	
-	let checked_cate = document.querySelector("#cate_st2 option:checked").value 
+	// let check_cate = cate_st2.options[st2.selectedIndex].value
+	let checked_cate = document.querySelector("#cate_st2 option:checked").value
 	
-	document.getElementById("it_ctcode").setAttribute("value", checked_cate)
+	document.querySelector("input#it_ctcode").setAttribute("value", checked_cate)
 	
 }
 
@@ -276,7 +277,7 @@ cate_st.addEventListener("change", ()=>{
 })
 
 
-cate_st2.addEventListener("change", cate2_chg());
+cate_st2.addEventListener("change", cate2_chg);
 
 console.log(cateList)
 		

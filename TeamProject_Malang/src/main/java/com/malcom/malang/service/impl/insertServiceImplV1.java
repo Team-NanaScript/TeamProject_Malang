@@ -85,6 +85,7 @@ public class insertServiceImplV1 implements insertService {
 		int so_name_size = itVO.getSo_name().size();
 		for(int j = 0 ; j < so_name_size ; j++) {
 			SelectOptionVO soVO = new SelectOptionVO();
+			soVO.setSo_price(itVO.getSo_price().get(j));
 			soVO.setSo_content(itVO.getSo_content().get(j));
 			soVO.setSo_name(itVO.getSo_name().get(j).trim());
 			soVO.setSo_itcode(itVO.getIt_code());

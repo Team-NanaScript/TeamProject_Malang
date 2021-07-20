@@ -30,6 +30,6 @@ public class ItemVO {
 	
 	private List<String> so_name ;
 	private List<String> so_content;
-	private List<Integer> price ;
+	private List<Integer> so_price ;
 	
 }
