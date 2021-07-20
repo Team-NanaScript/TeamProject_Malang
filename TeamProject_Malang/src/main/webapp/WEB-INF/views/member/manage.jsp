@@ -31,6 +31,7 @@
 		position: relative;
 		left:-50px;
 		text-align: center;
+		border-collapse: collapse;
 	}
 	table.manage thead th{
 		border:1px solid gray;

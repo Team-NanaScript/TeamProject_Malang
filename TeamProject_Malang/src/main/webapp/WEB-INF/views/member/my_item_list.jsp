@@ -5,11 +5,44 @@
 <style>
 	img{
 		background-size:cover;
+		width:150px;
+	}
+	
+	table.my_item{
+		border-collapse: collapse;
+		width: 85%;
+		text-align: center;
+	}
+	
+	table.my_item td, table.my_item th{
+		border:1px solid rgba(0,0,0,0.2);
+	} 
+	table.my_item th{
+		border-top:1px solid rgba(0,0,0,0.7);
+		background-color: rgba(235, 164, 123, 0.993);
+		color:white;
+	}
+	table.my_item td{
+		color:rgba(0,0,0,0.7);
+	}
+	div.items{
+		display:flex;
+		justify-content: center;
+		width: 1056px;
+    	margin: 0 auto;
+	}
+	button#item_delete{
+		outline:none;
+		border:none;
+		background-color: rgba(235, 164, 123, 0.993);
+		cursor:pointer;
+		color:white;
+		
 	}
 </style>
 <body>
-	<div>
-		<table>
+	<div class="items">
+		<table class="my_item">
 			<tr>
 				<th>상품코드</th>
 				<th>상품이름</th>
