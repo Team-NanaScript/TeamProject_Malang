@@ -13,4 +13,6 @@ public interface TempCartDao extends GenericDao<TempCartVO, Long>{
 	(@Param("cr_buyerid") String cr_buyerid);
 
 	public List<TempCartDTO> findViewByBuyer(String cr_buyerid);
+
+	public Integer deleteById(@Param("cr_buyerid") String cr_buyerid);
 }

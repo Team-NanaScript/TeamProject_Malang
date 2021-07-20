@@ -45,7 +45,7 @@ public class ReviewController {
 			String itcode = rList.get(i).getR_itcode();
 			ItemVO iVO = iService.findById(itcode);
 			
-			
+
 			iList.add(iVO);
 			
 			List<ReviewDTO> reviewList = rDao.findByItem(itcode);

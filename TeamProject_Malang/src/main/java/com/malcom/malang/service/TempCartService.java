@@ -9,4 +9,5 @@ public interface TempCartService extends GenericService<TempCartVO, Long>{
 
 	public List<TempCartVO> findByBuyerId(String cr_buyerid);
 	public List<TempCartDTO> findViewByBuyer(String cr_buyerid);
+	public Integer deleteById(String cr_buyerid);
 }

@@ -131,6 +131,14 @@ CREATE TABLE `tbl_temp_cart` (
 	`cr_shippingfee`	INT NOT NULL
 );
 
+create view view_temp_cart as select
+C.cr_code, C.cr_buyerid, C.cr_itcode, I.it_photo, I.it_title, C.cr_option,
+	I.it_seid, C.cr_price, C.cr_amount, C.cr_shippingfee
+FROM tbl_temp_cart C
+	LEFT JOIN tbl_item I
+		ON C.cr_itcode = I.it_code;
+
+SELECT * FROM tbl_temp_cart;
 
 CREATE TABLE `tbl_order` (
 	`od_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
