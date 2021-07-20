@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.malcom.malang.config.DateConfig;
 import com.malcom.malang.dao.CartDao;
+import com.malcom.malang.dao.OrderDao;
 import com.malcom.malang.model.CartDTO;
 import com.malcom.malang.model.CartVO;
 import com.malcom.malang.service.CartService;
@@ -19,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CartServiceImplV1 implements CartService{
 
 	protected final CartDao cDao;
+	protected final OrderDao oDao;
 	
 	@Override
 	public List<CartVO> select() {
@@ -73,6 +76,25 @@ public class CartServiceImplV1 implements CartService{
 		model.addAttribute("shippingPrice", shippingPrice);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("CART_LIST",cList);
+	}
+
+	@Override
+	public void cartToOrder(String mb_id) {
+		List<CartDTO> cList = cDao.findViewByBuyer(mb_id);
+		int itemPrice = cDao.sumItemPrice(mb_id);
+		int shippingPrice = cDao.sumShippingfee(mb_id);
+		int totalPrice = itemPrice + shippingPrice;
+		
+		String sDate = DateConfig.sDate("yyyy-MM-dd");
+		
+		for(CartDTO cart : cList ) {
+//		OrderVO orderVO = new OrderVO.builder mb_id
+//		cList.it_code od_option sDate
+		
+//		oDao.insert(orderVO);
+		}
+		
+		cDao.deleteAll(mb_id);
 	}
 
 }

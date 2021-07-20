@@ -1,7 +1,5 @@
 package com.malcom.malang.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,9 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.malcom.malang.model.CartDTO;
 import com.malcom.malang.model.MemberVO;
+import com.malcom.malang.model.OrderVO;
 import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.MemberService;
 
@@ -56,11 +55,30 @@ public class MypageController {
 			model.addAttribute("MSG","REJECT");
 		} else {
 			cService.cartList(membervo.getMb_id(), model);
-//			List<CartDTO> cList =
-//					cService.findViewByBuyer(membervo.getMb_id());
-//			model.addAttribute("CART_LIST",cList);
 		}
 		return "member/cart_renew";
+	}
+	
+	@RequestMapping(value="/cart", method=RequestMethod.POST)
+	public String cartToOrder(OrderVO orderVO, HttpSession session) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		
+		cService.cartToOrder(membervo.getMb_id());
+		
+		return "redirect:/member/mypage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cart/delete", method=RequestMethod.GET)
+	public String cartDelete(String cr_code, Model model) {
+		Long code = Long.valueOf(cr_code);
+		
+		if(cService.delete(code) < 0) {
+			
+			return "NO";
+		}
+		
+		return "OK";
 	}
 	
 }

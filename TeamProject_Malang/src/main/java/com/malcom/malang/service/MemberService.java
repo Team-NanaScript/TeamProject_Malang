@@ -15,4 +15,6 @@ public interface MemberService extends GenericService<MemberVO, String> {
 	public void mypage(String memeberId, String nav_name, Model model);
 
 	public void mypage(String nav_name, Model model, Long code);
+
+	public void seller(String nav_name, String mb_id, Model model);
 }

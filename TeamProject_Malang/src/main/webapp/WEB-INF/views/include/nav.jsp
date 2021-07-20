@@ -109,7 +109,7 @@ var rootPath ="${rootPath}";
 				<c:if test="${not empty MEMBER}">
 					<li class="myinfo">${MEMBER.mb_nickname}님</li>
 					<c:if test="${MEMBER.mb_role > 0}">
-						<li class="insert">상품등록</li>
+						<li class="seller">상품관리</li>
 					</c:if>
 					<li class="logout">로그아웃</li>
 				</c:if>

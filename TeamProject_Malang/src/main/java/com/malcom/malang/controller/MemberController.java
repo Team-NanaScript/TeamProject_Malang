@@ -1,18 +1,17 @@
 package com.malcom.malang.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.service.ItemService;
@@ -143,7 +142,21 @@ public class MemberController {
 		return "member/manage";
 	}
 	
-	@RequestMapping(value="/mypage/items", method=RequestMethod.GET)
+	@RequestMapping(value = "/seller/{nav_name}", method = RequestMethod.GET)
+	public String seller(@PathVariable("nav_name") String nav_name, HttpSession session, Model model) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null || membervo.getMb_role() < 2) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			if(nav_name.isBlank() || nav_name.isEmpty())
+				nav_name = "itemList" ;
+			mService.seller(nav_name, membervo.getMb_id(), model);
+		}
+		
+		return "member/seller";
+	}
+	
+	@RequestMapping(value="/mypage/itemsmovemove", method=RequestMethod.GET)
 	public String itemList(HttpSession hSession, Model model) {
 		
 		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
