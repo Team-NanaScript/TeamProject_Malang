@@ -1,20 +1,23 @@
 package com.malcom.malang.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.malcom.malang.model.CateVO;
+import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
+import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.MemberService;
+import com.malcom.malang.service.insertService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +28,9 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	
 	protected final MemberService mService;
+	protected final insertService iServce;
+	protected final ItemService itService;
+	
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession hSession) {
@@ -136,6 +142,33 @@ public class MemberController {
 		
 		return "member/manage";
 	}
+	
+	@RequestMapping(value="/mypage/items", method=RequestMethod.GET)
+	public String itemList(HttpSession hSession, Model model) {
+		
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		
+		List<ItemVO> itList = itService.findByCeller(mVO.getMb_id());
+		
+		model.addAttribute("ITLIST",itList);
+		
+		return "member/my_item_list";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
+	public String itemList(String it_code) {
+		
+		int result = itService.delete(it_code);
+		if(result < 0) {
+			
+			return "NO";
+		}
+		
+		return "OK";
+	}
+	
+	
 	
 	
 }

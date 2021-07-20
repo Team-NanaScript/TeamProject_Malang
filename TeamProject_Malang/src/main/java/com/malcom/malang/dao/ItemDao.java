@@ -20,4 +20,6 @@ public interface ItemDao extends GenericDao<ItemVO, String> {
 	
 	public List<CateVO> categorySubWithCode(@Param("ct_main") String ct_main);
 	public CateVO findCateById(@Param("ct_code")String ct_code);	
+	
+	public List<ItemVO> findByCeller(String it_mbid);
 }

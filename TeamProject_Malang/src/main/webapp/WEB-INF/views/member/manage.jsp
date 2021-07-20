@@ -21,12 +21,13 @@
 <style>
 	div.manage_table{
 		display:flex;
+		flex:1;
 		justify-content: center;
 		font-size:24px;
 	}
 	table.manage {
-		margin:50px 50px;
-		width:50%;
+		margin:200px 50px;
+		width:1056px;
 		position: relative;
 		left:-50px;
 		text-align: center;
@@ -61,11 +62,20 @@
 		text-decoration: blink;
 		color:rgba(235, 164, 123, 0.993);
 	}
+	
+	body{
+		display: flex;
+    	flex-direction: column;
+    	width: 100%;
+    	height: 100vh;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+	
 	<h1 id="manage_h">관리자 계정 회원관리</h1>
+	
 	<c:if test="${not empty MLIST}">
 	
 	<div class="manage_table">
@@ -119,6 +129,7 @@
 		</table>
 		</div>
 	</c:if>
+	
 	
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>

@@ -35,7 +35,7 @@ public class insertServiceImplV1 implements insertService {
 	@Override
 	public int insert(ItemVO itVO, MultipartFile file, MultipartHttpServletRequest files, Model model) throws IOException {
 		// TODO Auto-generated method stub
-
+		
 		String fileName = fService.fileUp(file);
 		
 		ItemVO vo = null;
@@ -54,12 +54,7 @@ public class insertServiceImplV1 implements insertService {
 				itVO.setIt_code(it_code);
 				itVO.setIt_photo(fileName);
 				
-				
-				int itRes = itDao.insert(itVO);
-				if(itRes < 1) {
-					
-				}
-				
+				itDao.insert(itVO);
 				break;
 			}
 			
@@ -71,28 +66,32 @@ public class insertServiceImplV1 implements insertService {
 		for (int i = 0; i < op_name_size; i++) {
 
 			OptionVO opVO = new OptionVO();
+			if(itVO.getOp_name().get(i) == null || itVO.getOp_name().get(i).equals("")) {
+				continue;
+			}
 			opVO.setOp_name(itVO.getOp_name().get(i));
 			opVO.setOp_content(itVO.getOp_content().get(i));
 			opVO.setOp_itcode(itVO.getIt_code());
 			
-			int opRes = opDao.insert(opVO);
-			if(opRes < 1) {
-				
-			}
+			opDao.insert(opVO);
+			
 
 		}
 		
 		int so_name_size = itVO.getSo_name().size();
 		for(int j = 0 ; j < so_name_size ; j++) {
+			
 			SelectOptionVO soVO = new SelectOptionVO();
+			if(itVO.getSo_name().get(j) == null || itVO.getSo_name().get(j).equals("")) {
+				continue;
+			}
 			soVO.setSo_price(itVO.getSo_price().get(j));
 			soVO.setSo_content(itVO.getSo_content().get(j));
 			soVO.setSo_name(itVO.getSo_name().get(j).trim());
 			soVO.setSo_itcode(itVO.getIt_code());
-			int soRes = soService.insert(soVO);
-			if(soRes < 1) {
-				
-			}
+			
+			soService.insert(soVO);
+			
 		}
 
 		return 0;

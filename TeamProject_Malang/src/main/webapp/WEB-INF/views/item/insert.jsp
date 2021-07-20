@@ -39,6 +39,9 @@
 		height: 25px;
 		width: 150px;
 	}
+	p.msg {
+		font-size:12px;
+	}
 </style>
 </head>
 
@@ -49,15 +52,15 @@
 	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
 		<div>
 			<label>상품 이름</label>
-			<input class="long" name="it_title" placeholder="상품 이름" >
+			<input class="long" name="it_title" placeholder="상품 이름" value="">
 		</div>
 		<div>
 			<label>상품 기본가격</label>
-			<input class="short" name="it_price" placeholder="상품 기본가격" >
+			<input class="short" name="it_price" placeholder="상품 기본가격" type="number" value=0>
 		</div>
 		<div>
 			<label>배송비</label>
-			<input class="short" name="it_shippingfee" placeholder="배송비" >
+			<input class="short" name="it_shippingfee" placeholder="배송비" type="number" value=0>
 		</div>
 
 		<input name="it_seid" class="hidden" value="${MEMBER.mb_id}">
@@ -68,6 +71,7 @@
 			<textarea name="it_content" id="content"></textarea>
 		</div>
 		<div>
+			<p class="msg">* 사진 크기는 520px x 520px 에 맞춰서 업로드 해주세요 </p>
 			<label>파일 등록</label>
 			<input name="one_file" type="file">
 		</div>
@@ -103,7 +107,7 @@
 
 		</div>
 		<div class="btn_box">
-			<button type="button" id="item_submit" onclick="submitContents()">등록하기</button>
+			<button type="button" id="item_submit">등록하기</button>
 		</div>	
 	</form>
 
@@ -134,14 +138,33 @@ nhn.husky.EZCreator.createInIFrame({
  }
 });
 
-function submitContents(){
-	
-	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-	
-	document.querySelector("form#item").submit();
+
+let btn_sb = document.querySelector("button#item_submit"); 
+
+if(btn_sb){
+
+	btn_sb.addEventListener("click", ()=>{
+		
+		let cate_val =  document.querySelector("input#it_ctcode").value
+		let title_val = document.querySelector("input[name='it_title']").value		
+		
+		if(title_val == null || title_val == ""){
+		    alert("상품 이름을 입력하세요!")
+		    return false;
+		}
+		if(cate_val == null || cate_val == ""){
+		    alert("카테고리를 선택해주세요!")
+		    return false;
+		}
+				
+		
+		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		document.querySelector("form#item").submit();
+		
+	})
 	
 }
-
 
 // 옵션 추가 스크립트 
 
@@ -276,11 +299,10 @@ cate_st.addEventListener("change", ()=>{
 	
 })
 
-
 cate_st2.addEventListener("change", cate2_chg);
 
-console.log(cateList)
-		
+
+
 	
 	
 
