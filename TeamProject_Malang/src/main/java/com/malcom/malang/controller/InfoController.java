@@ -99,16 +99,6 @@ public class InfoController {
 		return "/item/info";
 	}
 	
-	
-	@RequestMapping(value= "/{itcode}", method=RequestMethod.POST)
-	public String homePost(@PathVariable("itcode") String itcode, Model model) {
-		// log.debug("여기까지 List가 올 수 있을까 {}",cartList.getCartList().toString());// 확인코드
-		List<CartVO> cList = cartList.getCartList();
-		
-		
-		return "redirect:/cart";
-	}
-	
 
 	// RequestBody List<String> index << js에서보낸 Json 객체의 Key값 이름 같아야한대 
 	// 받으려는 것이 하나의 List일 경우엔 그냥 그 리스트롤 보내주면 된대...
@@ -122,40 +112,46 @@ public class InfoController {
 			return "LOGIN_FAIL";
 		} 
 		
-		List<CartVO> cList = cartList.getCartList();
-		
-		log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
-		
-		// 최종적으로 Cart table에 insert 하기 위한 준비
-		List<CartVO> insertCartList = new ArrayList<CartVO>();
-		for(int i = 0; i < indexListId.size(); i++) {
-			// cartList에 담긴 것들중 
-			//	마지막으로 소비자가 선택한 옵션의 index로
-			//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
-			Integer index = Integer.valueOf(indexListId.get(i));
-			insertCartList.add(cList.get(index));
+		if(indexListId != null) {
+			List<CartVO> cList = cartList.getCartList();
+			
+			log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
+			
+			// 최종적으로 Cart table에 insert 하기 위한 준비
+			List<CartVO> insertCartList = new ArrayList<CartVO>();
+			for(int i = 0; i < indexListId.size(); i++) {
+				// cartList에 담긴 것들중 
+				//	마지막으로 소비자가 선택한 옵션의 index로
+				//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
+				Integer index = Integer.valueOf(indexListId.get(i));
+				insertCartList.add(cList.get(index));
+			}
+			
+			// 아이디를 위해 Session MEMBER 가져오기
+			mVO = (MemberVO) hSession.getAttribute("MEMBER");
+			// 배송비 가져오기
+			ItemVO iVO = iService.findById(itcode);
+			for(int i = 0; i < insertCartList.size(); i++) {
+				CartVO cartVO = insertCartList.get(i);
+				
+				// 아이디 셋팅
+				cartVO.setCr_buyerid(mVO.getMb_id());
+				// 배송비 셋팅
+				cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
+				// 가격 추가하고 셋팅
+				int price = cartVO.getCr_price();
+				price += iVO.getIt_price();
+				cartVO.setCr_price(price);
+				
+				
+				cService.insert(cartVO);
+			} 
+			return "OK";
+		} else {
+			return "NO";
 		}
-		
-		// 아이디를 위해 Session MEMBER 가져오기
-		mVO = (MemberVO) hSession.getAttribute("MEMBER");
-		// 배송비 가져오기
-		ItemVO iVO = iService.findById(itcode);
-		for(int i = 0; i < insertCartList.size(); i++) {
-			CartVO cartVO = insertCartList.get(i);
 			
-			// 아이디 셋팅
-			cartVO.setCr_buyerid(mVO.getMb_id());
-			// 배송비 셋팅
-			cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
-			// 가격 추가하고 셋팅
-			int price = cartVO.getCr_price();
-			price += iVO.getIt_price();
-			cartVO.setCr_price(price);
-			
-			
-			cService.insert(cartVO);
-		}
-		return "OK";
+	
 	}
 	
 	@ResponseBody
@@ -166,10 +162,13 @@ public class InfoController {
 		
 		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
 		if(mVO == null) {
-			return "redirect:/login";
-		}
+			return "LOGIN_FAIL";
+		} 
 		
 		if(indexListId != null) {
+			// 구매하기를 누르면 자동으로 기존 tempCart가 비워진다.
+			tcService.deleteById(mVO.getMb_id());
+			
 			List<CartVO> cList = cartList.getCartList();
 			
 			// 최종적으로 Cart table에 insert 하기 위한 준비
@@ -250,14 +249,11 @@ public class InfoController {
 		
 		// 모든 옵션을 선택했을 경우
 		if(inputSize == originSize) {
-			log.debug("0.성공옵션확인 {}", options); // 확인코드
+			//log.debug("0.성공옵션확인 {}", options); // 확인코드
 		
 			// 선택한 옵션들을 cartVO에 담은 리스트( 구매자, 배송비, 수량 제외 )
 			soService.settingCart(optionList, cartList.getCartList());
 			log.debug("1. CartVO List 확인{}", cartList.getCartList().toString());
-			
-			// 총가격 변경하려면 여기서 처리해야함!! 
-			
 			
 			cartList.setFlag("OK");
 			return cartList;
@@ -265,7 +261,7 @@ public class InfoController {
 		// 옵션중 일부만 선택했을 경우
 		} else {
 			try {
-//				log.debug("0.실패옵션확인 {}", options); // 확인코드
+				// log.debug("0.실패옵션확인 {}", options); // 확인코드
 				cartList.setFlag("NO");
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -273,9 +269,7 @@ public class InfoController {
 			}
 			return cartList;
 		}
-		
 	}
-	
 	
 	
 	@RequestMapping(value="/qna/{it_code}", method=RequestMethod.GET)
@@ -326,11 +320,6 @@ public class InfoController {
 		String it_code = orVO.getOd_itcode();
 		// it_code를 이용해 itemVO 정보 중 title 뽑아냄
 		ItemVO itVO = iService.findById(it_code);
-		
-		
-
-
-		
 		
 		return "item/review_insert";
 	}

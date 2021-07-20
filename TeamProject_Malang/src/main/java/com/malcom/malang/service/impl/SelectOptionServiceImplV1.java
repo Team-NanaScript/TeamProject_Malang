@@ -1,20 +1,14 @@
 package com.malcom.malang.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.malcom.malang.dao.SelectOptionDao;
 import com.malcom.malang.model.CartVO;
-import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.service.SelectOptionService;
 
@@ -89,25 +83,7 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 		return null; // opList;
 	}
 
-	@Override
-	public String selectJson(String itcode) {
-		// 카테고리 옵션
-		List<SelectOptionVO> soList = this.findByItem(itcode);
-		String soJson = null;
 
-		// ObjectMapper 클래스 생성
-		ObjectMapper obMapper = new ObjectMapper();
-
-		try {
-			// ObjectMapper 클래스의 writeValueAsString() method 사용
-			// => Java 오브젝트로 부터 JSON을 만들고 이를 문자열 혹은 Byte 배열로 반환
-			soJson = obMapper.writeValueAsString(soList);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-
-		return soJson;
-	}
 
 	@Override
 	public List<CartVO> settingCart(List<String> optionList, List<CartVO> cartList) {
