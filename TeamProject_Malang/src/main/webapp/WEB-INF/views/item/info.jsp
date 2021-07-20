@@ -143,19 +143,13 @@ ul#selected_item li{
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	
 	<script>
-//		document.querySelector("select#price_select").addEventListener("blur",()=>{
-//			document.getElementById("selected_item").innerHTML = "아니 어떻게 넘겨오냐고"
-//		})
 
 	let optionPrice = ${ITEM.it_price}
 	let totalPriceList = new Array()
 	let totalPrice = 0
 
 	function changeFunc(arg) {
-		// var selectedValue = document.querySelector("#selectBox").value
-		// alert(arg.value)
-		
-		
+	
 		// 선택박스가 바뀔때마다 3개 다 선택되어 있는지를 체크하기
 		
 		let value = arg.value
@@ -181,16 +175,8 @@ ul#selected_item li{
 		const sendJson = {
 			options:selectArray,
 			selectBoxSize : selectOptions
-			//name:'홍길동',
-			//age : 33
-			
 		}
 		
-		
-		// selectOption = selectOption.option[selectOption.selectedIndex].value;
-		
-		// alert(selectOption);
-		//if(selectOption != "no"){
 		// fetch를 사용해서 POST 로 전송	
 		fetch("${rootPath}/info/option",{
 			method:"POST",
@@ -339,7 +325,7 @@ ul#selected_item li{
 					);
 				// submit -> /cart
 				// document.querySelector("form#option").submit()
-				//document.querySelector("body").innerHTML = result
+				// document.querySelector("body").innerHTML = result
 			} else if(result == 'NO'){
 				alert("상품 옵션을 선택해주세요")
 			} else if(result == "LOGIN_FAIL"){
@@ -349,9 +335,7 @@ ul#selected_item li{
 				alert("구매에 실패했습니다")
 			}
 		})
-		//} else {
-			
-		//}
+
 	})
 	
 	
@@ -408,6 +392,7 @@ ul#selected_item li{
 		
 	 	location.href = `${rootPath}/info/qna/${ITEM.it_code}`;
 	})
+
 
 
 

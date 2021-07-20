@@ -83,7 +83,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${QNAS}" var="Q">
-						<tr>
+						<tr data-seq="${Q.q_code}">
 							<td>${Q.mb_nickname}<br/>
 								<p>(${Q.q_writer})</p>
 							</td>
@@ -96,3 +96,15 @@
 		</table>
 	</article>
 </article>
+
+<script>
+document.querySelector("table#question").addEventListener("click", (e)=>{
+	let td = e.target
+	if(td.tagName === "TD"){
+		let tr = td.closest("TR")
+		let seq = tr.dataset.seq
+		location.href = `${rootPath}/info/qna/view/` + seq; // 여기 seq 넣으려면 어해야함?
+	}
+ 	
+})
+</script>

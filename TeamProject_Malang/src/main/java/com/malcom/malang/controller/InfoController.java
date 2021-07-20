@@ -302,6 +302,14 @@ public class InfoController {
 		return "redirect:/info/" + it_code;
 	}
 	
+	@RequestMapping(value="/qna/view/{q_code}", method=RequestMethod.GET)
+	public String qnaView(@PathVariable("q_code") Long q_code, 
+			Model model) {
+		QnaDTO qDTO = qService.findBySeq(q_code);
+		model.addAttribute("QNA",qDTO);
+		return "item/qna_view";
+	}
+	
 	
 	// 일단 화면확인을 위한 임시주소.
 	@RequestMapping(value="/review/{od_code}", method=RequestMethod.GET)
@@ -331,7 +339,9 @@ public class InfoController {
 		
 		rService.insert(reviewVO);
 		
-		return "/item/info";
+		return "item/info";
 	}
+	
+	
 	
 }
