@@ -17,7 +17,7 @@
 	var rootPath = "${rootPath}"
 	var itCode = "${ITEM.it_code}"
 </script>
-<script src="${rootPath}/static/js/info.js?ver=2021-07-19-002"></script>
+<script src="${rootPath}/static/js/info.js?ver=2021-07-20-001"></script>
 <style>
 table.review td:hover, table.question td:hover {
 	cursor: pointer;
@@ -84,7 +84,7 @@ ul#selected_item li{
 					</ul>
 
 				</div>
-				<form id="option" class="option">
+				<form id="option" class="option" method="POST">
 					<ul id="title" class="title">가격 옵션</ul>
 					<ul>
 						<c:forEach items="${SONAME}" var="SN">
@@ -145,7 +145,6 @@ ul#selected_item li{
 
 	let totalPrice = ${ITEM.it_price}
 	let totalPriceList = new Array()
-	let countLi = 0 // 생성된 selected_item li의 개수
 
 	function changeFunc(arg) {
 		// var selectedValue = document.querySelector("#selectBox").value
@@ -238,9 +237,7 @@ ul#selected_item li{
 				totalPriceList.push(totalPrice)
 				//	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
 				//totalPriceList.splice(index, 0, totalPrice)
-				
-				// li 개수를 카운트 ( +1 )
-				countLi += 1
+
 				
 			} else {
 				// 옵션이 전부 선택되지 않은 경우 아무일도 일어나지 않는다.	
@@ -268,39 +265,85 @@ ul#selected_item li{
 				// ( delete를 사용한 경우 index번호는 유지하면서 내용만 지워진다)
 				delete totalPriceList[btn_class]
 				
-				// li 개수를 카운트 ( -1 )
-				countLi -= 1
+
 			}
 		})
 
 		
 	}
-
-
-/*		
+		
+		
+		
+	
+		
 	// 남아있는 cart의 index를 모아보자
 	let indexList = new Array()
+	let indexListId = new Array()
 
-		
+	// 구매하기
 	document.querySelector("button#btn_buy").addEventListener("click", ()=>{
+		// index값을추출하고		
 		
+		
+		// submit -> /cart
 		document.querySelector("form#option").submit()
+	})
+	
+	
+	// 장바구니
+	document.querySelector("button#btn_pack").addEventListener("click", ()=>{
+	    
 		
-		console.log("countLi" + countLi)
-		// 현재 남아있는 li 개수 카운트만큼 반복
-		for(let i = 0; i < countLi < i++){
+		let container = document.querySelector("ul#selected_item");
 		
-			   let tag_btn = document.getElementsByTagName('button');
-			   // document에서 button태그 요소를 HTMLCollection 배열로 가져온다.
-			   
-			   console.log(tag_btn[i].className);
-			   // <button> </button>
-			
+		indexList = container.querySelectorAll("li")
+		
+		for(let i = 0 ; i < indexList.length ; i++) {
+			indexListId.push(indexList[i].id)
 		}
+		
+		console.table(indexListId)
+		
+		
+		
+	
+		// index 라는 이름으로 리스트를 담는 JSON  객체 1개 생성
+		const sendIndexJson = {
+			index:indexListId
+		}
+		
+		// 여기 백틱으로 바꿔..?
+		fetch("${rootPath}/info/cartInsert",{
+			method:"POST",
+			body: JSON.stringify(sendIndexJson),
+			headers : {
+				"content-Type" : "application/json"
+			}
+		})
+		.then(response=>response.text())
+		.then(result=>{
+		
+		
+			if(result == 'OK'){
+				alert("장바구니에 담았습니다")	
+			} else {
+				alert("장바구니 담기에 실패했습니다")
+			}
+		
+		}
+	
+		
+		
+
+	
 	})
 
-*/
 
+	// 문의하기
+	document.querySelector("button#btn_question").addEventListener("click", ()=>{
+		
+	 	location.href = `${rootPath}/info/qna/${itCode}`;
+	})
 
 
 
