@@ -300,7 +300,7 @@ ul#selected_item li{
 		}
 		
 		// json을 fetch를 사용해 전송
-		fetch("${rootPath}/info/cartSetting/${ITEM.it_code}",{
+		fetch("${rootPath}/info/tempCartInsert/${ITEM.it_code}",{
 			method:"POST",
 			body: JSON.stringify(indexListId),
 			headers : {
@@ -309,9 +309,20 @@ ul#selected_item li{
 		})
 		.then(response=>response.text())
 		.then(result=>{
+			if(result == 'OK')	{		
+			// 구매하기 눌렀을 때 해당 페이지로 이동				
+				location.replace(
+						"${rootPath}/mypage/buy"
+					);
 				// submit -> /cart
 				// document.querySelector("form#option").submit()
-				document.querySelector("body").innerHTML = result
+				//document.querySelector("body").innerHTML = result
+			} else if(result == 'NO'){
+				alert("상품 옵션을 선택해주세요")
+			} else if(result == "LOGIN_FAIL"){
+				// alert("구매에 실패했습니다")
+				location.href = "login"
+			}
 		})
 		//} else {
 			
@@ -366,7 +377,7 @@ ul#selected_item li{
 	// 문의하기
 	document.querySelector("button#btn_question").addEventListener("click", ()=>{
 		
-	 	location.href = `${rootPath}/info/qna/${itCode}`;
+	 	location.href = `${rootPath}/info/qna/${ITEM.it_code}`;
 	})
 
 

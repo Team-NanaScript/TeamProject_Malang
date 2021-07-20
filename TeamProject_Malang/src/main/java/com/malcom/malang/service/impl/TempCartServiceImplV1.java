@@ -60,5 +60,11 @@ public class TempCartServiceImplV1 implements TempCartService{
 		// TODO Auto-generated method stub
 		return tcDao.findViewByBuyer(cr_buyerid);
 	}
+	
+	@Override
+	public Integer deleteById(String cr_buyerid) {
+		
+		return tcDao.deleteById(cr_buyerid);
+	}
 
 }

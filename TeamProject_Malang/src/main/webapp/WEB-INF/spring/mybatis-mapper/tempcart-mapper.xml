@@ -47,4 +47,9 @@
 	WHERE cr_code = #{cr_code}
 </delete>
 
+<delete id="deleteById" parameterType="TempCartVO">
+	DELETE FROM tbl_temp_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+</delete>
+
 </mapper>

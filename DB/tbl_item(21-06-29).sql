@@ -34,6 +34,8 @@ UPDATE tbl_member SET mb_role = 1 WHERE mb_id = 'seller';
 
 SELECT * FROM tbl_item;
 
+
+
 INSERT INTO tbl_item VALUES('00000001', 'seller', 'E001',
 '말랑한 말랑말랑 몰랑간식', 3000, 0, '말랑한 간식 동물친구들과 집사들도 건강하게 먹을 수 있는 몰랑간식!',
 NULL);

@@ -24,6 +24,7 @@ import com.malcom.malang.model.QnaDTO;
 import com.malcom.malang.model.QnaVO;
 import com.malcom.malang.model.ReviewDTO;
 import com.malcom.malang.model.ReviewVO;
+import com.malcom.malang.model.TempCartVO;
 import com.malcom.malang.model.UserOptionDTO;
 import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.DescriptionService;
@@ -33,6 +34,7 @@ import com.malcom.malang.service.OrderService;
 import com.malcom.malang.service.QnaService;
 import com.malcom.malang.service.ReviewService;
 import com.malcom.malang.service.SelectOptionService;
+import com.malcom.malang.service.TempCartService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +53,7 @@ public class InfoController {
 	protected final SelectOptionService soService; 
 	protected final CartService cService;
 	protected final OrderService odService;
+	protected final TempCartService tcService;
 	
 //	protected List<CartVO> cartList;
 	protected CartListVO cartList;
@@ -114,6 +117,11 @@ public class InfoController {
 	public String cartInsert(@RequestBody List<String> indexListId,
 			@PathVariable("itcode") String itcode,
 			Model model, HttpSession hSession) {
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+		if(mVO == null) {
+			return "LOGIN_FAIL";
+		} 
+		
 		List<CartVO> cList = cartList.getCartList();
 		
 		log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
@@ -129,7 +137,7 @@ public class InfoController {
 		}
 		
 		// 아이디를 위해 Session MEMBER 가져오기
-		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		mVO = (MemberVO) hSession.getAttribute("MEMBER");
 		// 배송비 가져오기
 		ItemVO iVO = iService.findById(itcode);
 		for(int i = 0; i < insertCartList.size(); i++) {
@@ -150,9 +158,9 @@ public class InfoController {
 		return "OK";
 	}
 	
-	
-	@RequestMapping(value= "/cartSetting/{itcode}", method=RequestMethod.POST)
-	public String cartSetting(@RequestBody List<String> indexListId,
+	@ResponseBody
+	@RequestMapping(value= "/tempCartInsert/{itcode}", method=RequestMethod.POST)
+	public String tempCartInsert(@RequestBody List<String> indexListId,
 			@PathVariable("itcode") String itcode,
 			Model model, HttpSession hSession) {
 		
@@ -161,43 +169,58 @@ public class InfoController {
 			return "redirect:/login";
 		}
 		
-		
-		List<CartVO> cList = cartList.getCartList();
-		
-		// 최종적으로 Cart table에 insert 하기 위한 준비
-		List<CartVO> insertCartList = new ArrayList<CartVO>();
-		for(int i = 0; i < indexListId.size(); i++) {
-			// cartList에 담긴 것들중 
-			//	마지막으로 소비자가 선택한 옵션의 index로
-			//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
-			Integer index = Integer.valueOf(indexListId.get(i));
-			insertCartList.add(cList.get(index));
-		}
-		
-		// 아이디를 위한 Session MEMBER는 이미 위에 로그인확인하면서 가져와짐
-
-		// 배송비 가져오기
-		ItemVO iVO = iService.findById(itcode);
-		for(int i = 0; i < insertCartList.size(); i++) {
-			CartVO cartVO = insertCartList.get(i);
-
-			// 아이디 셋팅
-			cartVO.setCr_buyerid(mVO.getMb_id());
-			// 배송비 셋팅
-			cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
-			// 가격 추가하고 셋팅
-			int price = cartVO.getCr_price();
-			price += iVO.getIt_price();
-			cartVO.setCr_price(price);
-
-			log.debug("확인확인확인을해보자 {}", cartVO);
+		if(indexListId != null) {
+			List<CartVO> cList = cartList.getCartList();
 			
+			// 최종적으로 Cart table에 insert 하기 위한 준비
+			List<TempCartVO> insertCartList = new ArrayList<TempCartVO>();
+			for(int i = 0; i < indexListId.size(); i++) {
+				// cartList에 담긴 것들중 
+				//	마지막으로 소비자가 선택한 옵션의 index로
+				//  정말 구매하고자 하는 옵션 세트들을 새로운 List에 옮겨담음
+				Integer index = Integer.valueOf(indexListId.get(i));
+				
+				
+				// CartVO에 담긴 것을 TempCartVO로 옮김
+				CartVO cVO = cList.get(index);
+				
+				TempCartVO tempCartVO = TempCartVO.builder()
+						.cr_buyerid(cVO.getCr_buyerid())
+						.cr_itcode(cVO.getCr_itcode())
+						.cr_option(cVO.getCr_option())
+						.cr_price(cVO.getCr_price())
+						.cr_amount(cVO.getCr_amount())
+						.cr_shippingfee(cVO.getCr_shippingfee())
+						.build();
+	
+				insertCartList.add(tempCartVO);
+			}
+			
+			// 아이디를 위한 Session MEMBER는 이미 위에 로그인확인하면서 가져와짐
+	
+			// 배송비 가져오기
+			ItemVO iVO = iService.findById(itcode);
+			for(int i = 0; i < insertCartList.size(); i++) {
+				TempCartVO tempCartVO = insertCartList.get(i);
+	
+				// 아이디 셋팅
+				tempCartVO.setCr_buyerid(mVO.getMb_id());
+				// 배송비 셋팅
+				tempCartVO.setCr_shippingfee(iVO.getIt_shippingfee());
+				// 가격 추가하고 셋팅
+				int price = tempCartVO.getCr_price();
+				price += iVO.getIt_price();
+				tempCartVO.setCr_price(price);
+	
+				log.debug("가짜카트확인을해보자 {}", tempCartVO);
+				
+				tcService.insert(tempCartVO);
+			}
+			return "OK";
+		} else {
+			return "NO";
 		}
 		
-		model.addAttribute("CART_LIST", insertCartList);
-		model.addAttribute("MEMBER", mVO);
-
-		return "member/cart_renew";
 	}
 	
 	/*
@@ -266,7 +289,7 @@ public class InfoController {
 		
 		ItemVO itVO = iService.findById(it_code);
 		model.addAttribute("ITEM", itVO);
-		return "/item/qna_insert";
+		return "item/qna_insert";
 		
 	}
 	
@@ -282,7 +305,7 @@ public class InfoController {
 		
 		
 		// 여기 은빈언니가 item 합치면 바꿔야할 부분입니다.
-		return "redirect:/item/info/" + it_code;
+		return "redirect:/info/" + it_code;
 	}
 	
 	
@@ -306,8 +329,7 @@ public class InfoController {
 		
 		
 
-		model.addAttribute("ITEM", itVO);
-		model.addAttribute("ORDER", orVO);
+
 		
 		
 		return "item/review_insert";

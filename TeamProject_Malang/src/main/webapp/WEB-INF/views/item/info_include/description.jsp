@@ -87,7 +87,7 @@
 							<td>${Q.mb_nickname}<br/>
 								<p>(${Q.q_writer})</p>
 							</td>
-							<td>${Q.q_content}</td>
+							<td>${Q.q_title}</td>
 							<td>${Q.q_date}</td>
 						</tr>
 					</c:forEach>
