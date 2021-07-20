@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("nav#product_nav");
-  const pack = document.querySelector("aside button#btn_pack");
-  const ques = document.querySelector("aside button#btn_question");
+
 
   const navClick = (e) => {
     let tagName = e.target.tagName;
@@ -19,22 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const packClick = (e) => {
-    alert("장바구니에 담았습니다.");
-  }
-
-  const quesClick = (e) => {
-
- 	location.href = `${rootPath}/info/qna/${itCode}`;   
-
-  }
- 
- 
 
  
   nav.addEventListener("click", navClick);
-  pack.addEventListener("click", packClick);
-  ques.addEventListener("click", quesClick);
 
 
 });

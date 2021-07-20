@@ -106,12 +106,19 @@ public class InfoController {
 		return "redirect:/cart";
 	}
 	
+
+	// RequestBody List<String> index << js에서보낸 Json 객체의 Key값 이름 같아야한대 
 	@ResponseBody
-	@RequestMapping(value="/option", method=RequestMethod.GET)
-	public String option(@PathVariable("option") Long value, Model model) {
+	@RequestMapping(value= "/cartInsert", method=RequestMethod.POST, produces = "application/json;char=UTF8")
+	public String cartInsert(@RequestBody List<String> index, Model model) {
 		
-		return "오잉";
+		List<CartVO> cList = cartList.getCartList();
+		log.debug("여기에 과연 index가 넘어올까 {}", index);
+		
+		
+		return "OK";
 	}
+
 	
 	/*
 	 * 
