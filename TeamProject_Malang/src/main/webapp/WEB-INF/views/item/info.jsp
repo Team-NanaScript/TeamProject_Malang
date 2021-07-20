@@ -26,9 +26,9 @@ table.review td:hover, table.question td:hover {
 section.img_section div.image_preview {
 	
 	/* 은빈언니가 itemVO 수정하면 아래걸로 변경하면 됨 */ 
-	background: url("${rootPath}/MalangImages/${ITEM.it_photo}") 100% no-repeat; 
+	background: url("${rootPath}/MalangImages/${ITEM.it_photo}") no-repeat; 
 /*background: url("${rootPath}/static/images/ex2.png") no-repeat;*/
-	
+	background-size: cover;
 	
 }
 
