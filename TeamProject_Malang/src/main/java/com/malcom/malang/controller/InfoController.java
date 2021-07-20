@@ -144,16 +144,24 @@ public class InfoController {
 			price += iVO.getIt_price();
 			cartVO.setCr_price(price);
 			
+			
 			cService.insert(cartVO);
 		}
 		return "OK";
 	}
 	
 	
-	@RequestMapping(value= "/cartInsert/{itcode}", method=RequestMethod.POST)
+	@RequestMapping(value= "/cartSetting/{itcode}", method=RequestMethod.POST)
 	public String cartSetting(@RequestBody List<String> indexListId,
 			@PathVariable("itcode") String itcode,
 			Model model, HttpSession hSession) {
+		
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER"); 
+		if(mVO == null) {
+			return "redirect:/login";
+		}
+		
+		
 		List<CartVO> cList = cartList.getCartList();
 		
 		// 최종적으로 Cart table에 insert 하기 위한 준비
@@ -166,13 +174,13 @@ public class InfoController {
 			insertCartList.add(cList.get(index));
 		}
 		
-		// 아이디를 위해 Session MEMBER 가져오기
-		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		// 아이디를 위한 Session MEMBER는 이미 위에 로그인확인하면서 가져와짐
+
 		// 배송비 가져오기
 		ItemVO iVO = iService.findById(itcode);
 		for(int i = 0; i < insertCartList.size(); i++) {
 			CartVO cartVO = insertCartList.get(i);
-			
+
 			// 아이디 셋팅
 			cartVO.setCr_buyerid(mVO.getMb_id());
 			// 배송비 셋팅
@@ -181,6 +189,8 @@ public class InfoController {
 			int price = cartVO.getCr_price();
 			price += iVO.getIt_price();
 			cartVO.setCr_price(price);
+
+			log.debug("확인확인확인을해보자 {}", cartVO);
 			
 		}
 		
