@@ -110,4 +110,13 @@ public class ItemServiceImplV1 implements ItemService{
 		return itDao.selectCategory();
 	}
 
+	@Override
+	public List<ItemVO> findBySeller(String mb_id) {
+		// TODO Auto-generated method stub
+		
+		List<ItemVO> itList = itDao.findBySeller(mb_id);
+		
+		return itList;
+	}
+
 }

@@ -13,6 +13,11 @@
 	WHERE it_code = #{it_code}
 </select>
 
+<select id="findBySeller" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_seid = #{it_seid}
+</select>
+
 <select id="findByTitle" resultType="ItemVO">
 	SELECT * FROM tbl_item
 	WHERE it_title LIKE CONCAT( '%' , #{it_title} , '%' )

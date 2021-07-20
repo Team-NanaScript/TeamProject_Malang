@@ -148,7 +148,7 @@ public class MemberController {
 		
 		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
 		
-		List<ItemVO> itList = itService.findByCeller(mVO.getMb_id());
+		List<ItemVO> itList = itService.findBySeller(mVO.getMb_id());
 		
 		model.addAttribute("ITLIST",itList);
 		
