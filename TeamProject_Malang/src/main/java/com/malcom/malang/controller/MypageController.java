@@ -36,10 +36,10 @@ public class MypageController {
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
-			if(nav_name == null || nav_name.equals("") ) {
-				mService.mypage(membervo.getMb_id(), "myorder", model);
-			} else if(code == null || code.equals("")) {
+			if(code == null || code.equals("")) {
 				mService.mypage(membervo.getMb_id(), nav_name, model);
+			} else if(nav_name == null || nav_name.equals("") ) {
+				mService.mypage(membervo.getMb_id(), "myorder", model);
 			} else {
 				Long r_code = Long.valueOf(code);
 				mService.mypage(nav_name, model, r_code);
@@ -55,9 +55,10 @@ public class MypageController {
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
-			List<CartDTO> cList =
-					cService.findViewByBuyer(membervo.getMb_id());
-			model.addAttribute("CART_LIST",cList);
+			cService.cartList(membervo.getMb_id(), model);
+//			List<CartDTO> cList =
+//					cService.findViewByBuyer(membervo.getMb_id());
+//			model.addAttribute("CART_LIST",cList);
 		}
 		return "member/cart_renew";
 	}

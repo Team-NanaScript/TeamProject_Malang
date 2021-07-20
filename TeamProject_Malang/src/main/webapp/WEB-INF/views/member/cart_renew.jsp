@@ -43,7 +43,7 @@ article.discription table.question {
 
 table th{
 	font-size:18px;
-	padding:5px;
+	padding:10px 5px;
 	background-color: #ccc;
 }
 </style>
@@ -107,12 +107,6 @@ table th{
 						<td>결제 예정금액</td>
 					</tr>
 					<tr>
-						<!-- fetch...? -->
-						<!-- 
-						cartList.price + cr.price + =.. itemPrice
-						cartList.shippingfee + cr.shippingfee + .. = shippingPrice
-						itemPrice + shippingPrice = totalPrice
-						 -->
 						<td>${itemPrice}</td>
 						<td>+ ${shippingPrice}</td>
 						<td>= ${totalPrice}</td>
@@ -149,5 +143,11 @@ table th{
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+let cart_form = document.querySelector("form#pay_form")
+
+cart_form
+
+</script>
 <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>
 </html>

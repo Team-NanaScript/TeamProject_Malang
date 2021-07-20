@@ -26,6 +26,16 @@
 	ORDER BY cr_code DESC
 </select>
 
+<select id="sumItemPrice" resultType="Integer">
+	SELECT SUM(cr_price) FROM view_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+</select>
+
+<select id="sumShippingfee" resultType="Integer">
+	SELECT SUM(cr_shippingfee) FROM view_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+</select>
+
 <insert id="insert" parameterType="CartVO">
 	INSERT INTO tbl_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
 	VALUES(#{cr_buyerid}, #{cr_itcode}, #{cr_option}, #{cr_price}, #{cr_amount}, #{cr_shippingfee})
@@ -47,4 +57,8 @@
 	WHERE cr_code = #{cr_code}
 </delete>
 
+<delete id="deleteAll">
+	DELETE FROM tbl_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+</delete>
 </mapper>
