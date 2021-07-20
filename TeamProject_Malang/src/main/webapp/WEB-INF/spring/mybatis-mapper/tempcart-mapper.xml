@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.TempCartDao">
+
+<select id="select" resultType="TempCartVO">
+	SELECT * FROM tbl_temp_cart
+</select>
+
+<select id="findById" resultType="TempCartVO">
+	SELECT * FROM tbl_temp_cart
+	WHERE cr_code = #{cr_code}
+</select>
+
+<select id="findByBuyerId" resultType="TempCartVO">
+	SELECT * FROM tbl_temp_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+	ORDER BY cr_code DESC
+</select>
+
+<!-- CartDTO select -->
+<select id="findViewByBuyer" resultType="TempCartDTO">
+	SELECT * FROM view_temp_cart
+	WHERE cr_buyerid = #{cr_buyerid}
+	ORDER BY cr_code DESC
+</select>
+
+<insert id="insert" parameterType="TempCartVO">
+	INSERT INTO tbl_temp_cart(cr_buyerid, cr_itcode, cr_option, cr_price, cr_amount, cr_shippingfee)
+	VALUES(#{cr_buyerid}, #{cr_itcode}, #{cr_option}, #{cr_price}, #{cr_amount}, #{cr_shippingfee})
+</insert>
+
+<update id="update" parameterType="TempCartVO">
+	UPDATE tbl_temp_cart SET 
+	cr_buyerid = #{cr_buyerid}
+	cr_itcode = #{cr_itcode}
+	cr_option = #{cr_option}
+	cr_price = #{cr_price}
+	cr_amount = #{cr_amount}
+	cr_shippingfee = #{cr_shippingfee}
+	WHERE cr_code = #{cr_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_temp_cart
+	WHERE cr_code = #{cr_code}
+</delete>
+
+</mapper>

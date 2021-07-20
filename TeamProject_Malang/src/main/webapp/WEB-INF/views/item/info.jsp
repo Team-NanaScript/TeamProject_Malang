@@ -287,6 +287,9 @@ ul#selected_item li{
 
 	// 구매하기
 	document.querySelector("button#btn_buy").addEventListener("click", ()=>{
+		// let member = "${MEMBER}"
+		//if(member){
+		
 		// index값 추출	
 		let container = document.querySelector("ul#selected_item");
 		
@@ -297,7 +300,7 @@ ul#selected_item li{
 		}
 		
 		// json을 fetch를 사용해 전송
-		fetch("${rootPath}/info/cartInsert/${ITEM.it_code}",{
+		fetch("${rootPath}/info/cartSetting/${ITEM.it_code}",{
 			method:"POST",
 			body: JSON.stringify(indexListId),
 			headers : {
@@ -307,8 +310,12 @@ ul#selected_item li{
 		.then(response=>response.text())
 		.then(result=>{
 				// submit -> /cart
-				document.querySelector("form#option").submit()
+				// document.querySelector("form#option").submit()
+				document.querySelector("body").innerHTML = result
 		})
+		//} else {
+			
+		//}
 	})
 	
 	

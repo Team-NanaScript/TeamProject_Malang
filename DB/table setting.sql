@@ -121,6 +121,16 @@ CREATE TABLE `tbl_cart` (
 	`cr_shippingfee`	INT NOT NULL
 );
 
+CREATE TABLE `tbl_temp_cart` (
+	`cr_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
+	`cr_buyerid`	VARCHAR(20)	NOT NULL,
+	`cr_itcode`	CHAR(8)	NOT NULL,
+	`cr_option`	VARCHAR(256) NOT NULL,
+	`cr_price`	INT NOT NULL,
+	`cr_amount`	INT DEFAULT 1,
+	`cr_shippingfee`	INT NOT NULL
+);
+
 
 CREATE TABLE `tbl_order` (
 	`od_code`	BIGINT	PRIMARY KEY AUTO_INCREMENT,
