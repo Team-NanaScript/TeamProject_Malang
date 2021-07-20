@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Slide BannerV1</title>
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/banner.css?ver=2021-07-14-002" />
+	href="${rootPath}/static/css/banner.css?ver=2021-07-20-001" />
 <style>
 section.banner article.nav div {
 	width:64px;
@@ -16,7 +16,7 @@ section.banner article.nav div {
 	background: url(${rootPath}/static/icons/track.png) 100% no-repeat;
 }
 </style>
-<script src="${rootPath}/static/js/banner.js?ver=2021-07-13-003"></script>
+<script src="${rootPath}/static/js/banner.js?ver=2021-07-20-001"></script>
 </head>
 <body>
 <section class="banner">
