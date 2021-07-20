@@ -5,7 +5,7 @@ select * from tbl_order;
 desc tbl_order;
 
 insert into tbl_order (od_buyerid, od_itcode, od_option, od_price, od_anum, od_addr, od_paydate, od_orderdate)
-values ('nana','00000005','상업용/배경추가', 5000, '12345', '광주 냠냠냠냠..', '2021-07-16', '2021-07-18');
+values ('nana','00000006','상업용/배경없음', 5000, '12346', '광주 냠냠냠냠..', '2021-07-16', '2021-07-18');
 
 -- id별로 주문 중 후기 없는 리스트
 select * from tbl_order

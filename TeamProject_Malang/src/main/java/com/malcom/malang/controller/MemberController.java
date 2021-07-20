@@ -114,7 +114,7 @@ public class MemberController {
 		return "member/myinfo";
 	}
 	
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	@RequestMapping(value = "/cartlater", method = RequestMethod.GET)
 	public String cart(HttpSession session, Model model) {
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
 		if(membervo == null) {

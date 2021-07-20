@@ -14,8 +14,37 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/buy.css?ver=2021-06-14-001" />
 <style>
-div.review_img1 {
-	
+header.cart {
+	width: 100%;
+	height: 144px;
+	background-color: #707070;
+	margin: 0 auto;
+}
+
+header.cart h2{
+	color:white;
+	font-size: 30px;
+	width: 1056px;
+	margin: 0 auto;
+	padding-left: 10px;
+	line-height: 6rem;
+	background-color: #707070;
+}
+
+article.discription {
+	width:1056px;
+	margin:10px auto;
+}
+
+article.discription table.question {
+	width:95%;
+	margin:0 auto;
+}
+
+table th{
+	font-size:18px;
+	padding:5px;
+	background-color: #ccc;
 }
 </style>
 <script>
@@ -30,12 +59,16 @@ div.review_img1 {
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<header class="cart">
+	<h2>주문/결제</h2>
+</header>
+
 	<div class="container">
 
 		<article id="discription" class="discription">
 			<article id="art_1">
-				<h2>주문/결제</h2>
+
 				<table id="question" class="question">
 				<tr>
 					<th colspan="2">상품정보</th>
@@ -43,10 +76,11 @@ div.review_img1 {
 					<th>배송비</th>
 					<th>수량</th>
 					<th>상품금액</th>
+					<th></th>
 				</tr>
 				<c:if test="${empty CART_LIST}">
 					<tr>
-						<td colspan="6">장바구니에 담은 제품이 없습니다!</td>
+						<td colspan="7">장바구니에 담은 제품이 없습니다!</td>
 					</tr>
 				</c:if>
 				<c:if test="${not empty CART_LIST}">
@@ -58,8 +92,9 @@ div.review_img1 {
 						<td>${CART.it_title}<p>${CART.cr_option}</p></td>
 						<td>${CART.it_seid}</td>
 						<td>${CART.cr_shippingfee}</td>
-						<td>${CART.cr_amout}</td>
+						<td>${CART.cr_amount}</td>
 						<td>${CART.cr_price}</td>
+						<td><button type="button" class="delete">삭제</button></td>
 					</tr>
 				</c:forEach>
 				</c:if>
@@ -78,9 +113,9 @@ div.review_img1 {
 						cartList.shippingfee + cr.shippingfee + .. = shippingPrice
 						itemPrice + shippingPrice = totalPrice
 						 -->
-						<td class="itemPrice">19,800 원</td>
-						<td class="shippingPrice">+ 0 원</td>
-						<td class="totalPrice">= 19,800 원</td>
+						<td>${itemPrice}</td>
+						<td>+ ${shippingPrice}</td>
+						<td>= ${totalPrice}</td>
 					</tr>
 				</table>
 			</article>
@@ -91,11 +126,11 @@ div.review_img1 {
 						<h2>배송지 정보</h2>
 						<table id="addr_table" class="addr_table">
 							<tr>
-								<td>주문고객</td>
+								<th>주문고객</th>
 								<td>${MEMBER.mb_name} (${MEMBER.mb_tel})</td>
 							</tr>
 							<tr>
-								<td>배송지</td>
+								<th>배송지</th>
 								<td><input name="od_anum" placeholder="우편번호"><br>
 									<input name="od_addr" placeholder="주소" class="addr_dis">
 								</td>
@@ -103,30 +138,13 @@ div.review_img1 {
 						</table>
 					</article>
 					<article id="art_3">
-						<h2>결제 하기</h2>
-						<table id="pay_table" class="addr_table">
-							<tr>
-								<td><input type="radio" name="pay_method" value="" checked>
-								</td>
-								<td><label>계좌 간편결제</label></td>
-							</tr>
-							<tr>
-								<td><input type="radio" name="pay_method" value="">
-								</td>
-								<td><label>카드 간편결제</label></td>
-							</tr>
-							<tr>
-								<td><input type="radio" name="pay_method" value="">
-								</td>
-								<td><label>일반결제</label></td>
-							</tr>
-						</table>
+						<div class="btn_box">
+							<button id="pay" type="button">결제하기</button>
+						</div>
 					</article>
 				</div>
-				<div class="btn_box">
-					<button id="pay" type="button">결제하기</button>
-				</div>
 			</form>
+			
 		</article>
 	</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

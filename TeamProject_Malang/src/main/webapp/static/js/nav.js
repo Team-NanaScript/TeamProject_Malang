@@ -48,11 +48,12 @@ doc.querySelector("header").addEventListener("submit", (e) => {
         if(iName == "" || iName === "" || iName == null){
           return false;
         } else if(iName == "mypage") {
-        	// location.href = `${rootPath}/member/`+ iName + "/myorder";
         	location.href = `${rootPath}/`+ iName + "/myorder"; 
+        } else if(iName == "cart"){
+          location.href = `${rootPath}/mypage/` + iName;
         } else {
-          location.href = "/malang/" + iName;
-        }  
+          location.href = `${rootPath}/` + iName;
+        }   
   }
   doc.querySelector("div.icon").addEventListener("click", idName);
   doc.querySelector("div.adiv nav#one").addEventListener("click", className);
