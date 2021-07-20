@@ -24,9 +24,11 @@ table.review td:hover, table.question td:hover {
 }
 
 section.img_section div.image_preview {
+	
 	/* 은빈언니가 itemVO 수정하면 아래걸로 변경하면 됨 */ 
-	background: url("${rootPath}/MalangImages/${ITEM.it_photo}") no-repeat; 
-	/*background: url("${rootPath}/static/images/ex2.png") no-repeat;*/
+	background: url("${rootPath}/MalangImages/${ITEM.it_photo}") 100% no-repeat; 
+/*background: url("${rootPath}/static/images/ex2.png") no-repeat;*/
+	
 	
 }
 
@@ -315,27 +317,20 @@ ul#selected_item li{
 		// 여기 백틱으로 바꿔..?
 		fetch("${rootPath}/info/cartInsert",{
 			method:"POST",
-			body: JSON.stringify(sendIndexJson),
+			body: JSON.stringify(indexListId),
 			headers : {
-				"content-Type" : "application/json"
+				"content-Type": "application/json;char=UTF8",
 			}
 		})
 		.then(response=>response.text())
 		.then(result=>{
-		
 		
 			if(result == 'OK'){
 				alert("장바구니에 담았습니다")	
 			} else {
 				alert("장바구니 담기에 실패했습니다")
 			}
-		
-		}
-	
-		
-		
-
-	
+		})
 	})
 
 
