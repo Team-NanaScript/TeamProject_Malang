@@ -17,7 +17,5 @@ public class UserOptionDTO {
 
 	private List<String> options;
 	private String selectBoxSize;
-	//private String name;
-	//private int age;
 	
 }
