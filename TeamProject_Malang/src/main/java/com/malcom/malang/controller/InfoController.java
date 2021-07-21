@@ -130,7 +130,8 @@ public class InfoController {
 				
 				// 아이디 셋팅
 				cartVO.setCr_buyerid(mVO.getMb_id());
-				// 배송비 셋팅
+				// 배송비 셋팅	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
+				//totalPriceList.splice(index, 0, optionPrice
 				cartVO.setCr_shippingfee(iVO.getIt_shippingfee());
 				// 가격 추가하고 셋팅
 				int price = cartVO.getCr_price();
