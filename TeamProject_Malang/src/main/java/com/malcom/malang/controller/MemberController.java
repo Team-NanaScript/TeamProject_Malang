@@ -180,32 +180,19 @@ public class MemberController {
 		return "member/seller";
 	}
 	
-	
-//	@RequestMapping(value="/mypage/itemsmovemove", method=RequestMethod.GET)
-//	public String itemList(HttpSession hSession, Model model) {
-//		
-//		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
-//		
-//		List<ItemVO> itList = itService.findBySeller(mVO.getMb_id());
-//		
-//		model.addAttribute("ITLIST",itList);
-//		
-//		return "member/my_item_list";
-//	}
-	
-//	@ResponseBody
-//	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
-//	public String itemList(String it_code) {
-//		
-//		log.debug("상품번호 {} ",it_code);
-//		int result = itService.delete(it_code);
-//		
-//		if(result < 0) {
-//			
-//			return "NO";
-//		}
-//		
-//		return "OK";
-//	}
+	@ResponseBody
+	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
+	public String itemList(String it_code) {
+		
+		log.debug("상품번호 {} ",it_code);
+		int result = itService.delete(it_code);
+		
+		if(result < 0) {
+			
+			return "NO";
+		}
+		
+		return "OK";
+	}
 	
 }
