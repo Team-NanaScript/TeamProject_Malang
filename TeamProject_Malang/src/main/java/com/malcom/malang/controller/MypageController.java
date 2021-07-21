@@ -28,6 +28,20 @@ public class MypageController {
 	protected final MemberService mService;
 	protected final CartService cService;
 	
+	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
+	public String myPageMain(HttpSession session, Model model) {
+		log.debug("마이페이지 메인");
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG","ADMIT");
+			mService.mypage(membervo.getMb_id(), "myorder", model);
+		}
+		
+		return "member/mypage";
+	}
+	
 	@RequestMapping(value="/{nav_name}", method=RequestMethod.GET)
 	public String myPage(@PathVariable("nav_name") String nav_name, String code, HttpSession session, Model model) {
 		log.debug("내비 카테 {}", nav_name);
@@ -35,6 +49,7 @@ public class MypageController {
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			if(code == null || code.equals("")) {
 				mService.mypage(membervo.getMb_id(), nav_name, model);
 			} else if(nav_name == null || nav_name.equals("") ) {
@@ -54,6 +69,7 @@ public class MypageController {
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			cService.cartList(membervo.getMb_id(), model);
 		}
 		return "member/cart_renew";

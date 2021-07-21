@@ -158,7 +158,7 @@ public class MemberServiceImplV1 implements MemberService{
 	@Override
 	public void seller(String nav_name, String mb_id, Model model) {
 		if(nav_name.equals("itemList")) {
-			List<ItemVO> itList = itDao.findBySeller(mb_id);
+			List<ItemVO> itList = iDao.findBySeller(mb_id);
 			model.addAttribute("BODY", "ITEM_LIST");
 			model.addAttribute("ITLIST",itList);
 		} else if(nav_name.equals("itemInsert")) {
