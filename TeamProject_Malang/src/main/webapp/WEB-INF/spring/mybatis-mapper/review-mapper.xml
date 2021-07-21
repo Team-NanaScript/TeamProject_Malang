@@ -7,7 +7,7 @@
 <!-- ReviewDTO -->
 <select id="selectWithNickName" resultType="ReviewDTO">
 	SELECT * FROM view_review
-	ORDER BY r_time DESC, r_date DESC;
+	ORDER BY r_date DESC, r_time DESC;
 </select>
 
 <select id="selectByWriter" resultType="ReviewDTO">
@@ -18,13 +18,13 @@
 <select id="findById" resultType="ReviewDTO">
 	SELECT * FROM view_review
 	WHERE r_code = #{r_code}
-	ORDER BY r_time DESC, r_date DESC;
+	ORDER BY r_date DESC, r_time DESC;
 </select>
 
 <select id="findByItem" resultType="ReviewDTO">
 	SELECT * FROM view_review
 	WHERE r_itcode = #{r_itcode}
-	ORDER BY r_time DESC, r_date DESC;
+	ORDER BY r_date DESC, r_time DESC;
 </select>
 
 <select id="findBySeq" resultType="ReviewDTO">
@@ -35,7 +35,7 @@
 <!-- ReviewVO -->
 <select id="select" resultType="ReviewVO">
 	SELECT * FROM tbl_review
-	ORDER BY r_time DESC, r_date DESC;
+	ORDER BY r_date DESC, r_time DESC;
 </select>
 
 <select id="avgScore" resultType="Float">
