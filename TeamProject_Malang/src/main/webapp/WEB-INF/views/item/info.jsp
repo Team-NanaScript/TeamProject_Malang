@@ -351,14 +351,12 @@ ul#selected_item li{
 			indexListId.push(indexList[i].id)
 		}
 		
-		console.table(indexListId)
-		
+		console.table(indexListId)	
 		// index 라는 이름으로 리스트를 담는 JSON  객체 1개 생성
 /*		const sendIndexJson = {
 			index:indexListId
 		}
 */
-
 		// json을 fetch를 사용해 전송
 		fetch("${rootPath}/info/cartInsert/${ITEM.it_code}",{
 			method:"POST",
