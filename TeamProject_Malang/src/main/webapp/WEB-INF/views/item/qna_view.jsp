@@ -56,10 +56,11 @@ h1.title {
 					<td colspan="2">${QNA.q_content}</td>
 				</tr>
 			</table>
-			<div class="button_box">
+<%--			<div class="button_box">
 				<button class="update">수정하기</button>
 				<button class="delete">삭제하기</button>
-			</div>
+			</div> --%>
+			
 		</form>
 	</article>
 </div>

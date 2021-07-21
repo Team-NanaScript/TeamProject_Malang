@@ -225,16 +225,15 @@ public class InfoController {
 	// json 보낼때 encoding 하는 코드 (  produces = "application/json;char=UTF8" )
 	// ResponseBody 는 return을 어떤형태로든 josn으로 보낼 수 있다.
 	@ResponseBody
-	@RequestMapping(value="/option", method=RequestMethod.POST, produces = "application/json;char=UTF8")
-	public CartListVO option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
+	@RequestMapping(value="/option", method=RequestMethod.POST, 
+					produces = "application/json;char=UTF8")
+	public CartListVO option(@RequestBody UserOptionDTO dto, 
+			Model model, HttpSession hSession) {
 		
 //		log.debug(dto.toString());
-		
 		int inputSize = dto.getOptions().size(); //  선택된 옵션의 
 		int originSize = Integer.valueOf( dto.getSelectBoxSize()); // 선택옵션 
-		
-		String options = dto.getOptions().toString(); // 확인코드
-		
+//		String options = dto.getOptions().toString(); // 확인코드
 		
 		// 선택한 옵션들 리스트
 		List<String> optionList = dto.getOptions();

@@ -373,9 +373,15 @@ ul#selected_item li{
 			if(result == 'OK'){
 				alert("장바구니에 담았습니다")	
 				let selected_item_ul = document.querySelector("ul#selected_item")
-				let selected_item_li = document.querySelector("ul#selected_item li")
+				let selected_item_li = document.querySelectorAll("ul#selected_item li")
 				
-				selected_item_ul.removeChild(selected_item_li)
+				// ul 내부의 li를 전부 삭제
+				for(let i = 0; i < selected_item_li.length; i++){
+					selected_item_ul.removeChild(selected_item_li[i])	
+				}
+				
+				let info_price = document.getElementById("info_price")
+				info_price.innerHTML = "0 원"
 			} else if(result == 'NO'){
 				alert("상품 옵션을 선택해주세요")
 			} else if(result == "LOGIN_FAIL"){
