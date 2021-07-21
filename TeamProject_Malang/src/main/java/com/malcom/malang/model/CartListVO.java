@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class CartListVO {
-	
 	private String flag;
 	private List<CartVO> cartList;
-	
-
 }
