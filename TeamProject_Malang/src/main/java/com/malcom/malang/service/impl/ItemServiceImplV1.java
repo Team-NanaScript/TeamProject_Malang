@@ -60,7 +60,7 @@ public class ItemServiceImplV1 implements ItemService{
 		int iSize = allList.size();
 		
 		if(iSize < 4) {
-			return null;
+			return allList;
 		}
 		
 		Random rnd = new Random();

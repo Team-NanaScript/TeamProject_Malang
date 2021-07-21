@@ -24,6 +24,11 @@ table.review_view th, td {
 	text-align: center;
 }
 
+table.review_view td img {
+	width:100px;
+	height:100px;
+}
+
 table.review_view tr:last-child th, table.review_view tr:last-child td {
 	border-bottom: 1px solid #aaa;
 }
@@ -36,7 +41,7 @@ table.review_view tr:last-child th, table.review_view tr:last-child td {
 </div>
 <table class="review_view">
 <tr>
-	<td><img src="${REVIEW.it_photo}"></td>
+	<td><img src="${rootPath}/MalangImages/${REVIEW.it_photo}"></td>
 	<td>${REVIEW.it_title}</td>
 	<td>${REVIEW.r_score}</td>
 </tr>
