@@ -86,15 +86,9 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-<<<<<<< HEAD
-	
-	<!--   <h1 id="manage_h">관리자 계정 회원관리</h1> -->
-	
-=======
 <header class="manage">
 	<h2>관리자 계정 회원관리</h2>
 </header>
->>>>>>> af818651e3f33584c04b0772ee54732ec233184f
 	<c:if test="${not empty MLIST}">
 	
 	<div class="manage_table">
