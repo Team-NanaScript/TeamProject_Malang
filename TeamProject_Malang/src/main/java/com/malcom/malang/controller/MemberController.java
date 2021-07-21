@@ -87,8 +87,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/role_update", method=RequestMethod.GET)
-	public String update(@RequestParam(value="id") String id, 
-						 @RequestParam(value="role") String role) {
+	public String update(String id, String role) {
 		
 		
 		

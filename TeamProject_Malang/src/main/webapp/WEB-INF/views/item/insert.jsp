@@ -131,9 +131,7 @@ nhn.husky.EZCreator.createInIFrame({
 
 let btn_sb = document.querySelector("button#item_submit"); 
 
-if(btn_sb){
-
-	btn_sb.addEventListener("click", ()=>{
+btn_sb.addEventListener("click", ()=>{
 		
 		let cate_val =  document.querySelector("input#it_ctcode").value
 		let title_val = document.querySelector("input[name='it_title']").value		
@@ -152,9 +150,9 @@ if(btn_sb){
 		
 		document.querySelector("form#item").submit();
 		
-	})
+})
 	
-}
+
 
 // 옵션 추가 스크립트 
 

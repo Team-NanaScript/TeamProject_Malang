@@ -75,7 +75,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	
-	<h1 id="manage_h">관리자 계정 회원관리</h1>
+	<!--   <h1 id="manage_h">관리자 계정 회원관리</h1> -->
 	
 	<c:if test="${not empty MLIST}">
 	
