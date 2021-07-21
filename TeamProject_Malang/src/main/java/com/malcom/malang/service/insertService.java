@@ -12,7 +12,7 @@ import com.malcom.malang.model.SelectOptionVO;
 public interface insertService {
 
 	public int insert(ItemVO itVO, 
-				MultipartFile file, MultipartHttpServletRequest files, Model model) throws IOException;
+				MultipartFile file, MultipartHttpServletRequest files) throws IOException;
 
 
 }
