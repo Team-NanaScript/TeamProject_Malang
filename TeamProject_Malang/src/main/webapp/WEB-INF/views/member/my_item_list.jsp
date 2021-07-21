@@ -9,6 +9,7 @@
 		width: 1056px;
     	margin: 0 auto;
 	}
+	
 	img{
 		background-size:cover;
 		width:150px;
