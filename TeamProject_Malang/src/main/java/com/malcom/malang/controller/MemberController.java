@@ -142,19 +142,37 @@ public class MemberController {
 		if(membervo == null || membervo.getMb_role() < 2) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			mService.adminManage(model);
 		}
 		
 		return "member/manage";
 	}
 	
-	@RequestMapping(value = "/seller/{nav_name}", method = RequestMethod.GET)
-	public String seller(@PathVariable("nav_name") String nav_name, HttpSession session, Model model) {
+	@RequestMapping(value = "/seller", method = RequestMethod.GET)
+	public String seller(HttpSession session, Model model) {
+		log.debug("판매자 main");
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
-		if(membervo == null || membervo.getMb_role() < 2) {
+		if(membervo == null || membervo.getMb_role() < 1) {
 			model.addAttribute("MSG","REJECT");
 		} else {
-			if(nav_name.isBlank() || nav_name.isEmpty())
+			model.addAttribute("MSG","ADMIT");
+			mService.seller("itemList", membervo.getMb_id(), model);
+		}
+		
+		return "member/seller";
+	}
+	
+	@RequestMapping(value = "/seller/{nav_name}", method = RequestMethod.GET)
+	public String seller(@PathVariable("nav_name") String nav_name, HttpSession session,
+			Model model) {
+		log.debug("여기가 아닌가 {}", nav_name);
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null || membervo.getMb_role() < 1) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG","ADMIT");
+			if(nav_name == null || nav_name.equals(""))
 				nav_name = "itemList" ;
 			mService.seller(nav_name, membervo.getMb_id(), model);
 		}
@@ -162,34 +180,32 @@ public class MemberController {
 		return "member/seller";
 	}
 	
-	@RequestMapping(value="/mypage/itemsmovemove", method=RequestMethod.GET)
-	public String itemList(HttpSession hSession, Model model) {
-		
-		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
-		
-		List<ItemVO> itList = itService.findBySeller(mVO.getMb_id());
-		
-		model.addAttribute("ITLIST",itList);
-		
-		return "member/my_item_list";
-	}
 	
-	@ResponseBody
-	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
-	public String itemList(String it_code) {
-		
-		log.debug("상품번호 {} ",it_code);
-		int result = itService.delete(it_code);
-		
-		if(result < 0) {
-			
-			return "NO";
-		}
-		
-		return "OK";
-	}
+//	@RequestMapping(value="/mypage/itemsmovemove", method=RequestMethod.GET)
+//	public String itemList(HttpSession hSession, Model model) {
+//		
+//		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+//		
+//		List<ItemVO> itList = itService.findBySeller(mVO.getMb_id());
+//		
+//		model.addAttribute("ITLIST",itList);
+//		
+//		return "member/my_item_list";
+//	}
 	
-	
-	
+//	@ResponseBody
+//	@RequestMapping(value="/mypage/items/delete", method=RequestMethod.GET)
+//	public String itemList(String it_code) {
+//		
+//		log.debug("상품번호 {} ",it_code);
+//		int result = itService.delete(it_code);
+//		
+//		if(result < 0) {
+//			
+//			return "NO";
+//		}
+//		
+//		return "OK";
+//	}
 	
 }
