@@ -22,7 +22,7 @@
 <select id="findByItem" resultType="QnaDTO">
 	SELECT * FROM view_qna
 	WHERE q_itcode = #{q_itcode}
-	ORDER BY q_time DESC, q_date DESC;
+	ORDER BY q_date DESC, q_time DESC
 </select>
 
 <select id="findBySeq" resultType="QnaDTO">
@@ -33,7 +33,7 @@
 <select id="findById" resultType="QnaVO">
 	SELECT * FROM tbl_qna
 	WHERE q_code = #{q_code}
-	ORDER BY q_time DESC, q_date DESC;
+	ORDER BY q_date DESC, q_time DESC
 </select>
 
 <insert id="insert" parameterType="QnaVO">
