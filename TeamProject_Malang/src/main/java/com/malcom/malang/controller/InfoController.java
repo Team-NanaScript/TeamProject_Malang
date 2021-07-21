@@ -319,6 +319,8 @@ public class InfoController {
 		String it_code = orVO.getOd_itcode();
 		// it_code를 이용해 itemVO 정보 중 title 뽑아냄
 		ItemVO itVO = iService.findById(it_code);
+		model.addAttribute("ITEM", itVO);
+		model.addAttribute("ORDER",orVO);
 		
 		return "item/review_insert";
 	}

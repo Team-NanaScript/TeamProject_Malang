@@ -133,8 +133,8 @@ let btn_sb = document.querySelector("button#item_submit");
 
 btn_sb.addEventListener("click", ()=>{
 		
-		let cate_val =  document.querySelector("input#it_ctcode").value
-		let title_val = document.querySelector("input[name='it_title']").value		
+		let title_val = document.querySelector("input[name='it_title']").value
+		let cate_val = document.querySelector("input#it_ctcode").value
 		
 		if(title_val == null || title_val == ""){
 		    alert("상품 이름을 입력하세요!")
@@ -142,6 +142,10 @@ btn_sb.addEventListener("click", ()=>{
 		}
 		if(cate_val == null || cate_val == ""){
 		    alert("카테고리를 선택해주세요!")
+		    return false;
+		}
+		if(cate_st2.options.length == '0'){
+			alert("카테고리를 선택해주세요!")
 		    return false;
 		}
 				
@@ -208,6 +212,8 @@ document.querySelector("#btn_so_add").addEventListener("click", ()=>{
 
 let cateList = JSON.parse('${cateList}');
 
+console.log('${cateList}')
+
 let cate1 = new Array();
 let cate2 = new Array();
 
@@ -271,10 +277,9 @@ cate_st.addEventListener("change", ()=>{
 			if(cate2[i].ct_parentcode == cate1_value){
 				
 			let option2 = document.createElement("option")				
-				option2.innerHTML = cate2[i].ct_name;
+				option2.innerText = cate2[i].ct_name;
 				option2.setAttribute("selected", "selected");
 				option2.setAttribute("value", cate2[i].ct_code);
-				option2.setAttribute("class", "cate2");
 				
 				cate_st2.appendChild(option2)
 
