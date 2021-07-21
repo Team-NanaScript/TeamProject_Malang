@@ -65,19 +65,13 @@ public class InfoController {
 		cartList = new CartListVO();// new ArrayList<CartVO>();
 		cartList.setCartList( new ArrayList<CartVO>());
 		
-//		itcode = "00000005"; // 수정필요
-		
-		
 		ItemVO iVO = iService.findById(itcode);
-//		Long decode = iVO.getIt_decode();
-		
 		
 		List<OptionVO> oVO = oService.findByItem(itcode);
 		String avgScore = rService.avgScore(itcode);
 		Integer countScore = rService.countScore(itcode);
 		
 		List<String> sOptionName = soService.findByOptionName(itcode);
-		//List<SelectOptionVO> sOptionContent = soService.findByOptionContent(itcode);
 		soService.findByOptionContent(itcode, model);
 		
 		DescriptionVO dVO = dService.findByItem(itcode);
@@ -112,7 +106,7 @@ public class InfoController {
 			return "LOGIN_FAIL";
 		} 
 		
-		if(indexListId != null) {
+		if(indexListId != null && indexListId.size() > 0) {
 			List<CartVO> cList = cartList.getCartList();
 			
 			log.debug("여기에 과연 index가 넘어올까 {}", indexListId);
@@ -150,8 +144,6 @@ public class InfoController {
 		} else {
 			return "NO";
 		}
-			
-	
 	}
 	
 	@ResponseBody
@@ -165,7 +157,7 @@ public class InfoController {
 			return "LOGIN_FAIL";
 		} 
 		
-		if(indexListId != null) {
+		if(indexListId != null && indexListId.size() > 0) {
 			// 구매하기를 누르면 자동으로 기존 tempCart가 비워진다.
 			tcService.deleteById(mVO.getMb_id());
 			
@@ -233,16 +225,15 @@ public class InfoController {
 	// json 보낼때 encoding 하는 코드 (  produces = "application/json;char=UTF8" )
 	// ResponseBody 는 return을 어떤형태로든 josn으로 보낼 수 있다.
 	@ResponseBody
-	@RequestMapping(value="/option", method=RequestMethod.POST, produces = "application/json;char=UTF8")
-	public CartListVO option(@RequestBody UserOptionDTO dto, Model model, HttpSession hSession) {
+	@RequestMapping(value="/option", method=RequestMethod.POST, 
+					produces = "application/json;char=UTF8")
+	public CartListVO option(@RequestBody UserOptionDTO dto, 
+			Model model, HttpSession hSession) {
 		
 //		log.debug(dto.toString());
-		
 		int inputSize = dto.getOptions().size(); //  선택된 옵션의 
 		int originSize = Integer.valueOf( dto.getSelectBoxSize()); // 선택옵션 
-		
-		String options = dto.getOptions().toString(); // 확인코드
-		
+//		String options = dto.getOptions().toString(); // 확인코드
 		
 		// 선택한 옵션들 리스트
 		List<String> optionList = dto.getOptions();

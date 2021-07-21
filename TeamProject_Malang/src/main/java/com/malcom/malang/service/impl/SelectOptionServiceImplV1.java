@@ -86,13 +86,11 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 
 
 	@Override
-	public List<CartVO> settingCart(List<String> optionList, List<CartVO> cartList) {
-
-
-		// Cart 리스트 - 매개변수로 가져와서 지 
-//		List<CartVO> cartList = new ArrayList<CartVO>();
+	public List<CartVO> settingCart(List<String> optionList, 
+									List<CartVO> cartList) {
+		// cartList는 Controller 전역변수에 설정하여 
+		// 매개변수로 가져옴
 		
-		// 이거밖에 만들자..^^
 		String strOptions = "선택옵션 - ";
 		CartVO cartVO = new CartVO();
 		
@@ -118,14 +116,10 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 			} else {
 				strOptions += so_name + ":" + so_content + "/";
 			}
-
 			cartVO.setCr_itcode(so_itcode);
-			
 
 			// 선택한 각 옵션의 가격을 더하기
 			addPrice += so_price;
-
-			
 		}
 		
 		// 선택한 모든 옵션의 이름과 내용을 String으로 변환한 것을 setting
@@ -139,10 +133,7 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 		
 		// cartVO 에 담긴 정보를 List에 추가
 		cartList.add(cartVO);
-		
-		// 아이디, 배송비빼고는 전부 셋팅완
+		// 아이디, 배송비빼고는 전부 셋팅완료
 		return cartList;
 	}
-
-
 }

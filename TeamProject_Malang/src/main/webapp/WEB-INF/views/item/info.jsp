@@ -93,13 +93,11 @@ ul#selected_item li{
 						<ol>
 							<li>${SN}</li>
 							<li>
-								<select name="prices" class="selectBox" onchange="changeFunc(this);">
+								<select name="prices" class="selectBox" onchange="changeFunc();">
 									<option value="no">옵션을 선택하세요</option>
 									<c:forEach items="${SOCONTENT[SN]}" var="SC">
-										<option value="${SC.so_code}">${SC.so_content}
-											<c:if test="${not empty SC.so_price}">
-																( +${SC.so_price}원 )
-											</c:if>
+										<option value="${SC.so_code}">
+											${SC.so_content} ( +${SC.so_price}원 )
 										</option>
 									</c:forEach>
 									
@@ -148,11 +146,11 @@ ul#selected_item li{
 	let totalPriceList = new Array()
 	let totalPrice = 0
 
-	function changeFunc(arg) {
+	function changeFunc() {
 	
 		// 선택박스가 바뀔때마다 3개 다 선택되어 있는지를 체크하기
 		
-		let value = arg.value
+		
 		
 		// All로 가져오면 배열로 가져와짐 (node 배열)
 		const selectOption = document.querySelectorAll("select.selectBox")
@@ -220,7 +218,9 @@ ul#selected_item li{
 				add_li.innerHTML = "<p>" + cr_option + "</p>"
 				add_li.innerHTML += "<div>" + optionPrice + " 원</div>"
 					// 띄어쓰기 안하니까 0id = 이난리남
-				add_li.innerHTML += "<button class=" + index + " id='btn_del' type='button'>삭제</button>"
+				add_li.innerHTML += "<button class=" 
+									+ index 
+									+ " id='btn_del' type='button'>삭제</button>"
 				
 					// selected_item(ul)에 add_li(li) appendChild
 				selected_item.appendChild(add_li)
@@ -329,8 +329,8 @@ ul#selected_item li{
 			} else if(result == 'NO'){
 				alert("상품 옵션을 선택해주세요")
 			} else if(result == "LOGIN_FAIL"){
-				// alert("구매에 실패했습니다")
-				location.href = "login"
+				alert("로그인이 필요합니다")
+				location.href = "${rootPath}/login"
 			} else {
 				alert("구매에 실패했습니다")
 			}
@@ -373,13 +373,20 @@ ul#selected_item li{
 			if(result == 'OK'){
 				alert("장바구니에 담았습니다")	
 				let selected_item_ul = document.querySelector("ul#selected_item")
-				let selected_item_li = document.querySelector("ul#selected_item li")
+				let selected_item_li = document.querySelectorAll("ul#selected_item li")
 				
-				selected_item_ul.removeChild(selected_item_li)
+				// ul 내부의 li를 전부 삭제
+				for(let i = 0; i < selected_item_li.length; i++){
+					selected_item_ul.removeChild(selected_item_li[i])	
+				}
+				
+				let info_price = document.getElementById("info_price")
+				info_price.innerHTML = "0 원"
 			} else if(result == 'NO'){
 				alert("상품 옵션을 선택해주세요")
 			} else if(result == "LOGIN_FAIL"){
-				location.href = "login"
+				alert("로그인이 필요합니다")
+				location.href = "${rootPath}/login"
 			} else {
 				alert("장바구니 담기를 실패했습니다")
 			}
