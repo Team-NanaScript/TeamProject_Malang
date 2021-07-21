@@ -78,10 +78,10 @@ public class MypageController {
 	@RequestMapping(value="/cart", method=RequestMethod.POST)
 	public String cartToOrder(OrderVO orderVO, HttpSession session) {
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		log.debug("넘어온 orderVO {}",orderVO);
+		cService.cartToOrder(membervo.getMb_id(), orderVO);
 		
-		cService.cartToOrder(membervo.getMb_id());
-		
-		return "redirect:/member/mypage";
+		return "redirect:/mypage";
 	}
 	
 	@ResponseBody

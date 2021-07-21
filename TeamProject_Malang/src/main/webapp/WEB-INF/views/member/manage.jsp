@@ -58,10 +58,22 @@
 		font-size:18px;
 	}
 	
-	h1#manage_h{
-		text-align: center;
-		text-decoration: blink;
-		color:rgba(235, 164, 123, 0.993);
+	header.manage {
+		width:100%;
+		height:144px;
+		background-color: rgba(235, 164, 123, 0.993);
+		margin:0 auto;
+	}
+	
+	header.manage h2{
+		color:white;
+		font-size: 30px;
+		width: 1056px;
+		margin: 0 auto;
+		padding-left: 10px;
+		line-height: 6rem;
+		background-color: rgba(235, 164, 123, 0.993);
+		/* color:rgba(235, 164, 123, 0.993); */
 	}
 	
 	body{
@@ -74,9 +86,15 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<<<<<<< HEAD
 	
 	<!--   <h1 id="manage_h">관리자 계정 회원관리</h1> -->
 	
+=======
+<header class="manage">
+	<h2>관리자 계정 회원관리</h2>
+</header>
+>>>>>>> af818651e3f33584c04b0772ee54732ec233184f
 	<c:if test="${not empty MLIST}">
 	
 	<div class="manage_table">

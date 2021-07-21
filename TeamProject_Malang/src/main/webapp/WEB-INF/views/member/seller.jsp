@@ -58,6 +58,13 @@ nav#mypage_nav li:nth-of-type(1) {
 nav#mypage_nav li.active {
 	background-color: white;
 }
+body{
+		display: flex;
+    	flex-direction: column;
+    	width: 100%;
+    	height: 100vh;
+	}
+	
 </style>
 <script>
 let msg = "${MSG}";
