@@ -46,6 +46,11 @@ table th{
 	padding:10px 5px;
 	background-color: #ccc;
 }
+
+table.question td img{
+	width:100px;
+	height: 100px;
+}
 </style>
 <script>
 	let msg = "${MSG}";
@@ -154,25 +159,27 @@ const payButton = document.querySelector("button#pay")
 const anumInput = document.querySelector("input[name='od_anum']")
 const addrInput = document.querySelector("input[name='od_addr']")
 
-payButton.addEventListener("click", ()=> {
-	let anumValue = anumInput.value
-	let addrValue = addrInput.value
-	if(anumValue == null || anumValue == "") {
-		alert("우편번호를 입력해주세요!")
-		anumInput.focus();
-		return false;
-	} else if(addrValue == null || addrValue == "") {
-		alert("주소를 입력해주세요!")
-		addrInput.focus();
-		return false;
-	}
+if(payButton) {
+	payButton.addEventListener("click", ()=> {
+		let anumValue = anumInput.value
+		let addrValue = addrInput.value
+		if(anumValue == null || anumValue == "") {
+			alert("우편번호를 입력해주세요!")
+			anumInput.focus();
+			return false;
+		} else if(addrValue == null || addrValue == "") {
+			alert("주소를 입력해주세요!")
+			addrInput.focus();
+			return false;
+		}
 	
-	if(confirm("구매하시겠습니까?")){
-		alert("OK");
-		cart_form.submit()
-	}
+		if(confirm("구매하시겠습니까?")){
+			alert("OK");
+			cart_form.submit()
+		}
 	
-})
+	})
+}
 
 document.querySelector("table#question").addEventListener("click", (e)=>{
 	let btnClass = e.target.className

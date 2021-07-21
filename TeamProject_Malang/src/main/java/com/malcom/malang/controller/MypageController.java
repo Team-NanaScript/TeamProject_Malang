@@ -43,7 +43,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/{nav_name}", method=RequestMethod.GET)
-	public String myPage(@PathVariable("nav_name") String nav_name, String code, HttpSession session, Model model) {
+	public String myPage(@PathVariable("nav_name") String nav_name, String code,
+			HttpSession session, Model model) {
 		log.debug("내비 카테 {}", nav_name);
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
 		if(membervo == null) {

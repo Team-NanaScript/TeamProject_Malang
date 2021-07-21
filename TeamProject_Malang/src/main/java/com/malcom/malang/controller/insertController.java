@@ -63,7 +63,7 @@ public class insertController {
 		iService.insert(itVO, one_file, multi_file, model);
 		
 		// 나중에 바꿔야함@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@은빈@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		return "redirect:/item/infos/" + itVO.getIt_code();
+		return "redirect:/info/" + itVO.getIt_code();
 	}
 
 }
