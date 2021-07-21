@@ -10,6 +10,7 @@ import com.malcom.malang.dao.CartDao;
 import com.malcom.malang.dao.OrderDao;
 import com.malcom.malang.model.CartDTO;
 import com.malcom.malang.model.CartVO;
+import com.malcom.malang.model.OrderVO;
 import com.malcom.malang.service.CartService;
 
 import lombok.RequiredArgsConstructor;
@@ -68,10 +69,14 @@ public class CartServiceImplV1 implements CartService{
 	@Override
 	public void cartList(String mb_id, Model model) {
 		List<CartDTO> cList = cDao.findViewByBuyer(mb_id);
-		int itemPrice = cDao.sumItemPrice(mb_id);
-		int shippingPrice = cDao.sumShippingfee(mb_id);
-		int totalPrice = itemPrice + shippingPrice;
-		
+		int itemPrice = 0;
+		int shippingPrice = 0;
+		int totalPrice = 0;
+		if(cList.size() > 0) {
+			itemPrice = cDao.sumItemPrice(mb_id);
+			shippingPrice = cDao.sumShippingfee(mb_id);
+			totalPrice = itemPrice + shippingPrice;
+		}
 		model.addAttribute("itemPrice", itemPrice);
 		model.addAttribute("shippingPrice", shippingPrice);
 		model.addAttribute("totalPrice", totalPrice);
@@ -79,19 +84,18 @@ public class CartServiceImplV1 implements CartService{
 	}
 
 	@Override
-	public void cartToOrder(String mb_id) {
+	public void cartToOrder(String mb_id, OrderVO orderVO) {
 		List<CartDTO> cList = cDao.findViewByBuyer(mb_id);
-		int itemPrice = cDao.sumItemPrice(mb_id);
-		int shippingPrice = cDao.sumShippingfee(mb_id);
-		int totalPrice = itemPrice + shippingPrice;
+		String anum = orderVO.getOd_anum();
+		String addr = orderVO.getOd_addr();
 		
 		String sDate = DateConfig.sDate("yyyy-MM-dd");
-		
 		for(CartDTO cart : cList ) {
-//		OrderVO orderVO = new OrderVO.builder mb_id
-//		cList.it_code od_option sDate
-		
-//		oDao.insert(orderVO);
+			OrderVO insertVO = new OrderVO().builder().od_buyerid(mb_id)
+					.od_itcode(cart.getCr_itcode()).od_option(cart.getCr_option())
+					.od_price(cart.getCr_price()).od_anum(anum).od_addr(addr)
+					.od_paydate(sDate).od_orderdate(sDate).build();
+			oDao.insert(insertVO);
 		}
 		
 		cDao.deleteAll(mb_id);

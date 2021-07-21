@@ -3,6 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
+	div.items{
+		display:flex;
+		justify-content: center;
+		width: 1056px;
+    	margin: 0 auto;
+	}
 	img{
 		background-size:cover;
 		width:150px;
@@ -25,12 +31,7 @@
 	table.my_item td{
 		color:rgba(0,0,0,0.7);
 	}
-	div.items{
-		display:flex;
-		justify-content: center;
-		width: 1056px;
-    	margin: 0 auto;
-	}
+	
 	button#item_delete{
 		outline:none;
 		border:none;
@@ -40,7 +41,7 @@
 		
 	}
 </style>
-<body>
+
 	<div class="items">
 		<table class="my_item">
 			<tr>
@@ -61,7 +62,7 @@
 			</c:forEach>
 		</table>
 	</div>
-</body>
+
 <script>
 document.querySelector("table").addEventListener("click",(e)=>{
 

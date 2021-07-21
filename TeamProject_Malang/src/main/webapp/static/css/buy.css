@@ -18,25 +18,25 @@
       }
 
 /* form 배송지정보,결제수단 */
-      div.pay_inpo {
+      div.pay_info {
         /* border: 1px solid red; */
         display: flex;
         justify-content: space-between;
       }
 
-      div.pay_inpo article {
+      div.pay_info article {
         flex: 1;
       }
 
-      div.pay_inpo article#art_2{
+      div.pay_info article#art_2{
         margin-right: 40px;
       }
 
-      div.pay_inpo article table td{
+      div.pay_info article table td{
         padding: 15px;
       }
 
-      div.pay_inpo article#art_2 input{
+      div.pay_info article#art_2 input{
         outline: 0;
         padding: 7px;
         margin: 4px 0;
@@ -44,18 +44,18 @@
         border: 1px solid #aaa;
       }
 
-      div.pay_inpo article#art_2 input:focus{
+      div.pay_info article#art_2 input:focus{
         border-color: #F29A8C;
         background-color: #f29a8c3f;
       }
 
-      div.pay_inpo article#art_2 input.addr_dis{
+      div.pay_info article#art_2 input.addr_dis{
         width: 300px;
         
       }
       /* 라디오 버튼 */
-      div.pay_inpo article#art_3 input[type='radio'],
-      div.pay_inpo article#art_3 input[type='radio']:checked {
+      div.pay_info article#art_3 input[type='radio'],
+      div.pay_info article#art_3 input[type='radio']:checked {
         appearance: none;
         width: 1.4rem;
         height: 1.4rem;
@@ -64,22 +64,22 @@
         cursor: pointer;
       }
 
-      div.pay_inpo article#art_3 input[type='radio'] {
+      div.pay_info article#art_3 input[type='radio'] {
         background-color: white;
         border: 2px solid #777;
       }
 
-      div.pay_inpo article#art_3 input[type='radio']:checked {
+      div.pay_info article#art_3 input[type='radio']:checked {
         background-color: #F29A8C;
         border: 2px solid #85473d;
       }
 
       /* 결제하기 */
-      div.btn_pay{
+      div.btn_box{
         text-align: center;
       }
 
-      form.pay_form button {
+      div.btn_box button {
         width: 400px;
         padding: 20px;
 
