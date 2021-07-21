@@ -93,13 +93,11 @@ ul#selected_item li{
 						<ol>
 							<li>${SN}</li>
 							<li>
-								<select name="prices" class="selectBox" onchange="changeFunc(this);">
+								<select name="prices" class="selectBox" onchange="changeFunc();">
 									<option value="no">옵션을 선택하세요</option>
 									<c:forEach items="${SOCONTENT[SN]}" var="SC">
-										<option value="${SC.so_code}">${SC.so_content}
-											<c:if test="${not empty SC.so_price}">
-																( +${SC.so_price}원 )
-											</c:if>
+										<option value="${SC.so_code}">
+											${SC.so_content} ( +${SC.so_price}원 )
 										</option>
 									</c:forEach>
 									
@@ -113,8 +111,10 @@ ul#selected_item li{
 					</ul>
 					<ul>
 						<ol>
-							<li>총 작품금액</li>
-							<li><h2 id="info_price">${ITEM.it_price} 원</h2></li>
+							<li>총 금액</li>
+							<li>
+								<h2 id="info_price">0 원</h2>
+							</li>
 						</ol>
 					</ul>
 					<ul id="btn_box" class="btn_box">
@@ -141,21 +141,16 @@ ul#selected_item li{
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	
 	<script>
-//		document.querySelector("select#price_select").addEventListener("blur",()=>{
-//			document.getElementById("selected_item").innerHTML = "아니 어떻게 넘겨오냐고"
-//		})
 
-	let totalPrice = ${ITEM.it_price}
+	let optionPrice = ${ITEM.it_price}
 	let totalPriceList = new Array()
+	let totalPrice = 0
 
-	function changeFunc(arg) {
-		// var selectedValue = document.querySelector("#selectBox").value
-		// alert(arg.value)
-		
-		
+	function changeFunc() {
+	
 		// 선택박스가 바뀔때마다 3개 다 선택되어 있는지를 체크하기
 		
-		let value = arg.value
+		
 		
 		// All로 가져오면 배열로 가져와짐 (node 배열)
 		const selectOption = document.querySelectorAll("select.selectBox")
@@ -178,16 +173,8 @@ ul#selected_item li{
 		const sendJson = {
 			options:selectArray,
 			selectBoxSize : selectOptions
-			//name:'홍길동',
-			//age : 33
-			
 		}
 		
-		
-		// selectOption = selectOption.option[selectOption.selectedIndex].value;
-		
-		// alert(selectOption);
-		//if(selectOption != "no"){
 		// fetch를 사용해서 POST 로 전송	
 		fetch("${rootPath}/info/option",{
 			method:"POST",
@@ -200,9 +187,10 @@ ul#selected_item li{
 		.then(response=>response.json())
 		.then(result=>{
 			if(result.flag != 'NO'){
-			
+				totalPrice = 0
+				
 				// 가격 초기화
-				let totalPrice = ${ITEM.it_price}
+				let optionPrice = ${ITEM.it_price}
 				
 				// 선택된 옵션 초기화
 				for(let i = 0 ; i < selectOptions;i++) {
@@ -216,7 +204,7 @@ ul#selected_item li{
 				// cartVO List의 요소가 잘 들어왔나 console table로 확인
 				console.table(r_cartList);
 				
-				totalPrice += r_cartList[index].cr_price // 가격
+				optionPrice += r_cartList[index].cr_price // 가격
 				let cr_option = r_cartList[index].cr_option // 선택옵션
 				
 				
@@ -228,19 +216,33 @@ ul#selected_item li{
 				add_li.setAttribute("id", index)
 				
 				add_li.innerHTML = "<p>" + cr_option + "</p>"
-				add_li.innerHTML += "<div>" + totalPrice + " 원</div>"
+				add_li.innerHTML += "<div>" + optionPrice + " 원</div>"
 					// 띄어쓰기 안하니까 0id = 이난리남
-				add_li.innerHTML += "<button class=" + index + " id='btn_del' type='button'>삭제</button>"
+				add_li.innerHTML += "<button class=" 
+									+ index 
+									+ " id='btn_del' type='button'>삭제</button>"
 				
 					// selected_item(ul)에 add_li(li) appendChild
 				selected_item.appendChild(add_li)
 
 				// 한 세트의 가격을 가격List에 push
-				totalPriceList.push(totalPrice)
-				//	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
-				//totalPriceList.splice(index, 0, totalPrice)
-
+				totalPriceList.push(optionPrice)
 				
+				console.table(totalPriceList)
+				//	splice 함수는 원하는 위치에 하나 이상의 요소를 추가할 수 있다.
+				//totalPriceList.splice(index, 0, optionPrice)
+
+				// 총가격 변경(+)
+
+				for(let i = 0; i < totalPriceList.length; i++){
+					if(totalPriceList[i] == null){
+						continue
+					}
+					totalPrice += totalPriceList[i]
+				}
+				
+				let info_price = document.getElementById("info_price")
+				info_price.innerHTML = totalPrice + " 원"
 			} else {
 				// 옵션이 전부 선택되지 않은 경우 아무일도 일어나지 않는다.	
 			}
@@ -250,7 +252,9 @@ ul#selected_item li{
 		// 버블링
 		// ul에 click 이벤트 준다
 		document.querySelector("ul#selected_item").addEventListener("click", (e)=>{
-		
+			// 총 가격 초기화
+			totalPrice = 0
+			
 			// button을 select한다
 			let btn_del = document.querySelector("button#btn_del")
 			// button을 눌렀을 때
@@ -267,6 +271,18 @@ ul#selected_item li{
 				// ( delete를 사용한 경우 index번호는 유지하면서 내용만 지워진다)
 				delete totalPriceList[btn_class]
 				
+				console.log(totalPriceList.length)
+				// 총 가격 변경 (-)
+				for(let i = 0; i < totalPriceList.length; i++){
+					
+					if(totalPriceList[i] == null){
+						continue
+					}
+					totalPrice += totalPriceList[i]
+				}
+				console.log(totalPrice)
+				let info_price = document.getElementById("info_price")
+				info_price.innerHTML = totalPrice + " 원"
 
 			}
 		})
@@ -274,16 +290,9 @@ ul#selected_item li{
 		
 	}
 		
-		
-		
-	
-		
 	// 남아있는 cart의 index를 모아보자
 	let indexList = new Array()
 	let indexListId = new Array()
-
-			
-	
 
 	// 구매하기
 	document.querySelector("button#btn_buy").addEventListener("click", ()=>{
@@ -316,17 +325,17 @@ ul#selected_item li{
 					);
 				// submit -> /cart
 				// document.querySelector("form#option").submit()
-				//document.querySelector("body").innerHTML = result
+				// document.querySelector("body").innerHTML = result
 			} else if(result == 'NO'){
 				alert("상품 옵션을 선택해주세요")
 			} else if(result == "LOGIN_FAIL"){
-				// alert("구매에 실패했습니다")
-				location.href = "login"
+				alert("로그인이 필요합니다")
+				location.href = "${rootPath}/login"
+			} else {
+				alert("구매에 실패했습니다")
 			}
 		})
-		//} else {
-			
-		//}
+
 	})
 	
 	
@@ -342,14 +351,12 @@ ul#selected_item li{
 			indexListId.push(indexList[i].id)
 		}
 		
-		console.table(indexListId)
-		
+		console.table(indexListId)	
 		// index 라는 이름으로 리스트를 담는 JSON  객체 1개 생성
 /*		const sendIndexJson = {
 			index:indexListId
 		}
 */
-
 		// json을 fetch를 사용해 전송
 		fetch("${rootPath}/info/cartInsert/${ITEM.it_code}",{
 			method:"POST",
@@ -364,11 +371,22 @@ ul#selected_item li{
 			if(result == 'OK'){
 				alert("장바구니에 담았습니다")	
 				let selected_item_ul = document.querySelector("ul#selected_item")
-				let selected_item_li = document.querySelector("ul#selected_item li")
+				let selected_item_li = document.querySelectorAll("ul#selected_item li")
 				
-				selected_item_ul.removeChild(selected_item_li)
+				// ul 내부의 li를 전부 삭제
+				for(let i = 0; i < selected_item_li.length; i++){
+					selected_item_ul.removeChild(selected_item_li[i])	
+				}
+				
+				let info_price = document.getElementById("info_price")
+				info_price.innerHTML = "0 원"
+			} else if(result == 'NO'){
+				alert("상품 옵션을 선택해주세요")
+			} else if(result == "LOGIN_FAIL"){
+				alert("로그인이 필요합니다")
+				location.href = "${rootPath}/login"
 			} else {
-				alert("장바구니 담기에 실패했습니다")
+				alert("장바구니 담기를 실패했습니다")
 			}
 		})
 	})
@@ -379,6 +397,7 @@ ul#selected_item li{
 		
 	 	location.href = `${rootPath}/info/qna/${ITEM.it_code}`;
 	})
+
 
 
 

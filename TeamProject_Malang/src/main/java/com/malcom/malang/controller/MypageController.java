@@ -1,7 +1,5 @@
 package com.malcom.malang.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,9 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.malcom.malang.model.CartDTO;
 import com.malcom.malang.model.MemberVO;
+import com.malcom.malang.model.OrderVO;
 import com.malcom.malang.service.CartService;
 import com.malcom.malang.service.MemberService;
 
@@ -29,13 +28,29 @@ public class MypageController {
 	protected final MemberService mService;
 	protected final CartService cService;
 	
+	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
+	public String myPageMain(HttpSession session, Model model) {
+		log.debug("마이페이지 메인");
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG","ADMIT");
+			mService.mypage(membervo.getMb_id(), "myorder", model);
+		}
+		
+		return "member/mypage";
+	}
+	
 	@RequestMapping(value="/{nav_name}", method=RequestMethod.GET)
-	public String myPage(@PathVariable("nav_name") String nav_name, String code, HttpSession session, Model model) {
+	public String myPage(@PathVariable("nav_name") String nav_name, String code,
+			HttpSession session, Model model) {
 		log.debug("내비 카테 {}", nav_name);
 		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			if(code == null || code.equals("")) {
 				mService.mypage(membervo.getMb_id(), nav_name, model);
 			} else if(nav_name == null || nav_name.equals("") ) {
@@ -55,12 +70,32 @@ public class MypageController {
 		if(membervo == null) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			cService.cartList(membervo.getMb_id(), model);
-//			List<CartDTO> cList =
-//					cService.findViewByBuyer(membervo.getMb_id());
-//			model.addAttribute("CART_LIST",cList);
 		}
 		return "member/cart_renew";
+	}
+	
+	@RequestMapping(value="/cart", method=RequestMethod.POST)
+	public String cartToOrder(OrderVO orderVO, HttpSession session) {
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		log.debug("넘어온 orderVO {}",orderVO);
+		cService.cartToOrder(membervo.getMb_id(), orderVO);
+		
+		return "redirect:/mypage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/cart/delete", method=RequestMethod.GET)
+	public String cartDelete(String cr_code, Model model) {
+		Long code = Long.valueOf(cr_code);
+		
+		if(cService.delete(code) < 0) {
+			
+			return "NO";
+		}
+		
+		return "OK";
 	}
 	
 }

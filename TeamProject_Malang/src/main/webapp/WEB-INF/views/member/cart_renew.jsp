@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/info.css?ver=2021-06-14-001" />
 <link rel="stylesheet" type="text/css"
-	href="${rootPath}/static/css/buy.css?ver=2021-06-14-001" />
+	href="${rootPath}/static/css/buy.css?ver=2021-07-21-000" />
 <style>
 header.cart {
 	width: 100%;
@@ -36,7 +36,7 @@ article.discription {
 	margin:10px auto;
 }
 
-article.discription table.question {
+article.discription table.question, table.price_table, div.pay_form {
 	width:95%;
 	margin:0 auto;
 }
@@ -45,6 +45,11 @@ table th{
 	font-size:18px;
 	padding:10px 5px;
 	background-color: #ccc;
+}
+
+table.question td img{
+	width:100px;
+	height: 100px;
 }
 </style>
 <script>
@@ -114,8 +119,8 @@ table th{
 				</table>
 			</article>
 
-			<form id="pay_form" class="pay_form">
-				<div id="pay_inpo" class="pay_inpo">
+			<div class="pay_form">
+				<div id="pay_info" class="pay_info">
 					<article id="art_2">
 						<h2>배송지 정보</h2>
 						<table id="addr_table" class="addr_table">
@@ -125,19 +130,24 @@ table th{
 							</tr>
 							<tr>
 								<th>배송지</th>
-								<td><input name="od_anum" placeholder="우편번호"><br>
-									<input name="od_addr" placeholder="주소" class="addr_dis">
+								<td>
+								<form id="pay_form" method="post">
+								<input name="od_anum" placeholder="우편번호"><br>
+								<input name="od_addr" placeholder="주소" class="addr_dis">
+								</form>
 								</td>
 							</tr>
 						</table>
 					</article>
 					<article id="art_3">
+						<c:if test="${not empty CART_LIST}">
 						<div class="btn_box">
 							<button id="pay" type="button">결제하기</button>
 						</div>
+						</c:if>
 					</article>
 				</div>
-			</form>
+			</div>
 			
 		</article>
 	</div>
@@ -145,8 +155,51 @@ table th{
 </body>
 <script>
 let cart_form = document.querySelector("form#pay_form")
+const payButton = document.querySelector("button#pay")
+const anumInput = document.querySelector("input[name='od_anum']")
+const addrInput = document.querySelector("input[name='od_addr']")
 
-cart_form
+if(payButton) {
+	payButton.addEventListener("click", ()=> {
+		let anumValue = anumInput.value
+		let addrValue = addrInput.value
+		if(anumValue == null || anumValue == "") {
+			alert("우편번호를 입력해주세요!")
+			anumInput.focus();
+			return false;
+		} else if(addrValue == null || addrValue == "") {
+			alert("주소를 입력해주세요!")
+			addrInput.focus();
+			return false;
+		}
+	
+		if(confirm("구매하시겠습니까?")){
+			alert("OK");
+			cart_form.submit()
+		}
+	
+	})
+}
+
+document.querySelector("table#question").addEventListener("click", (e)=>{
+	let btnClass = e.target.className
+	
+	if( btnClass == 'delete' ){
+		let code = e.target.closest("TR").dataset.code
+		
+		fetch("${rootPath}/mypage/cart/delete?cr_code="+code)
+		.then(res=>res.text()).then(result=>{
+			
+			if(result == "OK"){
+				alert("장바구니에서 삭제되었습니다.")
+				location.reload(true)
+			} else {
+				alert("삭제 실패")
+			}
+			
+		})
+	}
+})
 
 </script>
 <script src="${rootPath}/static/js/buy.js?ver=2021-06-14-001"></script>

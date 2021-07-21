@@ -40,6 +40,11 @@ article.review_container table.review_table th {
 	background-color: #ccc;
 }
 
+article.review_container table.review_table td img {
+	width:100px;
+	height:100px;
+}
+
 article.review_container table.review_table td.content p {
 	width:100%;
 	display: -webkit-box;

@@ -1,20 +1,14 @@
 package com.malcom.malang.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.malcom.malang.dao.SelectOptionDao;
 import com.malcom.malang.model.CartVO;
-import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.model.SelectOptionVO;
 import com.malcom.malang.service.SelectOptionService;
 
@@ -89,34 +83,14 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 		return null; // opList;
 	}
 
-	@Override
-	public String selectJson(String itcode) {
-		// 카테고리 옵션
-		List<SelectOptionVO> soList = this.findByItem(itcode);
-		String soJson = null;
 
-		// ObjectMapper 클래스 생성
-		ObjectMapper obMapper = new ObjectMapper();
-
-		try {
-			// ObjectMapper 클래스의 writeValueAsString() method 사용
-			// => Java 오브젝트로 부터 JSON을 만들고 이를 문자열 혹은 Byte 배열로 반환
-			soJson = obMapper.writeValueAsString(soList);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-
-		return soJson;
-	}
 
 	@Override
-	public List<CartVO> settingCart(List<String> optionList, List<CartVO> cartList) {
-
-
-		// Cart 리스트 - 매개변수로 가져와서 지 
-//		List<CartVO> cartList = new ArrayList<CartVO>();
+	public List<CartVO> settingCart(List<String> optionList, 
+									List<CartVO> cartList) {
+		// cartList는 Controller 전역변수에 설정하여 
+		// 매개변수로 가져옴
 		
-		// 이거밖에 만들자..^^
 		String strOptions = "선택옵션 - ";
 		CartVO cartVO = new CartVO();
 		
@@ -142,14 +116,10 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 			} else {
 				strOptions += so_name + ":" + so_content + "/";
 			}
-
 			cartVO.setCr_itcode(so_itcode);
-			
 
 			// 선택한 각 옵션의 가격을 더하기
 			addPrice += so_price;
-
-			
 		}
 		
 		// 선택한 모든 옵션의 이름과 내용을 String으로 변환한 것을 setting
@@ -163,10 +133,7 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 		
 		// cartVO 에 담긴 정보를 List에 추가
 		cartList.add(cartVO);
-		
-		// 아이디, 배송비빼고는 전부 셋팅완
+		// 아이디, 배송비빼고는 전부 셋팅완료
 		return cartList;
 	}
-
-
 }

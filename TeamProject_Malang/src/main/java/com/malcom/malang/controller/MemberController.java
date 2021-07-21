@@ -1,22 +1,22 @@
 package com.malcom.malang.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.malcom.malang.model.CateVO;
 import com.malcom.malang.model.ItemVO;
 import com.malcom.malang.model.MemberVO;
 import com.malcom.malang.service.ItemService;
 import com.malcom.malang.service.MemberService;
+import com.malcom.malang.service.TempCartService;
 import com.malcom.malang.service.insertService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,10 +30,15 @@ public class MemberController {
 	protected final MemberService mService;
 	protected final insertService iServce;
 	protected final ItemService itService;
+	protected final TempCartService tcService;
 	
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession hSession) {
+		
+		// logout 하기전에 해당 아이디의 tempCart를 비워준다.
+		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		tcService.deleteById(mVO.getMb_id());
 		
 		hSession.removeAttribute("MEMBER");
 		hSession = null;
@@ -82,8 +87,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/role_update", method=RequestMethod.GET)
-	public String update(@RequestParam(value="id") String id, 
-						 @RequestParam(value="role") String role) {
+	public String update(String id, String role) {
 		
 		
 		
@@ -137,22 +141,42 @@ public class MemberController {
 		if(membervo == null || membervo.getMb_role() < 2) {
 			model.addAttribute("MSG","REJECT");
 		} else {
+			model.addAttribute("MSG","ADMIT");
 			mService.adminManage(model);
 		}
 		
 		return "member/manage";
 	}
 	
-	@RequestMapping(value="/mypage/items", method=RequestMethod.GET)
-	public String itemList(HttpSession hSession, Model model) {
+	@RequestMapping(value = "/seller", method = RequestMethod.GET)
+	public String seller(HttpSession session, Model model) {
+		log.debug("판매자 main");
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null || membervo.getMb_role() < 1) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG","ADMIT");
+			mService.seller("itemList", membervo.getMb_id(), model);
+		}
 		
-		MemberVO mVO = (MemberVO) hSession.getAttribute("MEMBER");
+		return "member/seller";
+	}
+	
+	@RequestMapping(value = "/seller/{nav_name}", method = RequestMethod.GET)
+	public String seller(@PathVariable("nav_name") String nav_name, HttpSession session,
+			Model model) {
+		log.debug("여기가 아닌가 {}", nav_name);
+		MemberVO membervo = (MemberVO) session.getAttribute("MEMBER");
+		if(membervo == null || membervo.getMb_role() < 1) {
+			model.addAttribute("MSG","REJECT");
+		} else {
+			model.addAttribute("MSG","ADMIT");
+			if(nav_name == null || nav_name.equals(""))
+				nav_name = "itemList" ;
+			mService.seller(nav_name, membervo.getMb_id(), model);
+		}
 		
-		List<ItemVO> itList = itService.findBySeller(mVO.getMb_id());
-		
-		model.addAttribute("ITLIST",itList);
-		
-		return "member/my_item_list";
+		return "member/seller";
 	}
 	
 	@ResponseBody
@@ -169,8 +193,5 @@ public class MemberController {
 		
 		return "OK";
 	}
-	
-	
-	
 	
 }

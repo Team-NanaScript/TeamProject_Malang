@@ -40,7 +40,8 @@ article.order_container table.order_table th {
 		<td>${MYO.it_title}</td>
 		<td>${MYO.od_option}</td>
 		<td>${MYO.od_price}</td>
-		<td><c:if test="${empty MYO.od_rcode}"><button class="review" type="button">리뷰작성</button></c:if></td>
+		<td><c:if test="${empty MYO.od_rcode}">
+		<button class="review" type="button">리뷰작성</button></c:if></td>
 	</tr>
 	
 	</c:forEach>

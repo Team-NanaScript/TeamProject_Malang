@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>말랑 - 상품등록</title>
 <link rel="stylesheet" type="text/css"
 	href="${rootPath}/static/css/insert.css?ver=2021-07-19-004" />
 <style type="text/css">
@@ -38,6 +43,10 @@
 		font-size:12px;
 	}
 </style>
+</head>
+
+<body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <div class="container">
 	<h1 class="title">상품 등록</h1>
 	<form class="insert" method="POST" id="item" enctype="multipart/form-data">
@@ -54,8 +63,8 @@
 			<input class="short" name="it_shippingfee" placeholder="배송비" type="number" value=0>
 		</div>
 
-		<input name="it_seid" type="hidden" value="${MEMBER.mb_id}">
-		<input name="it_ctcode" type="hidden" id="it_ctcode">
+		<input name="it_seid" class="hidden" value="${MEMBER.mb_id}">
+		<input name="it_ctcode" class="hidden" id="it_ctcode">
 
 		<div>
 			<label>상품 설명</label>
@@ -103,7 +112,8 @@
 	</form>
 
 </div>
-
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+</body>
 <script src="${rootPath}/ne2/js/service/HuskyEZCreator.js" charset="UTF-8"></script> 
 <script>
 
@@ -131,10 +141,12 @@ nhn.husky.EZCreator.createInIFrame({
 
 let btn_sb = document.querySelector("button#item_submit"); 
 
-btn_sb.addEventListener("click", ()=>{
+if(btn_sb){
+
+	btn_sb.addEventListener("click", ()=>{
 		
-		let title_val = document.querySelector("input[name='it_title']").value
-		let cate_val = document.querySelector("input#it_ctcode").value
+		let cate_val =  document.querySelector("input#it_ctcode").value
+		let title_val = document.querySelector("input[name='it_title']").value		
 		
 		if(title_val == null || title_val == ""){
 		    alert("상품 이름을 입력하세요!")
@@ -144,19 +156,15 @@ btn_sb.addEventListener("click", ()=>{
 		    alert("카테고리를 선택해주세요!")
 		    return false;
 		}
-		if(cate_st2.options.length == '0'){
-			alert("카테고리를 선택해주세요!")
-		    return false;
-		}
 				
 		
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 		
 		document.querySelector("form#item").submit();
 		
-})
+	})
 	
-
+}
 
 // 옵션 추가 스크립트 
 
@@ -211,8 +219,6 @@ document.querySelector("#btn_so_add").addEventListener("click", ()=>{
 /* 카테고리 스크립트 */
 
 let cateList = JSON.parse('${cateList}');
-
-console.log('${cateList}')
 
 let cate1 = new Array();
 let cate2 = new Array();
@@ -277,18 +283,28 @@ cate_st.addEventListener("change", ()=>{
 			if(cate2[i].ct_parentcode == cate1_value){
 				
 			let option2 = document.createElement("option")				
-				option2.innerText = cate2[i].ct_name;
+				option2.innerHTML = cate2[i].ct_name;
 				option2.setAttribute("selected", "selected");
 				option2.setAttribute("value", cate2[i].ct_code);
+				option2.setAttribute("class", "cate2");
 				
 				cate_st2.appendChild(option2)
-
-			} 			
+				
+				
+			} 
+			
 		}
 
 	cate2_chg();
+	
 })
 
 cate_st2.addEventListener("change", cate2_chg);
 
+
+
+	
+	
+
 </script>
+</html>
