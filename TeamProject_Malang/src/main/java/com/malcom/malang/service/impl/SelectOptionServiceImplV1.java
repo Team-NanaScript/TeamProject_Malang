@@ -53,14 +53,14 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 	}
 
 	@Override
-	public List<String> findByOptionName(String so_itcode) {
-		return sDao.findByOptionName(so_itcode);
+	public List<String> findNameByItcode(String so_itcode) {
+		return sDao.findNameByItcode(so_itcode);
 	}
 
 	@Override
-	public List<SelectOptionVO> findByOptionContent(String so_itcode, Model model) {
+	public List<SelectOptionVO> findByItcodeAndName(String so_itcode, Model model) {
 		// 사용 추가옵션... 옵션 이름 리스트 생성
-		List<String> soList = sDao.findByOptionName(so_itcode);
+		List<String> soList = sDao.findNameByItcode(so_itcode);
 		log.debug("옵션 이름 리스트 {}", soList.toString());
 
 		// 옵션 이름에 해당하는 내용 리스트 생성
@@ -72,7 +72,7 @@ public class SelectOptionServiceImplV1 implements SelectOptionService {
 
 		for (int i = 0; i < soList.size(); i++) {
 			log.debug("Name {} ", soList.get(i).toString());
-			List<SelectOptionVO> opList = sDao.findByOptionContent(so_itcode, soList.get(i));
+			List<SelectOptionVO> opList = sDao.findByItcodeAndName(so_itcode, soList.get(i));
 			// model.addAttribute("SOCONTENT", opList);
 			optMaps.put(soList.get(i), opList);
 		}
