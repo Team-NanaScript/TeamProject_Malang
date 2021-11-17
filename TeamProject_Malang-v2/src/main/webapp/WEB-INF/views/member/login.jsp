@@ -7,25 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-const doc = document;
-doc.addEventListener("DOMContentLoaded",()=>{
-	
-	doc.querySelector("div.btn_input").addEventListener("click", (e) => {
-			  
-		let idName = e.target.id;
-		
-		if(idName === "join"){
-			location.href="${rootPath}/join";
-		}
-	
-	});
-});
-
-
-</script>
-
 <link rel="stylesheet"
 	href="${rootPath}/static/css/login.css?ver=2021-06-14-001">
 <style>
@@ -69,29 +50,5 @@ div.input a{
 		</div>
 	</div>
 </body>
-
-<script>
-document.querySelector("button#login").addEventListener("click", (e)=>{
-	
-	let inputID = document.querySelector("input#user");
-	let inputPW = document.querySelector("input#pw");
-	
-	if(inputID.value === "" || inputID.value == null){
-			
-		alert("ID를 입력하세요 !!")
-		inputID.focus();
-		
-		return false;
-	}
-	if(inputPW.value === "" || inputPW.value == null){
-		
-		alert("비밀번호를 입력하세요 !!")
-		inputPW.focus();
-		
-		return false;
-	}
-
-	document.querySelector("form#login").submit();
-})
-</script>
+<script src="${rootPath}/static/js/member/login.js"></script>
 </html>
