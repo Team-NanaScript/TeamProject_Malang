@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+/*
+#DEBA9B 갈색
+#707070 회색
+#F29A8C 핑크
+
+*/
+
+div.container {
+  /* background-color: #AAA; */
+  width: 1056px;
+  margin: 0 auto;
+}
+
+div.container div.inner_top {
+  /* border: 1px solid rgb(139, 165, 139); */
+
+  display: flex;
+  justify-content: space-between;
+}
+
+section.img_section {
+  border: none;
+  padding: 15px;
+  width: 560px;
+  height: 560px;
+}
+section.img_section div.image_preview {
+/*  vscode에 있는 것을 css로 가져오면 경로가 달라져 info.jsp에 옮겼다.
+	background-image: url("../images/ex2.png");  
+  background-image:url("${rootPath}/static/images/ex1.png") no-repeat; */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 520px;
+  height: 520px;
+  margin: 0 auto;
+}
+
+/* 사이드 */
+aside {
+  width: 460px; /*음*/
+/*  height: 600px; 고얀놈 */
+
+  /* border: 1px solid #DEBA9B; */
+  margin: 15px 0 36px 36px;
+  padding: 20px 0px;
+
+  overflow: visible;
+}
+
+aside div.header h3 {
+  margin: 10px 0;
+}
+
+/* aside ul, aside ol { */
+ul,
+ol {
+  list-style-type: none;
+}
+
+aside ul.title {
+  /* border: 1px solid #DEBA9B; */
+  border-bottom-right-radius: 50px;
+  width: 150px;
+  background-color: #deba9b70;
+
+  margin: 10px 0;
+  padding: 10px;
+  /* text-align: center; */
+}
+
+/* aside ol { */
+ol {
+  display: flex;
+}
+
+/* aside ol li, aside div.header { */
+ol li,
+aside div.header {
+  padding: 5px 10px;
+}
+
+aside ol li:nth-of-type(1) {
+  width: 30%;
+}
+
+aside form.option select {
+  padding: 5px;
+  width: 250px;
+}
+
+
+/* 이거 적용이 안돼서 info.jsp 에 옮김. id값은 css분리가 안되는걸까?*/
+ul#selected_item li{
+	margin: 10px 0;
+	background-color: #eee;
+	padding: 5px;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+
+/* 네비게이션 */
+nav.product_nav {
+  background-color: #aaa;
+}
+
+ul.product_nav_ul {
+  display: flex;
+  list-style-type: none;
+}
+
+ul.product_nav_ul li {
+  padding: 18px 25px 16px 25px;
+  cursor: pointer;
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+/* ul.product_nav_ul li:first-child {
+  margin-left: 15px;
+} */
+
+ul.product_nav_ul li:hover {
+  background-color: #707070;
+}
+
+/* 아티클 */
+article.description {
+  /* border: 1px solid grey; */
+  padding: 26px;
+}
+
+article.description article {
+  /* border: 1px solid green; */
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+article h2 {
+  padding-bottom: 20px;
+}
+
+h2#info_price {
+	text-align: center;
+}
+
+/* 아티클 테이블 */
+article.description table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+article.description table th,
+td {
+  border-top: 1px solid #aaa;
+  padding: 10px;
+  max-width: 500px;
+
+  text-align: center;
+}
+
+article.description table th {
+  background-color: #ccc;
+}
+
+article.description table td:nth-child(2) {
+  text-align: left;
+}
+
+article.description table tr:last-child {
+  border-bottom: 1px solid #aaa;
+}
+/* 상세설명 */
+article#art_1 div {
+  padding: 10px 25px;
+  text-align: center;
+}
+
+/* 배송 교환 환불*/
+table.delivery {
+}
+
+/* 구매후기 */
+ul.review {
+  list-style-type: none;
+}
+
+/* 버튼 */
+ul.btn_box {
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul.btn_box button {
+  padding: 10px;
+  width: 130px;
+  margin: 10px 4px;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+ul.btn_box button:first-child {
+  background-color: white;
+  border: 1px solid #aaa;
+}
+
+ul.btn_box button:last-child {
+  background-color: #f29a8c7c;
+}

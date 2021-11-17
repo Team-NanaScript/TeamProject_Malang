@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.DescriptionDao">
+
+<select id="select" resultType="DescriptionVO">
+	SELECT * FROM tbl_description
+</select>
+
+<select id="findById" resultType="DescriptionVO">
+	SELECT * FROM tbl_description
+	WHERE de_code = #{de_code}
+</select>
+
+<select id="findByItem" resultType="DescriptionVO">
+	SELECT * FROM tbl_description
+	WHERE de_itcode = #{de_itcode}
+</select>
+
+<insert id="insert" parameterType="DescriptionVO">
+	INSERT INTO tbl_description(de_shippingfee, de_shipping, de_refund)
+	VALUES(#{de_shippingfee}, #{de_shipping}, #{de_refund})
+</insert>
+
+<update id="update" parameterType="DescriptionVO">
+	UPDATE tbl_description SET 
+	de_shippingfee = #{de_shippingfee}
+	de_shipping = #{de_shipping}
+	de_refund = #{de_refund}
+	WHERE de_code = #{de_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_description
+	WHERE de_code = #{de_code}
+</delete>
+
+</mapper>

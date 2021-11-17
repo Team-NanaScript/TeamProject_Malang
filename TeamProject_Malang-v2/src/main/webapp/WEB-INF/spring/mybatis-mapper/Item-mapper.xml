@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.ItemDao">
+
+<select id="select" resultType="ItemVO">
+	SELECT * FROM tbl_item
+</select>
+
+<select id="findById" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_code = #{it_code}
+</select>
+
+<select id="findBySeller" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_seid = #{it_seid}
+</select>
+
+<select id="findByTitle" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_title LIKE CONCAT( '%' , #{it_title} , '%' )
+</select>
+
+<select id="selectByCategory" resultType="ItemVO">
+	SELECT * FROM tbl_item
+	WHERE it_ctcode = #{it_ctcode}
+</select>
+
+<insert id="insert" parameterType="ItemVO">
+	INSERT INTO tbl_item (
+		it_code, it_seid, it_ctcode, it_title,
+		it_price, it_shippingfee, it_content, it_photo
+	) VALUES (
+		#{it_code}, #{it_seid}, #{it_ctcode},
+		#{it_title}, #{it_price}, #{it_shippingfee},
+		#{it_content}, #{it_photo}
+	)
+</insert>
+
+<update id="update" parameterType="ItemVO">
+	UPDATE tbl_item SET
+		it_seid = #{it_seid},
+		it_ctcode = #{it_ctcode},
+		it_title = #{it_title},
+		it_price = #{it_price},
+		it_shippingfee = #{it_shippingfee},
+		it_content = #{it_content},
+		it_photo = #{it_photo}
+	WHERE
+		it_code = #{it_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_item
+	WHERE it_code = #{it_code}
+</delete>
+
+<!-- category -->
+<select id="selectCategory" resultType="CateVO">
+	SELECT * FROM tbl_category
+</select>
+
+<select id="findCateById" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_code = #{ct_code}
+</select>
+
+<select id="categoryMain" resultType="String">
+	SELECT ct_main FROM tbl_category
+	GROUP BY ct_main
+	ORDER BY ct_main DESC
+</select>
+
+<select id="categorySub" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_parentcode = #{ct_parentcode}
+	ORDER BY ct_code DESC
+</select>
+
+<select id="categorySubWithCode" resultType="CateVO">
+	SELECT * FROM tbl_category
+	WHERE ct_code LIKE CONCAT( #{ct_main} , '%' )
+	ORDER BY ct_code DESC;
+</select>
+
+</mapper>

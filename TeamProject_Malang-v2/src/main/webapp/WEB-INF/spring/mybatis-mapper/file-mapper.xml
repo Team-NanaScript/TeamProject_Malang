@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.FileDao">
+<update id="create_table">
+	
+	create table if not exists tbl_files(
+	file_seq BIGINT auto_increment primary key,
+    file_itcode char(8) not null,
+    file_origin varchar(256),
+    file_upname varchar(256)
+	)
+
+</update>
+
+<insert id="insert">
+insert into tbl_files(
+	file_itcode,
+	file_origin,
+	file_upname
+)
+values(
+	#{file_itcode},
+	#{file_origin},
+	#{file_upname}
+
+)
+</insert>
+
+<insert id="insertOrUpdate">
+insert into tbl_files(
+	file_seq,
+	file_itcode,
+	file_origin,
+	file_upname
+)
+values(
+	#{file_seq},
+	#{file_itcode},
+	#{file_origin},
+	#{file_upname}
+
+)
+on duplicate key update
+file_itcode = #{file_itcode},
+file_origin = #{file_origin},
+file_upname = #{file_upname}
+</insert>
+
+
+
+</mapper>

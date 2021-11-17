@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.SelectOptionDao">
+
+<select id="select" resultType="SelectOptionVO">
+	SELECT * FROM tbl_select_option
+</select>
+
+<select id="findById" resultType="SelectOptionVO">
+	SELECT * FROM tbl_select_option
+	WHERE so_code = #{so_code}
+</select>
+
+<select id="findByItem" resultType="SelectOptionVO">
+	SELECT * FROM tbl_select_option
+	WHERE so_itcode = #{so_itcode}
+</select>
+
+<!-- 아래두개 작성해야함  -->
+<select id="findNameByItcode" resultType="String">
+	SELECT so_name FROM tbl_select_option
+	WHERE so_itcode = #{so_itcode}
+	GROUP BY so_name
+</select>
+
+<select id="findByItcodeAndName" resultType="SelectOptionVO">
+	SELECT * FROM tbl_select_option
+	WHERE so_itcode = #{so_itcode} AND so_name= #{so_name}
+</select>
+
+<select id="backup_findByOptionContent" resultType="SelectOptionVO">
+	SELECT so_content, so_price FROM tbl_select_option
+	WHERE so_itcode = #{so_itcode} AND so_name= #{so_name}
+</select>
+
+<insert id="insert" parameterType="SelectOptionVO">
+	INSERT INTO tbl_select_option(so_code, so_itcode, so_name, so_content, so_price)
+	VALUES(#{so_code}, #{so_itcode}, #{so_name}, #{so_content}, #{so_price})
+</insert>
+
+<update id="update" parameterType="SelectOptionVO">
+	UPDATE tbl_select_option SET 
+	so_code = #{so_code}
+	so_itcode = #{so_itcode}
+	so_name = #{so_name}
+	so_content = #{so_content}
+	so_price = #{so_price}
+	WHERE so_code = #{so_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_select_option
+	WHERE so_code = #{so_code}
+</delete>
+
+</mapper>

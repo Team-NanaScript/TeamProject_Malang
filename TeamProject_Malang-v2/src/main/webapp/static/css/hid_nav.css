@@ -1,0 +1,60 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+nav.b ul {
+	width: 100%;
+	padding: 3px;
+	margin-left: 50px;
+	opacity: 0.8;
+}
+
+nav.b ul a {
+	list-style: none;
+	font-size: 13px;
+	margin-left: 12px;
+}
+
+div#hid_nav {
+	display: none;
+	background-color: rgba(235, 164, 123, 0.993);
+	width: 100%;
+	justify-content: center;
+	white-space: nowrap;
+	align-items: center;
+	z-index:100;
+}
+
+#hid_nav a {
+	font-size: 40px;
+	color: white;
+	font-family: 'TmoneyRoundWindRegular';
+	margin-left: -600px;
+}
+
+form#hid input {
+	border: 3px solid rgba(235, 164, 123, 0.993);
+	width: 25%;
+	padding: 13px;
+	margin-left: 15px;
+	font-size: 16px;
+	outline: none;
+	position: absolute;
+	top: 1px;
+}
+
+form#hid button {
+	border: none;
+	font-size: 40px;
+	background-color: rgba(235, 164, 123, 0.993);
+	color: white;
+	margin-left: 495px;
+	position: absolute;
+	top: 4px;
+}
+
+form#hid button:hover {
+	cursor: pointer;
+}

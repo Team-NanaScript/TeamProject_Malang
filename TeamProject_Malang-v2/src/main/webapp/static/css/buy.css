@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+      div.review_img1 {
+        width: 80px;
+        height: 80px;
+        /*background-image: url(/images/ex2.png);  경로때문에 buy.jsp에 뺐다.*/
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      div.price_box {
+        border: 1px solid #777;
+      }
+
+      article#art_1 table.price_table {
+        margin-top: 30px;
+        font-size: 1.4rem;
+      }
+
+/* form 배송지정보,결제수단 */
+      div.pay_info {
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: space-between;
+      }
+
+      div.pay_info article {
+        flex: 1;
+      }
+
+      div.pay_info article#art_2{
+        margin-right: 40px;
+      }
+
+      div.pay_info article table td{
+        padding: 15px;
+      }
+
+      div.pay_info article#art_2 input{
+        outline: 0;
+        padding: 7px;
+        margin: 4px 0;
+
+        border: 1px solid #aaa;
+      }
+
+      div.pay_info article#art_2 input:focus{
+        border-color: #F29A8C;
+        background-color: #f29a8c3f;
+      }
+
+      div.pay_info article#art_2 input.addr_dis{
+        width: 300px;
+        
+      }
+      /* 라디오 버튼 */
+      div.pay_info article#art_3 input[type='radio'],
+      div.pay_info article#art_3 input[type='radio']:checked {
+        appearance: none;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 100%;
+        margin-right: 0.1rem;
+        cursor: pointer;
+      }
+
+      div.pay_info article#art_3 input[type='radio'] {
+        background-color: white;
+        border: 2px solid #777;
+      }
+
+      div.pay_info article#art_3 input[type='radio']:checked {
+        background-color: #F29A8C;
+        border: 2px solid #85473d;
+      }
+
+      /* 결제하기 */
+      div.btn_box{
+        text-align: center;
+      }
+
+      div.btn_box button {
+        width: 400px;
+        padding: 20px;
+
+        border: none;
+        background-color: #F29A8C;
+        border-radius: 10px;
+
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: white;
+
+        cursor: pointer;
+      }
