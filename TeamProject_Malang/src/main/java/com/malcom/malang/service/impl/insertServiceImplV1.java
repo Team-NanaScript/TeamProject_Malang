@@ -28,7 +28,6 @@ public class insertServiceImplV1 implements insertService {
 
 	protected final ItemDao itDao;
 	protected final OptionDao opDao;
-	protected final DescriptionDao desDao;
 	protected final FileService fService;
 	protected final SelectOptionService soService;
 

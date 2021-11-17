@@ -32,13 +32,13 @@ public class FileServiceImplV1 implements FileService{
 	@Autowired
 	private ResourceLoader resLoader;
 	
-	@Autowired
-	public void create_table(FileDao fDao) {
-		
-		Map<String, String> maps = new HashMap<String, String>();
-		fDao.create_table(maps);
-		
-	}
+//	@Autowired
+//	public void create_table(FileDao fDao) {
+//		
+//		Map<String, String> maps = new HashMap<String, String>();
+//		fDao.create_table(maps);
+//		
+//	}
 	
 	@Override
 	public String fileUp(MultipartFile one_file) throws IOException {

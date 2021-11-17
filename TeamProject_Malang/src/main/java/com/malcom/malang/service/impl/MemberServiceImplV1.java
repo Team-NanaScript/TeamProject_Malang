@@ -108,9 +108,9 @@ public class MemberServiceImplV1 implements MemberService{
 	public int roleUpdate(String mb_id, int mb_role) {
 		// TODO Auto-generated method stub
 		
-		mDao.roleUpdate(mb_id, mb_role);
 		
-		return 0;
+		
+		return mDao.roleUpdate(mb_id, mb_role);
 	}
 
 	@Override

@@ -65,7 +65,7 @@ public class MemberController {
 		
 		
 		httpSession.setAttribute("MEMBER", mVO);
-		return "redirect:/";
+		return "/member/mypage";
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
@@ -95,7 +95,7 @@ public class MemberController {
 		int res = mService.roleUpdate(id, mb_role);
 		log.debug("RESULT 값 {} ",res);
 		
-		if(0 == res) {
+		if(0 < res) {
 			return "OK";
 		}
 		

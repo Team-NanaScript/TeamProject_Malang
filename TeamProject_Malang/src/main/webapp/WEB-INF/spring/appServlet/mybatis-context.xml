@@ -13,8 +13,9 @@
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://192.168.5.86:3306/db_malang" />
+		<property name="url" value="jdbc:mysql://localhost:3306/db_malang"/>
+		<!--  	value="jdbc:mysql://192.168.5.86:3306/db_malang" /> -->
+		 
 		<property name="username" value="malang" />
 		<property name="password" value="malang" />
 	</bean>
