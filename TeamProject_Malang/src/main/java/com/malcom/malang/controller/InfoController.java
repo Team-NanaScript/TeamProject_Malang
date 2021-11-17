@@ -71,8 +71,8 @@ public class InfoController {
 		String avgScore = rService.avgScore(itcode);
 		Integer countScore = rService.countScore(itcode);
 		
-		List<String> sOptionName = soService.findByOptionName(itcode);
-		soService.findByOptionContent(itcode, model);
+		List<String> sOptionName = soService.findNameByItcode(itcode);
+		soService.findByItcodeAndName(itcode, model);
 		
 		DescriptionVO dVO = dService.findByItem(itcode);
 		List<QnaDTO> qList = qService.findByItem(itcode);
@@ -192,13 +192,17 @@ public class InfoController {
 	
 			// 배송비 가져오기
 			ItemVO iVO = iService.findById(itcode);
+			
 			for(int i = 0; i < insertCartList.size(); i++) {
 				TempCartVO tempCartVO = insertCartList.get(i);
-	
+				if(i == 0) {
+					// 하나만 배송비 셋팅
+					tempCartVO.setCr_shippingfee(iVO.getIt_shippingfee());
+				}else {
+					tempCartVO.setCr_shippingfee(0);
+				}
 				// 아이디 셋팅
 				tempCartVO.setCr_buyerid(mVO.getMb_id());
-				// 배송비 셋팅
-				tempCartVO.setCr_shippingfee(iVO.getIt_shippingfee());
 				// 가격 추가하고 셋팅
 				int price = tempCartVO.getCr_price();
 				price += iVO.getIt_price();

@@ -75,8 +75,8 @@ public class ItemController {
 		Integer countScore = rService.countScore(itcode);
 //		log.debug("후기 리뷰수 : {}", countScore);
 		
-		List<String> sOptionName = soService.findByOptionName(itcode);
-		soService.findByOptionContent(itcode, model);
+		List<String> sOptionName = soService.findNameByItcode(itcode);
+		soService.findByItcodeAndName(itcode, model);
 		
 		DescriptionVO dVO = dService.findByItem(itcode);
 		List<QnaDTO> qList = qService.findByItem(itcode);
