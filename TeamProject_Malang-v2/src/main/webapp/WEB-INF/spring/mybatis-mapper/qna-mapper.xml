@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.QnaDao">
+
+<select id="select" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	ORDER BY q_date DESC
+</select>
+
+<select id="selectByWriter" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_writer = #{q_writer}
+</select>
+
+<select id="selectByContent" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_content = LIKE CONCAT('%', '#{q_content}', '%')
+</select>
+
+<select id="findByItem" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_itcode = #{q_itcode}
+	ORDER BY q_date DESC, q_time DESC
+</select>
+
+<select id="findBySeq" resultType="QnaDTO">
+	SELECT * FROM view_qna
+	WHERE q_code = #{q_code}
+</select>
+
+<select id="findById" resultType="QnaVO">
+	SELECT * FROM tbl_qna
+	WHERE q_code = #{q_code}
+	ORDER BY q_date DESC, q_time DESC
+</select>
+
+<insert id="insert" parameterType="QnaVO">
+	INSERT INTO tbl_qna(q_writer, q_itcode, q_title, q_content, q_date, q_time)
+	VALUES(#{q_writer}, #{q_itcode}, #{q_title}, #{q_content}, #{q_date}, #{q_time})
+</insert>
+
+<update id="update" parameterType="QnaVO">
+	UPDATE tbl_qna SET 
+	q_writer = #{q_writer}
+	q_itcode = #{q_itcode}
+	q_title = #{q_title}
+	q_content = #{q_content}
+	q_date = #{q_date}
+	q_time = #{q_time}
+	WHERE q_code = #{q_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_qna
+	WHERE q_code = #{q_code}
+</delete>
+
+</mapper>

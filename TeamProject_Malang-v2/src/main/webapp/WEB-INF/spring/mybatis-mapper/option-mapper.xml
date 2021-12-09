@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.OptionDao">
+
+<select id="select" resultType="OptionVO">
+	SELECT * FROM tbl_option
+</select>
+
+<select id="findById" resultType="OptionVO">
+	SELECT * FROM tbl_option
+	WHERE op_code = #{op_code}
+</select>
+
+<select id="findByItem" resultType="OptionVO">
+	SELECT * FROM tbl_option
+	WHERE op_itcode = #{op_itcode}
+</select>
+
+<insert id="insert" parameterType="OptionVO">
+	INSERT INTO tbl_option(op_code, op_itcode, op_name, op_content)
+	VALUES(#{op_code}, #{op_itcode}, #{op_name}, #{op_content})
+</insert>
+
+<update id="update" parameterType="OptionVO">
+	UPDATE tbl_option SET 
+	op_code = #{op_code}
+	op_itcode = #{op_itcode}
+	op_name = #{op_name}
+	op_content = #{op_content}
+	WHERE op_code = #{op_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_option
+	WHERE op_code = #{op_code}
+</delete>
+
+</mapper>

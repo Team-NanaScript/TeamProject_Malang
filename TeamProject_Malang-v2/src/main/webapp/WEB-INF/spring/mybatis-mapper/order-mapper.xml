@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.OrderDao">
+
+<select id="select" resultType="OrderVO">
+	SELECT * FROM tbl_order
+</select>
+
+<select id="findById" resultType="OrderVO">
+	SELECT * FROM tbl_order
+	WHERE od_code = #{od_code}
+</select>
+
+<select id="findByBuyerId" resultType="OrderDTO">
+	SELECT * FROM view_order
+	WHERE od_buyerid = #{od_buyerid}
+	ORDER BY od_code DESC
+</select>
+
+<insert id="insert" parameterType="OrderVO">
+	INSERT INTO tbl_order(od_buyerid, od_itcode, od_option, od_price, 
+				od_anum, od_addr, od_paydate, od_orderdate)
+	VALUES(#{od_buyerid}, #{od_itcode}, #{od_option}, #{od_price}, 
+				#{od_anum}, #{od_addr}, #{od_paydate}, #{od_orderdate})
+</insert>
+
+<update id="update" parameterType="OrderVO">
+	UPDATE tbl_order SET 
+	od_buyerid = #{od_buyerid}
+	od_itcode = #{od_itcode}
+	od_option = #{od_option}
+	od_price = #{od_price}
+	od_anum = #{od_anum}
+	od_addr = #{od_addr}
+	od_paydate = #{od_paydate}
+	od_orderdate = #{od_orderdate}
+	od_rcode = #{od_rcode}
+	WHERE od_code = #{od_code}
+</update>
+
+<delete id="delete">
+	DELETE FROM tbl_order
+	WHERE od_code = #{od_code}
+</delete>
+
+</mapper>

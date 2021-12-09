@@ -54,8 +54,8 @@
 			<input class="short" name="it_shippingfee" placeholder="배송비" type="number" value=0>
 		</div>
 
-		<input name="it_seid" class="hidden" value="${MEMBER.mb_id}">
-		<input name="it_ctcode" class="hidden" id="it_ctcode">
+		<input name="it_seid" type="hidden" value="${MEMBER.mb_id}">
+		<input name="it_ctcode" type="hidden" id="it_ctcode">
 
 		<div>
 			<label>상품 설명</label>

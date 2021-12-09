@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malcom.malang.dao.BoardDao">
+
+<select id="findBySeq" resultType="BoardVO">
+SELECT * FROM tbl_board
+WHERE bd_seq = #{bd_seq}
+
+</select>
+
+<select id="findByMaxSeq" resultType="String">
+select max(bd_seq) from tbl_board
+</select>
+
+<select id="findByTitle" resultType="BoardVO">
+SELECT 
+bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
+(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count  
+FROM tbl_board
+WHERE bd_title LIKE CONCAT('%',#{keyword},'%')
+
+</select>
+
+<select id="findByNick" resultType="BoardVO">
+SELECT 
+bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
+(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count  
+FROM tbl_board
+WHERE bd_author LIKE CONCAT('%',#{keyword},'%')
+
+</select>
+
+<select id="findByContent" resultType="BoardVO">
+SELECT bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
+(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count 
+FROM tbl_board
+WHERE bd_content LIKE CONCAT('%',#{keyword},'%')
+
+</select>
+
+<select id="select" resultType="BoardVO">
+select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
+(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
+from tbl_board
+order by bd_seq desc
+
+</select>
+
+<insert id="insert" parameterType="BoardVO">
+
+INSERT INTO tbl_board(bd_title,bd_content,bd_author,bd_date,bd_time)
+VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date}, #{bd_time})
+
+</insert>
+
+<update id="update" parameterType="BoardVO">
+
+UPDATE tbl_board SET
+bd_title = #{bd_title},
+bd_content = #{bd_content},
+bd_author = #{bd_author},
+bd_date = #{bd_date},
+bd_count = #{bd_count}
+bd_time = #{bd_time}
+WHERE bd_seq = #{bd_seq}
+
+</update>
+
+<update id="updateCount" parameterType="Long">
+
+UPDATE tbl_board SET
+bd_count = bd_count + 1
+WHERE bd_seq = #{bd_seq}
+
+</update>
+
+<delete id="delete">
+
+DELETE FROM tbl_board
+WHERE bd_seq = #{bd_seq}
+
+</delete>
+
+</mapper>
