@@ -252,7 +252,7 @@ let cate_st2 =  document.querySelector("select#cate_st2")
 for(let i = 0 ; i < cate1.length ; i++){
 	
 		let option = document.createElement("option")
-		option.innerHTML = cate1[i].ct_name;
+		option.innerText = cate1[i].ct_name;
 		option.setAttribute("value", cate1[i].ct_code);
 		
 		cate_st.appendChild(option)
