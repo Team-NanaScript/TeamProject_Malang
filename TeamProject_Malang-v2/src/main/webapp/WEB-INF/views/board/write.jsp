@@ -96,7 +96,6 @@
 	<div class="container">
         <form method="POST" id="write" class="insert">
         <div>
-            <label>작성자 : ${MEMBER.mb_nickname}</label>
             <input name="bd_author" value="${MEMBER.mb_nickname}" type="hidden" class="long">
        	</div> 
         <div>

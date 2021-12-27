@@ -87,19 +87,24 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/role_update", method=RequestMethod.GET)
-	public String update(String id, String role) {
-		
-		
-		
+	public String update(String id, String role, HttpSession session) {
+
+		MemberVO memberVO = (MemberVO) session.getAttribute("MEMBER");
+		int session_role = memberVO.getMb_role();
+
+		if (session == null) {
+			return "FAIL";
+		} else if (session_role != 2) {
+			return "FAIL";
+		}
+
 		int mb_role = Integer.valueOf(role);
 		int res = mService.roleUpdate(id, mb_role);
-		log.debug("RESULT 값 {} ",res);
-		
-		if(0 < res) {
+
+		if (0 < res) {
 			return "OK";
 		}
-		
-		return "FAIL";
+		return "FAIl";
 	}
 	
 //	@RequestMapping(value = "/mypage", method = RequestMethod.GET)

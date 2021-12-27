@@ -14,6 +14,13 @@ WHERE bd_seq = #{bd_seq}
 select max(bd_seq) from tbl_board
 </select>
 
+<select id="select" resultType="BoardVO">
+    select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
+        (select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
+    from tbl_board
+    order by bd_seq desc
+</select>
+
 <select id="findByTitle" resultType="BoardVO">
 SELECT 
 bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
@@ -40,14 +47,6 @@ WHERE bd_content LIKE CONCAT('%',#{keyword},'%')
 
 </select>
 
-<select id="select" resultType="BoardVO">
-select bd_seq, bd_title, bd_content, bd_author, bd_date, bd_time, bd_count,
-(select count(*) from tbl_comment where cm_bdseq = bd_seq) as count
-from tbl_board
-order by bd_seq desc
-
-</select>
-
 <insert id="insert" parameterType="BoardVO">
 
 INSERT INTO tbl_board(bd_title,bd_content,bd_author,bd_date,bd_time)
@@ -60,9 +59,8 @@ VALUES(#{bd_title}, #{bd_content}, #{bd_author}, #{bd_date}, #{bd_time})
 UPDATE tbl_board SET
 bd_title = #{bd_title},
 bd_content = #{bd_content},
-bd_author = #{bd_author},
 bd_date = #{bd_date},
-bd_count = #{bd_count}
+bd_count = #{bd_count},
 bd_time = #{bd_time}
 WHERE bd_seq = #{bd_seq}
 

@@ -33,7 +33,6 @@ public class insertServiceImplV1 implements insertService {
 
 	@Override
 	public int insert(ItemVO itVO, MultipartFile file, MultipartHttpServletRequest files) throws IOException {
-		// TODO Auto-generated method stub
 		
 		String fileName = fService.fileUp(file);
 		
